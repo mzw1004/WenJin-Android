@@ -1,41 +1,49 @@
 package com.twt.service.wenjin.ui.main;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
+import android.widget.FrameLayout;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.drawer.DrawerFragment;
+
+import java.util.Arrays;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity implements MainView {
+
+    @InjectView(R.id.navigation_drawer_layout)
+    DrawerLayout mDrawerLayout;
+    @InjectView(R.id.main_container)
+    FrameLayout mFrameLayout;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+
+    private DrawerFragment mDrawerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        ButterKnife.inject(this);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mDrawerFragment = (DrawerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mDrawerFragment.setUp(R.id.main_container, mDrawerLayout, toolbar);
+    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    protected List<Object> getModlues() {
+        return Arrays.<Object>asList(new MainModule());
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
