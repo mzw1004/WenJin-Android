@@ -1,6 +1,14 @@
 <resources>
 
-    <string name="action_settings">设置</string>
     <string name="app_name">问津</string>
+
+    <!-- Drawer strings -->
+    <string name="drawer_open">打开侧边栏</string>
+    <string name="drawer_close">关闭侧边栏</string>
+    <string name="drawer_item_home">首页</string>
+    <string name="drawer_item_explore">发现</string>
+    <string name="drawer_item_topic">话题</string>
+    <string name="drawer_item_user">用户</string>
+    <string name="drawer_item_setting">设置</string>
 
 </resources>
