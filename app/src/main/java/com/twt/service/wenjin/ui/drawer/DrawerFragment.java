@@ -54,8 +54,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
         ButterKnife.inject(this, rootView);
 
         mDrawerAdapter = new DrawerAdapter(this);
-        mDrawerAdapter.addItem("Home");
-        mDrawerAdapter.addItem("Find");
+        addDrawerItems();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mDrawerRecyclerView.setLayoutManager(linearLayoutManager);
         mDrawerRecyclerView.setAdapter(mDrawerAdapter);
@@ -80,6 +79,16 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
             }
         });
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    private void addDrawerItems() {
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_home_grey, getString(R.string.drawer_item_home));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_explore_grey, getString(R.string.drawer_item_explore));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_topic_grey, getString(R.string.drawer_item_topic));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_user_grey, getString(R.string.drawer_item_user));
+        mDrawerAdapter.addDivider();
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_settings_grey, getString(R.string.drawer_item_setting));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_help_grey, getString(R.string.drawer_item_helper_and_feedback));
     }
 
     @Override

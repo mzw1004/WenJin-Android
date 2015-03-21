@@ -10,5 +10,6 @@
     <string name="drawer_item_topic">话题</string>
     <string name="drawer_item_user">用户</string>
     <string name="drawer_item_setting">设置</string>
+    <string name="drawer_item_helper_and_feedback">帮助 &amp; 反馈</string>
 
 </resources>

@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="@dimen/navigation_drawer_item_height">
+    
+    <ImageView
+        android:id="@+id/drawer_lsit_item_icon"
+        android:layout_width="@dimen/navigation_drawer_icon_size"
+        android:layout_height="@dimen/navigation_drawer_icon_size"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/navigation_drawer_icon_margin_left"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/drawer_list_item_name"
         android:textColor="@color/color_text_primary"
         android:textSize="@dimen/navigation_drawer_text_size"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/navigation_drawer_item_height"
-        android:gravity="center_vertical" />
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/navigation_drawer_text_margin_left" />
 
-</LinearLayout>
+</RelativeLayout>
