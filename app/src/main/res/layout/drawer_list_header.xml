@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/user_profile_background"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@android:color/holo_green_dark">
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/user_profile_background"
+        android:contentDescription="user profile background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_drawer_header_height"
+        android:background="@android:color/holo_green_dark" />
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/user_profile_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/navigation_drawer_user_profile_size"
+        android:layout_height="@dimen/navigation_drawer_user_profile_size"
         android:layout_marginLeft="@dimen/navigation_drawer_icon_margin_left"
         android:layout_marginTop="@dimen/navigation_drawer_icon_margin_left"
         android:src="@mipmap/ic_launcher"
@@ -18,23 +22,32 @@
 
     <TextView
         android:id="@+id/tv_user_profile_name"
+        android:text="mazhiwei"
         android:textSize="@dimen/navigation_drawer_text_size"
-        android:layout_marginTop="2dp"
+        android:textColor="@android:color/white"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:gravity="center_vertical"/>
+        android:layout_height="@dimen/navigation_drawer_user_name_height"
+        android:layout_below="@+id/user_profile_image"
+        android:layout_marginTop="2dp"
+        android:layout_alignLeft="@+id/user_profile_image" />
 
     <TextView
         android:id="@+id/tv_user_profile_email"
+        android:text="mzw1004@126.com"
         android:textSize="@dimen/navigation_drawer_text_size"
+        android:textColor="@android:color/white"
+        android:gravity="top"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:gravity="center_vertical"/>
+        android:layout_height="@dimen/navigation_drawer_user_name_height"
+        android:layout_below="@+id/tv_user_profile_name"
+        android:layout_alignLeft="@+id/tv_user_profile_name" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="8dp"
+        android:layout_below="@+id/user_profile_background"
         android:background="@android:color/white" />
 
-</LinearLayout>
+</RelativeLayout>

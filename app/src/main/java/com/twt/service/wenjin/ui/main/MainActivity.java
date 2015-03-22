@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.main;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.twt.service.wenjin.R;
@@ -21,7 +22,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @InjectView(R.id.navigation_drawer_layout)
     DrawerLayout mDrawerLayout;
     @InjectView(R.id.main_container)
-    FrameLayout mFrameLayout;
+    View mFrameLayout;
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
 

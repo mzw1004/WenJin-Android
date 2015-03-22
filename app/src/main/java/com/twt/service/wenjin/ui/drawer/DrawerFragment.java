@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.drawer;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,7 +35,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private FrameLayout mContainer;
+    private View mContainer;
     private DrawerAdapter mDrawerAdapter;
 
     public DrawerFragment() {
@@ -62,16 +63,34 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
         return rootView;
     }
 
+    public boolean isDrawerOpen() {
+        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mContainer);
+    }
+
     public void setUp(int framelayoutId, DrawerLayout drawerLayout, Toolbar toolbar) {
-        mContainer = (FrameLayout) getActivity().findViewById(framelayoutId);
+        mContainer = getActivity().findViewById(framelayoutId);
         mDrawerLayout = drawerLayout;
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 getActivity(),
                 mDrawerLayout,
                 toolbar,
                 R.string.drawer_open,
-                R.string.drawer_close);
+                R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getActivity().invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                getActivity().invalidateOptionsMenu();
+            }
+        };
+
         mDrawerLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -82,6 +101,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
     }
 
     private void addDrawerItems() {
+        mDrawerAdapter.addHeader(R.layout.drawer_list_header);
         mDrawerAdapter.addItem(R.drawable.ic_drawer_home_grey, getString(R.string.drawer_item_home));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_explore_grey, getString(R.string.drawer_item_explore));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_topic_grey, getString(R.string.drawer_item_topic));
@@ -98,12 +118,39 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
     protected List<Object> getModules() {
         return Arrays.<Object>asList(new DrawerModule(this));
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        mPresenter.select(position);
+        mPresenter.selectItem(position);
+    }
+
+    @Override
+    public void closeDrawer() {
+        if (mDrawerLayout != null) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    @Override
+    public void setSelectedItemColor(int position) {
+        mDrawerAdapter.setSelected(position);
+    }
+
+    @Override
+    public void sendDrawerItemClickedEvent(int position) {
+
     }
 }
