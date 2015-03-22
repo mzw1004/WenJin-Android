@@ -13,7 +13,7 @@ import dagger.ObjectGraph;
  */
 public class WenJinApp extends Application {
 
-    private static Context mContext;
+    private static Context sContext;
 
     private ObjectGraph objectGraph;
 
@@ -23,7 +23,7 @@ public class WenJinApp extends Application {
         objectGraph = ObjectGraph.create(getModules().toArray());
         objectGraph.inject(this);
 
-        mContext = getApplicationContext();
+        sContext = getApplicationContext();
     }
 
     private List<Object> getModules() {
@@ -35,6 +35,6 @@ public class WenJinApp extends Application {
     }
 
     public static Context getContext() {
-        return mContext;
+        return sContext;
     }
 }

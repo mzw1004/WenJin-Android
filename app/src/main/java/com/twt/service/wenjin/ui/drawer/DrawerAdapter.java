@@ -130,6 +130,9 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 if(itemIndex == mSelectedItemIndex) {
                     itemHolder.mRootView.setBackgroundColor(ResourcesUtil.getColor(R.color.color_drawer_item_selected_background));
                     itemHolder.mTextView.setTextColor(ResourcesUtil.getColor(R.color.color_primary));
+                } else {
+                    itemHolder.mRootView.setBackgroundColor(ResourcesUtil.getColor(android.R.color.white));
+                    itemHolder.mTextView.setTextColor(ResourcesUtil.getColor(R.color.color_text_primary));
                 }
                 break;
         }

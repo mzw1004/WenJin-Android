@@ -10,4 +10,5 @@ public interface DrawerView {
     void setSelectedItemColor(int position);
 
     void sendDrawerItemClickedEvent(int position);
+
 }

@@ -11,8 +11,6 @@ public class DrawerPresenterImpl implements DrawerPresenter {
 
     DrawerView mDrawerView;
 
-    private int mCurrentPosition = 0;
-
     public DrawerPresenterImpl(DrawerView drawerView) {
         this.mDrawerView = drawerView;
     }
@@ -20,7 +18,6 @@ public class DrawerPresenterImpl implements DrawerPresenter {
     @Override
     public void selectItem(int position) {
         LogUtil.v(LOG_TAG, "clicked position: " + position);
-        mCurrentPosition = position;
         mDrawerView.closeDrawer();
         mDrawerView.setSelectedItemColor(position);
         mDrawerView.sendDrawerItemClickedEvent(position);
