@@ -11,4 +11,6 @@
     <dimen name="navigation_drawer_icon_size">24dp</dimen>
     <dimen name="navigation_drawer_icon_margin_left">16dp</dimen>
     <dimen name="navigation_drawer_divider_height">8dp</dimen>
+
+    <!-- Home page dimens -->
 </resources>

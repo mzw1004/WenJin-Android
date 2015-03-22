@@ -90,15 +90,15 @@ public class MainActivity extends BaseActivity implements MainView {
             case 0:
                 fragment = new HomeFragment();
                 break;
-//            case 1:
-//                fragment = new ExploreFragment();
-//                break;
-//            case 2:
-//                fragment = new TopicFragment();
-//                break;
-//            case 3:
-//                fragment = new UserFragment();
-//                break;
+            case 1:
+                fragment = new ExploreFragment();
+                break;
+            case 2:
+                fragment = new TopicFragment();
+                break;
+            case 3:
+                fragment = new UserFragment();
+                break;
         }
         fragmentManager.beginTransaction()
                 .replace(R.id.main_container, fragment)
