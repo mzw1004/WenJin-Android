@@ -1,18 +1,26 @@
 package com.twt.service.wenjin.ui.drawer;
 
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.event.DrawerItemClickedEvent;
+import com.twt.service.wenjin.support.BusProvider;
+import com.twt.service.wenjin.support.LogUtil;
+import com.twt.service.wenjin.support.ResourcesUtil;
 import com.twt.service.wenjin.ui.BaseFragment;
 
 import java.util.Arrays;
@@ -26,6 +34,12 @@ import butterknife.InjectView;
 
 public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAdapter.OnItemClickListener {
 
+    private static final String LOG_TAG = DrawerFragment.class.getSimpleName();
+
+    private static final String STATE_SELECTED_POSITION = "navigation_drawer_selected_position";
+
+    private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
+
     @Inject
     DrawerPresenter mPresenter;
 
@@ -34,16 +48,29 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private FrameLayout mContainer;
+    private View mContainer;
     private DrawerAdapter mDrawerAdapter;
 
+    private int mCurrentSelectedPosition = 0;
+    private boolean mFromSavedInstanceState;
+    private boolean mUserLearnedDrawer;
+
     public DrawerFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+
+        if (savedInstanceState != null) {
+            mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
+            mFromSavedInstanceState = true;
+        }
+
+        mPresenter.selectItem(mCurrentSelectedPosition);
     }
 
     @Override
@@ -54,8 +81,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
         ButterKnife.inject(this, rootView);
 
         mDrawerAdapter = new DrawerAdapter(this);
-        mDrawerAdapter.addItem("Home");
-        mDrawerAdapter.addItem("Find");
+        addDrawerItems();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mDrawerRecyclerView.setLayoutManager(linearLayoutManager);
         mDrawerRecyclerView.setAdapter(mDrawerAdapter);
@@ -63,16 +89,49 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
         return rootView;
     }
 
+    public boolean isDrawerOpen() {
+        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mContainer);
+    }
+
     public void setUp(int framelayoutId, DrawerLayout drawerLayout, Toolbar toolbar) {
-        mContainer = (FrameLayout) getActivity().findViewById(framelayoutId);
+        mContainer = getActivity().findViewById(framelayoutId);
         mDrawerLayout = drawerLayout;
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 getActivity(),
                 mDrawerLayout,
                 toolbar,
                 R.string.drawer_open,
-                R.string.drawer_close);
+                R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                if (!isAdded()) {
+                    return;
+                }
+                if (!mUserLearnedDrawer) {
+                    mUserLearnedDrawer = true;
+                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                    sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+                }
+                getActivity().invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                if (!isAdded()) {
+                    return;
+                }
+                getActivity().invalidateOptionsMenu();
+            }
+        };
+
+        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
+            mDrawerLayout.openDrawer(Gravity.START);
+        }
+
         mDrawerLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -82,10 +141,39 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+    private void addDrawerItems() {
+        mDrawerAdapter.addHeader(R.layout.drawer_list_header);
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_home_grey, getString(R.string.drawer_item_home));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_explore_grey, getString(R.string.drawer_item_explore));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_topic_grey, getString(R.string.drawer_item_topic));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_user_grey, getString(R.string.drawer_item_user));
+        mDrawerAdapter.addDivider();
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_settings_grey, getString(R.string.drawer_item_setting));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_help_grey, getString(R.string.drawer_item_helper_and_feedback));
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
+    }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusProvider.getBusInstance().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        BusProvider.getBusInstance().unregister(this);
     }
 
     @Override
@@ -95,6 +183,26 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
 
     @Override
     public void onItemClick(View view, int position) {
-        mPresenter.select(position);
+        mPresenter.selectItem(position);
+    }
+
+    @Override
+    public void closeDrawer() {
+        if (mDrawerLayout != null) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    @Override
+    public void setSelectedItemColor(int position) {
+        if (mDrawerAdapter != null) {
+            mDrawerAdapter.setSelected(position);
+        }
+    }
+
+    @Override
+    public void sendDrawerItemClickedEvent(int position) {
+        BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
+        LogUtil.d(LOG_TAG, "send event successfully");
     }
 }

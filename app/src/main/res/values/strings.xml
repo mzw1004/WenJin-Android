@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">WenJin</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Drawer strings -->
     <string name="drawer_open">Open drawer navigation</string>
     <string name="drawer_close">close drawer navigation</string>
+    <string name="drawer_item_home">Home</string>
+    <string name="drawer_item_explore">Explore</string>
+    <string name="drawer_item_topic">Topic</string>
+    <string name="drawer_item_user">User</string>
+    <string name="drawer_item_setting">Setting</string>
+    <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

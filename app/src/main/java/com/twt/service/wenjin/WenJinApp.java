@@ -1,6 +1,7 @@
 package com.twt.service.wenjin;
 
 import android.app.Application;
+import android.content.Context;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,8 @@ import dagger.ObjectGraph;
  */
 public class WenJinApp extends Application {
 
+    private static Context sContext;
+
     private ObjectGraph objectGraph;
 
     @Override
@@ -19,6 +22,8 @@ public class WenJinApp extends Application {
         super.onCreate();
         objectGraph = ObjectGraph.create(getModules().toArray());
         objectGraph.inject(this);
+
+        sContext = getApplicationContext();
     }
 
     private List<Object> getModules() {
@@ -27,5 +32,9 @@ public class WenJinApp extends Application {
 
     public ObjectGraph createScopedGraph(Object... modules) {
         return objectGraph.plus(modules);
+    }
+
+    public static Context getContext() {
+        return sContext;
     }
 }

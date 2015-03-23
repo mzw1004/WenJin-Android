@@ -7,4 +7,6 @@
     <color name="color_text_primary">#212121</color>
     <color name="color_text_secondary">#727272</color>
     <color name="color_divider">#B6B6B6</color>
+
+    <color name="color_drawer_item_selected_background">#e8e8e8</color>
 </resources>

@@ -5,5 +5,5 @@ package com.twt.service.wenjin.ui.drawer;
  */
 public interface DrawerPresenter {
 
-    void select(int position);
+    void selectItem(int position);
 }

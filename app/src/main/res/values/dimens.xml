@@ -1,7 +1,16 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
+
     <!-- Drawer dimens -->
-    <dimen name="navigation_drawer_width">240dp</dimen>
-    <dimen name="navigation_drawer_text_size">14sp</dimen>
+    <dimen name="navigation_drawer_width">280dp</dimen>
+    <dimen name="navigation_drawer_header_height">140dp</dimen>
+    <dimen name="navigation_drawer_user_profile_size">64dp</dimen>
+    <dimen name="navigation_drawer_user_name_height">28dp</dimen>
     <dimen name="navigation_drawer_item_height">48dp</dimen>
+    <dimen name="navigation_drawer_text_size">14sp</dimen>
+    <dimen name="navigation_drawer_text_margin_left">72dp</dimen>
+    <dimen name="navigation_drawer_icon_size">24dp</dimen>
+    <dimen name="navigation_drawer_icon_margin_left">16dp</dimen>
+    <dimen name="navigation_drawer_divider_height">8dp</dimen>
+
+    <!-- Home page dimens -->
 </resources>
