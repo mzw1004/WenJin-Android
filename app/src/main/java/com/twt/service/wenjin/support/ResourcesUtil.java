@@ -11,6 +11,10 @@ public class ResourcesUtil {
         return WenJinApp.getContext().getResources().getColor(colorId);
     }
 
+    public static String getString(int stringId) {
+        return WenJinApp.getContext().getResources().getString(stringId);
+    }
+
     public static String[] getStringArrays(int arrayId) {
         return WenJinApp.getContext().getResources().getStringArray(arrayId);
     }

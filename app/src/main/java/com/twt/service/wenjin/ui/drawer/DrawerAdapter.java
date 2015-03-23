@@ -34,10 +34,20 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private int mSelectedItemIndex = 0;
 
-    private OnItemClickListener mListener;
+    private OnItemClickListener mItemListener;
+    private OnUserClickListener mUserListener;
 
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
+    }
+
+    public interface OnUserClickListener {
+        public void onUserClick(View view);
+    }
+
+    public DrawerAdapter(OnItemClickListener itemClickListener, OnUserClickListener userClickListener) {
+        this.mItemListener = itemClickListener;
+        this.mUserListener = userClickListener;
     }
 
     public static class HeaderHolder extends RecyclerView.ViewHolder {
@@ -86,10 +96,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public DrawerAdapter(OnItemClickListener listener) {
-        this.mListener = listener;
-    }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
@@ -116,6 +122,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int i) {
         switch (getItemViewType(i)) {
+            case ITEM_VIEW_TYPE_HEADER:
+                HeaderHolder headerHolder = (HeaderHolder) viewHolder;
+                headerHolder.mIvProfile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mUserListener.onUserClick(v);
+                    }
+                });
+                break;
             case ITEM_VIEW_TYPE_ITEM:
                 final int itemIndex = getItemIndex(i);
                 ItemHolder itemHolder = (ItemHolder) viewHolder;
@@ -124,7 +139,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 itemHolder.mRootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mListener.onItemClick(v, itemIndex);
+                        mItemListener.onItemClick(v, itemIndex);
                     }
                 });
                 if(itemIndex == mSelectedItemIndex) {
@@ -198,4 +213,5 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mSelectedItemIndex = position;
         notifyDataSetChanged();
     }
+
 }

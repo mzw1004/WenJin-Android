@@ -12,4 +12,11 @@
     <string name="drawer_item_setting">设置</string>
     <string name="drawer_item_helper_and_feedback">帮助 &amp; 反馈</string>
 
+    <!-- Login Activity strings -->
+    <string name="title_activity_login">用户登录</string>
+    <string name="login_username_hint">用户名/Email地址</string>
+    <string name="login_password_hint">密码</string>
+    <string name="login_btn_text">登录</string>
+    <string name="login_error_empty">不能为空</string>
+
 </resources>
