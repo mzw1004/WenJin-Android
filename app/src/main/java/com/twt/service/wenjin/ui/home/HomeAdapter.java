@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
+import com.twt.service.wenjin.support.ResourceHelper;
 
 import java.util.ArrayList;
 
@@ -56,10 +57,58 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ItemHolder itemHolder = (ItemHolder) holder;
+        HomeItem homeItem = mDataset.get(position);
+        itemHolder.tvUsername.setText(homeItem.user_info.user_name);
+        itemHolder.tvTitle.setText(homeItem.question_info.question_content);
+        switch (homeItem.associate_action) {
+            case 101:
+                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question));
+                break;
+            case 105:
+                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.concern_question));
+                break;
+            case 201:
+                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.reply_question));
+                break;
+            case 204:
+                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_answer));
+                break;
+            case 501:
+                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_article));
+                break;
+            case 502:
+                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_article));
+                break;
+        }
+        if (homeItem.answer_info != null) {
+            itemHolder.tvContent.setVisibility(View.VISIBLE);
+            itemHolder.ivAgree.setVisibility(View.VISIBLE);
+            itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
+
+            String content = homeItem.answer_info.answer_content;
+            if (content.length() > 80) {
+                itemHolder.tvContent.setText(content.toCharArray(), 0, 80);
+            } else {
+                itemHolder.tvContent.setText(content);
+            }
+
+            itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
+        } else {
+            itemHolder.tvContent.setVisibility(View.GONE);
+            itemHolder.ivAgree.setVisibility(View.GONE);
+            itemHolder.tvAgreeNo.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public int getItemCount() {
         return mDataset.size();
+    }
+
+    public void updateData(ArrayList<HomeItem> items) {
+        mDataset.clear();
+        mDataset.addAll(items);
+        notifyDataSetChanged();
     }
 }

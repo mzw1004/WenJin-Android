@@ -20,7 +20,7 @@ public class HomeInteractorImpl implements HomeInteractor {
 
     @Override
     public void getHomeItems(final OnGetItemsCallback onGetItemsCallback) {
-        ApiClient.getHome(10, 1, new JsonHttpResponseHandler() {
+        ApiClient.getHome(20, 0, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

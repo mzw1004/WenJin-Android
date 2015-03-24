@@ -14,6 +14,14 @@
     <string name="drawer_item_setting">设置</string>
     <string name="drawer_item_helper_and_feedback">帮助 &amp; 反馈</string>
 
+    <!-- Home strings -->
+    <string name="post_question">发起了问题</string>
+    <string name="concern_question">关注了该问题</string>
+    <string name="reply_question">回答了问题</string>
+    <string name="agree_answer">赞同了该回答</string>
+    <string name="post_article">发布了文章</string>
+    <string name="agree_article">赞同了该文章</string>
+
     <!-- Login Activity strings -->
     <string name="title_activity_login">用户登录</string>
     <string name="login_username_hint">用户名/Email地址</string>

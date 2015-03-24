@@ -15,5 +15,5 @@ public interface HomeView {
 
     void toastMessage(String message);
 
-    void updateListData(ArrayList<HomeItem> dataset);
+    void updateListData(ArrayList<HomeItem> items);
 }

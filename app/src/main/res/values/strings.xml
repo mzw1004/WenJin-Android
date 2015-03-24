@@ -13,6 +13,14 @@
     <string name="drawer_item_user">User</string>
     <string name="drawer_item_setting">Setting</string>
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
+    
+    <!-- Home strings -->
+    <string name="post_question">post this question</string>
+    <string name="concern_question">concern this question</string>
+    <string name="reply_question">reply this question</string>
+    <string name="agree_answer">agree to answer questions</string>
+    <string name="post_article">post this article</string>
+    <string name="agree_article">agree this article</string>
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">LoginActivity</string>

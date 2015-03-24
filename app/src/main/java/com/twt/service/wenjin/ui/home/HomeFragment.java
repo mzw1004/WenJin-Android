@@ -4,6 +4,8 @@ package com.twt.service.wenjin.ui.home;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +31,13 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
 
     @Inject
     HomePresenter mPresenter;
+
     @InjectView(R.id.home_swipe_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
+    @InjectView(R.id.home_recycler_view)
+    RecyclerView mRecyclerView;
+
+    private HomeAdapter mHomeAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -39,6 +46,7 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter.loadingHomeItems();
     }
 
     @Override
@@ -51,13 +59,12 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
 
-        return rootView;
-    }
+        mHomeAdapter = new HomeAdapter();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setAdapter(mHomeAdapter);
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mPresenter.loadingHomeItems();
+        return rootView;
     }
 
     @Override
@@ -72,8 +79,8 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
     }
 
     @Override
-    public void updateListData(ArrayList<HomeItem> dataset) {
-
+    public void updateListData(ArrayList<HomeItem> items) {
+        mHomeAdapter.updateData(items);
     }
 
     @Override
