@@ -7,6 +7,6 @@ public interface OnLoginCallback {
 
     void onSuccess();
 
-    void onFailure();
+    void onFailure(String errorString);
 
 }

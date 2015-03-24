@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.home;
 
+import com.twt.service.wenjin.interactor.HomeInteractor;
 import com.twt.service.wenjin.ui.main.MainModule;
 
 import javax.inject.Singleton;
@@ -33,8 +34,8 @@ public class HomeModule {
 
     @Provides
     @Singleton
-    public HomePresenter provideHomePresenter(HomeView homeView) {
-        return new HomePresenterImpl(homeView);
+    public HomePresenter provideHomePresenter(HomeView homeView, HomeInteractor homeInteractor) {
+        return new HomePresenterImpl(homeView, homeInteractor);
     }
 
 }

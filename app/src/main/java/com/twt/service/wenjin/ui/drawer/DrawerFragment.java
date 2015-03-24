@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,8 +19,7 @@ import android.view.ViewGroup;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
-import com.twt.service.wenjin.support.LogUtil;
-import com.twt.service.wenjin.support.ResourcesUtil;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 
@@ -211,7 +209,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     @Override
     public void sendDrawerItemClickedEvent(int position) {
         BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
-        LogUtil.d(LOG_TAG, "send event successfully");
+        LogHelper.d(LOG_TAG, "send event successfully");
     }
 
 }

@@ -14,9 +14,13 @@ import dagger.Provides;
 )
 public class InteractorsModule {
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public LoginInteractor provideLoginInteractor() {
         return new LoginInteractorImpl();
+    }
+
+    @Provides @Singleton
+    public HomeInteractor provideHomeInteractor() {
+        return new HomeInteractorImpl();
     }
 }

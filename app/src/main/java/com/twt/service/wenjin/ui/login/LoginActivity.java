@@ -1,14 +1,18 @@
 package com.twt.service.wenjin.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.main.MainActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -70,5 +74,16 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     public void hideProgressBar() {
         mPbLogin.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void toastMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void startMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

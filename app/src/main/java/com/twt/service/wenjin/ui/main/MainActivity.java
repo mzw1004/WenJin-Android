@@ -10,8 +10,8 @@ import com.squareup.otto.Subscribe;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
-import com.twt.service.wenjin.support.LogUtil;
-import com.twt.service.wenjin.support.ResourcesUtil;
+import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    private static final String[] DRAWER_TITLES = ResourcesUtil.getStringArrays(R.array.drawer_list_items);
+    private static final String[] DRAWER_TITLES = ResourceHelper.getStringArrays(R.array.drawer_list_items);
 
     @Inject
     MainPresenter mMainPresenter;
@@ -56,6 +56,10 @@ public class MainActivity extends BaseActivity implements MainView {
         mDrawerFragment = (DrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mDrawerFragment.setUp(R.id.main_container, mDrawerLayout, toolbar);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_container, new HomeFragment())
+                .commit();
     }
 
     @Override
@@ -72,7 +76,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Subscribe
     public void OnDrawerItemClicked(DrawerItemClickedEvent event) {
-        LogUtil.v(LOG_TAG, "clicked position: " + event.getPosition());
+        LogHelper.v(LOG_TAG, "clicked position: " + event.getPosition());
         mMainPresenter.onNavigationDrawerItemSelected(event.getPosition());
     }
 
@@ -83,7 +87,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void replaceFragment(int position) {
-        LogUtil.v(LOG_TAG, "switch to: " + position);
+        LogHelper.v(LOG_TAG, "switch to: " + position);
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = null;
         switch (position) {
@@ -112,6 +116,6 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void startNewActivity(int position) {
-        LogUtil.v(LOG_TAG, "start new activity: " + position);
+        LogHelper.v(LOG_TAG, "start new activity: " + position);
     }
 }

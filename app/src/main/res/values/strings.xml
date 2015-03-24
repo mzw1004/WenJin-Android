@@ -1,5 +1,8 @@
 <resources>
+
     <string name="app_name">WenJin</string>
+
+    <string name="network_not_connected">Network is not connected</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">Open drawer navigation</string>

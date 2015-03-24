@@ -13,4 +13,8 @@ public interface LoginView {
 
     void hideProgressBar();
 
+    void toastMessage(String msg);
+
+    void startMainActivity();
+
 }

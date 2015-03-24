@@ -1,6 +1,5 @@
 package com.twt.service.wenjin.ui.drawer;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.twt.service.wenjin.R;
-import com.twt.service.wenjin.support.ResourcesUtil;
+import com.twt.service.wenjin.support.ResourceHelper;
 
 import java.util.ArrayList;
 
@@ -143,11 +142,11 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     }
                 });
                 if(itemIndex == mSelectedItemIndex) {
-                    itemHolder.mRootView.setBackgroundColor(ResourcesUtil.getColor(R.color.color_drawer_item_selected_background));
-                    itemHolder.mTextView.setTextColor(ResourcesUtil.getColor(R.color.color_primary));
+                    itemHolder.mRootView.setBackgroundColor(ResourceHelper.getColor(R.color.color_drawer_item_selected_background));
+                    itemHolder.mTextView.setTextColor(ResourceHelper.getColor(R.color.color_primary));
                 } else {
-                    itemHolder.mRootView.setBackgroundColor(ResourcesUtil.getColor(android.R.color.white));
-                    itemHolder.mTextView.setTextColor(ResourcesUtil.getColor(R.color.color_text_primary));
+                    itemHolder.mRootView.setBackgroundColor(ResourceHelper.getColor(android.R.color.white));
+                    itemHolder.mTextView.setTextColor(ResourceHelper.getColor(R.color.color_text_primary));
                 }
                 break;
         }
