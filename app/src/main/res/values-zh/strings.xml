@@ -3,6 +3,12 @@
     <string name="app_name">问津</string>
 
     <string name="network_not_connected">网络没有连接</string>
+    <string name="years_ago">年前</string>
+    <string name="months_ago">月前</string>
+    <string name="days_ago">天前</string>
+    <string name="hours_ago">小时前</string>
+    <string name="minutes_ago">分钟前</string>
+    <string name="seconds_ago">秒前</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>

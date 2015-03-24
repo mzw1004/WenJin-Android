@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
+import com.twt.service.wenjin.support.DateHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         HomeItem homeItem = mDataset.get(position);
         itemHolder.tvUsername.setText(homeItem.user_info.user_name);
         itemHolder.tvTitle.setText(homeItem.question_info.question_content);
+        itemHolder.tvTime.setText(DateHelper.getTimeFromNow(homeItem.add_time));
         switch (homeItem.associate_action) {
             case 101:
                 itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question));

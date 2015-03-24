@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:background="@color/color_primary_light">
+    android:layout_height="90dp">
 
     <TextView
         android:id="@+id/tv_explore_item_title"
