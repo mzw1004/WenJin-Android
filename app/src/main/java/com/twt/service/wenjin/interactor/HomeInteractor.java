@@ -7,5 +7,5 @@ import com.twt.service.wenjin.ui.home.OnGetItemsCallback;
  */
 public interface HomeInteractor {
 
-    void getHomeItems(OnGetItemsCallback onGetItemsCallback);
+    void getHomeItems(int perPage, int page, OnGetItemsCallback onGetItemsCallback);
 }

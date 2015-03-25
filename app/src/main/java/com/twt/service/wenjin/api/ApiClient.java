@@ -49,4 +49,8 @@ public class ApiClient {
 
         sClient.get(BASE_URL + HOME_URL, params, handler);
     }
+
+    public static String getAvatarUrl(String url) {
+        return BASE_URL + "uploads/avatar/" + url;
+    }
 }

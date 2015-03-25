@@ -20,4 +20,6 @@ public class HomeItem {
     public int history_id;
 
     public AnswerInfo answer_info;
+
+    public ArticleInfo article_info;
 }

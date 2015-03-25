@@ -3,6 +3,8 @@
     <string name="app_name">WenJin</string>
 
     <string name="network_not_connected">Network is not connected</string>
+    <string name="no_more_infomation">Sorry, no more information</string>
+    <string name="load_more">load more …</string>
     <string name="years_ago">years ago</string>
     <string name="months_ago">months ago</string>
     <string name="days_ago">days ago</string>

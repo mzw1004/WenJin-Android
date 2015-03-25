@@ -5,6 +5,8 @@ package com.twt.service.wenjin.ui.home;
  */
 public interface HomePresenter {
 
-    void loadingHomeItems();
+    void refreshHomeItems();
+
+    void loadMoreHomeItems();
 
 }

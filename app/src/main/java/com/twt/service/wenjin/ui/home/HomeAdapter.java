@@ -1,13 +1,17 @@
 package com.twt.service.wenjin.ui.home;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.DateHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
@@ -22,7 +26,17 @@ import butterknife.InjectView;
  */
 public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final int ITEM_VIEW_TYPE_ITEM = 0;
+    private static final int ITEM_VIEW_TYPE_FOOTER = 1;
+
+    private Context mContext;
     private ArrayList<HomeItem> mDataset = new ArrayList<>();
+
+    private boolean useFooter = true;
+
+    public HomeAdapter(Context context) {
+        this.mContext = context;
+    }
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
 
@@ -49,68 +63,124 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    public static class FooterHolder extends RecyclerView.ViewHolder {
+
+        @InjectView(R.id.tv_footer_load_more)
+        TextView tvLoadMore;
+        @InjectView(R.id.pb_footer_load_more)
+        ProgressBar pbLoadMore;
+
+        public FooterHolder(View itemView) {
+            super(itemView);
+            ButterKnife.inject(this, itemView);
+        }
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater vi = LayoutInflater.from(parent.getContext());
-        View view = vi.inflate(R.layout.home_list_item, parent, false);
-        return new ItemHolder(view);
+        LayoutInflater vi = LayoutInflater.from(mContext);
+        RecyclerView.ViewHolder viewHolder;
+        View view;
+        if (viewType == ITEM_VIEW_TYPE_ITEM) {
+            view = vi.inflate(R.layout.home_list_item, parent, false);
+            viewHolder = new ItemHolder(view);
+        } else {
+            view = vi.inflate(R.layout.recyclerview_footer_load_more, parent, false);
+            viewHolder = new FooterHolder(view);
+        }
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ItemHolder itemHolder = (ItemHolder) holder;
-        HomeItem homeItem = mDataset.get(position);
-        itemHolder.tvUsername.setText(homeItem.user_info.user_name);
-        itemHolder.tvTitle.setText(homeItem.question_info.question_content);
-        itemHolder.tvTime.setText(DateHelper.getTimeFromNow(homeItem.add_time));
-        switch (homeItem.associate_action) {
-            case 101:
-                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question));
-                break;
-            case 105:
-                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.concern_question));
-                break;
-            case 201:
-                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.reply_question));
-                break;
-            case 204:
-                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_answer));
-                break;
-            case 501:
-                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_article));
-                break;
-            case 502:
-                itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_article));
-                break;
-        }
-        if (homeItem.answer_info != null) {
-            itemHolder.tvContent.setVisibility(View.VISIBLE);
-            itemHolder.ivAgree.setVisibility(View.VISIBLE);
-            itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
-
-            String content = homeItem.answer_info.answer_content;
-            if (content.length() > 80) {
-                itemHolder.tvContent.setText(content.toCharArray(), 0, 80);
-            } else {
-                itemHolder.tvContent.setText(content);
+        int type = getItemViewType(position);
+        if (type == ITEM_VIEW_TYPE_ITEM) {
+            ItemHolder itemHolder = (ItemHolder) holder;
+            HomeItem homeItem = mDataset.get(position);
+            Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
+            itemHolder.tvUsername.setText(homeItem.user_info.user_name);
+            itemHolder.tvTime.setText(DateHelper.getTimeFromNow(homeItem.add_time));
+            switch (homeItem.associate_action) {
+                case 101:
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question));
+                    break;
+                case 105:
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.concern_question));
+                    break;
+                case 201:
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.reply_question));
+                    break;
+                case 204:
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_answer));
+                    break;
+                case 501:
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_article));
+                    break;
+                case 502:
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_article));
+                    break;
             }
+            if (homeItem.question_info != null) {
+                itemHolder.tvTitle.setText(homeItem.question_info.question_content);
+            }
+            if (homeItem.article_info != null) {
+                itemHolder.tvTitle.setText(homeItem.article_info.title);
+            }
+            if (homeItem.answer_info != null) {
+                itemHolder.tvContent.setVisibility(View.VISIBLE);
+                itemHolder.ivAgree.setVisibility(View.VISIBLE);
+                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
 
-            itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
-        } else {
-            itemHolder.tvContent.setVisibility(View.GONE);
-            itemHolder.ivAgree.setVisibility(View.GONE);
-            itemHolder.tvAgreeNo.setVisibility(View.GONE);
+                String content = homeItem.answer_info.answer_content;
+                if (content.length() > 80) {
+                    itemHolder.tvContent.setText(content.toCharArray(), 0, 80);
+                } else {
+                    itemHolder.tvContent.setText(content);
+                }
+
+                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
+            } else {
+                itemHolder.tvContent.setVisibility(View.GONE);
+                itemHolder.ivAgree.setVisibility(View.GONE);
+                itemHolder.tvAgreeNo.setVisibility(View.GONE);
+            }
+        } else if (type == ITEM_VIEW_TYPE_FOOTER) {
         }
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        int itemCount = mDataset.size();
+        if (useFooter) {
+            itemCount += 1;
+        }
+        return itemCount;
     }
 
-    public void updateData(ArrayList<HomeItem> items) {
+    @Override
+    public int getItemViewType(int position) {
+        if (!useFooter) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else if (position < getItemCount() - 1) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else {
+            return ITEM_VIEW_TYPE_FOOTER;
+        }
+    }
+
+    public void refreshItems(ArrayList<HomeItem> items) {
         mDataset.clear();
         mDataset.addAll(items);
+        notifyDataSetChanged();
+    }
+
+    public void addItems(ArrayList<HomeItem> items) {
+        mDataset.addAll(items);
+        notifyDataSetChanged();
+    }
+
+    public void setUseFooter(boolean useFooter) {
+        this.useFooter = useFooter;
         notifyDataSetChanged();
     }
 }

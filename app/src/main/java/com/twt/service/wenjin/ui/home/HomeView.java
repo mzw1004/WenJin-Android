@@ -9,11 +9,15 @@ import java.util.ArrayList;
  */
 public interface HomeView {
 
-    void startRefresh();
+    void showRefresh();
 
-    void stopRefresh();
+    void hideRefresh();
+
+    void hideLoadMoreFooter();
 
     void toastMessage(String message);
 
-    void updateListData(ArrayList<HomeItem> items);
+    void refreshItems(ArrayList<HomeItem> items);
+
+    void loadMoreItems(ArrayList<HomeItem> items);
 }

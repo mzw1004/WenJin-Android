@@ -19,8 +19,8 @@ public class HomeInteractorImpl implements HomeInteractor {
     private static final String LOG_TAG = HomeInteractorImpl.class.getSimpleName();
 
     @Override
-    public void getHomeItems(final OnGetItemsCallback onGetItemsCallback) {
-        ApiClient.getHome(20, 0, new JsonHttpResponseHandler() {
+    public void getHomeItems(int perPgae, int page, final OnGetItemsCallback onGetItemsCallback) {
+        ApiClient.getHome(perPgae, page, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -32,7 +32,6 @@ public class HomeInteractorImpl implements HomeInteractor {
                             Gson gson = new Gson();
                             HomeResponseMessage hrm =
                                     gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).toString(), HomeResponseMessage.class);
-                            LogHelper.v(LOG_TAG, hrm.toString());
                             onGetItemsCallback.onSuccess(hrm);
                             break;
                         case ApiClient.ERROR_CODE:

@@ -3,6 +3,8 @@
     <string name="app_name">问津</string>
 
     <string name="network_not_connected">网络没有连接</string>
+    <string name="no_more_infomation">抱歉，没有更多的信息了</string>
+    <string name="load_more">加载更多…</string>
     <string name="years_ago">年前</string>
     <string name="months_ago">月前</string>
     <string name="days_ago">天前</string>

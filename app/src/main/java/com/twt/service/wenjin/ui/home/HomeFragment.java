@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ import butterknife.InjectView;
  */
 public class HomeFragment extends BaseFragment implements HomeView, SwipeRefreshLayout.OnRefreshListener {
 
+    private static final String LOG_TAG = HomeFragment.class.getSimpleName();
+
     @Inject
     HomePresenter mPresenter;
 
@@ -38,6 +41,7 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
     RecyclerView mRecyclerView;
 
     private HomeAdapter mHomeAdapter;
+    private LinearLayoutManager mLayoutManager;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,7 +50,7 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.loadingHomeItems();
+        mPresenter.refreshHomeItems();
     }
 
     @Override
@@ -59,10 +63,27 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
 
-        mHomeAdapter = new HomeAdapter();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mHomeAdapter = new HomeAdapter(getActivity());
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mHomeAdapter);
+        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int lastVisibleItem = mLayoutManager.findLastCompletelyVisibleItemPosition();
+                int totalItemCount = mLayoutManager.getItemCount();
+                if (lastVisibleItem >= totalItemCount - 1 && dy > 0) {
+                    LogHelper.v(LOG_TAG, "start loading more");
+                    mPresenter.loadMoreHomeItems();
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
 
         return rootView;
     }
@@ -75,26 +96,36 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
 
     @Override
     public void onRefresh() {
-        mPresenter.loadingHomeItems();
+        mPresenter.refreshHomeItems();
     }
 
     @Override
-    public void updateListData(ArrayList<HomeItem> items) {
-        mHomeAdapter.updateData(items);
+    public void refreshItems(ArrayList<HomeItem> items) {
+        mHomeAdapter.refreshItems(items);
     }
 
     @Override
-    public void startRefresh() {
+    public void loadMoreItems(ArrayList<HomeItem> items) {
+        mHomeAdapter.addItems(items);
+    }
+
+    @Override
+    public void showRefresh() {
         if (mRefreshLayout != null) {
             mRefreshLayout.setRefreshing(true);
         }
     }
 
     @Override
-    public void stopRefresh() {
+    public void hideRefresh() {
         if (mRefreshLayout != null) {
             mRefreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    public void hideLoadMoreFooter() {
+        mHomeAdapter.setUseFooter(false);
     }
 
     @Override
