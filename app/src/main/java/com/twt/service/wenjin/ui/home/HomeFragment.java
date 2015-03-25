@@ -2,13 +2,13 @@ package com.twt.service.wenjin.ui.home;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -27,10 +27,8 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class HomeFragment extends BaseFragment implements HomeView, SwipeRefreshLayout.OnRefreshListener {
+public class HomeFragment extends BaseFragment implements
+        HomeView, SwipeRefreshLayout.OnRefreshListener, HomeAdapter.OnItemClickListener {
 
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
 
@@ -50,6 +48,7 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
 
     private HomeAdapter mHomeAdapter;
     private LinearLayoutManager mLayoutManager;
+    private int mPrevFirstVisiblePosition;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,7 +70,7 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
 
-        mHomeAdapter = new HomeAdapter(getActivity());
+        mHomeAdapter = new HomeAdapter(getActivity(), this);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mHomeAdapter);
@@ -79,17 +78,21 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int lastVisibleItem = mLayoutManager.findLastCompletelyVisibleItemPosition();
+                int firstVisibleItemPosition = mLayoutManager.findFirstVisibleItemPosition();
+                int lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
                 int totalItemCount = mLayoutManager.getItemCount();
                 if (lastVisibleItem >= totalItemCount - 1 && dy > 0) {
                     LogHelper.v(LOG_TAG, "start loading more");
                     mPresenter.loadMoreHomeItems();
                 }
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
+                if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
+                    LogHelper.v(LOG_TAG, "scroll down");
+                    hideFabMenu();
+                } else if(firstVisibleItemPosition < mPrevFirstVisiblePosition) {
+                    LogHelper.v(LOG_TAG, "scroll up");
+                    showFabMenu();
+                }
+                mPrevFirstVisiblePosition = firstVisibleItemPosition;
             }
         });
 
@@ -101,7 +104,10 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
         return Arrays.<Object>asList(new HomeModule(this));
     }
 
-
+    @Override
+    public void onItemClicked(View v, int position) {
+        mPresenter.onItemClicked(v, position);
+    }
     @Override
     public void onRefresh() {
         mPresenter.refreshHomeItems();
@@ -138,7 +144,26 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
 
     @Override
     public void useLoadMoreFooter() {
-        mHomeAdapter.setUseFooter(true);
+        if (mHomeAdapter != null) {
+            mHomeAdapter.setUseFooter(true);
+        }
+    }
+
+    @Override
+    public void showFabMenu() {
+        mFabMenu.animate()
+                .translationY(0)
+                .setInterpolator(new AccelerateInterpolator())
+                .start();
+    }
+
+    @Override
+    public void hideFabMenu() {
+        mFabMenu.collapse();
+        mFabMenu.animate()
+                .translationY(mFabMenu.getTop())
+                .setInterpolator(new AccelerateInterpolator())
+                .start();
     }
 
     @Override

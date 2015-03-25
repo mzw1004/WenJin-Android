@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.drawer;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
 
 import java.util.ArrayList;
@@ -24,12 +28,16 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final int ITEM_VIEW_TYPE_ITEM = 1;
     private static final int ITEM_VIEW_TYPE_DIVIDER = 2;
 
+    private Context mContext;
     private ArrayList<Integer> mIcons = new ArrayList<>();
     private ArrayList<String> mDataset = new ArrayList<>();
     private ArrayList<Integer> mDividerPositions = new ArrayList<>();
 
     private int mHeaderId;
     private boolean mUseHeader;
+    String mUsername;
+    String mAvatarFile;
+    String mEmail;
 
     private int mSelectedItemIndex = 0;
 
@@ -44,7 +52,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void onUserClick(View view);
     }
 
-    public DrawerAdapter(OnItemClickListener itemClickListener, OnUserClickListener userClickListener) {
+    public DrawerAdapter(Context context, OnItemClickListener itemClickListener, OnUserClickListener userClickListener) {
+        this.mContext = context;
         this.mItemListener = itemClickListener;
         this.mUserListener = userClickListener;
     }
@@ -99,7 +108,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
 
-        LayoutInflater vi = LayoutInflater.from(viewGroup.getContext());
+        LayoutInflater vi = LayoutInflater.from(mContext);
         View view;
         switch (viewType) {
             case ITEM_VIEW_TYPE_HEADER:
@@ -123,6 +132,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         switch (getItemViewType(i)) {
             case ITEM_VIEW_TYPE_HEADER:
                 HeaderHolder headerHolder = (HeaderHolder) viewHolder;
+                if (mUsername != null) {
+                    headerHolder.mTvUsername.setText(mUsername);
+                }
+                if (mEmail != null) {
+                    headerHolder.mTvEmail.setText(mEmail);
+                }
+                if (mAvatarFile != null) {
+                    Picasso.with(mContext).load(ApiClient.getAvatarUrl(mAvatarFile)).into(headerHolder.mIvProfile);
+                }
                 headerHolder.mIvProfile.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -210,6 +228,12 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public void setSelected(int position) {
         mSelectedItemIndex = position;
+        notifyDataSetChanged();
+    }
+
+    public void updateUserInfo() {
+        mUsername = PrefUtils.getPrefUsername();
+        mAvatarFile = PrefUtils.getPrefAvatarFile();
         notifyDataSetChanged();
     }
 

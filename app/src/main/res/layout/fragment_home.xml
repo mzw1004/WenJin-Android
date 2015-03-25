@@ -30,8 +30,8 @@
         fab:fab_addButtonColorPressed="@color/color_accent"
         fab:fab_addButtonPlusIconColor="@android:color/white"
         fab:fab_labelStyle="@style/menu_labels_style"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_post_question"
@@ -41,6 +41,7 @@
             fab:fab_colorNormal="@android:color/white"
             fab:fab_title="@string/fab_label_question"
             fab:fab_colorPressed="@color/color_drawer_item_selected_background"
+            fab:fab_stroke_visible="false"
             fab:fab_size="mini" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -51,6 +52,7 @@
             fab:fab_colorNormal="@android:color/white"
             fab:fab_title="@string/fab_label_article"
             fab:fab_colorPressed="@color/color_drawer_item_selected_background"
+            fab:fab_stroke_visible="false"
             fab:fab_size="mini" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

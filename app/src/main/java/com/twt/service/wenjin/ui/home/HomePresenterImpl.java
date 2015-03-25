@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.ui.home;
 
+import android.view.View;
+
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.bean.HomeResponseMessage;
@@ -42,6 +44,24 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         mPage += 1;
         isLoadingMore = true;
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
+    }
+
+    @Override
+    public void onItemClicked(View v, int position) {
+        switch (v.getId()) {
+            case R.id.iv_home_item_avatar:
+                mHomeView.toastMessage("position " + position + " avatar clicked!");
+                break;
+            case R.id.tv_home_item_username:
+                mHomeView.toastMessage("position " + position + " username clicked!");
+                break;
+            case R.id.tv_home_item_title:
+                mHomeView.toastMessage("position " + position + " title clicked!");
+                break;
+            case R.id.iv_home_item_agree:
+                mHomeView.toastMessage("position " + position + " agreed");
+                break;
+        }
     }
 
     @Override

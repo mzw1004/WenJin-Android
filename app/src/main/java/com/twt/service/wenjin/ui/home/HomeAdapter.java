@@ -34,8 +34,15 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private boolean useFooter = true;
 
-    public HomeAdapter(Context context) {
+    private OnItemClickListener onItemClickListener;
+
+    public HomeAdapter(Context context, OnItemClickListener onItemClickListener) {
         this.mContext = context;
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClicked(View v, int position);
     }
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
@@ -92,10 +99,22 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         int type = getItemViewType(position);
         if (type == ITEM_VIEW_TYPE_ITEM) {
             ItemHolder itemHolder = (ItemHolder) holder;
+
+            View.OnClickListener clickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClicked(v, position);
+                }
+            };
+            itemHolder.ivAvatar.setOnClickListener(clickListener);
+            itemHolder.tvUsername.setOnClickListener(clickListener);
+            itemHolder.tvTitle.setOnClickListener(clickListener);
+            itemHolder.ivAgree.setOnClickListener(clickListener);
+
             HomeItem homeItem = mDataset.get(position);
             Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
             itemHolder.tvUsername.setText(homeItem.user_info.user_name);

@@ -17,6 +17,10 @@ public interface HomeView {
 
     void useLoadMoreFooter();
 
+    void showFabMenu();
+
+    void hideFabMenu();
+
     void toastMessage(String message);
 
     void refreshItems(ArrayList<HomeItem> items);

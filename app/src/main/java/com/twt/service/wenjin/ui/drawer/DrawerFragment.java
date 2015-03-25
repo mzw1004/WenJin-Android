@@ -20,6 +20,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 
@@ -81,11 +82,13 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         View rootView = inflater.inflate(R.layout.fragment_drawer, container, false);
         ButterKnife.inject(this, rootView);
 
-        mDrawerAdapter = new DrawerAdapter(this, this);
+        mDrawerAdapter = new DrawerAdapter(getActivity(), this, this);
         addDrawerItems();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mDrawerRecyclerView.setLayoutManager(linearLayoutManager);
         mDrawerRecyclerView.setAdapter(mDrawerAdapter);
+
+        updateUserInfo();
 
         return rootView;
     }
@@ -197,6 +200,11 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
         }
+    }
+
+    @Override
+    public void updateUserInfo() {
+        mDrawerAdapter.updateUserInfo();
     }
 
     @Override
