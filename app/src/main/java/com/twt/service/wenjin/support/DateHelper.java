@@ -2,6 +2,7 @@ package com.twt.service.wenjin.support;
 
 import com.twt.service.wenjin.R;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ public class DateHelper {
 
     public static String getTimeFromNow(long date) {
         Date postDate = new Date(date * 1000);
-        Date nowData = new Date(System.currentTimeMillis());
+        Date nowData = new Date(Calendar.getInstance().getTimeInMillis());
 
         int years = nowData.getYear() - postDate.getYear();
         int months = nowData.getMonth() - postDate.getMonth();

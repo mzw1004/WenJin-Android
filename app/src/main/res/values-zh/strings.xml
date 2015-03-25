@@ -29,6 +29,8 @@
     <string name="agree_answer">赞同了该回答</string>
     <string name="post_article">发布了文章</string>
     <string name="agree_article">赞同了该文章</string>
+    <string name="fab_label_question">问题</string>
+    <string name="fab_label_article">文章</string>
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">用户登录</string>

@@ -29,6 +29,8 @@
     <string name="agree_answer">agree to answer questions</string>
     <string name="post_article">post this article</string>
     <string name="agree_article">agree this article</string>
+    <string name="fab_label_question">Question</string>
+    <string name="fab_label_article">Article</string>
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">LoginActivity</string>

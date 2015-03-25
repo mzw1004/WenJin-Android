@@ -33,6 +33,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     public void refreshHomeItems() {
         mPage = 0;
         mHomeView.showRefresh();
+        mHomeView.useLoadMoreFooter();
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
     }
 

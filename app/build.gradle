@@ -35,4 +35,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
 
     compile 'de.hdodenhof:circleimageview:1.2.2'
+    compile 'com.getbase:floatingactionbutton:1.9.0'
 }

@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
@@ -39,6 +41,12 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
     SwipeRefreshLayout mRefreshLayout;
     @InjectView(R.id.home_recycler_view)
     RecyclerView mRecyclerView;
+    @InjectView(R.id.fab_menu_add)
+    FloatingActionsMenu mFabMenu;
+    @InjectView(R.id.fab_post_question)
+    FloatingActionButton mFabQuestion;
+    @InjectView(R.id.fab_post_article)
+    FloatingActionButton mFabArticle;
 
     private HomeAdapter mHomeAdapter;
     private LinearLayoutManager mLayoutManager;
@@ -126,6 +134,11 @@ public class HomeFragment extends BaseFragment implements HomeView, SwipeRefresh
     @Override
     public void hideLoadMoreFooter() {
         mHomeAdapter.setUseFooter(false);
+    }
+
+    @Override
+    public void useLoadMoreFooter() {
+        mHomeAdapter.setUseFooter(true);
     }
 
     @Override

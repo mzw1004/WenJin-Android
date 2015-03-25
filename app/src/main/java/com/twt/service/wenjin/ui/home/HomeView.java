@@ -15,6 +15,8 @@ public interface HomeView {
 
     void hideLoadMoreFooter();
 
+    void useLoadMoreFooter();
+
     void toastMessage(String message);
 
     void refreshItems(ArrayList<HomeItem> items);

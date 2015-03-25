@@ -25,10 +25,15 @@ public class ApiClient {
     public static final int ERROR_CODE = -1;
 
     private static final AsyncHttpClient sClient = new AsyncHttpClient();
+    private static final int DEFAULT_TIMEOUT = 20000;
 
     private static final String BASE_URL = "http://2014shequ.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
+
+    static {
+        sClient.setTimeout(DEFAULT_TIMEOUT);
+    }
 
     public static AsyncHttpClient getInstance() {
         return sClient;
