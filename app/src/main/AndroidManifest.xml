@@ -24,6 +24,10 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name=".ui.question.QuestionDetailActivity"
+            android:label="@string/title_activity_question_detail" >
+        </activity>
     </application>
 
 </manifest>
