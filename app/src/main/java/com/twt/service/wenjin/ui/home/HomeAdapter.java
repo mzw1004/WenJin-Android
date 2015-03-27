@@ -202,4 +202,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.useFooter = useFooter;
         notifyDataSetChanged();
     }
+
+    public HomeItem getItem(int position) {
+        return mDataset.get(position);
+    }
 }

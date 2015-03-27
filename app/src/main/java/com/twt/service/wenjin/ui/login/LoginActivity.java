@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
@@ -43,6 +44,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
 
+        ApiClient.userLogout();
         mBtLogin.setOnClickListener(this);
     }
 

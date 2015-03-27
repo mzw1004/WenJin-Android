@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,7 @@ import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.home.HomeFragment;
+import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
 import com.twt.service.wenjin.ui.user.UserFragment;
 
@@ -117,5 +119,17 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void startNewActivity(int position) {
         LogHelper.v(LOG_TAG, "start new activity: " + position);
+        switch (position) {
+            case 4:
+                LogHelper.v(LOG_TAG, "start setting activity");
+                break;
+            case 5:
+                LogHelper.v(LOG_TAG, "start help activity");
+                break;
+            case 6:
+                LogHelper.v(LOG_TAG, "user logout");
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+        }
     }
 }

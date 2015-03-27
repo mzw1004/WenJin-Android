@@ -23,4 +23,9 @@ public class InteractorsModule {
     public HomeInteractor provideHomeInteractor() {
         return new HomeInteractorImpl();
     }
+
+    @Provides @Singleton
+    public QuestionInteractor provideQuestionInteractor() {
+        return new QuestionInteractorImpl();
+    }
 }

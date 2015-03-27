@@ -35,5 +35,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
 
     compile 'de.hdodenhof:circleimageview:1.2.2'
+    compile 'me.gujun.android.taggroup:library:1.1@aar'
     compile 'com.getbase:floatingactionbutton:1.9.0'
 }

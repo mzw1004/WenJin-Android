@@ -8,6 +8,7 @@
         <item>@string/drawer_item_user</item>
         <item>@string/drawer_item_setting</item>
         <item>@string/drawer_item_helper_and_feedback</item>
+        <item>@string/drawer_item_logout</item>
     </string-array>
 
 </resources>

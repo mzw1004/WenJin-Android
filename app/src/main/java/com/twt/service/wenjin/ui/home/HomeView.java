@@ -26,4 +26,7 @@ public interface HomeView {
     void refreshItems(ArrayList<HomeItem> items);
 
     void loadMoreItems(ArrayList<HomeItem> items);
+
+    void startNewActivity(int position);
+
 }

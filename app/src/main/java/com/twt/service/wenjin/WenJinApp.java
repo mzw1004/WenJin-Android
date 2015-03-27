@@ -17,6 +17,7 @@ import dagger.ObjectGraph;
 public class WenJinApp extends Application {
 
     private static Context sContext;
+    private static PersistentCookieStore sCookieStore;
 
     private ObjectGraph objectGraph;
 
@@ -27,7 +28,8 @@ public class WenJinApp extends Application {
         objectGraph.inject(this);
 
         sContext = getApplicationContext();
-        ApiClient.getInstance().setCookieStore(new PersistentCookieStore(sContext));
+        sCookieStore = new PersistentCookieStore(sContext);
+        ApiClient.getInstance().setCookieStore(sCookieStore);
     }
 
     private List<Object> getModules() {
@@ -40,5 +42,9 @@ public class WenJinApp extends Application {
 
     public static Context getContext() {
         return sContext;
+    }
+
+    public static PersistentCookieStore getCookieStore() {
+        return sCookieStore;
     }
 }

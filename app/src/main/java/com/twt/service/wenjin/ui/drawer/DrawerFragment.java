@@ -154,6 +154,8 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mDrawerAdapter.addDivider();
         mDrawerAdapter.addItem(R.drawable.ic_drawer_settings_grey, getString(R.string.drawer_item_setting));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_help_grey, getString(R.string.drawer_item_helper_and_feedback));
+        mDrawerAdapter.addDivider();
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_logout_grey, getString(R.string.drawer_item_logout));
     }
 
     @Override
@@ -192,7 +194,8 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
 
     @Override
     public void onUserClick(View view) {
-        startActivity(new Intent(getActivity(), LoginActivity.class));
+        LogHelper.v(LOG_TAG, "user profile clicked");
+//        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
     @Override

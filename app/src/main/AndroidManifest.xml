@@ -25,8 +25,8 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".ui.question.QuestionDetailActivity"
-            android:label="@string/title_activity_question_detail" >
+            android:name=".ui.question.QuestionActivity"
+            android:label="@string/title_activity_question" >
         </activity>
     </application>
 

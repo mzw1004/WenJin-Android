@@ -34,6 +34,6 @@ public class PrefUtils {
     }
 
     public static String getPrefAvatarFile() {
-        return getDefaultSharedPreferences().getString(PREF_AVATAR_FILE, "");
+        return getDefaultSharedPreferences().getString(PREF_AVATAR_FILE, null);
     }
 }

@@ -31,6 +31,7 @@
     <string name="agree_article">赞同了该文章</string>
     <string name="fab_label_question">问题</string>
     <string name="fab_label_article">文章</string>
+    <string name="drawer_item_logout">登出</string>
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">用户登录</string>
@@ -38,5 +39,9 @@
     <string name="login_password_hint">密码</string>
     <string name="login_btn_text">登录</string>
     <string name="login_error_empty">不能为空</string>
+
+
+    <!-- Question activity strings -->
+    <string name="title_activity_question">问题</string>
 
 </resources>

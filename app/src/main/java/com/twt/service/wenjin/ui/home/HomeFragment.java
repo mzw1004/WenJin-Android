@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.question.QuestionActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,15 +83,15 @@ public class HomeFragment extends BaseFragment implements
                 int firstVisibleItemPosition = mLayoutManager.findFirstVisibleItemPosition();
                 int lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
                 int totalItemCount = mLayoutManager.getItemCount();
-                if (lastVisibleItem >= totalItemCount - 1 && dy > 0) {
+                if (lastVisibleItem == totalItemCount - 1 && dy > 0) {
                     LogHelper.v(LOG_TAG, "start loading more");
                     mPresenter.loadMoreHomeItems();
                 }
                 if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
-                    LogHelper.v(LOG_TAG, "scroll down");
+//                    LogHelper.v(LOG_TAG, "scroll down");
                     hideFabMenu();
                 } else if(firstVisibleItemPosition < mPrevFirstVisiblePosition) {
-                    LogHelper.v(LOG_TAG, "scroll up");
+//                    LogHelper.v(LOG_TAG, "scroll up");
                     showFabMenu();
                 }
                 mPrevFirstVisiblePosition = firstVisibleItemPosition;
@@ -121,6 +123,15 @@ public class HomeFragment extends BaseFragment implements
     @Override
     public void loadMoreItems(ArrayList<HomeItem> items) {
         mHomeAdapter.addItems(items);
+    }
+
+    @Override
+    public void startNewActivity(int position) {
+        HomeItem item = mHomeAdapter.getItem(position);
+        if (item.question_info != null) {
+            LogHelper.v(LOG_TAG, "start question activity");
+            startActivity(new Intent(getActivity(), QuestionActivity.class));
+        }
     }
 
     @Override
