@@ -3,7 +3,7 @@ package com.twt.service.wenjin.interactor;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.bean.HomeResponseMessage;
+import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.home.OnGetItemsCallback;
 
@@ -30,8 +30,8 @@ public class HomeInteractorImpl implements HomeInteractor {
                     switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
                         case ApiClient.SUCCESS_CODE:
                             Gson gson = new Gson();
-                            HomeResponseMessage hrm =
-                                    gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).toString(), HomeResponseMessage.class);
+                            HomeResponse hrm =
+                                    gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).toString(), HomeResponse.class);
                             onGetItemsCallback.onSuccess(hrm);
                             break;
                         case ApiClient.ERROR_CODE:

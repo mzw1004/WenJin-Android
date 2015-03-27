@@ -130,7 +130,7 @@ public class HomeFragment extends BaseFragment implements
         HomeItem item = mHomeAdapter.getItem(position);
         if (item.question_info != null) {
             LogHelper.v(LOG_TAG, "start question activity");
-            startActivity(new Intent(getActivity(), QuestionActivity.class));
+            QuestionActivity.actionStart(getActivity(), item.question_info.question_id);
         }
     }
 

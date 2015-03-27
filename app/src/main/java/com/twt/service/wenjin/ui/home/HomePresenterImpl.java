@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
-import com.twt.service.wenjin.bean.HomeResponseMessage;
+import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.interactor.HomeInteractor;
 import com.twt.service.wenjin.interactor.HomeInteractorImpl;
 import com.twt.service.wenjin.support.LogHelper;
@@ -66,10 +66,10 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     }
 
     @Override
-    public void onSuccess(HomeResponseMessage homeResponseMessage) {
+    public void onSuccess(HomeResponse homeResponse) {
         mHomeView.hideRefresh();
 
-        ArrayList<HomeItem> items = (ArrayList<HomeItem>) homeResponseMessage.rows;
+        ArrayList<HomeItem> items = (ArrayList<HomeItem>) homeResponse.rows;
         LogHelper.v(LOG_TAG, "size: " + items.size());
         for (int i = 0; i < items.size(); i++) {
             LogHelper.v(LOG_TAG, "username: " + items.get(i).user_info.user_name);
@@ -84,16 +84,16 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
             }
         }
 
-        if (homeResponseMessage.total_rows == 0) {
+        if (homeResponse.total_rows == 0) {
             mHomeView.toastMessage(ResourceHelper.getString(R.string.no_more_infomation));
             mHomeView.hideLoadMoreFooter();
             return;
         }
         if (isLoadingMore) {
-            mHomeView.loadMoreItems((ArrayList<HomeItem>) homeResponseMessage.rows);
+            mHomeView.loadMoreItems((ArrayList<HomeItem>) homeResponse.rows);
             isLoadingMore = false;
         } else {
-            mHomeView.refreshItems((ArrayList<HomeItem>) homeResponseMessage.rows);
+            mHomeView.refreshItems((ArrayList<HomeItem>) homeResponse.rows);
         }
     }
 

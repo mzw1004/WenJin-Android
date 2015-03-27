@@ -5,8 +5,10 @@ import com.twt.service.wenjin.bean.QuestionResponse;
 /**
  * Created by M on 2015/3/27.
  */
-public interface QuestionView {
+public interface OnGetQuestionCallback {
 
-    void setAdapter(QuestionResponse questionResponse);
+    void onSuccess(QuestionResponse questionResponse);
+
+    void onFailure(String errorString);
 
 }
