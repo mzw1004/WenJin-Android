@@ -5,11 +5,11 @@
 
     <TextView
         android:id="@+id/tv_question_title"
-        android:text="Question title"
         android:textSize="16sp"
         android:textColor="@color/color_text_primary"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -17,17 +17,18 @@
         android:id="@+id/tag_group_question"
         android:layout_alignLeft="@+id/tv_question_title"
         android:layout_alignRight="@+id/tv_question_title"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_question_title" />
 
     <TextView
         android:id="@+id/tv_question_content"
-        android:text="question content"
         android:textSize="14sp"
         android:textColor="@color/color_text_secondary"
         android:layout_alignLeft="@+id/tv_question_title"
         android:layout_alignRight="@+id/tv_question_title"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tag_group_question" />
@@ -45,19 +46,18 @@
         android:id="@+id/iv_question_focus"
         android:src="@drawable/ic_question_focus"
         android:padding="8dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_below="@+id/divider"
         android:layout_marginLeft="8dp"/>
     
     <TextView
         android:id="@+id/tv_question_has_focus"
-        android:text="100"
         android:textSize="14sp"
         android:textColor="@color/color_text_secondary"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="36dp"
         android:layout_below="@+id/divider"
         android:layout_toRightOf="@+id/iv_question_focus" />
 
@@ -65,30 +65,29 @@
         android:id="@+id/iv_question_comment"
         android:src="@drawable/ic_question_comment"
         android:padding="8dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_below="@+id/divider"
         android:layout_toRightOf="@+id/tv_question_has_focus" />
     
     <TextView
         android:id="@+id/tv_question_has_comment"
-        android:text="100"
         android:textSize="14sp"
         android:textColor="@color/color_text_secondary"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="36dp"
         android:layout_below="@+id/divider"
         android:layout_toRightOf="@+id/iv_question_comment" />
 
     <Button
         android:id="@+id/bt_question_focus"
-        android:text="Focus"
+        android:text="@string/action_focus"
         android:textColor="@android:color/white"
         android:background="@color/color_accent"
         android:layout_marginTop="2dp"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_height="32dp"
         android:layout_alignRight="@+id/tv_question_title"
         android:layout_below="@+id/divider" />
 

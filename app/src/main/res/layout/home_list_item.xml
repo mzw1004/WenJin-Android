@@ -22,7 +22,6 @@
 
         <TextView
             android:id="@+id/tv_home_item_username"
-            android:text="mazhiwei"
             android:textSize="14sp"
             android:textColor="@color/color_primary_drak"
             android:gravity="center_vertical"
@@ -33,7 +32,6 @@
 
         <TextView
             android:id="@+id/tv_home_item_status"
-            android:text="reply this question"
             android:textSize="14sp"
             android:textColor="@color/color_text_secondary"
             android:gravity="center_vertical"
@@ -44,7 +42,6 @@
 
         <TextView
             android:id="@+id/tv_home_item_title"
-            android:text="Title title"
             android:textSize="16sp"
             android:textColor="@color/color_primary_drak"
             android:gravity="center_vertical"
@@ -58,8 +55,9 @@
 
         <TextView
             android:id="@+id/tv_home_item_content"
-            android:text="hshgdskhgsdhgkshsdlkhglsdhgdhslghsdlgh"
             android:textSize="14sp"
+            android:maxLines="5"
+            android:ellipsize="end"
             android:textColor="@color/color_text_primary"
             android:layout_alignLeft="@id/tv_home_item_title"
             android:layout_alignRight="@id/tv_home_item_title"
@@ -78,7 +76,6 @@
 
         <TextView
             android:id="@+id/tv_home_item_time"
-            android:text="30 minutes ago"
             android:textSize="14sp"
             android:textColor="@color/color_text_secondary"
             android:gravity="center_vertical"

@@ -18,6 +18,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class HomeFragment extends BaseFragment implements
-        HomeView, SwipeRefreshLayout.OnRefreshListener, HomeAdapter.OnItemClickListener {
+        HomeView, SwipeRefreshLayout.OnRefreshListener, OnItemClickListener {
 
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
 
@@ -81,7 +82,7 @@ public class HomeFragment extends BaseFragment implements
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 int firstVisibleItemPosition = mLayoutManager.findFirstVisibleItemPosition();
-                int lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
+                int lastVisibleItem = mLayoutManager.findLastCompletelyVisibleItemPosition();
                 int totalItemCount = mLayoutManager.getItemCount();
                 if (lastVisibleItem == totalItemCount - 1 && dy > 0) {
                     LogHelper.v(LOG_TAG, "start loading more");

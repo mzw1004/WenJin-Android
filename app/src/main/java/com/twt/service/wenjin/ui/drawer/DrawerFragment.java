@@ -22,6 +22,7 @@ import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 
 import java.util.Arrays;
@@ -34,7 +35,7 @@ import butterknife.InjectView;
 
 
 public class DrawerFragment extends BaseFragment implements DrawerView,
-        DrawerAdapter.OnItemClickListener, DrawerAdapter.OnUserClickListener {
+        OnItemClickListener, DrawerAdapter.OnUserClickListener {
 
     private static final String LOG_TAG = DrawerFragment.class.getSimpleName();
 
@@ -188,7 +189,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClicked(View view, int position) {
         mPresenter.selectItem(position);
     }
 

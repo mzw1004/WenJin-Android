@@ -11,7 +11,7 @@ public class HomeItem {
 
     public int associate_action;
 
-    public QuestionInfo question_info;
+    public HomeQuestionInfo question_info;
 
     public int associate_id;
 

@@ -43,5 +43,7 @@
 
     <!-- Question activity strings -->
     <string name="title_activity_question">问题</string>
+    <string name="action_focus">关注问题</string>
+    <string name="action_not_focus">不再关注</string>
 
 </resources>

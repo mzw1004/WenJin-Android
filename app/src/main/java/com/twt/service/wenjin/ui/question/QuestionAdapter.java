@@ -2,16 +2,29 @@ package com.twt.service.wenjin.ui.question;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.bean.QuestionResponse;
+import com.twt.service.wenjin.bean.QuestionTopic;
+import com.twt.service.wenjin.support.ResourceHelper;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.common.PicassoImageGetter;
+
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import me.gujun.android.taggroup.TagGroup;
 
 /**
  * Created by M on 2015/3/27.
@@ -24,13 +37,18 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context mContext;
     private QuestionResponse mQuestionResponse;
 
-    public QuestionAdapter(Context context, QuestionResponse questionResponse) {
+    private OnItemClickListener itemClickListener;
+
+    public QuestionAdapter(Context context, QuestionResponse questionResponse, OnItemClickListener listener) {
         this.mContext = context;
         this.mQuestionResponse = questionResponse;
+        this.itemClickListener = listener;
     }
 
     public static class QuestionHolder extends RecyclerView.ViewHolder {
 
+        @InjectView(R.id.tag_group_question)
+        TagGroup tagGroup;
         @InjectView(R.id.tv_question_title)
         TextView tvTitle;
         @InjectView(R.id.tv_question_content)
@@ -39,8 +57,25 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView tvFocus;
         @InjectView(R.id.tv_question_has_comment)
         TextView tvComment;
+        @InjectView(R.id.bt_question_focus)
+        Button btFocus;
 
         public QuestionHolder(View itemView) {
+            super(itemView);
+            ButterKnife.inject(this, itemView);
+        }
+    }
+
+    public static class AnswerHolder extends RecyclerView.ViewHolder {
+
+        @InjectView(R.id.iv_question_answer_avatar)
+        ImageView ivAvatar;
+        @InjectView(R.id.tv_question_answer_username)
+        TextView tvUsername;
+        @InjectView(R.id.tv_question_answer_content)
+        TextView tvContent;
+
+        public AnswerHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
         }
@@ -56,20 +91,56 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 view = vi.inflate(R.layout.question_content_header, parent, false);
                 viewHolder = new QuestionHolder(view);
                 break;
+            case ITEM_VIEW_TYPE_ANSWER:
+                view = vi.inflate(R.layout.question_answer_item, parent, false);
+                viewHolder = new AnswerHolder(view);
+                break;
         }
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListener.onItemClicked(v, position);
+            }
+        };
+
         switch (getItemViewType(position)) {
             case ITEM_VIEW_TYPE_QUESTION:
                 QuestionHolder question = (QuestionHolder) holder;
-                question.tvTitle.setText(mQuestionResponse.question_info.question_detail);
-                question.tvContent.setText(mQuestionResponse.question_info.question_content);
-                question.tvFocus.setText(mQuestionResponse.question_info.focus_count);
-                question.tvComment.setText(mQuestionResponse.answer_count);
+                question.tvTitle.setText(mQuestionResponse.question_info.question_content);
+                question.tvContent.setText(Html.fromHtml(mQuestionResponse.question_info.question_detail, new PicassoImageGetter(mContext, question.tvContent), null));
+//                question.tvContent.loadData(mQuestionResponse.question_info.question_detail, null, "utf-8");
+                question.tagGroup.setBrightColor(ResourceHelper.getColor(R.color.color_primary));
+                ArrayList<String> tagStrings = new ArrayList<>();
+                for (QuestionTopic questionTopic : mQuestionResponse.question_topics) {
+                    tagStrings.add(questionTopic.topic_title);
+                }
+                question.tagGroup.setTags(tagStrings);
+                question.tvFocus.setText("" + mQuestionResponse.question_info.focus_count);
+                question.tvComment.setText("" + mQuestionResponse.answer_count);
+                if (mQuestionResponse.question_info.has_focus == 0) {
+                    question.btFocus.setText(ResourceHelper.getString(R.string.action_focus));
+                    question.btFocus.setBackgroundColor(ResourceHelper.getColor(R.color.color_accent));
+                    question.btFocus.setTextColor(ResourceHelper.getColor(android.R.color.white));
+                } else {
+                    question.btFocus.setText(ResourceHelper.getString(R.string.action_not_focus));
+                    question.btFocus.setBackgroundColor(ResourceHelper.getColor(R.color.color_drawer_item_selected_background));
+                    question.btFocus.setTextColor(ResourceHelper.getColor(R.color.color_accent));
+                }
                 break;
+            case ITEM_VIEW_TYPE_ANSWER:
+                AnswerHolder answerHolder = (AnswerHolder) holder;
+                Answer answer = mQuestionResponse.answers.get(position - 1);
+                if (answer.avatar_file != null) {
+                    Picasso.with(mContext).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(answerHolder.ivAvatar);
+                }
+                answerHolder.tvUsername.setText(answer.user_name);
+                answerHolder.tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(mContext, answerHolder.tvContent), null));
         }
     }
 

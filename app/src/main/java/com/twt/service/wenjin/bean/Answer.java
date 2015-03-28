@@ -13,6 +13,8 @@ public class Answer {
 
     public int uid;
 
+    public String user_name;
+
     public String avatar_file;
 
     public String signature;

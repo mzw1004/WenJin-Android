@@ -42,6 +42,8 @@
 
     <!-- Question activity strings -->
     <string name="title_activity_question">Question</string>
+    <string name="action_focus">Focus</string>
+    <string name="action_not_focus">Not focus</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

@@ -13,6 +13,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
 
@@ -43,10 +44,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private OnItemClickListener mItemListener;
     private OnUserClickListener mUserListener;
-
-    public interface OnItemClickListener {
-        public void onItemClick(View view, int position);
-    }
 
     public interface OnUserClickListener {
         public void onUserClick(View view);
@@ -156,7 +153,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 itemHolder.mRootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mItemListener.onItemClick(v, itemIndex);
+                        mItemListener.onItemClicked(v, itemIndex);
                     }
                 });
                 if(itemIndex == mSelectedItemIndex) {

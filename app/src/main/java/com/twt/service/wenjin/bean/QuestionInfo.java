@@ -13,6 +13,6 @@ public class QuestionInfo {
 
     public int focus_count;
 
-//    public boolean has_focus;
+    public int has_focus;
 
 }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.QuestionResponse;
@@ -59,6 +61,21 @@ public class QuestionActivity extends BaseActivity implements QuestionView {
         int questionId = getIntent().getIntExtra(PARAM_QUESTION_ID, 0);
         LogHelper.v(LOG_TAG, "question id:" + questionId);
         mPresenter.loadingContent(questionId);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

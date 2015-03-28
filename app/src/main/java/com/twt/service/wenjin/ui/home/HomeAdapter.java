@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.home;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.DateHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.common.PicassoImageGetter;
 
 import java.util.ArrayList;
 
@@ -39,10 +42,6 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public HomeAdapter(Context context, OnItemClickListener onItemClickListener) {
         this.mContext = context;
         this.onItemClickListener = onItemClickListener;
-    }
-
-    public interface OnItemClickListener {
-        void onItemClicked(View v, int position);
     }
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
@@ -116,7 +115,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.ivAgree.setOnClickListener(clickListener);
 
             HomeItem homeItem = mDataset.get(position);
-            Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
+            if (homeItem.user_info.avatar_file != null) {
+                Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
+            }
+
             itemHolder.tvUsername.setText(homeItem.user_info.user_name);
             itemHolder.tvTime.setText(DateHelper.getTimeFromNow(homeItem.add_time));
             switch (homeItem.associate_action) {
@@ -151,11 +153,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
 
                 String content = homeItem.answer_info.answer_content;
-                if (content.length() > 80) {
-                    itemHolder.tvContent.setText(content.toCharArray(), 0, 80);
-                } else {
-                    itemHolder.tvContent.setText(content);
-                }
+                itemHolder.tvContent.setText(Html.fromHtml(content, new PicassoImageGetter(mContext, itemHolder.tvContent), null));
 
                 itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
             } else {
