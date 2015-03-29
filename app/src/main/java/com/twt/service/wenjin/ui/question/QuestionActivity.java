@@ -9,11 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.answer.AnswerActivity;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +29,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class QuestionActivity extends BaseActivity implements QuestionView {
+public class QuestionActivity extends BaseActivity implements QuestionView, OnItemClickListener {
 
     private static final String LOG_TAG = QuestionActivity.class.getSimpleName();
 
@@ -36,6 +42,8 @@ public class QuestionActivity extends BaseActivity implements QuestionView {
     Toolbar toolbar;
     @InjectView(R.id.question_recycler_view)
     RecyclerView mRecyclerView;
+    @InjectView(R.id.pb_question_loading)
+    ProgressBar mPbLoading;
 
     private QuestionAdapter mQuestionAdapter;
     private LinearLayoutManager mLinearLayoutManager;
@@ -84,8 +92,35 @@ public class QuestionActivity extends BaseActivity implements QuestionView {
     }
 
     @Override
+    public void onItemClicked(View view, int position) {
+        mPresenter.itemClicked(view, position);
+    }
+
+    @Override
     public void setAdapter(QuestionResponse questionResponse) {
-        mQuestionAdapter = new QuestionAdapter(this, questionResponse);
+        mQuestionAdapter = new QuestionAdapter(this, questionResponse, this);
         mRecyclerView.setAdapter(mQuestionAdapter);
     }
+
+    @Override
+    public void toastMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgressBar() {
+        mPbLoading.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        mPbLoading.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void startAnswerActivty(int position) {
+        Answer answer = mQuestionAdapter.getAnswer(position);
+        AnswerActivity.actionStart(this, answer.answer_id);
+    }
+
 }

@@ -9,4 +9,12 @@ public interface QuestionView {
 
     void setAdapter(QuestionResponse questionResponse);
 
+    void toastMessage(String msg);
+
+    void showProgressBar();
+
+    void hideProgressBar();
+
+    void startAnswerActivty(int position);
+
 }

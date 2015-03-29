@@ -28,4 +28,9 @@ public class InteractorsModule {
     public QuestionInteractor provideQuestionInteractor() {
         return new QuestionInteractorImpl();
     }
+
+    @Provides @Singleton
+    public AnswerInteractor provideAnswerInteractor() {
+        return new AnswerInteractorImpl();
+    }
 }

@@ -112,17 +112,28 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (getItemViewType(position)) {
             case ITEM_VIEW_TYPE_QUESTION:
                 QuestionHolder question = (QuestionHolder) holder;
+
                 question.tvTitle.setText(mQuestionResponse.question_info.question_content);
-                question.tvContent.setText(Html.fromHtml(mQuestionResponse.question_info.question_detail, new PicassoImageGetter(mContext, question.tvContent), null));
-//                question.tvContent.loadData(mQuestionResponse.question_info.question_detail, null, "utf-8");
+                question.tvContent
+                        .setText(Html.fromHtml(mQuestionResponse.question_info.question_detail,
+                                new PicassoImageGetter(mContext, question.tvContent),
+                                null));
+
+                // tag group
                 question.tagGroup.setBrightColor(ResourceHelper.getColor(R.color.color_primary));
                 ArrayList<String> tagStrings = new ArrayList<>();
                 for (QuestionTopic questionTopic : mQuestionResponse.question_topics) {
                     tagStrings.add(questionTopic.topic_title);
                 }
                 question.tagGroup.setTags(tagStrings);
+                question.tagGroup.setOnClickListener(onClickListener);
+
+                // focus and comment number
                 question.tvFocus.setText("" + mQuestionResponse.question_info.focus_count);
                 question.tvComment.setText("" + mQuestionResponse.answer_count);
+
+                // focus button
+                question.btFocus.setOnClickListener(onClickListener);
                 if (mQuestionResponse.question_info.has_focus == 0) {
                     question.btFocus.setText(ResourceHelper.getString(R.string.action_focus));
                     question.btFocus.setBackgroundColor(ResourceHelper.getColor(R.color.color_accent));
@@ -141,6 +152,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
                 answerHolder.tvUsername.setText(answer.user_name);
                 answerHolder.tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(mContext, answerHolder.tvContent), null));
+
+                answerHolder.ivAvatar.setOnClickListener(onClickListener);
+                answerHolder.tvUsername.setOnClickListener(onClickListener);
+                answerHolder.tvContent.setOnClickListener(onClickListener);
         }
     }
 
@@ -158,5 +173,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             type = ITEM_VIEW_TYPE_ANSWER;
         }
         return type;
+    }
+
+    public Answer getAnswer(int position) {
+        return mQuestionResponse.answers.get(position - 1);
     }
 }
