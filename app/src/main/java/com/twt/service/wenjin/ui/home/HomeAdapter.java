@@ -113,6 +113,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.tvUsername.setOnClickListener(clickListener);
             itemHolder.tvTitle.setOnClickListener(clickListener);
             itemHolder.ivAgree.setOnClickListener(clickListener);
+            itemHolder.tvContent.setOnClickListener(clickListener);
 
             HomeItem homeItem = mDataset.get(position);
             if (homeItem.user_info.avatar_file != null) {

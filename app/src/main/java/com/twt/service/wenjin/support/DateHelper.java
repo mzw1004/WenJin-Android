@@ -2,6 +2,7 @@ package com.twt.service.wenjin.support;
 
 import com.twt.service.wenjin.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,5 +35,10 @@ public class DateHelper {
         } else {
             return seconds + " " + ResourceHelper.getString(R.string.seconds_ago);
         }
+    }
+
+    public static String formatAddDate(long addtime) {
+        Date date = new Date(addtime * 1000);
+        return ResourceHelper.getString(R.string.add_in) + " " + new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
     }
 }

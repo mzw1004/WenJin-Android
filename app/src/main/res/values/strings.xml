@@ -11,6 +11,7 @@
     <string name="hours_ago">hours ago</string>
     <string name="minutes_ago">minutes ago</string>
     <string name="seconds_ago">seconds ago</string>
+    <string name="add_in">add in</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">Open drawer navigation</string>
@@ -45,8 +46,10 @@
     <string name="action_focus">Focus</string>
     <string name="action_not_focus">Not focus</string>
 
+    <!-- Answer activity strings -->
+    <string name="title_activity_answer">Answer</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_answer">AnswerActivity</string>
 
 </resources>

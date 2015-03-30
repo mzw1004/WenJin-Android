@@ -18,6 +18,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.answer.AnswerActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
@@ -127,11 +128,19 @@ public class HomeFragment extends BaseFragment implements
     }
 
     @Override
-    public void startNewActivity(int position) {
+    public void startQuestionActivity(int position) {
         HomeItem item = mHomeAdapter.getItem(position);
         if (item.question_info != null) {
             LogHelper.v(LOG_TAG, "start question activity");
             QuestionActivity.actionStart(getActivity(), item.question_info.question_id);
+        }
+    }
+
+    @Override
+    public void startAnswerActivity(int position) {
+        HomeItem item = mHomeAdapter.getItem(position);
+        if (item.answer_info != null) {
+            AnswerActivity.actionStart(getActivity(), item.answer_info.answer_id, item.question_info.question_content);
         }
     }
 

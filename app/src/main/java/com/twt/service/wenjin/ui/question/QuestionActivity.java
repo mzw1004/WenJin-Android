@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.Answer;
+import com.twt.service.wenjin.bean.QuestionInfo;
 import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
@@ -120,7 +121,8 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     @Override
     public void startAnswerActivty(int position) {
         Answer answer = mQuestionAdapter.getAnswer(position);
-        AnswerActivity.actionStart(this, answer.answer_id);
+        QuestionInfo questionInfo = mQuestionAdapter.getQuestionInfo();
+        AnswerActivity.actionStart(this, answer.answer_id, questionInfo.question_content);
     }
 
 }

@@ -11,6 +11,7 @@
     <string name="hours_ago">小时前</string>
     <string name="minutes_ago">分钟前</string>
     <string name="seconds_ago">秒前</string>
+    <string name="add_in">添加于</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>
@@ -40,10 +41,12 @@
     <string name="login_btn_text">登录</string>
     <string name="login_error_empty">不能为空</string>
 
-
     <!-- Question activity strings -->
     <string name="title_activity_question">问题</string>
     <string name="action_focus">关注问题</string>
     <string name="action_not_focus">不再关注</string>
+
+    <!-- Answer activity strings -->
+    <string name="title_activity_answer">回答</string>
 
 </resources>

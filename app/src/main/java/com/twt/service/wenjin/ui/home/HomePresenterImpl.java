@@ -56,8 +56,10 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
                 mHomeView.toastMessage("position " + position + " username clicked!");
                 break;
             case R.id.tv_home_item_title:
-                mHomeView.toastMessage("position " + position + " title clicked!");
-                mHomeView.startNewActivity(position);
+                mHomeView.startQuestionActivity(position);
+                break;
+            case R.id.tv_home_item_content:
+                mHomeView.startAnswerActivity(position);
                 break;
             case R.id.iv_home_item_agree:
                 mHomeView.toastMessage("position " + position + " agreed");

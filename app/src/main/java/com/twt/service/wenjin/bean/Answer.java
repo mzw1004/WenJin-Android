@@ -7,11 +7,17 @@ public class Answer {
 
     public int answer_id;
 
+    public int question_id;
+
     public String answer_content;
+
+    public long add_time;
 
     public int agree_count;
 
     public int uid;
+
+    public int comment_count;
 
     public String user_name;
 

@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Answer;
+import com.twt.service.wenjin.bean.QuestionInfo;
 import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.bean.QuestionTopic;
 import com.twt.service.wenjin.support.ResourceHelper;
@@ -177,5 +178,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public Answer getAnswer(int position) {
         return mQuestionResponse.answers.get(position - 1);
+    }
+
+    public QuestionInfo getQuestionInfo() {
+        return mQuestionResponse.question_info;
     }
 }
