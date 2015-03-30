@@ -34,6 +34,14 @@
     <string name="fab_label_article">文章</string>
     <string name="drawer_item_logout">登出</string>
 
+
+    <!-- Publish strings -->
+    <string name="dialog_publish_title">问题编写</string>
+    <string name="hint_publish_title">问题标题</string>
+    <string name="hint_publish_content">写点什么…</string>
+    <string name="bt_publish">提交</string>
+    <string name="bt_cancel">取消</string>
+
     <!-- Login Activity strings -->
     <string name="title_activity_login">用户登录</string>
     <string name="login_username_hint">用户名/Email地址</string>

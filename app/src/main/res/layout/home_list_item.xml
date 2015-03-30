@@ -96,7 +96,6 @@
 
         <TextView
             android:id="@+id/tv_home_item_agree_number"
-            android:text="0"
             android:textSize="14sp"
             android:gravity="center"
             android:layout_width="24dp"

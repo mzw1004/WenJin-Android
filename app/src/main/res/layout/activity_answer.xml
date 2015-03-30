@@ -29,7 +29,7 @@
         android:textColor="@color/color_text_primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_alignTop="@+id/iv_answer_avatar"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_below="@id/toolbar"
@@ -45,6 +45,29 @@
         android:layout_alignLeft="@+id/tv_answer_username"
         android:layout_alignStart="@+id/tv_answer_username"
         android:layout_below="@+id/tv_answer_username" />
+
+    <ImageView
+        android:id="@+id/iv_answer_agree"
+        android:visibility="invisible"
+        android:src="@drawable/ic_action_agree"
+        android:scaleType="centerCrop"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:padding="2dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@+id/tv_answer_agree_number" />
+
+    <TextView
+        android:id="@+id/tv_answer_agree_number"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -72,7 +95,8 @@
                 android:textColor="@color/color_text_secondary"
                 android:gravity="right"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
 
         </LinearLayout>
 

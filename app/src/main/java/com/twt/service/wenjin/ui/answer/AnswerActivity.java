@@ -48,6 +48,10 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     ProgressBar mPbLoading;
     @InjectView(R.id.iv_answer_avatar)
     ImageView ivAvatar;
+    @InjectView(R.id.iv_answer_agree)
+    ImageView ivAgree;
+    @InjectView(R.id.tv_answer_agree_number)
+    TextView tvAgreeNumber;
     @InjectView(R.id.tv_answer_username)
     TextView tvUsername;
     @InjectView(R.id.tv_answer_signature)
@@ -120,6 +124,8 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
         }
         tvUsername.setText(answer.user_name);
         tvSignature.setText(answer.signature);
+        ivAgree.setVisibility(View.VISIBLE);
+        tvAgreeNumber.setText("" + answer.agree_count);
         tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
         tvAddTime.setText(DateHelper.formatAddDate(answer.add_time));
     }

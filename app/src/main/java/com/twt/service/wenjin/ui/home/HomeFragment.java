@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.twt.service.wenjin.R;
@@ -97,6 +98,19 @@ public class HomeFragment extends BaseFragment implements
                     showFabMenu();
                 }
                 mPrevFirstVisiblePosition = firstVisibleItemPosition;
+            }
+        });
+
+        mFabQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getActivity())
+                        .customView(R.layout.dialog_publish_question, true)
+                        .positiveText(R.string.bt_publish)
+                        .negativeText(R.string.bt_cancel)
+                        .build()
+                        .show();
+                mFabMenu.collapse();
             }
         });
 

@@ -34,6 +34,13 @@
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
+    <!-- Publish strings -->
+    <string name="dialog_publish_title">Edit question</string>
+    <string name="hint_publish_title">Question Title</string>
+    <string name="hint_publish_content">Write something …</string>
+    <string name="bt_publish">Publish</string>
+    <string name="bt_cancel">Cancel</string>
+
     <!-- Login Activity strings -->
     <string name="title_activity_login">LoginActivity</string>
     <string name="login_username_hint">Username/Email</string>
