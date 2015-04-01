@@ -9,6 +9,6 @@ public interface QuestionPresenter {
 
     void loadingContent(int questionId);
 
-    void itemClicked(View view, int position);
+    void actionFocus(int questionId);
 
 }

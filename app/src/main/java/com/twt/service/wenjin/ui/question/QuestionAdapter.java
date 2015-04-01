@@ -183,4 +183,13 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public QuestionInfo getQuestionInfo() {
         return mQuestionResponse.question_info;
     }
+
+    public void setFocused(boolean isFocus) {
+        if (isFocus) {
+            mQuestionResponse.question_info.has_focus = 1;
+        } else {
+            mQuestionResponse.question_info.has_focus = 0;
+        }
+        notifyDataSetChanged();
+    }
 }

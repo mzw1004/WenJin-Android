@@ -9,6 +9,8 @@ public interface QuestionView {
 
     void setAdapter(QuestionResponse questionResponse);
 
+    void setFocus(boolean isFocus);
+
     void toastMessage(String msg);
 
     void showProgressBar();

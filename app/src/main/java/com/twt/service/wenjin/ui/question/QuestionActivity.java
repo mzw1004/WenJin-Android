@@ -94,13 +94,36 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
 
     @Override
     public void onItemClicked(View view, int position) {
-        mPresenter.itemClicked(view, position);
+        switch (view.getId()) {
+            case R.id.tag_group_question:
+                toastMessage("tag clicked");
+                break;
+            case R.id.bt_question_focus:
+                toastMessage("button clicked");
+                mPresenter.actionFocus(mQuestionAdapter.getQuestionInfo().question_id);
+                break;
+            case R.id.iv_question_answer_avatar:
+                toastMessage("user avatar clicked " + position);
+                break;
+            case R.id.tv_question_answer_username:
+                toastMessage("username clicked " + position);
+                break;
+            case R.id.tv_question_answer_content:
+                toastMessage("answer content clicked " + position);
+                startAnswerActivty(position);
+                break;
+        }
     }
 
     @Override
     public void setAdapter(QuestionResponse questionResponse) {
         mQuestionAdapter = new QuestionAdapter(this, questionResponse, this);
         mRecyclerView.setAdapter(mQuestionAdapter);
+    }
+
+    @Override
+    public void setFocus(boolean isFocus) {
+        mQuestionAdapter.setFocused(isFocus);
     }
 
     @Override

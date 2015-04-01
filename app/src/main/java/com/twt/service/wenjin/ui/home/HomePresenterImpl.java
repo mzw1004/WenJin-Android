@@ -71,21 +71,6 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     public void onSuccess(HomeResponse homeResponse) {
         mHomeView.hideRefresh();
 
-        ArrayList<HomeItem> items = (ArrayList<HomeItem>) homeResponse.rows;
-        LogHelper.v(LOG_TAG, "size: " + items.size());
-        for (int i = 0; i < items.size(); i++) {
-            LogHelper.v(LOG_TAG, "username: " + items.get(i).user_info.user_name);
-            if (items.get(i).question_info != null) {
-                LogHelper.v(LOG_TAG, "title: " + items.get(i).question_info.question_content);
-            }
-            if (items.get(i).answer_info != null) {
-                LogHelper.v(LOG_TAG, "answer: " + items.get(i).answer_info.answer_content);
-            }
-            if (items.get(i).article_info != null) {
-                LogHelper.v(LOG_TAG, "article: " + items.get(i).article_info.title);
-            }
-        }
-
         if (homeResponse.total_rows == 0) {
             mHomeView.toastMessage(ResourceHelper.getString(R.string.no_more_infomation));
             mHomeView.hideLoadMoreFooter();

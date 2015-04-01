@@ -29,6 +29,7 @@ public class ApiClient {
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
     private static final String QUESTION_URL = "?/api/question/question/";
+    private static final String FOCUS_QUESTION_URL = "?/question/ajax/focus/";
     private static final String ANSWER_URL = "?/api/question/answer_detail/";
 
     private boolean isLogin;
@@ -66,6 +67,13 @@ public class ApiClient {
         params.put("id", questionId);
 
         sClient.get(BASE_URL + QUESTION_URL, params, handler);
+    }
+
+    public static void focusQuestion(int questionId, JsonHttpResponseHandler handler) {
+        RequestParams params =  new RequestParams();
+        params.put("question_id", questionId);
+
+        sClient.get(BASE_URL + FOCUS_QUESTION_URL, params, handler);
     }
 
     public static void getAnswer(int answerId, JsonHttpResponseHandler handler) {

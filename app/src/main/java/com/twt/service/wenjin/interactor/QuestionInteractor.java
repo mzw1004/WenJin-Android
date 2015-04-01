@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.interactor;
 
+import com.twt.service.wenjin.ui.question.OnFocusedCallback;
 import com.twt.service.wenjin.ui.question.OnGetQuestionCallback;
 
 /**
@@ -8,4 +9,6 @@ import com.twt.service.wenjin.ui.question.OnGetQuestionCallback;
 public interface QuestionInteractor {
 
     void getQuestionContent(int questionId, OnGetQuestionCallback onGetQuestionCallback);
+
+    void actionFocus(int questionId, OnFocusedCallback onFocusedCallback);
 }

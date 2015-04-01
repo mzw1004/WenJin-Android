@@ -9,7 +9,7 @@ import com.twt.service.wenjin.interactor.QuestionInteractor;
 /**
  * Created by M on 2015/3/27.
  */
-public class QuestionPresenterImpl implements QuestionPresenter, OnGetQuestionCallback {
+public class QuestionPresenterImpl implements QuestionPresenter, OnGetQuestionCallback, OnFocusedCallback {
 
     private QuestionView mQuestionView;
     private QuestionInteractor mQuestionInteractor;
@@ -26,26 +26,8 @@ public class QuestionPresenterImpl implements QuestionPresenter, OnGetQuestionCa
     }
 
     @Override
-    public void itemClicked(View view, int position) {
-
-        switch (view.getId()) {
-            case R.id.tag_group_question:
-                mQuestionView.toastMessage("tag clicked");
-                break;
-            case R.id.bt_question_focus:
-                mQuestionView.toastMessage("button clicked");
-                break;
-            case R.id.iv_question_answer_avatar:
-                mQuestionView.toastMessage("user avatar clicked " + position);
-                break;
-            case R.id.tv_question_answer_username:
-                mQuestionView.toastMessage("username clicked " + position);
-                break;
-            case R.id.tv_question_answer_content:
-                mQuestionView.toastMessage("answer content clicked " + position);
-                mQuestionView.startAnswerActivty(position);
-                break;
-        }
+    public void actionFocus(int questionId) {
+        mQuestionInteractor.actionFocus(questionId, this);
     }
 
     @Override
@@ -56,6 +38,17 @@ public class QuestionPresenterImpl implements QuestionPresenter, OnGetQuestionCa
 
     @Override
     public void onFailure(String errorString) {
-
+        mQuestionView.toastMessage(errorString);
     }
+
+    @Override
+    public void onFocusSuccess(boolean isFocus) {
+        mQuestionView.setFocus(isFocus);
+    }
+
+    @Override
+    public void onFocusFailure(String errorMsg) {
+        mQuestionView.toastMessage(errorMsg);
+    }
+
 }
