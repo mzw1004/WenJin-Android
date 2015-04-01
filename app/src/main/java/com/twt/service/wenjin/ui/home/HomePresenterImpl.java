@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by M on 2015/3/22.
  */
-public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
+public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback, OnPublishCallback {
 
     private static final String LOG_TAG = HomeInteractorImpl.class.getSimpleName();
 
@@ -44,6 +44,11 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         mPage += 1;
         isLoadingMore = true;
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
+    }
+
+    @Override
+    public void publishQuestion(String title, String content, String attachKey, String topics) {
+        mHomeInteractor.publishQuestion(title, content, attachKey, topics, this);
     }
 
     @Override
@@ -88,5 +93,14 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     public void onFailure(String errorString) {
         mHomeView.hideRefresh();
         mHomeView.toastMessage(errorString);
+    }
+
+    @Override
+    public void publishSuccess(int questionId) {
+    }
+
+    @Override
+    public void publishFailure(String errorMsg) {
+        mHomeView.toastMessage(errorMsg);
     }
 }

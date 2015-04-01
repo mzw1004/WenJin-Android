@@ -99,7 +99,6 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
                 toastMessage("tag clicked");
                 break;
             case R.id.bt_question_focus:
-                toastMessage("button clicked");
                 mPresenter.actionFocus(mQuestionAdapter.getQuestionInfo().question_id);
                 break;
             case R.id.iv_question_answer_avatar:
@@ -109,7 +108,6 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
                 toastMessage("username clicked " + position);
                 break;
             case R.id.tv_question_answer_content:
-                toastMessage("answer content clicked " + position);
                 startAnswerActivty(position);
                 break;
         }

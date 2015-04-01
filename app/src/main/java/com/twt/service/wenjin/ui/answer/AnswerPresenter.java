@@ -7,4 +7,6 @@ public interface AnswerPresenter {
 
     void loadAnswer(int answerId);
 
+    void actionVote(int answerId, int value);
+
 }

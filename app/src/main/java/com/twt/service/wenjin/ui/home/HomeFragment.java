@@ -1,9 +1,9 @@
 package com.twt.service.wenjin.ui.home;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.twt.service.wenjin.R;
@@ -21,6 +20,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.common.PublishDialogFragment;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
 import java.util.ArrayList;
@@ -104,13 +104,30 @@ public class HomeFragment extends BaseFragment implements
         mFabQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(getActivity())
-                        .customView(R.layout.dialog_publish_question, true)
-                        .positiveText(R.string.bt_publish)
-                        .negativeText(R.string.bt_cancel)
-                        .build()
-                        .show();
                 mFabMenu.collapse();
+
+//                new MaterialDialog.Builder(getActivity())
+//                        .customView(R.layout.dialog_publish_question, true)
+//                        .positiveText(R.string.bt_publish)
+//                        .callback(new MaterialDialog.ButtonCallback() {
+//                            @Override
+//                            public void onPositive(MaterialDialog dialog) {
+////                                toastMessage("publish");
+//                                String title = ((EditText) dialog.findViewById(R.id.et_publish_title)).getText().toString();
+//                                String content = ((EditText) dialog.findViewById(R.id.et_publish_content)).getText().toString();
+//                                String[] tags = ((TagGroup) dialog.findViewById(R.id.tag_group_publish)).getTags();
+//                                String topics = tags[0];
+//                                for (int i = 1; i < tags.length; i++) {
+//                                    topics += ",";
+//                                    topics += tags[i];
+//                                }
+//                                mPresenter.publishQuestion(title, content, null, topics);
+//                            }
+//                        })
+//                        .negativeText(R.string.bt_cancel)
+//                        .build()
+//                        .show();
+                new PublishDialogFragment().show((ActionBarActivity) getActivity());
             }
         });
 

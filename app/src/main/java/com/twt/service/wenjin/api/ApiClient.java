@@ -31,6 +31,8 @@ public class ApiClient {
     private static final String QUESTION_URL = "?/api/question/question/";
     private static final String FOCUS_QUESTION_URL = "?/question/ajax/focus/";
     private static final String ANSWER_URL = "?/api/question/answer_detail/";
+    private static final String ANSWER_VOTE_URL = "?/question/ajax/answer_vote/";
+    private static final String PUBLISH_QUESTION_URL = "?/api/publish/publish_question/";
 
     private boolean isLogin;
 
@@ -52,6 +54,16 @@ public class ApiClient {
 
     public static void userLogout() {
         WenJinApp.getCookieStore().clear();
+    }
+
+    public static void publishQuestion(String title, String content, String attachKey, String topics, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("question_content", title);
+        params.put("question_detail", content);
+        params.put("attach_access_key", attachKey);
+        params.put("topics", topics);
+
+        sClient.post(BASE_URL + PUBLISH_QUESTION_URL, params, handler);
     }
 
     public static void getHome(int perPage, int page, JsonHttpResponseHandler handler) {
@@ -81,6 +93,14 @@ public class ApiClient {
         params.put("id", answerId);
 
         sClient.get(BASE_URL + ANSWER_URL, params, handler);
+    }
+
+    public static void voteAnswer(int answerId, int value) {
+        RequestParams params = new RequestParams();
+        params.put("answer_id", answerId);
+        params.put("value", value);
+
+        sClient.post(BASE_URL+ ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
     }
 
     public static String getAvatarUrl(String url) {

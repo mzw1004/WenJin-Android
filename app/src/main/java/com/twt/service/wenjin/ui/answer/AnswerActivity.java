@@ -32,7 +32,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class AnswerActivity extends BaseActivity implements AnswerView {
+public class AnswerActivity extends BaseActivity implements AnswerView, View.OnClickListener {
 
     private static final String LOG_TAG = AnswerActivity.class.getSimpleName();
 
@@ -61,6 +61,8 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     @InjectView(R.id.tv_answer_add_time)
     TextView tvAddTime;
 
+    private int answerId;
+
     public static void actionStart(Context context, int answerId, String question) {
         Intent intent = new Intent(context, AnswerActivity.class);
         intent.putExtra(PARAM_ANSWER_ID, answerId);
@@ -79,9 +81,11 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        int answerId = getIntent().getIntExtra(PARAM_ANSWER_ID, 0);
+        answerId = getIntent().getIntExtra(PARAM_ANSWER_ID, 0);
         LogHelper.v(LOG_TAG, "answer id: " + answerId);
         mPresenter.loadAnswer(answerId);
+
+        ivAgree.setOnClickListener(this);
     }
 
     @Override
@@ -108,6 +112,15 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     }
 
     @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_answer_agree:
+                mPresenter.actionVote(answerId, 1);
+                break;
+        }
+    }
+
+    @Override
     public void showProgressBar() {
         mPbLoading.setVisibility(View.VISIBLE);
     }
@@ -125,6 +138,11 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
         tvUsername.setText(answer.user_name);
         tvSignature.setText(answer.signature);
         ivAgree.setVisibility(View.VISIBLE);
+        if (answer.vote_value == 1) {
+            ivAgree.setImageResource(R.drawable.ic_action_agreed);
+        } else {
+            ivAgree.setImageResource(R.drawable.ic_action_agree);
+        }
         tvAgreeNumber.setText("" + answer.agree_count);
         tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
         tvAddTime.setText(DateHelper.formatAddDate(answer.add_time));
@@ -134,4 +152,15 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     public void toastMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void setAgree(boolean isAgree, int agreeCount) {
+        if (isAgree) {
+            ivAgree.setImageResource(R.drawable.ic_action_agreed);
+        } else {
+            ivAgree.setImageResource(R.drawable.ic_action_agree);
+        }
+        tvAgreeNumber.setText("" + agreeCount);
+    }
+
 }

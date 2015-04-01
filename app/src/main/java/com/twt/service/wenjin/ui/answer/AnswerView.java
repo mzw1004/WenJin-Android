@@ -15,4 +15,6 @@ public interface AnswerView {
 
     void toastMessage(String msg);
 
+    void setAgree(boolean isAgree, int agreeCount);
+
 }

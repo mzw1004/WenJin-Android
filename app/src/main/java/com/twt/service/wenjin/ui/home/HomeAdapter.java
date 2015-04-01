@@ -112,7 +112,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.ivAvatar.setOnClickListener(clickListener);
             itemHolder.tvUsername.setOnClickListener(clickListener);
             itemHolder.tvTitle.setOnClickListener(clickListener);
-            itemHolder.ivAgree.setOnClickListener(clickListener);
+//            itemHolder.ivAgree.setOnClickListener(clickListener);
             itemHolder.tvContent.setOnClickListener(clickListener);
 
             HomeItem homeItem = mDataset.get(position);
@@ -150,17 +150,17 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             if (homeItem.answer_info != null) {
                 itemHolder.tvContent.setVisibility(View.VISIBLE);
-                itemHolder.ivAgree.setVisibility(View.VISIBLE);
-                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
+//                itemHolder.ivAgree.setVisibility(View.VISIBLE);
+//                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
 
                 String content = homeItem.answer_info.answer_content;
                 itemHolder.tvContent.setText(Html.fromHtml(content, new PicassoImageGetter(mContext, itemHolder.tvContent), null));
 
-                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
+//                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
             } else {
                 itemHolder.tvContent.setVisibility(View.GONE);
-                itemHolder.ivAgree.setVisibility(View.GONE);
-                itemHolder.tvAgreeNo.setVisibility(View.GONE);
+//                itemHolder.ivAgree.setVisibility(View.GONE);
+//                itemHolder.tvAgreeNo.setVisibility(View.GONE);
             }
         } else if (type == ITEM_VIEW_TYPE_FOOTER) {
         }

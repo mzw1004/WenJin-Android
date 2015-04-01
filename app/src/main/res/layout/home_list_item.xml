@@ -86,6 +86,7 @@
 
         <ImageView
             android:id="@+id/iv_home_item_agree"
+            android:visibility="gone"
             android:src="@drawable/ic_action_agree"
             android:scaleType="centerCrop"
             android:layout_width="24dp"
@@ -96,6 +97,7 @@
 
         <TextView
             android:id="@+id/tv_home_item_agree_number"
+            android:visibility="gone"
             android:textSize="14sp"
             android:gravity="center"
             android:layout_width="24dp"

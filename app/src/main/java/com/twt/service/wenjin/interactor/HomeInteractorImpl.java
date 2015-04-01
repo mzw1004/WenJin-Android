@@ -6,6 +6,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.home.OnGetItemsCallback;
+import com.twt.service.wenjin.ui.home.OnPublishCallback;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -45,4 +46,28 @@ public class HomeInteractorImpl implements HomeInteractor {
 
         });
     }
+
+    @Override
+    public void publishQuestion(String title, String content, String attachKey, String topics, final OnPublishCallback callback) {
+        ApiClient.publishQuestion(title, content, attachKey, topics, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
+                        case ApiClient.SUCCESS_CODE:
+                            LogHelper.v(LOG_TAG, "publish response: " + response.toString());
+                            callback.publishSuccess(response.getJSONObject(ApiClient.RESP_MSG_KEY).getInt("question_id"));
+                            break;
+                        case ApiClient.ERROR_CODE:
+                            callback.publishFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
+                            break;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 }

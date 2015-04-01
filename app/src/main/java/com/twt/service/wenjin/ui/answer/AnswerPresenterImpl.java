@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.answer;
 
+import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.interactor.AnswerInteractor;
 import com.twt.service.wenjin.support.LogHelper;
@@ -14,6 +15,9 @@ public class AnswerPresenterImpl implements AnswerPresenter, OnGetAnswerCallback
     private AnswerView mAnswerView;
     private AnswerInteractor mAnswerInteractor;
 
+    private boolean isAgree;
+    private int agreeCount;
+
     public AnswerPresenterImpl(AnswerView answerView, AnswerInteractor answerInteractor) {
         this.mAnswerView = answerView;
         this.mAnswerInteractor = answerInteractor;
@@ -27,8 +31,26 @@ public class AnswerPresenterImpl implements AnswerPresenter, OnGetAnswerCallback
     }
 
     @Override
+    public void actionVote(int answerId, int value) {
+        isAgree = !isAgree;
+        if (isAgree) {
+            agreeCount++;
+        } else {
+            agreeCount--;
+        }
+        ApiClient.voteAnswer(answerId, value);
+        mAnswerView.setAgree(isAgree, agreeCount);
+    }
+
+    @Override
     public void onSuccess(Answer answer) {
         LogHelper.v(LOG_TAG, "answer content: " + answer.answer_content);
+        if (answer.vote_value == 1) {
+            isAgree = true;
+        } else {
+            isAgree = false;
+        }
+        agreeCount = answer.agree_count;
         mAnswerView.bindAnswerData(answer);
     }
 
