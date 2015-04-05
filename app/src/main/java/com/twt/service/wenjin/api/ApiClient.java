@@ -30,9 +30,10 @@ public class ApiClient {
     private static final String HOME_URL = "?/api/home/";
     private static final String QUESTION_URL = "?/api/question/question/";
     private static final String FOCUS_QUESTION_URL = "?/question/ajax/focus/";
-    private static final String ANSWER_URL = "?/api/question/answer_detail/";
+    private static final String ANSWER_DETAIL_URL = "?/api/question/answer_detail/";
     private static final String ANSWER_VOTE_URL = "?/question/ajax/answer_vote/";
     private static final String PUBLISH_QUESTION_URL = "?/api/publish/publish_question/";
+    private static final String ANSWER_URL = "?/api/publish/save_answer/";
 
     private boolean isLogin;
 
@@ -92,7 +93,7 @@ public class ApiClient {
         RequestParams params = new RequestParams();
         params.put("id", answerId);
 
-        sClient.get(BASE_URL + ANSWER_URL, params, handler);
+        sClient.get(BASE_URL + ANSWER_DETAIL_URL, params, handler);
     }
 
     public static void voteAnswer(int answerId, int value) {
@@ -101,6 +102,15 @@ public class ApiClient {
         params.put("value", value);
 
         sClient.post(BASE_URL+ ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
+    }
+
+    public static void answer(int questionId, String content, String attachKey, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("question_id", questionId);
+        params.put("answer_content", content);
+        params.put("attach_access_key", attachKey);
+
+        sClient.post(BASE_URL + ANSWER_URL, params, handler);
     }
 
     public static String getAvatarUrl(String url) {

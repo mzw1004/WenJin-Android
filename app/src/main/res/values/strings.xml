@@ -40,6 +40,7 @@
     <string name="hint_publish_content">Write something …</string>
     <string name="action_publish">Publish</string>
     <string name="action_insert_photo">Insert photo</string>
+    <string name="publish_success">Publish successfully</string>
 
     <!-- Photo select dialog strings -->
     <string name="title_dialog_photo_select">Select photo</string>
@@ -57,9 +58,14 @@
     <string name="title_activity_question">Question</string>
     <string name="action_focus">Focus</string>
     <string name="action_not_focus">Not focus</string>
+    <string name="action_answer">Add Answer</string>
+
+    <!-- Answer detail activity strings -->
+    <string name="title_activity_answer_detail">Answer detail</string>
 
     <!-- Answer activity strings -->
     <string name="title_activity_answer">Answer</string>
+    <string name="hint_answer_content">Write answer …</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

@@ -1,61 +1,36 @@
 package com.twt.service.wenjin.ui.answer;
 
-import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.bean.Answer;
+import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.interactor.AnswerInteractor;
-import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.ResourceHelper;
 
 /**
- * Created by M on 2015/3/29.
+ * Created by M on 2015/4/5.
  */
-public class AnswerPresenterImpl implements AnswerPresenter, OnGetAnswerCallback {
+public class AnswerPresenterImpl implements AnswerPresenter, OnAnswerCallback {
 
-    private static final String LOG_TAG = AnswerPresenterImpl.class.getSimpleName();
+    private AnswerView mView;
+    private AnswerInteractor mInteractor;
 
-    private AnswerView mAnswerView;
-    private AnswerInteractor mAnswerInteractor;
-
-    private boolean isAgree;
-    private int agreeCount;
-
-    public AnswerPresenterImpl(AnswerView answerView, AnswerInteractor answerInteractor) {
-        this.mAnswerView = answerView;
-        this.mAnswerInteractor = answerInteractor;
+    public AnswerPresenterImpl(AnswerView view, AnswerInteractor interactor) {
+        this.mView = view;
+        this.mInteractor = interactor;
     }
 
     @Override
-    public void loadAnswer(int answerId) {
-        mAnswerView.showProgressBar();
-        mAnswerInteractor.getAnswer(answerId, this);
-        mAnswerView.hideProgressBar();
+    public void publishAnswer(int questionId, String content, String attachKey) {
+        mInteractor.publishAnswer(questionId, content, attachKey, this);
     }
 
     @Override
-    public void actionVote(int answerId, int value) {
-        isAgree = !isAgree;
-        if (isAgree) {
-            agreeCount++;
-        } else {
-            agreeCount--;
-        }
-        ApiClient.voteAnswer(answerId, value);
-        mAnswerView.setAgree(isAgree, agreeCount);
+    public void onAnswerSuccess(int answerId) {
+        mView.toastMessage(ResourceHelper.getString(R.string.publish_success));
+        mView.finishActivity();
     }
 
     @Override
-    public void onSuccess(Answer answer) {
-        LogHelper.v(LOG_TAG, "answer content: " + answer.answer_content);
-        if (answer.vote_value == 1) {
-            isAgree = true;
-        } else {
-            isAgree = false;
-        }
-        agreeCount = answer.agree_count;
-        mAnswerView.bindAnswerData(answer);
+    public void onAnswerFailure(String errorMsg) {
+        mView.toastMessage(errorMsg);
     }
 
-    @Override
-    public void onFailure(String errorMsg) {
-        mAnswerView.toastMessage(errorMsg);
-    }
 }

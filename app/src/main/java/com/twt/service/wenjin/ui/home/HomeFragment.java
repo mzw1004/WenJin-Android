@@ -4,7 +4,6 @@ package com.twt.service.wenjin.ui.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +18,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
-import com.twt.service.wenjin.ui.answer.AnswerActivity;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.publish.PublishActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
@@ -150,7 +149,7 @@ public class HomeFragment extends BaseFragment implements
     public void startAnswerActivity(int position) {
         HomeItem item = mHomeAdapter.getItem(position);
         if (item.answer_info != null) {
-            AnswerActivity.actionStart(getActivity(), item.answer_info.answer_id, item.question_info.question_content);
+            AnswerDetailDetailActivity.actionStart(getActivity(), item.answer_info.answer_id, item.question_info.question_content);
         }
     }
 

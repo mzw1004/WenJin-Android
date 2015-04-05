@@ -40,6 +40,7 @@
     <string name="hint_publish_content">写点什么…</string>
     <string name="action_publish">发布</string>
     <string name="action_insert_photo">插入图片</string>
+    <string name="publish_success">发布成功</string>
 
     <!-- Photo select dialog strings -->
     <string name="title_dialog_photo_select">选择图片</string>
@@ -57,6 +58,11 @@
     <string name="title_activity_question">问题</string>
     <string name="action_focus">关注问题</string>
     <string name="action_not_focus">不再关注</string>
+    <string name="action_answer">添加回答</string>
+
+    <!-- Answer detail activity strings -->
+    <string name="title_activity_answer_detail">回答详情</string>
+    <string name="hint_answer_content">写答案 …</string>
 
     <!-- Answer activity strings -->
     <string name="title_activity_answer">回答</string>

@@ -2,7 +2,6 @@ package com.twt.service.wenjin.ui.question;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +19,7 @@ import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.Arrays;
@@ -48,6 +48,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
 
     private QuestionAdapter mQuestionAdapter;
     private LinearLayoutManager mLinearLayoutManager;
+    private int questionId;
 
     public static void actionStart(Context context, int questionId) {
         Intent intent = new Intent(context, QuestionActivity.class);
@@ -67,14 +68,15 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        int questionId = getIntent().getIntExtra(PARAM_QUESTION_ID, 0);
+        questionId = getIntent().getIntExtra(PARAM_QUESTION_ID, 0);
         LogHelper.v(LOG_TAG, "question id:" + questionId);
         mPresenter.loadingContent(questionId);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_question, menu);
+        return true;
     }
 
     @Override
@@ -82,6 +84,9 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                break;
+            case R.id.action_answer:
+                this.startAnswerActivity();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -108,7 +113,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
                 toastMessage("username clicked " + position);
                 break;
             case R.id.tv_question_answer_content:
-                startAnswerActivty(position);
+                startAnswerDetailActivty(position);
                 break;
         }
     }
@@ -140,10 +145,15 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     }
 
     @Override
-    public void startAnswerActivty(int position) {
+    public void startAnswerDetailActivty(int position) {
         Answer answer = mQuestionAdapter.getAnswer(position);
         QuestionInfo questionInfo = mQuestionAdapter.getQuestionInfo();
-        AnswerActivity.actionStart(this, answer.answer_id, questionInfo.question_content);
+        AnswerDetailDetailActivity.actionStart(this, answer.answer_id, questionInfo.question_content);
+    }
+
+    @Override
+    public void startAnswerActivity() {
+        AnswerActivity.actionStart(this, questionId);
     }
 
 }

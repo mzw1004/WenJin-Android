@@ -1,6 +1,8 @@
 package com.twt.service.wenjin.ui.publish;
 
+import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.interactor.PublishInteractor;
+import com.twt.service.wenjin.support.ResourceHelper;
 
 /**
  * Created by M on 2015/4/5.
@@ -29,7 +31,8 @@ public class PublishPresenterImpl implements PublishPresenter, OnPublishCallback
 
     @Override
     public void publishSuccess(int questionId) {
-        mPublishView.toastMessage("success");
+        mPublishView.toastMessage(ResourceHelper.getString(R.string.publish_success));
+        mPublishView.finishActivity();
     }
 
     @Override

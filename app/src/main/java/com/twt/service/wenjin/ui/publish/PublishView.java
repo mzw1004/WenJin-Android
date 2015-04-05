@@ -7,4 +7,6 @@ public interface PublishView {
 
     void toastMessage(String msg);
 
+    void finishActivity();
+
 }

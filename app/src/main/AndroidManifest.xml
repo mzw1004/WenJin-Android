@@ -31,13 +31,17 @@
             android:label="@string/title_activity_question" >
         </activity>
         <activity
-            android:name=".ui.answer.AnswerActivity"
-            android:label="@string/title_activity_answer" >
+            android:name=".ui.answer.detail.AnswerDetailDetailActivity"
+            android:label="@string/title_activity_answer_detail" >
         </activity>
         <activity
             android:name=".ui.publish.PublishActivity"
             android:label="@string/title_activity_publish"
-            android:windowSoftInputMode = "adjustResize" >
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".ui.answer.AnswerActivity"
+            android:label="@string/title_activity_answer" >
         </activity>
     </application>
 

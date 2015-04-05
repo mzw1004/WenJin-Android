@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.answer;
+package com.twt.service.wenjin.ui.answer.detail;
 
 import com.twt.service.wenjin.bean.Answer;
 

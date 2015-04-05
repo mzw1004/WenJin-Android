@@ -2,29 +2,22 @@ package com.twt.service.wenjin.ui.answer;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.squareup.otto.Subscribe;
 import com.twt.service.wenjin.R;
-import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.bean.Answer;
-import com.twt.service.wenjin.support.DateHelper;
+import com.twt.service.wenjin.event.SelectPhotoResultEvent;
+import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.common.PicassoImageGetter;
+import com.twt.service.wenjin.ui.common.SelectPhotoDialog;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,41 +25,25 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class AnswerActivity extends BaseActivity implements AnswerView, View.OnClickListener {
+public class AnswerActivity extends BaseActivity implements AnswerView {
 
     private static final String LOG_TAG = AnswerActivity.class.getSimpleName();
 
-    private static final String PARAM_ANSWER_ID = "answer_id";
-    private static final String PARAM_QUESTION = "question";
+    private static final String PARM_QUESTION_ID = "question_id";
 
     @Inject
     AnswerPresenter mPresenter;
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.pb_answer_loading)
-    ProgressBar mPbLoading;
-    @InjectView(R.id.iv_answer_avatar)
-    ImageView ivAvatar;
-    @InjectView(R.id.iv_answer_agree)
-    ImageView ivAgree;
-    @InjectView(R.id.tv_answer_agree_number)
-    TextView tvAgreeNumber;
-    @InjectView(R.id.tv_answer_username)
-    TextView tvUsername;
-    @InjectView(R.id.tv_answer_signature)
-    TextView tvSignature;
-    @InjectView(R.id.tv_answer_content)
-    TextView tvContent;
-    @InjectView(R.id.tv_answer_add_time)
-    TextView tvAddTime;
+    @InjectView(R.id.et_answer_content)
+    EditText etContent;
 
-    private int answerId;
+    private int questionId;
 
-    public static void actionStart(Context context, int answerId, String question) {
+    public static void actionStart(Context context, int questionId) {
         Intent intent = new Intent(context, AnswerActivity.class);
-        intent.putExtra(PARAM_ANSWER_ID, answerId);
-        intent.putExtra(PARAM_QUESTION, question);
+        intent.putExtra(PARM_QUESTION_ID, questionId);
         context.startActivity(intent);
     }
 
@@ -76,23 +53,30 @@ public class AnswerActivity extends BaseActivity implements AnswerView, View.OnC
         setContentView(R.layout.activity_answer);
         ButterKnife.inject(this);
 
-        String question = getIntent().getStringExtra(PARAM_QUESTION);
-        toolbar.setTitle(question);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        answerId = getIntent().getIntExtra(PARAM_ANSWER_ID, 0);
-        LogHelper.v(LOG_TAG, "answer id: " + answerId);
-        mPresenter.loadAnswer(answerId);
+        questionId = getIntent().getIntExtra(PARM_QUESTION_ID, 0);
+        LogHelper.i(LOG_TAG, "question id: " + questionId);
+    }
 
-        ivAgree.setOnClickListener(this);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        BusProvider.getBusInstance().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        BusProvider.getBusInstance().unregister(this);
     }
 
     @Override
     protected List<Object> getModlues() {
         return Arrays.<Object>asList(new AnswerModule(this));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,47 +89,24 @@ public class AnswerActivity extends BaseActivity implements AnswerView, View.OnC
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                this.finishActivity();
+                break;
+            case R.id.action_insert_photo:
+                new SelectPhotoDialog().show(this);
+                break;
+            case R.id.action_publish:
+                mPresenter.publishAnswer(questionId, etContent.getText().toString(), "");
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iv_answer_agree:
-                mPresenter.actionVote(answerId, 1);
-                break;
+    @Subscribe
+    public void onSelectPhotoResult(SelectPhotoResultEvent event) {
+        if (event.getPhotoFilePath() != null) {
+            LogHelper.v(LOG_TAG, "select photo result");
+            LogHelper.v(LOG_TAG, "photo file path: " + event.getPhotoFilePath());
         }
-    }
-
-    @Override
-    public void showProgressBar() {
-        mPbLoading.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideProgressBar() {
-        mPbLoading.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void bindAnswerData(Answer answer) {
-        if (answer.avatar_file != null) {
-            Picasso.with(this).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(ivAvatar);
-        }
-        tvUsername.setText(answer.user_name);
-        tvSignature.setText(answer.signature);
-        ivAgree.setVisibility(View.VISIBLE);
-        if (answer.vote_value == 1) {
-            ivAgree.setImageResource(R.drawable.ic_action_agreed);
-        } else {
-            ivAgree.setImageResource(R.drawable.ic_action_agree);
-        }
-        tvAgreeNumber.setText("" + answer.agree_count);
-        tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
-        tvAddTime.setText(DateHelper.formatAddDate(answer.add_time));
     }
 
     @Override
@@ -154,13 +115,7 @@ public class AnswerActivity extends BaseActivity implements AnswerView, View.OnC
     }
 
     @Override
-    public void setAgree(boolean isAgree, int agreeCount) {
-        if (isAgree) {
-            ivAgree.setImageResource(R.drawable.ic_action_agreed);
-        } else {
-            ivAgree.setImageResource(R.drawable.ic_action_agree);
-        }
-        tvAgreeNumber.setText("" + agreeCount);
+    public void finishActivity() {
+        this.finish();
     }
-
 }

@@ -9,28 +9,27 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by M on 2015/3/29.
+ * Created by M on 2015/4/5.
  */
 @Module(
         injects = AnswerActivity.class,
-        addsTo = AppModule.class,
-        library = true
+        addsTo = AppModule.class
 )
 public class AnswerModule {
 
-    private AnswerView mAnswerView;
+    private AnswerView answerView;
 
     public AnswerModule(AnswerView answerView) {
-        this.mAnswerView = answerView;
+        this.answerView = answerView;
     }
 
-    @Provides @Singleton
+    @Provides
     public AnswerView provideAnswerView() {
-        return mAnswerView;
+        return answerView;
     }
 
-    @Provides @Singleton
-    public AnswerPresenter provideAnswerPresenter(AnswerView answerView, AnswerInteractor answerInteractor) {
-        return new AnswerPresenterImpl(answerView, answerInteractor);
+    @Provides
+    public AnswerPresenter providePresenter(AnswerView view, AnswerInteractor interactor) {
+        return new AnswerPresenterImpl(view, interactor);
     }
 }

@@ -1,11 +1,11 @@
 package com.twt.service.wenjin.interactor;
 
-import com.twt.service.wenjin.ui.answer.OnGetAnswerCallback;
+import com.twt.service.wenjin.ui.answer.OnAnswerCallback;
 
 /**
- * Created by M on 2015/3/29.
+ * Created by M on 2015/4/5.
  */
 public interface AnswerInteractor {
 
-    void getAnswer(int answerId, OnGetAnswerCallback callback);
+    void publishAnswer(int questionId, String Content, String attachKey, OnAnswerCallback callback);
 }

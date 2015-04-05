@@ -17,6 +17,8 @@ public interface QuestionView {
 
     void hideProgressBar();
 
-    void startAnswerActivty(int position);
+    void startAnswerDetailActivty(int position);
+
+    void startAnswerActivity();
 
 }
