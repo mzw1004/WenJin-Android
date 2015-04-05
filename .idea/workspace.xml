@@ -52,49 +52,12 @@
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java" line="80" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a8bfc64-004f-477c-bd82-40a27bbf0afe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_insert_photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_insert_photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_insert_photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_insert_photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_publish.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_publish.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_publish.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_publish.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/PublishInteractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/PublishInteractorImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_publish.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_photo_select.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_publish.xml" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\java\com\twt\service\wenjin\ui\publish\PublishDialogFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\res\drawable-hdpi\ic_action_business.png" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\res\drawable-ldpi\ic_action_agreed.png" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\res\drawable-mdpi\ic_action_business.png" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\res\drawable-xhdpi\ic_action_business.png" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\res\drawable-xxhdpi\ic_action_business.png" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\res\drawable-xxxhdpi\ic_action_business.png" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\app\src\main\res\layout\dialog_publish_question.xml" afterPath="" />
+    <list default="true" id="8a8bfc64-004f-477c-bd82-40a27bbf0afe" name="Default" comment="replace publish dialog with activity">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractor.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractorImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractorImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/login/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/login/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="F:\Android\WenJin-Android\app\src\main\java\com\twt\service\wenjin\ui\home\OnPublishCallback.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/OnPublishCallback.java" />
     </list>
     <ignored path="WenJin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -120,13 +83,13 @@
       <file leaf-file-name="PublishActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1389" max-vertical-offset="2070">
-              <caret line="98" column="52" selection-start-line="98" selection-start-column="52" selection-end-line="98" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1435" max-vertical-offset="2139">
+              <caret line="100" column="81" selection-start-line="100" selection-start-column="81" selection-end-line="100" selection-end-column="81" />
               <folding>
                 <element signature="e#1917#1918#0" expanded="true" />
                 <element signature="e#1986#1987#0" expanded="true" />
-                <element signature="e#3000#3001#0" expanded="true" />
-                <element signature="e#3068#3069#0" expanded="true" />
+                <element signature="e#3144#3145#0" expanded="true" />
+                <element signature="e#3212#3213#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,13 +98,9 @@
       <file leaf-file-name="SelectPhotoDialog.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5508982" vertical-offset="1518" max-vertical-offset="2277">
-              <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-              <folding>
-                <element signature="e#1464#1498#0" expanded="true" />
-                <element signature="e#3422#3423#0" expanded="true" />
-                <element signature="e#3478#3479#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.69011974" vertical-offset="2253" max-vertical-offset="2921">
+              <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1444,7 +1403,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/DateHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_answer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionAdapter.java" />
@@ -1473,7 +1431,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishModule.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_publish.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractor.java" />
@@ -1492,9 +1449,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/PickPhotoResult.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_publish.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java" />
       </list>
     </option>
   </component>
@@ -1716,36 +1675,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2413,7 +2342,11 @@
       <created>1428031249774</created>
       <updated>1428031249774</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="replace publish dialog with activity">
+      <created>1428225288048</created>
+      <updated>1428225288048</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2534,7 +2467,8 @@
     <MESSAGE value="update answer activity" />
     <MESSAGE value="add question focus" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="replace publish dialog with activity" />
+    <option name="LAST_COMMIT_MESSAGE" value="replace publish dialog with activity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2757,16 +2691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7298091" vertical-offset="331" max-vertical-offset="1104">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-          <folding>
-            <element signature="e#1400#1432#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/OnPublishCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33773863" vertical-offset="0" max-vertical-offset="681">
@@ -2885,19 +2809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6079295" vertical-offset="0" max-vertical-offset="681">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="e#223#224#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
-            <element signature="e#289#290#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4390602" vertical-offset="1366" max-vertical-offset="4439">
@@ -2932,6 +2843,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.054331865" vertical-offset="124" max-vertical-offset="1150">
+          <caret line="7" column="80" selection-start-line="7" selection-start-column="80" selection-end-line="7" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="377" max-vertical-offset="1058">
@@ -2945,10 +2864,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5741556" vertical-offset="0" max-vertical-offset="681">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#289#290#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1435" max-vertical-offset="2139">
+          <caret line="100" column="81" selection-start-line="100" selection-start-column="81" selection-end-line="100" selection-end-column="81" />
+          <folding>
+            <element signature="e#1917#1918#0" expanded="true" />
+            <element signature="e#1986#1987#0" expanded="true" />
+            <element signature="e#3144#3145#0" expanded="true" />
+            <element signature="e#3212#3213#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_publish.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.68202764" vertical-offset="752" max-vertical-offset="1403">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+          <caret line="52" column="47" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -2956,28 +2901,11 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1389" max-vertical-offset="2070">
-          <caret line="98" column="52" selection-start-line="98" selection-start-column="52" selection-end-line="98" selection-end-column="52" />
-          <folding>
-            <element signature="e#1917#1918#0" expanded="true" />
-            <element signature="e#1986#1987#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
-            <element signature="e#3068#3069#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5508982" vertical-offset="1518" max-vertical-offset="2277">
-          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-          <folding>
-            <element signature="e#1464#1498#0" expanded="true" />
-            <element signature="e#3422#3423#0" expanded="true" />
-            <element signature="e#3478#3479#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.69011974" vertical-offset="2253" max-vertical-offset="2921">
+          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

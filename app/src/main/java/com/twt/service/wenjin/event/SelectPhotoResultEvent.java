@@ -7,14 +7,13 @@ import android.graphics.Bitmap;
  */
 public class SelectPhotoResultEvent {
 
-    private Bitmap photo;
+    private String photoFilePath;
 
-    public SelectPhotoResultEvent(Bitmap photo) {
-        this.photo = photo;
+    public SelectPhotoResultEvent(String photoFilePath) {
+        this.photoFilePath = photoFilePath;
     }
 
-    public Bitmap getPhoto() {
-        return photo;
+    public String getPhotoFilePath() {
+        return photoFilePath;
     }
-
 }

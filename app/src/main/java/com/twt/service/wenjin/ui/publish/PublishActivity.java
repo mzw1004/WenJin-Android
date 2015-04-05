@@ -96,7 +96,10 @@ public class PublishActivity extends BaseActivity implements PublishView {
 
     @Subscribe
     public void onSelectPhotoResult(SelectPhotoResultEvent event) {
-        LogHelper.v(LOG_TAG, "select photo result");
+        if (event.getPhotoFilePath() != null) {
+            LogHelper.v(LOG_TAG, "select photo result");
+            LogHelper.v(LOG_TAG, "photo file path: " + event.getPhotoFilePath());
+        }
     }
 
     @Override
