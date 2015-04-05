@@ -21,6 +21,7 @@ import com.twt.service.wenjin.support.DateHelper;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,6 +61,7 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
     TextView tvAddTime;
 
     private int answerId;
+    private int uid;
 
     public static void actionStart(Context context, int answerId, String question) {
         Intent intent = new Intent(context, AnswerDetailDetailActivity.class);
@@ -84,6 +86,8 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
         mPresenter.loadAnswer(answerId);
 
         ivAgree.setOnClickListener(this);
+        ivAvatar.setOnClickListener(this);
+        tvUsername.setOnClickListener(this);
     }
 
     @Override
@@ -115,6 +119,12 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
             case R.id.iv_answer_agree:
                 mPresenter.actionVote(answerId, 1);
                 break;
+            case R.id.iv_answer_avatar:
+                startProfileActivity();
+                break;
+            case R.id.tv_answer_username:
+                startProfileActivity();
+                break;
         }
     }
 
@@ -130,6 +140,7 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
 
     @Override
     public void bindAnswerData(Answer answer) {
+        uid = answer.uid;
         if (answer.avatar_file != null) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(ivAvatar);
         }
@@ -159,6 +170,11 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
             ivAgree.setImageResource(R.drawable.ic_action_agree);
         }
         tvAgreeNumber.setText("" + agreeCount);
+    }
+
+    @Override
+    public void startProfileActivity() {
+        ProfileActivity.actionStart(this, uid);
     }
 
 }

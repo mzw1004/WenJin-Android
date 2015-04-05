@@ -21,4 +21,6 @@ public interface QuestionView {
 
     void startAnswerActivity();
 
+    void startProfileActivity(int position);
+
 }

@@ -21,6 +21,7 @@ import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -107,10 +108,10 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
                 mPresenter.actionFocus(mQuestionAdapter.getQuestionInfo().question_id);
                 break;
             case R.id.iv_question_answer_avatar:
-                toastMessage("user avatar clicked " + position);
+                startProfileActivity(position);
                 break;
             case R.id.tv_question_answer_username:
-                toastMessage("username clicked " + position);
+                startProfileActivity(position);
                 break;
             case R.id.tv_question_answer_content:
                 startAnswerDetailActivty(position);
@@ -154,6 +155,12 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     @Override
     public void startAnswerActivity() {
         AnswerActivity.actionStart(this, questionId);
+    }
+
+    @Override
+    public void startProfileActivity(int position) {
+        Answer answer = mQuestionAdapter.getAnswer(position);
+        ProfileActivity.actionStart(this, answer.uid);
     }
 
 }

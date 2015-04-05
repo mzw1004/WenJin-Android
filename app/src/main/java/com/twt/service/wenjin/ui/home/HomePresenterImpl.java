@@ -50,10 +50,10 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     public void onItemClicked(View v, int position) {
         switch (v.getId()) {
             case R.id.iv_home_item_avatar:
-                mHomeView.toastMessage("position " + position + " avatar clicked!");
+                mHomeView.startProfileActivity(position);
                 break;
             case R.id.tv_home_item_username:
-                mHomeView.toastMessage("position " + position + " username clicked!");
+                mHomeView.startProfileActivity(position);
                 break;
             case R.id.tv_home_item_title:
                 mHomeView.startQuestionActivity(position);

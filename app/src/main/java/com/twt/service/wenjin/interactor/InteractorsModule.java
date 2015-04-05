@@ -44,4 +44,9 @@ public class InteractorsModule {
         return new AnswerInteractorImpl();
     }
 
+    @Provides @Singleton
+    public ProfileInteractor provideProfileInteractor() {
+        return new ProfileInteractorImpl();
+    }
+
 }

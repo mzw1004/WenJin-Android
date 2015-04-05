@@ -17,4 +17,6 @@ public interface AnswerDetailView {
 
     void setAgree(boolean isAgree, int agreeCount);
 
+    void startProfileActivity();
+
 }

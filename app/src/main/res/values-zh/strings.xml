@@ -62,9 +62,12 @@
 
     <!-- Answer detail activity strings -->
     <string name="title_activity_answer_detail">回答详情</string>
-    <string name="hint_answer_content">写答案 …</string>
 
     <!-- Answer activity strings -->
     <string name="title_activity_answer">回答</string>
+    <string name="hint_answer_content">写答案 …</string>
+
+    <!-- Profile activity -->
+    <string name="title_activity_profile">个人主页</string>
 
 </resources>

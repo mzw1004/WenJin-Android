@@ -29,6 +29,10 @@ public class PrefUtils {
                 .apply();
     }
 
+    public static int getPrefUid() {
+        return getDefaultSharedPreferences().getInt(PREF_UID, 0);
+    }
+
     public static String getPrefUsername() {
         return getDefaultSharedPreferences().getString(PREF_USERNAME, "not log in");
     }

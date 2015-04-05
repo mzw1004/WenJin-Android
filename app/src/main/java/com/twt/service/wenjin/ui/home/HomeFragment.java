@@ -20,6 +20,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.publish.PublishActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
@@ -150,6 +151,14 @@ public class HomeFragment extends BaseFragment implements
         HomeItem item = mHomeAdapter.getItem(position);
         if (item.answer_info != null) {
             AnswerDetailDetailActivity.actionStart(getActivity(), item.answer_info.answer_id, item.question_info.question_content);
+        }
+    }
+
+    @Override
+    public void startProfileActivity(int position) {
+        HomeItem item = mHomeAdapter.getItem(position);
+        if (item.user_info != null) {
+            ProfileActivity.actionStart(getActivity(), item.user_info.uid);
         }
     }
 

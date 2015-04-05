@@ -43,6 +43,10 @@
             android:name=".ui.answer.AnswerActivity"
             android:label="@string/title_activity_answer" >
         </activity>
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
 
 </manifest>

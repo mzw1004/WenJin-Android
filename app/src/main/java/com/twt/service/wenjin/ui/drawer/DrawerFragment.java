@@ -19,8 +19,10 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -76,6 +78,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         super.onStart();
 
         mPresenter.selectItem(mCurrentSelectedPosition);
+        updateUserInfo();
     }
 
     @Override
@@ -90,8 +93,6 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mDrawerRecyclerView.setLayoutManager(linearLayoutManager);
         mDrawerRecyclerView.setAdapter(mDrawerAdapter);
-
-        updateUserInfo();
 
         return rootView;
     }
@@ -198,6 +199,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     @Override
     public void onUserClick(View view) {
         LogHelper.v(LOG_TAG, "user profile clicked");
+        ProfileActivity.actionStart(getActivity(), PrefUtils.getPrefUid());
 //        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 

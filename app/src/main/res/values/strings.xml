@@ -67,8 +67,10 @@
     <string name="title_activity_answer">Answer</string>
     <string name="hint_answer_content">Write answer …</string>
 
+    <!-- Profile activity -->
+    <string name="title_activity_profile">Profile</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
 
 </resources>

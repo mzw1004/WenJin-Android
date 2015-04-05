@@ -31,4 +31,6 @@ public interface HomeView {
 
     void startAnswerActivity(int position);
 
+    void startProfileActivity(int position);
+
 }
