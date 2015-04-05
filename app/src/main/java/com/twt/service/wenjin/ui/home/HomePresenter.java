@@ -11,8 +11,6 @@ public interface HomePresenter {
 
     void loadMoreHomeItems();
 
-    void publishQuestion(String title, String content, String attachKey, String topics);
-
     void onItemClicked(View v, int position);
 
 }

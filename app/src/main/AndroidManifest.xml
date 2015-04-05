@@ -32,6 +32,11 @@
             android:name=".ui.answer.AnswerActivity"
             android:label="@string/title_activity_answer" >
         </activity>
+        <activity
+            android:name=".ui.publish.PublishActivity"
+            android:label="@string/title_activity_publish"
+            android:windowSoftInputMode = "adjustResize" >
+        </activity>
     </application>
 
 </manifest>

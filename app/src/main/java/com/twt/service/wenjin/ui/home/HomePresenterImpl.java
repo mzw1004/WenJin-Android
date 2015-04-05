@@ -7,15 +7,15 @@ import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.interactor.HomeInteractor;
 import com.twt.service.wenjin.interactor.HomeInteractorImpl;
-import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
+import com.twt.service.wenjin.ui.publish.OnPublishCallback;
 
 import java.util.ArrayList;
 
 /**
  * Created by M on 2015/3/22.
  */
-public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback, OnPublishCallback {
+public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
 
     private static final String LOG_TAG = HomeInteractorImpl.class.getSimpleName();
 
@@ -44,11 +44,6 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback, OnP
         mPage += 1;
         isLoadingMore = true;
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
-    }
-
-    @Override
-    public void publishQuestion(String title, String content, String attachKey, String topics) {
-        mHomeInteractor.publishQuestion(title, content, attachKey, topics, this);
     }
 
     @Override
@@ -95,12 +90,4 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback, OnP
         mHomeView.toastMessage(errorString);
     }
 
-    @Override
-    public void publishSuccess(int questionId) {
-    }
-
-    @Override
-    public void publishFailure(String errorMsg) {
-        mHomeView.toastMessage(errorMsg);
-    }
 }

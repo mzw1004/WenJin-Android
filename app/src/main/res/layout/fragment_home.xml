@@ -44,16 +44,16 @@
             fab:fab_stroke_visible="false"
             fab:fab_size="mini" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_post_article"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_icon="@drawable/ic_action_fab_article"
-            fab:fab_colorNormal="@android:color/white"
-            fab:fab_title="@string/fab_label_article"
-            fab:fab_colorPressed="@color/color_drawer_item_selected_background"
-            fab:fab_stroke_visible="false"
-            fab:fab_size="mini" />
+        <!--<com.getbase.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fab_post_article"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--fab:fab_icon="@drawable/ic_action_fab_article"-->
+            <!--fab:fab_colorNormal="@android:color/white"-->
+            <!--fab:fab_title="@string/fab_label_article"-->
+            <!--fab:fab_colorPressed="@color/color_drawer_item_selected_background"-->
+            <!--fab:fab_stroke_visible="false"-->
+            <!--fab:fab_size="mini" />-->
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

@@ -85,7 +85,8 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
 
     @Override
     public void startMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
+        this.finish();
     }
 }

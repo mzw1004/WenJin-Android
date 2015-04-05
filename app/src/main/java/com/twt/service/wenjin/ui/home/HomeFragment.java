@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -20,7 +21,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
-import com.twt.service.wenjin.ui.publish.PublishDialogFragment;
+import com.twt.service.wenjin.ui.publish.PublishActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
 import java.util.ArrayList;
@@ -48,8 +49,8 @@ public class HomeFragment extends BaseFragment implements
     FloatingActionsMenu mFabMenu;
     @InjectView(R.id.fab_post_question)
     FloatingActionButton mFabQuestion;
-    @InjectView(R.id.fab_post_article)
-    FloatingActionButton mFabArticle;
+//    @InjectView(R.id.fab_post_article)
+//    FloatingActionButton mFabArticle;
 
     private HomeAdapter mHomeAdapter;
     private LinearLayoutManager mLayoutManager;
@@ -105,29 +106,7 @@ public class HomeFragment extends BaseFragment implements
             @Override
             public void onClick(View v) {
                 mFabMenu.collapse();
-
-//                new MaterialDialog.Builder(getActivity())
-//                        .customView(R.layout.dialog_publish_question, true)
-//                        .positiveText(R.string.bt_publish)
-//                        .callback(new MaterialDialog.ButtonCallback() {
-//                            @Override
-//                            public void onPositive(MaterialDialog dialog) {
-////                                toastMessage("publish");
-//                                String title = ((EditText) dialog.findViewById(R.id.et_publish_title)).getText().toString();
-//                                String content = ((EditText) dialog.findViewById(R.id.et_publish_content)).getText().toString();
-//                                String[] tags = ((TagGroup) dialog.findViewById(R.id.tag_group_publish)).getTags();
-//                                String topics = tags[0];
-//                                for (int i = 1; i < tags.length; i++) {
-//                                    topics += ",";
-//                                    topics += tags[i];
-//                                }
-//                                mPresenter.publishQuestion(title, content, null, topics);
-//                            }
-//                        })
-//                        .negativeText(R.string.bt_cancel)
-//                        .build()
-//                        .show();
-                new PublishDialogFragment().show((ActionBarActivity) getActivity());
+                startActivity(new Intent(getActivity(), PublishActivity.class));
             }
         });
 

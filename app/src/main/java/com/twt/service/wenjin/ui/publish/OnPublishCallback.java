@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.home;
+package com.twt.service.wenjin.ui.publish;
 
 /**
  * Created by M on 2015/4/1.

@@ -34,12 +34,17 @@
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
-    <!-- Publish strings -->
-    <string name="dialog_publish_title">Edit question</string>
+    <!-- Publish activity strings -->
+    <string name="title_activity_publish">Publish</string>
     <string name="hint_publish_title">Question Title</string>
     <string name="hint_publish_content">Write something …</string>
-    <string name="bt_publish">Publish</string>
-    <string name="bt_cancel">Cancel</string>
+    <string name="action_publish">Publish</string>
+    <string name="action_insert_photo">Insert photo</string>
+
+    <!-- Photo select dialog strings -->
+    <string name="title_dialog_photo_select">Select photo</string>
+    <string name="dialog_take_photo">take photo</string>
+    <string name="dialog_local_photo">local photo</string>
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">LoginActivity</string>
@@ -58,5 +63,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
 
 </resources>

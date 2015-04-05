@@ -1,6 +1,5 @@
 package com.twt.service.wenjin.ui.drawer;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -20,10 +19,8 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
-import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
-import com.twt.service.wenjin.ui.login.LoginActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -72,6 +69,11 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
 
         mPresenter.selectItem(mCurrentSelectedPosition);
     }
@@ -221,7 +223,6 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     @Override
     public void sendDrawerItemClickedEvent(int position) {
         BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
-        LogHelper.d(LOG_TAG, "send event successfully");
     }
 
 }

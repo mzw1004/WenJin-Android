@@ -33,4 +33,10 @@ public class InteractorsModule {
     public AnswerInteractor provideAnswerInteractor() {
         return new AnswerInteractorImpl();
     }
+
+    @Provides @Singleton
+    public PublishInteractor providePublishInteractor() {
+        return new PublishInteractorImpl();
+    }
+
 }
