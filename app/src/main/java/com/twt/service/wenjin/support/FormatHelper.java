@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by M on 2015/3/24.
  */
-public class DateHelper {
+public class FormatHelper {
 
     public static String getTimeFromNow(long date) {
         Date postDate = new Date(date * 1000);
@@ -40,5 +40,9 @@ public class DateHelper {
     public static String formatAddDate(long addtime) {
         Date date = new Date(addtime * 1000);
         return ResourceHelper.getString(R.string.add_in) + " " + new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
+    }
+
+    public static String formatCommentReply(String username, String content) {
+        return ResourceHelper.getString(R.string.reply) + " " + username + ": " + content;
     }
 }

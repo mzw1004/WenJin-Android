@@ -12,6 +12,7 @@
     <string name="minutes_ago">分钟前</string>
     <string name="seconds_ago">秒前</string>
     <string name="add_in">添加于</string>
+    <string name="reply">回复</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>

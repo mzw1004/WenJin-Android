@@ -28,7 +28,7 @@ public class CommetPresenterImpl implements CommentPresenter, OnGetCommentCallba
     @Override
     public void onGetCommentSuccess(Comment[] comments) {
         mView.hideProgressBar();
-        LogHelper.i(LOG_TAG, "comments: " + comments.toString());
+        mView.bindComment(comments);
     }
 
     @Override

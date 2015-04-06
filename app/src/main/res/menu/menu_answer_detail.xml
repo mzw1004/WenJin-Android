@@ -7,6 +7,7 @@
         android:id="@+id/action_comment"
         android:icon="@drawable/ic_action_comment"
         android:title="@string/action_comment"
-        app:showAsAction="ifRoom|withText" />
+        app:actionLayout="@layout/action_bar_comment"
+        app:showAsAction="always" />
 
 </menu>

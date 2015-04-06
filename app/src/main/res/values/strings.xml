@@ -12,6 +12,7 @@
     <string name="minutes_ago">minutes ago</string>
     <string name="seconds_ago">seconds ago</string>
     <string name="add_in">add in</string>
+    <string name="reply">Reply</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">Open drawer navigation</string>

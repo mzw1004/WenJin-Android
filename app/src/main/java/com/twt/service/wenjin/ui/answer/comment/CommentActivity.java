@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.bean.Comment;
 import com.twt.service.wenjin.ui.BaseActivity;
 
 import java.util.Arrays;
@@ -28,6 +29,7 @@ import butterknife.InjectView;
 public class CommentActivity extends BaseActivity implements CommentView {
 
     private static final String PARAM_ANSWER_ID = "answer_id";
+    private static final String PARAM_COMMENT_COUNT = "comment_count";
 
     @Inject
     CommentPresenter mPresenter;
@@ -44,10 +46,14 @@ public class CommentActivity extends BaseActivity implements CommentView {
     ProgressBar pbLoading;
 
     private int answerId;
+    private int commentCount;
 
-    public static void actionStart(Context context, int answerId) {
+    private CommentAdapter mAdapter;
+
+    public static void actionStart(Context context, int answerId, int commentCount) {
         Intent intent = new Intent(context, CommentActivity.class);
         intent.putExtra(PARAM_ANSWER_ID, answerId);
+        intent.putExtra(PARAM_COMMENT_COUNT, commentCount);
         context.startActivity(intent);
     }
 
@@ -58,18 +64,23 @@ public class CommentActivity extends BaseActivity implements CommentView {
         ButterKnife.inject(this);
 
         answerId = getIntent().getIntExtra(PARAM_ANSWER_ID, 0);
+        commentCount = getIntent().getIntExtra(PARAM_COMMENT_COUNT, 0);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+        mAdapter = new CommentAdapter(this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mPresenter.loadComments(answerId);
+        if (commentCount > 0) {
+            mPresenter.loadComments(answerId);
+        }
     }
 
     @Override
@@ -92,6 +103,11 @@ public class CommentActivity extends BaseActivity implements CommentView {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void bindComment(Comment[] comments) {
+        mAdapter.updateData(comments);
     }
 
     @Override

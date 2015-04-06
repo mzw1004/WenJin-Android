@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Answer;
-import com.twt.service.wenjin.support.DateHelper;
+import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
@@ -60,6 +60,7 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
     TextView tvContent;
     @InjectView(R.id.tv_answer_add_time)
     TextView tvAddTime;
+    private TextView tvCommentCount;
 
     private int answerId;
     private int uid;
@@ -112,6 +113,9 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_answer_detail, menu);
+        View menuComment = menu.findItem(R.id.action_comment).getActionView();
+        menuComment.setOnClickListener(this);
+        tvCommentCount = (TextView) menuComment.findViewById(R.id.tv_action_comment_number);
         return true;
     }
 
@@ -120,9 +124,6 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                break;
-            case R.id.action_comment:
-                startCommentActivity();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -139,6 +140,9 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
                 break;
             case R.id.tv_answer_username:
                 startProfileActivity();
+                break;
+            case R.id.action_comment:
+                startCommentActivity();
                 break;
         }
     }
@@ -169,7 +173,8 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
         }
         tvAgreeNumber.setText("" + answer.agree_count);
         tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
-        tvAddTime.setText(DateHelper.formatAddDate(answer.add_time));
+        tvAddTime.setText(FormatHelper.formatAddDate(answer.add_time));
+        tvCommentCount.setText("" + answer.comment_count);
     }
 
     @Override
@@ -194,7 +199,7 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
 
     @Override
     public void startCommentActivity() {
-        CommentActivity.actionStart(this, answerId);
+        CommentActivity.actionStart(this, answerId, Integer.parseInt(tvCommentCount.getText().toString()));
     }
 
 }

@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.HomeItem;
-import com.twt.service.wenjin.support.DateHelper;
+import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
@@ -121,7 +121,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
 
             itemHolder.tvUsername.setText(homeItem.user_info.user_name);
-            itemHolder.tvTime.setText(DateHelper.getTimeFromNow(homeItem.add_time));
+            itemHolder.tvTime.setText(FormatHelper.getTimeFromNow(homeItem.add_time));
             switch (homeItem.associate_action) {
                 case 101:
                     itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question));
