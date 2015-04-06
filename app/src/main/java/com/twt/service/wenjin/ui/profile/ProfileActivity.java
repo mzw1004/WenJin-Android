@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.ui.BaseActivity;
@@ -46,6 +47,14 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        uid = getIntent().getIntExtra(PARM_USER_ID, 0);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenter.getUserInfo(uid);
     }
 
     @Override
@@ -68,7 +77,11 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
                 this.finish();
                 break;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void toastMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

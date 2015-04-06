@@ -62,6 +62,7 @@
 
     <!-- Answer detail activity strings -->
     <string name="title_activity_answer_detail">回答详情</string>
+    <string name="action_comment">添加评论</string>
 
     <!-- Answer activity strings -->
     <string name="title_activity_answer">回答</string>
@@ -69,5 +70,9 @@
 
     <!-- Profile activity -->
     <string name="title_activity_profile">个人主页</string>
+
+
+    <!-- Comment activity -->
+    <string name="title_activity_comment">评论</string>
 
 </resources>

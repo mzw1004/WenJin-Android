@@ -18,6 +18,11 @@
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comment.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -53,26 +58,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a8bfc64-004f-477c-bd82-40a27bbf0afe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractorImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_profile.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_comment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_comment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_comment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_comment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/Comment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/CommentInteractor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/CommentInteractorImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentModule.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentPresenter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommetPresenterImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/OnGetCommentCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/OnGetUserInfoCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_comment.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_comment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailDetailActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractor.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractorImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractorImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/UserInfo.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/UserInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -98,34 +112,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApiClient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java">
+      <file leaf-file-name="CommentActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="2691">
-              <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1472">
-              <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1113" max-vertical-offset="2162">
+              <caret line="108" column="61" selection-start-line="108" selection-start-column="61" selection-end-line="108" selection-end-column="61" />
               <folding>
-                <element signature="e#1376#1377#0" expanded="true" />
-                <element signature="e#1445#1446#0" expanded="true" />
+                <element signature="e#2183#2184#0" expanded="true" />
+                <element signature="e#2252#2253#0" expanded="true" />
+                <element signature="e#2800#2801#0" expanded="true" />
+                <element signature="e#2853#2854#0" expanded="true" />
+                <element signature="e#2904#2905#0" expanded="true" />
+                <element signature="e#2954#2955#0" expanded="true" />
+                <element signature="e#3012#3013#0" expanded="true" />
+                <element signature="e#3080#3081#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfilePresenterImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java">
+      <file leaf-file-name="CommentView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50660795" vertical-offset="0" max-vertical-offset="681">
-              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="437">
+              <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommetPresenterImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommetPresenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="308" max-vertical-offset="1012">
+              <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1037#1038#0" expanded="true" />
+                <element signature="e#1081#1082#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentInteractorImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/CommentInteractorImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.42584434" vertical-offset="331" max-vertical-offset="1196">
+              <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#801#1881#0" expanded="true" />
+                <element signature="e#1870#1871#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentPresenter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -145,6 +193,7 @@
     <option name="tasksExpandState">
       <map>
         <entry key="" value="true" />
+        <entry key="WenJin-Android/" value="false" />
       </map>
     </option>
     <option name="availableProjects">
@@ -1384,27 +1433,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/login/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishModule.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractor.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/PublishInteractor.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractorImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/PublishInteractorImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_photo_choose.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/ChoosePhotoDialog.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_photo_select.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/PickPhotoResult.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_publish.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_publish.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_answer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerModule.java" />
@@ -1415,26 +1445,45 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/AnswerInteractor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/AnswerInteractorImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_answer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractorImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileModule.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/OnGetUserInfoCallback.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/UserInfo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractorImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/action_comment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentModule.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_comment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/CommentInteractor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/Comment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/OnGetCommentCallback.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommetPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/CommentInteractorImpl.java" />
       </list>
     </option>
   </component>
@@ -1489,6 +1538,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1787,83 +1838,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="question" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wenjin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wenjin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawer" />
+              <option name="myItemId" value="answer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1904,38 +1879,8 @@
               <option name="myItemId" value="answer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WenJin-Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wenjin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="support" />
+              <option name="myItemId" value="comment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2027,7 +1972,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2080,7 +2024,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2107,20 +2050,21 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
+      <recent name="com.twt.service.wenjin.ui.answer.comment" />
       <recent name="com.twt.service.wenjin.ui.profile" />
       <recent name="com.twt.service.wenjin.ui.answer" />
       <recent name="com.twt.service.wenjin.ui.publish" />
       <recent name="com.twt.service.wenjin.ui.question" />
-      <recent name="com.twt.service.wenjin.ui.login" />
-    </key>
-    <key name="android.template.parentActivityClass">
-      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Android\WenJin-Android\app\src\main\res\drawable-xhdpi" />
       <recent name="F:\Android\WenJin-Android\app\src\main\res\drawable-mdpi" />
       <recent name="F:\Android\WenJin-Android\app\src\main\res\drawable-hdpi" />
       <recent name="F:\Android\WenJin-Android\app\src\main\res\mipmap-hdpi" />
+    </key>
+    <key name="android.template.parentActivityClass">
+      <recent name="com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity" />
+      <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -2399,7 +2343,11 @@
       <created>1428240270213</created>
       <updated>1428240270213</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="add profile activity">
+      <created>1428243407018</created>
+      <updated>1428243407018</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2439,13 +2387,13 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258427" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6980337" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925257" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286517" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16301547" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18814433" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32162923" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2455,36 +2403,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7008427" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286517" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1488402" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32162923" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286517" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22036083" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3988764" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258427" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6980337" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -2522,7 +2440,8 @@
     <MESSAGE value="replace publish dialog with activity" />
     <MESSAGE value="update publish activity" />
     <MESSAGE value="add answer activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="add answer activity" />
+    <MESSAGE value="add profile activity" />
+    <option name="LAST_COMMIT_MESSAGE" value="add profile activity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2530,185 +2449,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/HomeInteractorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0807636" vertical-offset="0" max-vertical-offset="943">
-          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/QuestionInteractorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8311307" vertical-offset="561" max-vertical-offset="1587">
-          <caret line="64" column="101" selection-start-line="64" selection-start-column="101" selection-end-line="64" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/PublishInteractorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23641704" vertical-offset="207" max-vertical-offset="1081">
-          <caret line="16" column="86" selection-start-line="16" selection-start-column="86" selection-end-line="16" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1691#1692#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_photo_select.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49462366" vertical-offset="0" max-vertical-offset="651">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/DrawerItemClickedEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16886932" vertical-offset="0" max-vertical-offset="681">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5403818" vertical-offset="897" max-vertical-offset="2576">
-          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/event/SelectPhotoResultEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5741556" vertical-offset="0" max-vertical-offset="681">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="e#239#240#0" expanded="true" />
-            <element signature="e#289#290#0" expanded="true" />
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/SelectPhotoDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69011974" vertical-offset="2253" max-vertical-offset="2921">
-          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52716595" vertical-offset="423" max-vertical-offset="1127">
-          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1055#1105#0" expanded="true" />
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1267#1268#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33773863" vertical-offset="0" max-vertical-offset="681">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23641704" vertical-offset="0" max-vertical-offset="681">
-          <caret line="7" column="81" selection-start-line="7" selection-start-column="81" selection-end-line="7" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7298091" vertical-offset="492" max-vertical-offset="1242">
-          <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
-          <folding>
-            <element signature="e#1660#1674#0" expanded="true" />
-            <element signature="e#1947#1979#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_publish.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16886932" vertical-offset="0" max-vertical-offset="681">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="15" selection-end-column="36" />
-          <folding>
-            <element signature="e#378#407#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_publish.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42396313" vertical-offset="0" max-vertical-offset="1403">
-          <caret line="12" column="58" selection-start-line="7" selection-start-column="4" selection-end-line="12" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69603527" vertical-offset="262" max-vertical-offset="943">
-          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#456#457#0" expanded="false" />
-            <element signature="e#500#501#0" expanded="false" />
-            <element signature="e#559#560#0" expanded="false" />
-            <element signature="e#592#593#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/question_content_header.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.2857144" vertical-offset="0" max-vertical-offset="2323">
-          <caret line="93" column="46" selection-start-line="93" selection-start-column="46" selection-end-line="93" selection-end-column="46" />
-          <folding>
-            <element signature="e#3272#3294#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_question.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23641704" vertical-offset="0" max-vertical-offset="681">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_answer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="552">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39207047" vertical-offset="676" max-vertical-offset="2116">
@@ -2721,7 +2461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33773863" vertical-offset="0" max-vertical-offset="681">
           <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2729,7 +2468,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23641704" vertical-offset="0" max-vertical-offset="681">
           <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2737,7 +2475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30396476" vertical-offset="0" max-vertical-offset="681">
           <caret line="9" column="98" selection-start-line="9" selection-start-column="98" selection-end-line="9" selection-end-column="98" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2747,17 +2484,6 @@
           <caret line="37" column="13" selection-start-line="20" selection-start-column="12" selection-end-line="37" selection-end-column="13" />
           <folding>
             <element signature="e#621#1590#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/AnswerInteractorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4596182" vertical-offset="377" max-vertical-offset="1058">
-          <caret line="30" column="100" selection-start-line="30" selection-start-column="100" selection-end-line="30" selection-end-column="100" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1553#1554#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2773,38 +2499,134 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerView.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30396476" vertical-offset="0" max-vertical-offset="681">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94566816" vertical-offset="0" max-vertical-offset="966">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.69603527" vertical-offset="262" max-vertical-offset="943">
+          <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#798#848#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#997#998#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+            <element signature="e#513#514#0" expanded="false" />
+            <element signature="e#574#575#0" expanded="false" />
+            <element signature="e#609#610#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21585903" vertical-offset="1711" max-vertical-offset="2392">
-          <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.18942732" vertical-offset="170" max-vertical-offset="920">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="745" max-vertical-offset="2047">
+          <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.8502202" vertical-offset="0" max-vertical-offset="3933">
+          <caret line="160" column="75" selection-start-line="160" selection-start-column="75" selection-end-line="160" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69603527" vertical-offset="55" max-vertical-offset="736">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5947136" vertical-offset="331" max-vertical-offset="1035">
+          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
           <folding>
-            <element signature="e#2235#2236#0" expanded="true" />
-            <element signature="e#2303#2304#0" expanded="true" />
-            <element signature="e#3426#3427#0" expanded="true" />
-            <element signature="e#3494#3495#0" expanded="true" />
-            <element signature="e#3544#3545#0" expanded="true" />
-            <element signature="e#3573#3574#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="false" />
+            <element signature="e#1050#1051#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23641704" vertical-offset="0" max-vertical-offset="681">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.28340676" vertical-offset="354" max-vertical-offset="1104">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/OnGetUserInfoCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30396476" vertical-offset="0" max-vertical-offset="681">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/LoginInteractorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23641704" vertical-offset="0" max-vertical-offset="1150">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66226137" vertical-offset="239" max-vertical-offset="920">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/AnswerInteractorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66226137" vertical-offset="124" max-vertical-offset="805">
+          <caret line="35" column="17" selection-start-line="23" selection-start-column="16" selection-end-line="35" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="966">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#692#693#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
+            <element signature="e#944#945#0" expanded="false" />
+            <element signature="e#988#989#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2820,200 +2642,275 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1702">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#2206#2207#0" expanded="false" />
+            <element signature="e#2274#2275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8781204" vertical-offset="276" max-vertical-offset="1104">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+          <folding>
+            <element signature="e#1274#1275#0" expanded="false" />
+            <element signature="e#1324#1325#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/AppModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4596182" vertical-offset="32" max-vertical-offset="713">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23641704" vertical-offset="0" max-vertical-offset="681">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6284875" vertical-offset="1665" max-vertical-offset="2346">
+          <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
+          <folding>
+            <element signature="e#2235#2236#0" expanded="false" />
+            <element signature="e#2303#2304#0" expanded="false" />
+            <element signature="e#3426#3427#0" expanded="false" />
+            <element signature="e#3494#3495#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7092511" vertical-offset="0" max-vertical-offset="690">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7195122" vertical-offset="1138" max-vertical-offset="1794">
-          <caret line="70" column="44" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.78963417" vertical-offset="1207" max-vertical-offset="1909">
+          <caret line="75" column="44" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6143293" vertical-offset="1184" max-vertical-offset="1886">
-          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="70" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.15853658" vertical-offset="1253" max-vertical-offset="1978">
+          <caret line="59" column="54" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16886932" vertical-offset="0" max-vertical-offset="681">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.30396476" vertical-offset="0" max-vertical-offset="681">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractorImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_answer_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16886932" vertical-offset="0" max-vertical-offset="681">
-          <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2553">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/InteractorsModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8649045" vertical-offset="216" max-vertical-offset="1035">
-          <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
-          <folding>
-            <element signature="e#1140#1141#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16886932" vertical-offset="0" max-vertical-offset="681">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16886932" vertical-offset="0" max-vertical-offset="681">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69603527" vertical-offset="262" max-vertical-offset="943">
-          <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18942732" vertical-offset="170" max-vertical-offset="920">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="745" max-vertical-offset="2047">
-          <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.8502202" vertical-offset="0" max-vertical-offset="3933">
-          <caret line="160" column="75" selection-start-line="160" selection-start-column="75" selection-end-line="160" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.054331865" vertical-offset="1918" max-vertical-offset="3013">
-          <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69603527" vertical-offset="55" max-vertical-offset="736">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64170337" vertical-offset="0" max-vertical-offset="681">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5947136" vertical-offset="331" max-vertical-offset="1035">
-          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-          <folding>
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1050#1051#0" expanded="true" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.5051394" vertical-offset="23" max-vertical-offset="4531">
-          <caret line="201" column="73" selection-start-line="201" selection-start-column="73" selection-end-line="201" selection-end-column="73" />
-          <folding>
-            <element signature="e#6939#6940#0" expanded="true" />
-            <element signature="e#6986#6987#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.30396476" vertical-offset="2829" max-vertical-offset="4485">
+          <caret line="167" column="75" selection-start-line="167" selection-start-column="75" selection-end-line="167" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/drawer/DrawerPresenterImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23641704" vertical-offset="0" max-vertical-offset="681">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.3010279" vertical-offset="2" max-vertical-offset="713">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49339208" vertical-offset="745" max-vertical-offset="1449">
+          <caret line="47" column="60" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0264318" vertical-offset="0" max-vertical-offset="3473">
-          <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
+        <state vertical-scroll-proportion="1.8913363" vertical-offset="138" max-vertical-offset="3818">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_question.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67127496" vertical-offset="0" max-vertical-offset="713">
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0602057" vertical-offset="552" max-vertical-offset="3013">
+          <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6006144" vertical-offset="483" max-vertical-offset="1311">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/AnswerPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8781204" vertical-offset="0" max-vertical-offset="874">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1113" max-vertical-offset="2162">
+          <caret line="108" column="61" selection-start-line="108" selection-start-column="61" selection-end-line="108" selection-end-column="61" />
           <folding>
-            <element signature="e#5588#5589#0" expanded="true" />
-            <element signature="e#5642#5643#0" expanded="true" />
+            <element signature="e#2183#2184#0" expanded="true" />
+            <element signature="e#2252#2253#0" expanded="true" />
+            <element signature="e#2800#2801#0" expanded="true" />
+            <element signature="e#2853#2854#0" expanded="true" />
+            <element signature="e#2904#2905#0" expanded="true" />
+            <element signature="e#2954#2955#0" expanded="true" />
+            <element signature="e#3012#3013#0" expanded="true" />
+            <element signature="e#3080#3081#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionPresenterImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.28340676" vertical-offset="354" max-vertical-offset="1104">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="437">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommentPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/CommentInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33773863" vertical-offset="0" max-vertical-offset="681">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="2691">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1472">
-          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2332" max-vertical-offset="3105">
+          <caret line="132" column="61" selection-start-line="132" selection-start-column="61" selection-end-line="132" selection-end-column="61" />
           <folding>
-            <element signature="e#1376#1377#0" expanded="true" />
-            <element signature="e#1445#1446#0" expanded="true" />
+            <element signature="e#4683#4684#0" expanded="true" />
+            <element signature="e#4740#4741#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfilePresenterImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50660795" vertical-offset="0" max-vertical-offset="681">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.6079295" vertical-offset="0" max-vertical-offset="681">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/OnGetCommentCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37151247" vertical-offset="0" max-vertical-offset="681">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33773863" vertical-offset="0" max-vertical-offset="681">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/ProfileInteractorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69603527" vertical-offset="124" max-vertical-offset="828">
+          <caret line="36" column="17" selection-start-line="23" selection-start-column="16" selection-end-line="36" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/comment/CommetPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="308" max-vertical-offset="1012">
+          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/CommentInteractorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42584434" vertical-offset="331" max-vertical-offset="1196">
+          <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#801#1881#0" expanded="true" />
+            <element signature="e#1870#1871#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

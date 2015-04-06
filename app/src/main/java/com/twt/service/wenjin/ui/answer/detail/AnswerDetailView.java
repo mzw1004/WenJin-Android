@@ -19,4 +19,6 @@ public interface AnswerDetailView {
 
     void startProfileActivity();
 
+    void startCommentActivity();
+
 }

@@ -20,6 +20,7 @@ import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.support.DateHelper;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
@@ -76,18 +77,29 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
         setContentView(R.layout.activity_answer_detail);
         ButterKnife.inject(this);
 
+        if (savedInstanceState != null) {
+            answerId = savedInstanceState.getInt(PARAM_ANSWER_ID);
+        } else {
+            answerId = getIntent().getIntExtra(PARAM_ANSWER_ID, 0);
+        }
+        LogHelper.v(LOG_TAG, "answer id: " + answerId);
+
         String question = getIntent().getStringExtra(PARAM_QUESTION);
         toolbar.setTitle(question);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        answerId = getIntent().getIntExtra(PARAM_ANSWER_ID, 0);
-        LogHelper.v(LOG_TAG, "answer id: " + answerId);
         mPresenter.loadAnswer(answerId);
 
         ivAgree.setOnClickListener(this);
         ivAvatar.setOnClickListener(this);
         tvUsername.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(PARAM_ANSWER_ID, answerId);
     }
 
     @Override
@@ -108,6 +120,9 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                break;
+            case R.id.action_comment:
+                startCommentActivity();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -175,6 +190,11 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
     @Override
     public void startProfileActivity() {
         ProfileActivity.actionStart(this, uid);
+    }
+
+    @Override
+    public void startCommentActivity() {
+        CommentActivity.actionStart(this, answerId);
     }
 
 }

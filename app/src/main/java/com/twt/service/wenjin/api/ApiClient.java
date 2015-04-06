@@ -34,6 +34,8 @@ public class ApiClient {
     private static final String ANSWER_VOTE_URL = "?/question/ajax/answer_vote/";
     private static final String PUBLISH_QUESTION_URL = "?/api/publish/publish_question/";
     private static final String ANSWER_URL = "?/api/publish/save_answer/";
+    private static final String USER_INFO_URL = "?/api/account/get_userinfo/";
+    private static final String COMMENT_URL = "api/answer_comment.php";
 
     private boolean isLogin;
 
@@ -113,8 +115,22 @@ public class ApiClient {
         sClient.post(BASE_URL + ANSWER_URL, params, handler);
     }
 
+    public static void getUserInfo(int uid, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+
+        sClient.get(BASE_URL + USER_INFO_URL, params, handler);
+    }
+
     public static String getAvatarUrl(String url) {
         return BASE_URL + "uploads/avatar/" + url;
+    }
+
+    public static void getComments(int answerId, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("id", answerId);
+
+        sClient.get(BASE_URL + COMMENT_URL, params, handler);
     }
 
 }

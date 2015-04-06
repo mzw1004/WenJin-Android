@@ -49,4 +49,9 @@ public class InteractorsModule {
         return new ProfileInteractorImpl();
     }
 
+    @Provides @Singleton
+    public CommentInteractor provideCommentInteractor() {
+        return new CommentInteractorImpl();
+    }
+
 }

@@ -47,6 +47,11 @@
             android:name=".ui.profile.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
+        <activity
+            android:name=".ui.answer.comment.CommentActivity"
+            android:label="@string/title_activity_comment"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
     </application>
 
 </manifest>
