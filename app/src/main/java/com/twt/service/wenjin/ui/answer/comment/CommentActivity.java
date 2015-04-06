@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.Comment;
+import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +28,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class CommentActivity extends BaseActivity implements CommentView {
+public class CommentActivity extends BaseActivity implements CommentView, OnItemClickListener {
 
     private static final String PARAM_ANSWER_ID = "answer_id";
     private static final String PARAM_COMMENT_COUNT = "comment_count";
@@ -71,8 +73,15 @@ public class CommentActivity extends BaseActivity implements CommentView {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mAdapter = new CommentAdapter(this);
+        mAdapter = new CommentAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
+
+        ivPublish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.publishComment(answerId, etContent.getText().toString());
+            }
+        });
     }
 
     @Override
@@ -111,6 +120,13 @@ public class CommentActivity extends BaseActivity implements CommentView {
     }
 
     @Override
+    public void addAtUser(int position) {
+        String content = FormatHelper.formatCommentAtUser(mAdapter.getUsername(position));
+        etContent.setText(content);
+        etContent.setSelection(content.length());
+    }
+
+    @Override
     public void showProgressBar() {
         pbLoading.setVisibility(View.VISIBLE);
     }
@@ -123,5 +139,10 @@ public class CommentActivity extends BaseActivity implements CommentView {
     @Override
     public void toastMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClicked(View view, int position) {
+        mPresenter.onItemClicked(view, position);
     }
 }

@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.ui.answer.comment;
 
+import android.view.View;
+
 import com.twt.service.wenjin.bean.Comment;
 import com.twt.service.wenjin.interactor.CommentInteractor;
 import com.twt.service.wenjin.support.LogHelper;
@@ -23,6 +25,16 @@ public class CommetPresenterImpl implements CommentPresenter, OnGetCommentCallba
     public void loadComments(int answerId) {
         mView.showProgressBar();
         mInteractor.loadComments(answerId, this);
+    }
+
+    @Override
+    public void publishComment(int answerId, String content) {
+        mView.toastMessage(content);
+    }
+
+    @Override
+    public void onItemClicked(View view, int position) {
+        mView.addAtUser(position);
     }
 
     @Override

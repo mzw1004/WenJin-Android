@@ -45,4 +45,8 @@ public class FormatHelper {
     public static String formatCommentReply(String username, String content) {
         return ResourceHelper.getString(R.string.reply) + " " + username + ": " + content;
     }
+
+    public static String formatCommentAtUser(String username) {
+        return "@" + username + ":";
+    }
 }

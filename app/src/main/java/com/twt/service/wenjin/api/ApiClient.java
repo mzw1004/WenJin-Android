@@ -36,6 +36,7 @@ public class ApiClient {
     private static final String ANSWER_URL = "?/api/publish/save_answer/";
     private static final String USER_INFO_URL = "?/api/account/get_userinfo/";
     private static final String COMMENT_URL = "api/answer_comment.php";
+    private static final String PUBLISH_COMMENT_URL = "?/question/ajax/save_answer_comment/";
 
     private boolean isLogin;
 
@@ -131,6 +132,14 @@ public class ApiClient {
         params.put("id", answerId);
 
         sClient.get(BASE_URL + COMMENT_URL, params, handler);
+    }
+
+    public static void publishComment(int answerId, String content, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("answer_id", answerId);
+        params.put("message", content);
+
+        sClient.post(BASE_URL + PUBLISH_COMMENT_URL, params, handler);
     }
 
 }

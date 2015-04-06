@@ -9,6 +9,8 @@ public interface CommentView {
 
     void bindComment(Comment[] comments);
 
+    void addAtUser(int position);
+
     void showProgressBar();
 
     void hideProgressBar();
