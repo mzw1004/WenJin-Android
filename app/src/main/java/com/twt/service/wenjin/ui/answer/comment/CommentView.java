@@ -11,6 +11,8 @@ public interface CommentView {
 
     void addAtUser(int position);
 
+    void clearTextContent();
+
     void showProgressBar();
 
     void hideProgressBar();

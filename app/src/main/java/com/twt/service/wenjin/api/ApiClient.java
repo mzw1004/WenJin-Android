@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.api;
 
+import android.net.Uri;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -135,11 +137,14 @@ public class ApiClient {
     }
 
     public static void publishComment(int answerId, String content, JsonHttpResponseHandler handler) {
+        Uri url = Uri.parse(BASE_URL + PUBLISH_COMMENT_URL).buildUpon()
+                .appendQueryParameter("answer_id", String.valueOf(answerId))
+                .build();
         RequestParams params = new RequestParams();
-        params.put("answer_id", answerId);
+//        params.put("answer_id", answerId);
         params.put("message", content);
 
-        sClient.post(BASE_URL + PUBLISH_COMMENT_URL, params, handler);
+        sClient.post(url.toString(), params, handler);
     }
 
 }

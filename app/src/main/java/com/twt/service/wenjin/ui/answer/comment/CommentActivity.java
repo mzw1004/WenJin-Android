@@ -127,6 +127,11 @@ public class CommentActivity extends BaseActivity implements CommentView, OnItem
     }
 
     @Override
+    public void clearTextContent() {
+        etContent.setText("");
+    }
+
+    @Override
     public void showProgressBar() {
         pbLoading.setVisibility(View.VISIBLE);
     }

@@ -72,8 +72,8 @@
     <!-- Profile activity -->
     <string name="title_activity_profile">个人主页</string>
 
-
     <!-- Comment activity -->
     <string name="title_activity_comment">评论</string>
+    <string name="comment_success">评论成功</string>
 
 </resources>
