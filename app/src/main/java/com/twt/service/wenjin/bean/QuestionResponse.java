@@ -13,5 +13,5 @@ public class QuestionResponse {
 
     public List<Answer> answers;
 
-    public List<QuestionTopic> question_topics;
+    public List<Topic> question_topics;
 }

@@ -16,7 +16,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.bean.QuestionInfo;
 import com.twt.service.wenjin.bean.QuestionResponse;
-import com.twt.service.wenjin.bean.QuestionTopic;
+import com.twt.service.wenjin.bean.Topic;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
@@ -123,8 +123,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 // tag group
                 question.tagGroup.setBrightColor(ResourceHelper.getColor(R.color.color_primary));
                 ArrayList<String> tagStrings = new ArrayList<>();
-                for (QuestionTopic questionTopic : mQuestionResponse.question_topics) {
-                    tagStrings.add(questionTopic.topic_title);
+                for (Topic topic : mQuestionResponse.question_topics) {
+                    tagStrings.add(topic.topic_title);
                 }
                 question.tagGroup.setTags(tagStrings);
                 question.tagGroup.setOnClickListener(onClickListener);
