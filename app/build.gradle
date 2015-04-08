@@ -36,8 +36,7 @@ dependencies {
 
     compile 'de.hdodenhof:circleimageview:1.2.2'
     compile 'com.getbase:floatingactionbutton:1.9.0'
-    compile 'com.ogaclejapan.smarttablayout:library:1.1.0@aar'
-    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.1.0@aar'
+    compile 'com.jpardogo.materialtabstrip:library:1.0.9'
     compile 'com.afollestad:material-dialogs:0.6.7.1'
     compile 'me.gujun.android.taggroup:library:1.1@aar'
 }

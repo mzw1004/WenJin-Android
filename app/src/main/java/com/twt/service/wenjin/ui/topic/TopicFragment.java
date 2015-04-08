@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.ogaclejapan.smarttablayout.utils.v4.Bundler;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.astuetz.PagerSlidingTabStrip;
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.topic.list.TopicListFragment;
 
 import butterknife.ButterKnife;
@@ -20,8 +18,10 @@ import butterknife.InjectView;
 
 public class TopicFragment extends Fragment {
 
-    @InjectView(R.id.viewpager_tab_topic)
-    SmartTabLayout mTabLayout;
+    private static final String LOG_TAG = TopicFragment.class.getSimpleName();
+
+    @InjectView(R.id.tabs_topic)
+    PagerSlidingTabStrip mTabs;
     @InjectView(R.id.viewpager_topic)
     ViewPager mViewPager;
 
@@ -34,10 +34,10 @@ public class TopicFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_topic, container, false);
         ButterKnife.inject(this, rootView);
 
-        FragmentPagerAdapter adapter = new TopicAdapter(getActivity().getSupportFragmentManager());
-
+        LogHelper.d(LOG_TAG, "onCreateView");
+        FragmentPagerAdapter adapter = new TopicAdapter(getChildFragmentManager());
         mViewPager.setAdapter(adapter);
-        mTabLayout.setViewPager(mViewPager);
+        mTabs.setViewPager(mViewPager);
 
         return rootView;
     }

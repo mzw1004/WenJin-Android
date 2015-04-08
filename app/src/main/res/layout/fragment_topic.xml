@@ -6,24 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.twt.service.wenjin.ui.topic.TopicFragment">
 
-    <com.ogaclejapan.smarttablayout.SmartTabLayout
-        android:id="@+id/viewpager_tab_topic"
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs_topic"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/color_primary"
-        app:stl_indicatorAlwaysInCenter="false"
-        app:stl_indicatorInFront="false"
-        app:stl_indicatorInterpolation="smart"
-        app:stl_indicatorColor="@color/color_accent"
-        app:stl_indicatorThickness="4dp"
-        app:stl_indicatorCornerRadius="2dp"
-        app:stl_underlineThickness="0dp"
-        app:stl_dividerColor="@android:color/transparent"
-        app:stl_defaultTabTextColor="@android:color/white"
-        app:stl_defaultTabTextSize="14sp"
-        app:stl_defaultTabTextHorizontalPadding="16dp"
-        app:stl_defaultTabTextMinWidth="0dp"
-        app:stl_distributeEvenly="true" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_topic"

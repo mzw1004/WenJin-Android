@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 
@@ -69,14 +70,14 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         BusProvider.getBusInstance().register(this);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
         BusProvider.getBusInstance().unregister(this);
     }
 
@@ -123,6 +124,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 break;
         }
         fragmentManager.beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
                 .replace(R.id.main_container, fragment)
                 .commit();
     }
