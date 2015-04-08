@@ -10,7 +10,11 @@
         android:id="@+id/tabs_topic"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/color_primary_light"
+        app:pstsTextColorSelected="@android:color/white"
+        app:pstsIndicatorColor="@color/color_accent"
+        app:pstsShouldExpand="true" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_topic"

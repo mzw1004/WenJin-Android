@@ -89,6 +89,10 @@ public class ApiClient {
         sClient.get(BASE_URL + TOPIC_URL, params, handler);
     }
 
+    public static String getTopicPicUrl(String url) {
+        return BASE_URL + "uploads/topic/" + url;
+    }
+
     public static void getQuestion(int questionId, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("id", questionId);

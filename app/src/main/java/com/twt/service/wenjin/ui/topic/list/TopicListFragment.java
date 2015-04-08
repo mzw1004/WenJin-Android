@@ -24,11 +24,11 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class TopicListFragment extends BaseFragment implements TopicListView {
+public class TopicListFragment extends BaseFragment implements TopicListView, SwipeRefreshLayout.OnRefreshListener {
 
     private static final String LOG_TAG = TopicListFragment.class.getSimpleName();
 
-    public static final String PARAM_POSITION = "position";
+    public static final String PARAM_TYPE = "type";
 
     @Inject
     TopicListPresenter mPresenter;
@@ -39,7 +39,7 @@ public class TopicListFragment extends BaseFragment implements TopicListView {
     RecyclerView mRecyclerView;
 
     private TopicListAdapter mAdapter;
-    private int position;
+    private int type;
 
     public TopicListFragment() {
     }
@@ -47,7 +47,7 @@ public class TopicListFragment extends BaseFragment implements TopicListView {
     public static TopicListFragment getInstance(int position) {
         TopicListFragment fragment = new TopicListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(PARAM_POSITION, position);
+        bundle.putInt(PARAM_TYPE, position);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -55,8 +55,8 @@ public class TopicListFragment extends BaseFragment implements TopicListView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        position = getArguments().getInt(PARAM_POSITION);
-        LogHelper.v(LOG_TAG, "onCreate, position: " + position);
+        type = getArguments().getInt(PARAM_TYPE);
+        LogHelper.v(LOG_TAG, "onCreate, type: " + type);
     }
 
     @Override
@@ -66,10 +66,22 @@ public class TopicListFragment extends BaseFragment implements TopicListView {
         ButterKnife.inject(this, rootView);
 
         mRefreshLayout.setColorSchemeColors(ResourceHelper.getColor(R.color.color_primary));
-        mAdapter = new TopicListAdapter(getActivity());
+        mRefreshLayout.setOnRefreshListener(this);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter = new TopicListAdapter(getActivity());
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int lastitemposition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                if (lastitemposition == linearLayoutManager.getItemCount() - 1 && dy > 0) {
+                    mPresenter.loadMoreTopics(type);
+                }
+            }
+        });
 
         return rootView;
     }
@@ -82,14 +94,24 @@ public class TopicListFragment extends BaseFragment implements TopicListView {
     @Override
     public void onStart() {
         super.onStart();
-        LogHelper.v(LOG_TAG, "onStart, position: " + position);
-        mPresenter.loadTopics(position);
+        LogHelper.v(LOG_TAG, "onStart, type: " + type);
+        mPresenter.refreshTopics(type);
+    }
+
+    @Override
+    public void onRefresh() {
+        mPresenter.refreshTopics(type);
     }
 
     @Override
     public void updateTopics(Topic[] topics) {
         LogHelper.d(LOG_TAG, "topics length: " + topics.length);
         mAdapter.updateTopics(topics);
+    }
+
+    @Override
+    public void addTopics(Topic[] topics) {
+        mAdapter.addTopics(topics);
     }
 
     @Override
@@ -107,7 +129,18 @@ public class TopicListFragment extends BaseFragment implements TopicListView {
     }
 
     @Override
+    public void showFooter() {
+        mAdapter.setFooter(true);
+    }
+
+    @Override
+    public void hideFooter() {
+        mAdapter.setFooter(false);
+    }
+
+    @Override
     public void toastMessage(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
+
 }

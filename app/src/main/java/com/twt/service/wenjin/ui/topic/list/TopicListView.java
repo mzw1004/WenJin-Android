@@ -9,9 +9,15 @@ public interface TopicListView {
 
     void updateTopics(Topic[] topics);
 
+    void addTopics(Topic[] topics);
+
     void startRefresh();
 
     void stopRefresh();
+
+    void showFooter();
+
+    void hideFooter();
 
     void toastMessage(String msg);
 
