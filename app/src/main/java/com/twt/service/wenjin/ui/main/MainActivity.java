@@ -45,6 +45,10 @@ public class MainActivity extends BaseActivity implements MainView {
     Toolbar toolbar;
 
     private DrawerFragment mDrawerFragment;
+    private HomeFragment mHomeFragment;
+    private ExploreFragment mExploreFragment;
+    private TopicFragment mTopicFragment;
+    private UserFragment mUserFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,16 +98,28 @@ public class MainActivity extends BaseActivity implements MainView {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new HomeFragment();
+                if (mHomeFragment == null) {
+                    mHomeFragment = new HomeFragment();
+                }
+                fragment = mHomeFragment;
                 break;
             case 1:
-                fragment = new ExploreFragment();
+                if (mExploreFragment == null) {
+                    mExploreFragment = new ExploreFragment();
+                }
+                fragment = mExploreFragment;
                 break;
             case 2:
-                fragment = new TopicFragment();
+                if (mTopicFragment == null) {
+                    mTopicFragment = new TopicFragment();
+                }
+                fragment = mTopicFragment;
                 break;
             case 3:
-                fragment = new UserFragment();
+                if (mUserFragment == null) {
+                    mUserFragment = new UserFragment();
+                }
+                fragment = mUserFragment;
                 break;
         }
         fragmentManager.beginTransaction()

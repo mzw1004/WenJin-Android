@@ -54,4 +54,9 @@ public class InteractorsModule {
         return new CommentInteractorImpl();
     }
 
+    @Provides @Singleton
+    public TopicListInteractor provideTopicListInteractor() {
+        return new TopicListInteractorImpl();
+    }
+
 }

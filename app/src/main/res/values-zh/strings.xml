@@ -35,6 +35,10 @@
     <string name="fab_label_article">文章</string>
     <string name="drawer_item_logout">登出</string>
 
+    <!-- Topic strings -->
+    <string name="topic_hot">热门话题</string>
+    <string name="topic_focus">我关注的话题</string>
+
     <!-- Publish activity strings -->
     <string name="title_activity_publish">提交问题</string>
     <string name="hint_publish_title">问题标题</string>
