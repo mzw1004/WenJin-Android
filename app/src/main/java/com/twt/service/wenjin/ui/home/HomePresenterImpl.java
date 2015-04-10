@@ -39,7 +39,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         LogHelper.v(LOG_TAG, "size: " + items.size());
         for (int i = 0; i < items.size(); i++) {
             LogHelper.v(LOG_TAG, "username: "+ items.get(i).user_info.user_name);
-            LogHelper.v(LOG_TAG, "title: "+ items.get(i).question_info.question_content);
+           // LogHelper.v(LOG_TAG, "title: "+ items.get(i).question_info.question_content);
 //            LogHelper.v(LOG_TAG, "answer: "+ items.get(i).answer_info.answer_content);
         }
         mHomeView.updateListData((ArrayList<HomeItem>) homeResponseMessage.rows);

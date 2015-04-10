@@ -23,4 +23,7 @@ public class InteractorsModule {
     public HomeInteractor provideHomeInteractor() {
         return new HomeInteractorImpl();
     }
+
+    @Provides @Singleton
+    public ExploreInteractor provideExploreInteractor(){return new ExploreInteractorImpl();}
 }

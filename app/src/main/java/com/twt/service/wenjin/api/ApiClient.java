@@ -29,6 +29,7 @@ public class ApiClient {
     private static final String BASE_URL = "http://2014shequ.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
+    private static final String EXPLORE_URL = "?/api/explore/";
 
     public static AsyncHttpClient getInstance() {
         return sClient;
@@ -48,5 +49,17 @@ public class ApiClient {
         params.put("page", page);
 
         sClient.get(BASE_URL + HOME_URL, params, handler);
+    }
+
+    public static void getExplore(int perPage,int page,int day,int isRecommend,String sortType,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("per_page",perPage);
+        params.put("page",page);
+        params.put("day",day);
+        params.put("is_recommend",isRecommend);
+        params.put("sort_type",sortType);
+
+        sClient.get(BASE_URL + EXPLORE_URL,params,handler);
+
     }
 }
