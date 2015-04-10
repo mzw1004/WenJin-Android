@@ -1,12 +1,12 @@
 package com.twt.service.wenjin.ui.drawer;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,9 +19,9 @@ import android.view.ViewGroup;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
-import com.twt.service.wenjin.support.LogUtil;
-import com.twt.service.wenjin.support.ResourcesUtil;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.login.LoginActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +32,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAdapter.OnItemClickListener {
+public class DrawerFragment extends BaseFragment implements DrawerView,
+        DrawerAdapter.OnItemClickListener, DrawerAdapter.OnUserClickListener {
 
     private static final String LOG_TAG = DrawerFragment.class.getSimpleName();
 
@@ -80,7 +81,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
         View rootView = inflater.inflate(R.layout.fragment_drawer, container, false);
         ButterKnife.inject(this, rootView);
 
-        mDrawerAdapter = new DrawerAdapter(this);
+        mDrawerAdapter = new DrawerAdapter(this, this);
         addDrawerItems();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mDrawerRecyclerView.setLayoutManager(linearLayoutManager);
@@ -187,6 +188,11 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
     }
 
     @Override
+    public void onUserClick(View view) {
+        startActivity(new Intent(getActivity(), LoginActivity.class));
+    }
+
+    @Override
     public void closeDrawer() {
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -203,6 +209,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView, DrawerAd
     @Override
     public void sendDrawerItemClickedEvent(int position) {
         BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
-        LogUtil.d(LOG_TAG, "send event successfully");
+        LogHelper.d(LOG_TAG, "send event successfully");
     }
+
 }
