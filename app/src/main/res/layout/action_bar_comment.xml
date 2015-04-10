@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:clickable="true"
+    style="@android:style/Widget.ActionButton">
+
+    <ImageView
+        android:id="@+id/iv_action_comment"
+        android:src="@drawable/ic_action_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_action_comment_number"
+        android:text="…"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp" />
+
+</LinearLayout>

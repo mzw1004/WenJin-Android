@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".WenJinApp"
@@ -23,6 +25,32 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".ui.question.QuestionActivity"
+            android:label="@string/title_activity_question" >
+        </activity>
+        <activity
+            android:name=".ui.answer.detail.AnswerDetailDetailActivity"
+            android:label="@string/title_activity_answer_detail" >
+        </activity>
+        <activity
+            android:name=".ui.publish.PublishActivity"
+            android:label="@string/title_activity_publish"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".ui.answer.AnswerActivity"
+            android:label="@string/title_activity_answer" >
+        </activity>
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name=".ui.answer.comment.CommentActivity"
+            android:label="@string/title_activity_comment"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
     </application>
 

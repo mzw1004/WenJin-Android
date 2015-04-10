@@ -7,6 +7,8 @@ public interface DrawerView {
 
     void closeDrawer();
 
+    void updateUserInfo();
+
     void setSelectedItemColor(int position);
 
     void sendDrawerItemClickedEvent(int position);

@@ -8,6 +8,12 @@
         <item>@string/drawer_item_user</item>
         <item>@string/drawer_item_setting</item>
         <item>@string/drawer_item_helper_and_feedback</item>
+        <item>@string/drawer_item_logout</item>
+    </string-array>
+
+    <string-array name="topic_tab_titles">
+        <item>@string/topic_hot</item>
+        <item>@string/topic_focus</item>
     </string-array>
 
 </resources>

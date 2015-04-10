@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity">
+
+    <item
+        android:id="@+id/action_comment"
+        android:icon="@drawable/ic_action_comment"
+        android:title="@string/action_comment"
+        app:actionLayout="@layout/action_bar_comment"
+        app:showAsAction="always" />
+
+</menu>
