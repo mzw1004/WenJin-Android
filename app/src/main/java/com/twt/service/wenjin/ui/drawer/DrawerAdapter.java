@@ -1,6 +1,5 @@
 package com.twt.service.wenjin.ui.drawer;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.twt.service.wenjin.R;
-import com.twt.service.wenjin.support.ResourcesUtil;
+import com.twt.service.wenjin.support.ResourceHelper;
 
 import java.util.ArrayList;
 
@@ -34,10 +33,20 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private int mSelectedItemIndex = 0;
 
-    private OnItemClickListener mListener;
+    private OnItemClickListener mItemListener;
+    private OnUserClickListener mUserListener;
 
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
+    }
+
+    public interface OnUserClickListener {
+        public void onUserClick(View view);
+    }
+
+    public DrawerAdapter(OnItemClickListener itemClickListener, OnUserClickListener userClickListener) {
+        this.mItemListener = itemClickListener;
+        this.mUserListener = userClickListener;
     }
 
     public static class HeaderHolder extends RecyclerView.ViewHolder {
@@ -86,10 +95,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public DrawerAdapter(OnItemClickListener listener) {
-        this.mListener = listener;
-    }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
@@ -116,6 +121,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int i) {
         switch (getItemViewType(i)) {
+            case ITEM_VIEW_TYPE_HEADER:
+                HeaderHolder headerHolder = (HeaderHolder) viewHolder;
+                headerHolder.mIvProfile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mUserListener.onUserClick(v);
+                    }
+                });
+                break;
             case ITEM_VIEW_TYPE_ITEM:
                 final int itemIndex = getItemIndex(i);
                 ItemHolder itemHolder = (ItemHolder) viewHolder;
@@ -124,15 +138,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 itemHolder.mRootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mListener.onItemClick(v, itemIndex);
+                        mItemListener.onItemClick(v, itemIndex);
                     }
                 });
                 if(itemIndex == mSelectedItemIndex) {
-                    itemHolder.mRootView.setBackgroundColor(ResourcesUtil.getColor(R.color.color_drawer_item_selected_background));
-                    itemHolder.mTextView.setTextColor(ResourcesUtil.getColor(R.color.color_primary));
+                    itemHolder.mRootView.setBackgroundColor(ResourceHelper.getColor(R.color.color_drawer_item_selected_background));
+                    itemHolder.mTextView.setTextColor(ResourceHelper.getColor(R.color.color_primary));
                 } else {
-                    itemHolder.mRootView.setBackgroundColor(ResourcesUtil.getColor(android.R.color.white));
-                    itemHolder.mTextView.setTextColor(ResourcesUtil.getColor(R.color.color_text_primary));
+                    itemHolder.mRootView.setBackgroundColor(ResourceHelper.getColor(android.R.color.white));
+                    itemHolder.mTextView.setTextColor(ResourceHelper.getColor(R.color.color_text_primary));
                 }
                 break;
         }
@@ -198,4 +212,5 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mSelectedItemIndex = position;
         notifyDataSetChanged();
     }
+
 }

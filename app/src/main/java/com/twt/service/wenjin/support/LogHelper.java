@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by M on 2015/3/21.
  */
-public class LogUtil {
+public class LogHelper {
 
     public static final int VERBOSE = 1;
 

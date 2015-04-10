@@ -3,6 +3,9 @@ package com.twt.service.wenjin;
 import android.app.Application;
 import android.content.Context;
 
+import com.loopj.android.http.PersistentCookieStore;
+import com.twt.service.wenjin.api.ApiClient;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +27,7 @@ public class WenJinApp extends Application {
         objectGraph.inject(this);
 
         sContext = getApplicationContext();
+        ApiClient.getInstance().setCookieStore(new PersistentCookieStore(sContext));
     }
 
     private List<Object> getModules() {
