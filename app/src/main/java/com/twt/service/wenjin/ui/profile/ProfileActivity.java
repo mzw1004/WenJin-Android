@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.ui.BaseActivity;
 
 import java.util.Arrays;
@@ -78,6 +79,11 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void bindUserInfo(UserInfo userInfo) {
+
     }
 
     @Override

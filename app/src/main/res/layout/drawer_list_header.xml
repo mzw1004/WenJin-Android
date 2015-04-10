@@ -18,7 +18,7 @@
         android:layout_marginTop="@dimen/navigation_drawer_icon_margin_left"
         android:src="@drawable/ic_user_avatar"
         app:border_color="@color/color_divider"
-        app:border_width="1dp" />
+        app:border_width="0dp" />
 
     <TextView
         android:id="@+id/tv_user_profile_name"
