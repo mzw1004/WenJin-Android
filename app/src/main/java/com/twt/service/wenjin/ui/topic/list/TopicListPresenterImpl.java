@@ -23,7 +23,7 @@ public class TopicListPresenterImpl implements TopicListPresenter, OnGetTopicsCa
 
     @Override
     public void loadMoreTopics(int type) {
-        mView.startRefresh();
+//        mView.startRefresh();
         page += 1;
         isLoadMore = true;
         switch (type) {

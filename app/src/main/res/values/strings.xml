@@ -75,6 +75,11 @@
 
     <!-- Profile activity -->
     <string name="title_activity_profile">Profile</string>
+    <string name="profile_focus_topic">Ta\'s Topics</string>
+    <string name="profile_friend">Ta\'s friends</string>
+    <string name="profile_fans">Ta\'s fans</string>
+    <string name="profile_question">Question</string>
+    <string name="profile_answer">Answer</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">Comment</string>

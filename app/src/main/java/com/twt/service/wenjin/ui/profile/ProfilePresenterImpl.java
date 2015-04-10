@@ -27,6 +27,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCall
     @Override
     public void onGetSuccess(UserInfo userInfo) {
         LogHelper.i(LOG_TAG, "signature: " + userInfo.signature);
+        mView.bindUserInfo(userInfo);
     }
 
     @Override

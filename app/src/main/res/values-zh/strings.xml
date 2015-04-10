@@ -61,7 +61,7 @@
 
     <!-- Question activity strings -->
     <string name="title_activity_question">问题</string>
-    <string name="action_focus">关注问题</string>
+    <string name="action_focus">关注</string>
     <string name="action_not_focus">不再关注</string>
     <string name="action_answer">添加回答</string>
 
@@ -75,6 +75,11 @@
 
     <!-- Profile activity -->
     <string name="title_activity_profile">个人主页</string>
+    <string name="profile_focus_topic">Ta的话题</string>
+    <string name="profile_friend">Ta关注的人</string>
+    <string name="profile_fans">关注Ta的人</string>
+    <string name="profile_question">问过</string>
+    <string name="profile_answer">答过</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">评论</string>
