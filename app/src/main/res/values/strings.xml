@@ -39,6 +39,12 @@
     <string name="topic_hot">Hot topic</string>
     <string name="topic_focus">Focus topic</string>
 
+    <!-- Explore strings -->
+    <string name="explore_hot">Hot</string>
+    <string name="explore_new">New</string>
+    <string name="explore_recommend">Recommend</string>
+    <string name="explore_unresponsive">Unresponsive</string>>
+
     <!-- Publish activity strings -->
     <string name="title_activity_publish">Publish</string>
     <string name="hint_publish_title">Question Title</string>

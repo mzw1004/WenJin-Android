@@ -65,14 +65,15 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
                 mHomeView.toastMessage("position " + position + " agreed");
                 break;
         }
-<<<<<<< HEAD
-        ArrayList<HomeItem> items = (ArrayList<HomeItem>) homeResponseMessage.rows;
-        LogHelper.v(LOG_TAG, "size: " + items.size());
-        for (int i = 0; i < items.size(); i++) {
-            LogHelper.v(LOG_TAG, "username: "+ items.get(i).user_info.user_name);
-           // LogHelper.v(LOG_TAG, "title: "+ items.get(i).question_info.question_content);
+
+//        ArrayList<HomeItem> items = (ArrayList<HomeItem>) homeResponseMessage.rows;
+        //LogHelper.v(LOG_TAG, "size: " + items.size());
+//        for (int i = 0; i < items.size(); i++) {
+//            LogHelper.v(LOG_TAG, "username: " + items.get(i).user_info.user_name);
+//            LogHelper.v(LOG_TAG, "title: "+ items.get(i).question_info.question_content);
 //            LogHelper.v(LOG_TAG, "answer: "+ items.get(i).answer_info.answer_content);
-=======
+
+//        }
     }
 
     @Override
@@ -89,7 +90,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
             isLoadingMore = false;
         } else {
             mHomeView.refreshItems((ArrayList<HomeItem>) homeResponse.rows);
->>>>>>> 9b24249c97ab51486a1583a5c497cf3ee30077d1
+
         }
     }
 

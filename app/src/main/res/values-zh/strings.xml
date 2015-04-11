@@ -39,6 +39,12 @@
     <string name="topic_hot">热门话题</string>
     <string name="topic_focus">我关注的话题</string>
 
+    <!-- Explore strings -->
+    <string name="explore_hot">最热</string>
+    <string name="explore_new">最新</string>
+    <string name="explore_recommend">推荐</string>
+    <string name="explore_unresponsive">等待回答</string>>
+
     <!-- Publish activity strings -->
     <string name="title_activity_publish">提交问题</string>
     <string name="hint_publish_title">问题标题</string>

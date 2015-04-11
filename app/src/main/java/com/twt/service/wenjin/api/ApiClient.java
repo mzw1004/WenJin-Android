@@ -30,9 +30,9 @@ public class ApiClient {
     private static final String BASE_URL = "http://2014shequ.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
-<<<<<<< HEAD
+
     private static final String EXPLORE_URL = "?/api/explore/";
-=======
+
     private static final String TOPIC_URL = "?/api/topic/square/";
     private static final String QUESTION_URL = "?/api/question/question/";
     private static final String FOCUS_QUESTION_URL = "?/question/ajax/focus/";
@@ -49,7 +49,7 @@ public class ApiClient {
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
     }
->>>>>>> 9b24249c97ab51486a1583a5c497cf3ee30077d1
+
 
     public static AsyncHttpClient getInstance() {
         return sClient;
@@ -85,7 +85,6 @@ public class ApiClient {
         sClient.get(BASE_URL + HOME_URL, params, handler);
     }
 
-<<<<<<< HEAD
     public static void getExplore(int perPage,int page,int day,int isRecommend,String sortType,JsonHttpResponseHandler handler){
         RequestParams params = new RequestParams();
         params.put("per_page",perPage);
@@ -97,7 +96,7 @@ public class ApiClient {
         sClient.get(BASE_URL + EXPLORE_URL,params,handler);
 
     }
-=======
+
     public static void getTopics(String type, int page, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("id", type);
@@ -177,5 +176,4 @@ public class ApiClient {
         sClient.post(url.toString(), params, handler);
     }
 
->>>>>>> 9b24249c97ab51486a1583a5c497cf3ee30077d1
 }

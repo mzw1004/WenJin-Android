@@ -28,6 +28,8 @@ public class TopicFragment extends Fragment {
     public TopicFragment() {
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +42,12 @@ public class TopicFragment extends Fragment {
         mTabs.setViewPager(mViewPager);
 
         return rootView;
+    }
+
+    @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            ButterKnife.reset(this);
     }
 
 }

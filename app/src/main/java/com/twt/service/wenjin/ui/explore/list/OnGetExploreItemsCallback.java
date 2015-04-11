@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.explore;
+package com.twt.service.wenjin.ui.explore.list;
 
 import com.twt.service.wenjin.bean.ExploreResponseMessage;
 
