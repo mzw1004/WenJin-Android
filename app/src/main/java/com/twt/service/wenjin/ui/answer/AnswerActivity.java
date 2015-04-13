@@ -15,7 +15,7 @@ import com.twt.service.wenjin.event.SelectPhotoResultEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.common.SelectPhotoDialog;
+import com.twt.service.wenjin.ui.common.SelectPhotoDialogFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -92,7 +92,7 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
                 this.finishActivity();
                 break;
             case R.id.action_insert_photo:
-                new SelectPhotoDialog().show(this);
+                new SelectPhotoDialogFragment().show(this);
                 break;
             case R.id.action_publish:
                 mPresenter.publishAnswer(questionId, etContent.getText().toString(), "");

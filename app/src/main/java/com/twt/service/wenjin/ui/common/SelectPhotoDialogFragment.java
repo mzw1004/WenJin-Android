@@ -3,8 +3,6 @@ package com.twt.service.wenjin.ui.common;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -33,9 +31,9 @@ import butterknife.InjectView;
 /**
  * Created by M on 2015/4/5.
  */
-public class SelectPhotoDialog extends DialogFragment implements View.OnClickListener {
+public class SelectPhotoDialogFragment extends DialogFragment implements View.OnClickListener {
 
-    private static final String LOG_TAG = SelectPhotoDialog.class.getSimpleName();
+    private static final String LOG_TAG = SelectPhotoDialogFragment.class.getSimpleName();
 
     public static final int PICK_IMAGE_REQUEST_CODE = 1;
     public static final int CAPTURE_IMAGE_REQUEST_CODE = 2;

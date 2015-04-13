@@ -59,4 +59,9 @@ public class InteractorsModule {
         return new TopicListInteractorImpl();
     }
 
+    @Provides @Singleton
+    public TopicDetailInteractor provideTopicDetailInteractor() {
+        return new TopicDetailInteractorImpl();
+    }
+
 }
