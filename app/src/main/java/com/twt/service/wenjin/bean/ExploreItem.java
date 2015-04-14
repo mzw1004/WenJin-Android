@@ -12,7 +12,7 @@ public class ExploreItem {
     /*提问者信息*/
     public UserInfo user_info;
 
-    public Map<String,Object> answer_users;
+    public UserInfo[] answer_users;
 
     /*回答信息*/
     public AnswerInfo answer_info;
