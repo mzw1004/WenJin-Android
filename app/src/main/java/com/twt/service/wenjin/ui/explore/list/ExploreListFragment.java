@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.ExploreItem;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +24,10 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ExploreListFragment extends BaseFragment implements ExploreListView, SwipeRefreshLayout.OnRefreshListener{
+public class ExploreListFragment extends BaseFragment implements ExploreListView,
+        SwipeRefreshLayout.OnRefreshListener,OnItemClickListener{
+
+    public final static String LOG_TAG = ExploreListFragment.class.getSimpleName();
 
     public final static String PARAM_TYPE = "type";
     private int type;
@@ -37,6 +42,8 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     SwipeRefreshLayout _swipeRefreshLayout;
 
     private ExploreListAdapter _exploreListAdapter;
+    private LinearLayoutManager linearLayoutManager;
+    private boolean _isFirstTimeVisibleToUser = true;
 
     public ExploreListFragment() {
         // Required empty public constructor
@@ -44,6 +51,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
 
     public static ExploreListFragment getInstance(int position){
         ExploreListFragment exploreListFragment = new ExploreListFragment();
+        LogHelper.v(LOG_TAG,"new ExploreFragment:"+position);
         Bundle bundle = new Bundle();
         bundle.putInt(ExploreListFragment.PARAM_TYPE,position);
         exploreListFragment.setArguments(bundle);
@@ -56,7 +64,6 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //_exploreListPresenter.loadingExploreItems();
         type = getArguments().getInt(PARAM_TYPE);
     }
 
@@ -65,13 +72,14 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_explore_list,container,false);
+        LogHelper.v(LOG_TAG,"new ButterKnife injected");
         ButterKnife.inject(this,rootView);
 
         _swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         _swipeRefreshLayout.setOnRefreshListener(this);
 
-        _exploreListAdapter = new ExploreListAdapter();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        _exploreListAdapter = new ExploreListAdapter(getActivity(),this);
+        linearLayoutManager = new LinearLayoutManager(getActivity());
         _recyclerView.setLayoutManager(linearLayoutManager);
         _recyclerView.setAdapter(_exploreListAdapter);
 
@@ -79,27 +87,63 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                int lastPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                if( (lastPosition == linearLayoutManager.getItemCount() - 1 ) && dy > 0 ){
+                    _exploreListPresenter.loadMoreExploreItems(type);
+                }
             }
         });
+
+
         return rootView;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        _exploreListPresenter.loadingExploreItems(type);
+        _exploreListPresenter.loadExploreItems(type);
     }
+
+
+/*
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(_recyclerView == null){return;}
+        if(isVisibleToUser){
+            //if(_isFirstTimeVisibleToUser){ _exploreListPresenter.loadExploreItems(type);}
+            //_isFirstTimeVisibleToUser = false;
+
+            _recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener(){
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                    int lastPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                    if( (lastPosition == linearLayoutManager.getItemCount() - 1 ) && dy > 0 ){
+                        _exploreListPresenter.loadMoreExploreItems(type);
+                    }
+                }
+            });
+
+        }else{
+            _recyclerView.setOnScrollListener(null);
+        }
+        LogHelper.v(LOG_TAG,type+"is" +isVisibleToUser);
+
+    }
+*/
+
 
     @Override
     public void startRefresh() {
-        if(null != _swipeRefreshLayout){
+        if(!_swipeRefreshLayout.isRefreshing()){
             _swipeRefreshLayout.setRefreshing(true);
         }
     }
 
     @Override
     public void stopRefresh() {
-        if(null != _swipeRefreshLayout){
+        if(_swipeRefreshLayout.isRefreshing()){
             _swipeRefreshLayout.setRefreshing(false);
         }
     }
@@ -114,9 +158,29 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
         _exploreListAdapter.updateData(items);
     }
 
+    @Override
+    public void addListData(ArrayList<ExploreItem> items) {
+        _exploreListAdapter.addData(items);
+    }
+
+    @Override
+    public void showFooter() {
+        _exploreListAdapter.setUseFooter(true);
+    }
+
+    @Override
+    public void hideFooter() {
+        _exploreListAdapter.setUseFooter(false);
+    }
+
 
     @Override
     public void onRefresh() {
-        _exploreListPresenter.loadingExploreItems(type);
+       _exploreListPresenter.loadExploreItems(type);
+    }
+
+    @Override
+    public void onItemClicked(View view, int position) {
+
     }
 }

@@ -38,7 +38,6 @@ public class ExploreFragment extends Fragment {
         _viewPager.setAdapter(fragmentPagerAdapter);
         _pagerSlidingTabStrip.setViewPager(_viewPager);
 
-
         return rootView;
     }
 

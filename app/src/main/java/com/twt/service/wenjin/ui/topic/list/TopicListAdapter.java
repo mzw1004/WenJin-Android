@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -49,6 +50,19 @@ public class TopicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public ItemHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
+        }
+    }
+
+    public static class FooterHolder extends RecyclerView.ViewHolder{
+
+        @InjectView(R.id.tv_footer_load_more)
+        TextView tvLoadMore;
+        @InjectView(R.id.pb_footer_load_more)
+        ProgressBar pbLoadMore;
+
+        public FooterHolder(View itemView) {
+            super(itemView);
+            ButterKnife.inject(this,itemView);
         }
     }
 

@@ -3,12 +3,15 @@ package com.twt.service.wenjin.ui.topic.list;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.Topic;
 import com.twt.service.wenjin.interactor.TopicListInteractor;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 
 /**
  * Created by M on 2015/4/8.
  */
 public class TopicListPresenterImpl implements TopicListPresenter, OnGetTopicsCallback {
+
+    private final static String LOG_TAG = TopicListPresenterImpl.class.getSimpleName();
 
     private TopicListView mView;
     private TopicListInteractor mInteractor;
@@ -29,9 +32,11 @@ public class TopicListPresenterImpl implements TopicListPresenter, OnGetTopicsCa
         switch (type) {
             case 0:
                 mInteractor.getTopics("hot", page, this);
+                LogHelper.v(LOG_TAG,"hot page:"+page);
                 break;
             case 1:
                 mInteractor.getTopics("focus", page, this);
+                LogHelper.v(LOG_TAG,"focus page:"+page);
                 break;
         }
     }
@@ -43,9 +48,11 @@ public class TopicListPresenterImpl implements TopicListPresenter, OnGetTopicsCa
         switch (type) {
             case 0:
                 mInteractor.getTopics("hot", page, this);
+                LogHelper.v(LOG_TAG,"hot page:"+page);
                 break;
             case 1:
                 mInteractor.getTopics("focus", page, this);
+                LogHelper.v(LOG_TAG,"focus page:"+page);
                 break;
         }
     }

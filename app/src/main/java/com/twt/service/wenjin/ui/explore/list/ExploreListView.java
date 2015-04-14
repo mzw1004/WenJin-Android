@@ -15,4 +15,10 @@ public interface ExploreListView {
     void toastMessage(String msg);
 
     void updateListData(ArrayList<ExploreItem> items);
+
+    void addListData(ArrayList<ExploreItem> items);
+
+    void showFooter();
+
+    void hideFooter();
 }

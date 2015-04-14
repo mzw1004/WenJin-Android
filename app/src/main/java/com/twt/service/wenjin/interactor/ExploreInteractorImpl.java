@@ -3,7 +3,7 @@ package com.twt.service.wenjin.interactor;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.bean.ExploreResponseMessage;
+import com.twt.service.wenjin.bean.ExploreResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.explore.list.OnGetExploreItemsCallback;
 
@@ -34,8 +34,8 @@ public class ExploreInteractorImpl implements ExploreInteractor {
                     switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)){
                         case ApiClient.SUCCESS_CODE:
                             Gson gson = new Gson();
-                            ExploreResponseMessage erm =
-                                    gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).toString(),ExploreResponseMessage.class);
+                            ExploreResponse erm =
+                                    gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).toString(),ExploreResponse.class);
                             LogHelper.v(LOG_TAG, erm.toString());
                             onGetExploreItemsCallback.onSuccess(erm);
                             break;
