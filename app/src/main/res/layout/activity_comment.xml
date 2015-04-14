@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.twt.service.wenjin.ui.answer.comment.CommentActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_toolbar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/comment_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/toolbar" />
+
+    <ProgressBar
+        android:id="@+id/pb_comment_loading"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/et_comment_content"
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp" />
+
+        <ImageView
+            android:id="@+id/iv_comment_publish"
+            android:src="@drawable/ic_action_publish"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.ActionButton"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

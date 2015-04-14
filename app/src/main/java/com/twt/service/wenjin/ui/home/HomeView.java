@@ -9,11 +9,28 @@ import java.util.ArrayList;
  */
 public interface HomeView {
 
-    void startRefresh();
+    void showRefresh();
 
-    void stopRefresh();
+    void hideRefresh();
+
+    void hideLoadMoreFooter();
+
+    void useLoadMoreFooter();
+
+    void showFabMenu();
+
+    void hideFabMenu();
 
     void toastMessage(String message);
 
-    void updateListData(ArrayList<HomeItem> items);
+    void refreshItems(ArrayList<HomeItem> items);
+
+    void loadMoreItems(ArrayList<HomeItem> items);
+
+    void startQuestionActivity(int position);
+
+    void startAnswerActivity(int position);
+
+    void startProfileActivity(int position);
+
 }

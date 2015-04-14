@@ -10,16 +10,18 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:paddingBottom="4dp">
-        <TextView
-            android:id="@+id/tv_explore_item_title"
-            android:text="Title title"
-            android:textSize="18sp"
-            android:textColor="@color/color_text_primary"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp" />
+
+    <TextView
+        android:id="@+id/tv_explore_item_title"
+        android:text="Title title"
+        android:textSize="18sp"
+        android:textColor="@color/color_text_primary"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
         <View
             android:id="@+id/divider"
             android:background="@color/color_divider"
@@ -28,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/tv_explore_item_title" />
+
 
         <ImageView
             android:id="@+id/iv_explore_item_avatar"

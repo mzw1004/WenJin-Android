@@ -9,4 +9,10 @@ public class QuestionInfo {
 
     public String question_content;
 
+    public String question_detail;
+
+    public int focus_count;
+
+    public int has_focus;
+
 }

@@ -1,8 +1,10 @@
 package com.twt.service.wenjin.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 
@@ -16,6 +18,7 @@ import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.home.HomeFragment;
+import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
 import com.twt.service.wenjin.ui.user.UserFragment;
 
@@ -43,6 +46,10 @@ public class MainActivity extends BaseActivity implements MainView {
     Toolbar toolbar;
 
     private DrawerFragment mDrawerFragment;
+    private HomeFragment mHomeFragment;
+    private ExploreFragment mExploreFragment;
+    private TopicFragment mTopicFragment;
+    private UserFragment mUserFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +70,14 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         BusProvider.getBusInstance().register(this);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
         BusProvider.getBusInstance().unregister(this);
     }
 
@@ -92,19 +99,32 @@ public class MainActivity extends BaseActivity implements MainView {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new HomeFragment();
+                if (mHomeFragment == null) {
+                    mHomeFragment = new HomeFragment();
+                }
+                fragment = mHomeFragment;
                 break;
             case 1:
-                fragment = new ExploreFragment();
+                if (mExploreFragment == null) {
+                    mExploreFragment = new ExploreFragment();
+                }
+                fragment = mExploreFragment;
                 break;
             case 2:
-                fragment = new TopicFragment();
+                if (mTopicFragment == null) {
+                    mTopicFragment = new TopicFragment();
+                }
+                fragment = mTopicFragment;
                 break;
             case 3:
-                fragment = new UserFragment();
+                if (mUserFragment == null) {
+                    mUserFragment = new UserFragment();
+                }
+                fragment = mUserFragment;
                 break;
         }
         fragmentManager.beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
                 .replace(R.id.main_container, fragment)
                 .commit();
     }
@@ -117,5 +137,17 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void startNewActivity(int position) {
         LogHelper.v(LOG_TAG, "start new activity: " + position);
+        switch (position) {
+            case 4:
+                LogHelper.v(LOG_TAG, "start setting activity");
+                break;
+            case 5:
+                LogHelper.v(LOG_TAG, "start help activity");
+                break;
+            case 6:
+                LogHelper.v(LOG_TAG, "user logout");
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+        }
     }
 }

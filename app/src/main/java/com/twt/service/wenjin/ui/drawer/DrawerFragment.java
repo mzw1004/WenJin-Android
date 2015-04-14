@@ -1,6 +1,5 @@
 package com.twt.service.wenjin.ui.drawer;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -20,8 +19,10 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseFragment;
-import com.twt.service.wenjin.ui.login.LoginActivity;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,7 @@ import butterknife.InjectView;
 
 
 public class DrawerFragment extends BaseFragment implements DrawerView,
-        DrawerAdapter.OnItemClickListener, DrawerAdapter.OnUserClickListener {
+        OnItemClickListener, DrawerAdapter.OnUserClickListener {
 
     private static final String LOG_TAG = DrawerFragment.class.getSimpleName();
 
@@ -70,8 +71,14 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
 
         mPresenter.selectItem(mCurrentSelectedPosition);
+        updateUserInfo();
     }
 
     @Override
@@ -81,7 +88,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         View rootView = inflater.inflate(R.layout.fragment_drawer, container, false);
         ButterKnife.inject(this, rootView);
 
-        mDrawerAdapter = new DrawerAdapter(this, this);
+        mDrawerAdapter = new DrawerAdapter(getActivity(), this, this);
         addDrawerItems();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mDrawerRecyclerView.setLayoutManager(linearLayoutManager);
@@ -151,6 +158,8 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mDrawerAdapter.addDivider();
         mDrawerAdapter.addItem(R.drawable.ic_drawer_settings_grey, getString(R.string.drawer_item_setting));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_help_grey, getString(R.string.drawer_item_helper_and_feedback));
+        mDrawerAdapter.addDivider();
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_logout_grey, getString(R.string.drawer_item_logout));
     }
 
     @Override
@@ -183,13 +192,15 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClicked(View view, int position) {
         mPresenter.selectItem(position);
     }
 
     @Override
     public void onUserClick(View view) {
-        startActivity(new Intent(getActivity(), LoginActivity.class));
+        LogHelper.v(LOG_TAG, "user profile clicked");
+        ProfileActivity.actionStart(getActivity(), PrefUtils.getPrefUid());
+//        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
     @Override
@@ -197,6 +208,11 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(GravityCompat.START);
         }
+    }
+
+    @Override
+    public void updateUserInfo() {
+        mDrawerAdapter.updateUserInfo();
     }
 
     @Override
@@ -209,7 +225,6 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     @Override
     public void sendDrawerItemClickedEvent(int position) {
         BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
-        LogHelper.d(LOG_TAG, "send event successfully");
     }
 
 }
