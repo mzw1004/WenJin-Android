@@ -106,20 +106,19 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
             if(0 == exploreItem.answer_count){
                 if(exploreItem.user_info != null) {
-                    itemHolder._tvUser.setText(exploreItem.user_info.user_name);
+                    itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
+                    if(exploreItem.user_info.avatar_file != ""){
+                        Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
+                    }
                 }
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_question));
             }else{
-                if(exploreItem.answer_users.size() != 0){
-                    for(Map.Entry entry : exploreItem.answer_users.entrySet()){
-                        Map<String,String> key = (Map<String,String>)entry.getValue();
-                        itemHolder._tvUser.setText(key.get("user_name"));
-                        if(key.get("avatar_file") != null){
-                           Picasso.with(_context).load(ApiClient.getAvatarUrl(key.get("avatar_file"))).into(itemHolder._ivAvatar);
-                        }
-                        break;
+                if(exploreItem.answer_users.length > 0){
+                    UserInfo userInfo = exploreItem.answer_users[0];
+                    itemHolder._tvUser.setText(userInfo.nick_name);
+                    if(userInfo.avatar_file != ""){
+                        Picasso.with(_context).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(itemHolder._ivAvatar);
                     }
-
                 }
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.reply_question));
 
