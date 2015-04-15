@@ -11,6 +11,8 @@ public class UserInfo {
 
     public String user_name;
 
+    public String nick_name;
+
     public String fans_count;
 
     public String friend_count;

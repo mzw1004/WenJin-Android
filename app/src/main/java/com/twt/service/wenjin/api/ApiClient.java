@@ -21,6 +21,7 @@ public class ApiClient {
     public static final String RESP_MSG_KEY = "rsm";
     public static final String RESP_ERROR_CODE_KEY = "errno";
     public static final String RESP_ERROR_MSG_KEY = "err";
+
     public static final int SUCCESS_CODE = 1;
     public static final int ERROR_CODE = -1;
 
