@@ -16,9 +16,11 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.bean.BestAnswer;
 import com.twt.service.wenjin.bean.Topic;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentAdapter;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.common.TextDialogFragment;
 
 import java.util.Arrays;
@@ -29,7 +31,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class TopicDetailActivity extends BaseActivity implements TopicDetailView, View.OnClickListener {
+public class TopicDetailActivity extends BaseActivity implements TopicDetailView, View.OnClickListener, OnItemClickListener {
 
     private static final String PARAM_TOPIC_ID = "topic_id";
     private static final String PARAM_TOPIC_TITLE = "topic_title";
@@ -48,6 +50,7 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     @InjectView(R.id.tv_topic_detail_description)
     TextView tvDescription;
 
+    private TopicDetailAdapter mAdapter;
     private int topicId;
 
     public static void actionStart(Context context, int topicId, String topicTitle) {
@@ -69,7 +72,8 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        mAdapter = new TopicDetailAdapter(this, this);
+        mRecyclerView.setAdapter(mAdapter);
         tvDescription.setOnClickListener(this);
     }
 
@@ -104,6 +108,11 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     }
 
     @Override
+    public void bindTopicBestAnswer(BestAnswer[] bestAnswers) {
+        mAdapter.updateItem(bestAnswers);
+    }
+
+    @Override
     public void toastMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -115,5 +124,9 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
                 TextDialogFragment.newInstance(tvDescription.getText().toString()).show(this);
                 break;
         }
+    }
+
+    @Override
+    public void onItemClicked(View view, int position) {
     }
 }

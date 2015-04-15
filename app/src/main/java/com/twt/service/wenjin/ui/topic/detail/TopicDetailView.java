@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.topic.detail;
 
+import com.twt.service.wenjin.bean.BestAnswer;
 import com.twt.service.wenjin.bean.Topic;
 
 /**
@@ -8,6 +9,8 @@ import com.twt.service.wenjin.bean.Topic;
 public interface TopicDetailView {
 
     void bindTopicDetail(Topic topic);
+
+    void bindTopicBestAnswer(BestAnswer[] bestAnswers);
 
     void toastMessage(String msg);
 

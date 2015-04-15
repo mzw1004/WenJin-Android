@@ -3,7 +3,9 @@ package com.twt.service.wenjin.interactor;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.bean.BestAnswer;
 import com.twt.service.wenjin.bean.Topic;
+import com.twt.service.wenjin.ui.topic.detail.OnGetBestAnswerCallback;
 import com.twt.service.wenjin.ui.topic.detail.OnGetDetailCallback;
 
 import org.apache.http.Header;
@@ -29,6 +31,31 @@ public class TopicDetailInteractorImpl implements TopicDetailInteractor {
                             break;
                         case ApiClient.ERROR_CODE:
                             callback.onGetDetailFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
+                            break;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getTopicBestAnswer(int topicId, final OnGetBestAnswerCallback callback) {
+        ApiClient.getTopicBestAnswer(topicId, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
+                        case ApiClient.SUCCESS_CODE:
+                            Gson gson = new Gson();
+                            BestAnswer[] bestAnswers
+                                    = gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONArray("rows").toString(),BestAnswer[].class);
+                            callback.onGetAnswerSuccess(bestAnswers);
+                            break;
+                        case ApiClient.ERROR_CODE:
+                            callback.onGetAnswerFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
                             break;
                     }
                 } catch (JSONException e) {

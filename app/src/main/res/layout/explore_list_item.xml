@@ -18,7 +18,7 @@
         android:id="@+id/divider"
         android:background="@color/color_divider"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1px"
         android:layout_below="@+id/tv_explore_item_title" />
 
     <ImageView
@@ -44,7 +44,7 @@
 
     <TextView
         android:id="@+id/tv_explore_item_state"
-        android:text="reply this question"
+        android:text="@string/reply_question"
         android:textSize="14sp"
         android:textColor="@color/color_text_secondary"
         android:gravity="center_vertical"

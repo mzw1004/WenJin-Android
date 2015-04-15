@@ -32,6 +32,7 @@ public class ApiClient {
     private static final String HOME_URL = "?/api/home/";
     private static final String TOPIC_URL = "?/api/topic/square/";
     private static final String TOPIC_DETAIL_URL = "api/topic.php";
+    private static final String TOPIC_BEST_ANSWER = "?/api/topic/topic_best_answer/";
     private static final String QUESTION_URL = "?/api/question/question/";
     private static final String FOCUS_QUESTION_URL = "?/question/ajax/focus/";
     private static final String ANSWER_DETAIL_URL = "?/api/question/answer_detail/";
@@ -96,6 +97,13 @@ public class ApiClient {
         params.put("topic_id", topicId);
 
         sClient.get(BASE_URL + TOPIC_DETAIL_URL, params, handler);
+    }
+
+    public static void getTopicBestAnswer(int topicId, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("id", topicId);
+
+        sClient.get(BASE_URL + TOPIC_BEST_ANSWER, params, handler);
     }
 
     public static String getTopicPicUrl(String url) {
