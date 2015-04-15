@@ -25,6 +25,11 @@ public class InteractorsModule {
     }
 
     @Provides @Singleton
+    public ExploreInteractor provideExploreInteractor() {
+        return new ExploreInteractorImpl();
+    }
+
+    @Provides @Singleton
     public QuestionInteractor provideQuestionInteractor() {
         return new QuestionInteractorImpl();
     }

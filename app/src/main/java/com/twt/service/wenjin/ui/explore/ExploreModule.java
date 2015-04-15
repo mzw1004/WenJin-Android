@@ -15,12 +15,11 @@ import dagger.Provides;
         injects = {
                 ExploreFragment.class
         },
-        addsTo = MainModule.class,
-        library = true
-
+        addsTo = MainModule.class
 )
 
 public class ExploreModule {
+
     private ExploreView _exploreView;
 
     public ExploreModule(ExploreView exploreView){
@@ -31,7 +30,7 @@ public class ExploreModule {
         return _exploreView;
     }
 
-    @Provides @Singleton public ExplorePresenter provideExplorePresenter(ExploreView exploreView,ExploreInteractor exploreInteractor){
+    @Provides @Singleton public ExplorePresenter provideExplorePresenter(ExploreView exploreView, ExploreInteractor exploreInteractor){
         return new ExplorePresenterImpl(exploreView,exploreInteractor);
     }
 }

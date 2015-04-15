@@ -1,7 +1,5 @@
 package com.twt.service.wenjin.bean;
 
-import java.util.ArrayList;
-
 /**
  * Created by WGL on 2015/3/28.
  */

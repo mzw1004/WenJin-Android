@@ -30,6 +30,7 @@ public class ApiClient {
     private static final String BASE_URL = "http://2014shequ.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
+    private static final String EXPLORE_URL = "?/api/explore/";
     private static final String TOPIC_URL = "?/api/topic/square/";
     private static final String TOPIC_DETAIL_URL = "api/topic.php";
     private static final String TOPIC_BEST_ANSWER = "?/api/topic/topic_best_answer/";
@@ -83,6 +84,18 @@ public class ApiClient {
         sClient.get(BASE_URL + HOME_URL, params, handler);
     }
 
+    public static void getExplore(int perPage, int page, int day, int isRecommend, String sortType, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("per_page", perPage);
+        params.put("page", page);
+        params.put("day", day);
+        params.put("is_recommend", isRecommend);
+        params.put("sort_type", sortType);
+
+        sClient.get(BASE_URL + EXPLORE_URL, params, handler);
+
+    }
+
     public static void getTopics(String type, int page, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("id", type);
@@ -118,7 +131,7 @@ public class ApiClient {
     }
 
     public static void focusQuestion(int questionId, JsonHttpResponseHandler handler) {
-        RequestParams params =  new RequestParams();
+        RequestParams params = new RequestParams();
         params.put("question_id", questionId);
 
         sClient.get(BASE_URL + FOCUS_QUESTION_URL, params, handler);
@@ -136,7 +149,7 @@ public class ApiClient {
         params.put("answer_id", answerId);
         params.put("value", value);
 
-        sClient.post(BASE_URL+ ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
+        sClient.post(BASE_URL + ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
     }
 
     public static void answer(int questionId, String content, String attachKey, JsonHttpResponseHandler handler) {

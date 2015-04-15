@@ -1,56 +1,62 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.twt.service.wenjin.ui.topic.detail.TopicDetailActivity">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/app_toolbar" />
 
-    <ImageView
-        android:id="@+id/iv_topic_detail_pic"
-        android:src="@drawable/ic_topic_pic"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp" />
-
-    <TextView
-        android:id="@+id/tv_topic_detail_title"
-        android:text="title"
-        android:textSize="16sp"
-        android:textColor="@color/color_text_primary"
+    <RelativeLayout
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/iv_topic_detail_pic"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_toRightOf="@+id/iv_topic_detail_pic"
-        android:layout_toLeftOf="@+id/bt_topic_detail_focus"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/bt_topic_detail_focus"
-        android:text="@string/action_focus"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp" />
+        <ImageView
+            android:id="@+id/iv_topic_detail_pic"
+            android:src="@drawable/ic_topic_pic"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" />
 
-    <TextView
-        android:id="@+id/tv_topic_detail_description"
-        android:textSize="14sp"
-        android:textColor="@color/color_text_secondary"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_topic_detail_title"
-        android:layout_below="@+id/bt_topic_detail_focus"
-        android:layout_alignRight="@+id/bt_topic_detail_focus" />
+        <TextView
+            android:id="@+id/tv_topic_detail_title"
+            android:textSize="16sp"
+            android:textColor="@color/color_text_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_topic_detail_pic"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/iv_topic_detail_pic"
+            android:layout_toLeftOf="@+id/bt_topic_detail_focus"/>
+
+        <Button
+            android:id="@+id/bt_topic_detail_focus"
+            android:text="@string/action_focus"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp" />
+
+        <TextView
+            android:id="@+id/tv_topic_detail_description"
+            android:textSize="14sp"
+            android:textColor="@color/color_text_secondary"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_topic_detail_title"
+            android:layout_below="@+id/bt_topic_detail_focus"
+            android:layout_alignRight="@+id/bt_topic_detail_focus" />
+
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/topic_detail_recycler_view"
@@ -60,4 +66,4 @@
         android:layout_marginTop="8dp"
         android:scrollbars="vertical" />
 
-</RelativeLayout>
+</LinearLayout>
