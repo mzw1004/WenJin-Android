@@ -9,4 +9,6 @@ public interface TopicDetailPresenter {
 
     void loadingItems(int topicId);
 
+    void actionFocus();
+
 }

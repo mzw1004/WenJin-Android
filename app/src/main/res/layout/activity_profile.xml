@@ -105,7 +105,9 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginEnd="16dp">
+            android:layout_marginEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" >
 
             <TextView
                 android:id="@+id/tv_profile_agree_number"
@@ -130,9 +132,11 @@
             <Button
                 android:id="@+id/bt_profile_focus"
                 android:text="@string/action_focus"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_focus"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="48dp" />
+                android:layout_height="36dp" />
 
         </LinearLayout>
 
@@ -141,7 +145,7 @@
 
 
     <android.support.v7.widget.CardView
-        app:cardElevation="0dp"
+        app:cardElevation="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_profile_part_two"
@@ -157,6 +161,7 @@
             <TextView
                 android:text="@string/profile_question"
                 android:textSize="16sp"
+                android:textColor="@color/color_text_primary"
                 android:gravity="center_vertical"
                 android:drawableRight="@drawable/ic_action_chevron_right"
                 android:padding="8dp"
@@ -171,6 +176,22 @@
             <TextView
                 android:text="@string/profile_answer"
                 android:textSize="16sp"
+                android:textColor="@color/color_text_primary"
+                android:gravity="center_vertical"
+                android:drawableRight="@drawable/ic_action_chevron_right"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <View
+                android:background="@color/color_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+
+            <TextView
+                android:text="@string/profile_detail"
+                android:textSize="16sp"
+                android:textColor="@color/color_text_primary"
                 android:gravity="center_vertical"
                 android:drawableRight="@drawable/ic_action_chevron_right"
                 android:padding="8dp"

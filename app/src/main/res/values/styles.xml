@@ -2,7 +2,7 @@
 
     <style name="AppToolbar" parent="ThemeOverlay.AppCompat.Dark">
         <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_primary_drak</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
     </style>
 

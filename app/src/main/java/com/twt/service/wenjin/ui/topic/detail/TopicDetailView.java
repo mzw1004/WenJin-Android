@@ -12,6 +12,14 @@ public interface TopicDetailView {
 
     void bindTopicBestAnswer(BestAnswer[] bestAnswers);
 
+    void addFocus();
+
+    void removeFocus();
+
     void toastMessage(String msg);
+
+    void startQuestionActivity(int position);
+
+    void startProfileActivity(int position);
 
 }

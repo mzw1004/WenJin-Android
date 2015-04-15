@@ -8,7 +8,8 @@ import com.twt.service.wenjin.support.PrefUtils;
 /**
  * Created by M on 2015/4/11.
  */
-public class TopicDetailPresenterImpl implements TopicDetailPresenter, OnGetDetailCallback, OnGetBestAnswerCallback {
+public class TopicDetailPresenterImpl implements
+        TopicDetailPresenter, OnGetDetailCallback, OnGetBestAnswerCallback, OnFocusCallback {
 
     private TopicDetailView mView;
     private TopicDetailInteractor mInteractor;
@@ -32,6 +33,11 @@ public class TopicDetailPresenterImpl implements TopicDetailPresenter, OnGetDeta
     }
 
     @Override
+    public void actionFocus() {
+        mInteractor.actionFocus(topicId, this);
+    }
+
+    @Override
     public void onGetDetailSuccess(Topic topic) {
         mView.bindTopicDetail(topic);
         loadingItems(topicId);
@@ -49,6 +55,20 @@ public class TopicDetailPresenterImpl implements TopicDetailPresenter, OnGetDeta
 
     @Override
     public void onGetAnswerFailure(String errorMsg) {
+        mView.toastMessage(errorMsg);
+    }
+
+    @Override
+    public void onFocusSuccess(boolean isfocused) {
+        if (isfocused) {
+            mView.addFocus();
+        } else {
+            mView.removeFocus();
+        }
+    }
+
+    @Override
+    public void onFocusFailure(String errorMsg) {
         mView.toastMessage(errorMsg);
     }
 }

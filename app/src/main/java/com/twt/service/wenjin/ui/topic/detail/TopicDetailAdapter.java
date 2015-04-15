@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.BestAnswer;
+import com.twt.service.wenjin.bean.Topic;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -59,15 +60,24 @@ public class TopicDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ItemHolder itemHolder = (ItemHolder) holder;
         BestAnswer bestAnswer = mAnswers.get(position);
+        View.OnClickListener clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClicked(v, position);
+            }
+        };
         itemHolder.tvTitle.setText(bestAnswer.question_info.question_content);
         itemHolder.tvUsername.setVisibility(View.GONE);
         if (bestAnswer.answer_info.avatar_file != null) {
             Picasso.with(mContext).load(ApiClient.getAvatarUrl(bestAnswer.answer_info.avatar_file)).into(itemHolder.ivAvatar);
         }
         itemHolder.tvAddTime.setVisibility(View.GONE);
+
+        itemHolder.tvTitle.setOnClickListener(clickListener);
+        itemHolder.ivAvatar.setOnClickListener(clickListener);
     }
 
     @Override
@@ -79,5 +89,9 @@ public class TopicDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         mAnswers.clear();
         mAnswers.addAll(Arrays.asList(bestAnswers));
         notifyDataSetChanged();
+    }
+
+    public BestAnswer getItem(int position) {
+        return mAnswers.get(position);
     }
 }

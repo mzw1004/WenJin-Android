@@ -3,7 +3,7 @@
     <string name="app_name">WenJin</string>
 
     <string name="network_not_connected">Network is not connected</string>
-    <string name="no_more_infomation">Sorry, no more information</string>
+    <string name="no_more_information">Sorry, no more information</string>
     <string name="load_more">load more …</string>
     <string name="years_ago">years ago</string>
     <string name="months_ago">months ago</string>
@@ -80,6 +80,7 @@
     <string name="profile_fans">Ta\'s fans</string>
     <string name="profile_question">Question</string>
     <string name="profile_answer">Answer</string>
+    <string name="profile_detail">Detail</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">Comment</string>

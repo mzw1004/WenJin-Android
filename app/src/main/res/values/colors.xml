@@ -2,13 +2,15 @@
 <resources>
 
     <color name="color_primary">#4CAF50</color>
-    <color name="color_primary_drak">#388E3C</color>
+    <color name="color_primary_dark">#388E3C</color>
     <color name="color_primary_light">#C8E6C9</color>
     <color name="color_accent">#FF4081</color>
+    <color name="color_accent_dark">#C2185B</color>
     <color name="color_text_primary">#212121</color>
     <color name="color_text_secondary">#727272</color>
     <color name="color_divider">#B6B6B6</color>
 
+    <!--<color name="activity_background">#F5F5F5</color>-->
     <color name="color_drawer_item_selected_background">#e8e8e8</color>
     <color name="black_semi_transparent">#B2000000</color>
 

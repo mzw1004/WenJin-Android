@@ -8,7 +8,6 @@ import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.interactor.HomeInteractor;
 import com.twt.service.wenjin.interactor.HomeInteractorImpl;
 import com.twt.service.wenjin.support.ResourceHelper;
-import com.twt.service.wenjin.ui.publish.OnPublishCallback;
 
 import java.util.ArrayList;
 
@@ -72,7 +71,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         mHomeView.hideRefresh();
 
         if (homeResponse.total_rows == 0) {
-            mHomeView.toastMessage(ResourceHelper.getString(R.string.no_more_infomation));
+            mHomeView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
             mHomeView.hideLoadMoreFooter();
             return;
         }

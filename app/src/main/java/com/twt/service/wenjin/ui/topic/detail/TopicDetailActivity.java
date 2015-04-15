@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentAdapter;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.common.TextDialogFragment;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
+import com.twt.service.wenjin.ui.question.QuestionActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +52,8 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     TextView tvTitle;
     @InjectView(R.id.tv_topic_detail_description)
     TextView tvDescription;
+    @InjectView(R.id.bt_topic_detail_focus)
+    Button btFocus;
 
     private TopicDetailAdapter mAdapter;
     private int topicId;
@@ -74,7 +79,9 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new TopicDetailAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
+
         tvDescription.setOnClickListener(this);
+        btFocus.setOnClickListener(this);
     }
 
     @Override
@@ -105,6 +112,12 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
         if (!TextUtils.isEmpty(topic.topic_pic)) {
             Picasso.with(this).load(ApiClient.getTopicPicUrl(topic.topic_pic)).into(ivTopicPic);
         }
+        if (topic.has_focus == 1) {
+            addFocus();
+        } else {
+            removeFocus();
+        }
+        btFocus.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -113,8 +126,32 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     }
 
     @Override
+    public void addFocus() {
+        btFocus.setBackgroundResource(R.drawable.button_focused_background);
+        btFocus.setText(getString(R.string.action_not_focus));
+        btFocus.setTextColor(getResources().getColor(R.color.color_accent));
+    }
+
+    @Override
+    public void removeFocus() {
+        btFocus.setBackgroundResource(R.drawable.button_focus);
+        btFocus.setText(getString(R.string.action_focus));
+        btFocus.setTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    @Override
     public void toastMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void startQuestionActivity(int position) {
+        QuestionActivity.actionStart(this, mAdapter.getItem(position).question_info.question_id);
+    }
+
+    @Override
+    public void startProfileActivity(int position) {
+        ProfileActivity.actionStart(this, mAdapter.getItem(position).answer_info.uid);
     }
 
     @Override
@@ -123,10 +160,21 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
             case R.id.tv_topic_detail_description:
                 TextDialogFragment.newInstance(tvDescription.getText().toString()).show(this);
                 break;
+            case R.id.bt_topic_detail_focus:
+                mPresenter.actionFocus();
+                break;
         }
     }
 
     @Override
     public void onItemClicked(View view, int position) {
+        switch (view.getId()) {
+            case R.id.tv_explore_item_title:
+                this.startQuestionActivity(position);
+                break;
+            case R.id.iv_explore_item_avatar:
+                this.startProfileActivity(position);
+                break;
+        }
     }
 }
