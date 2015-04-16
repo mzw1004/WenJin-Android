@@ -8,10 +8,13 @@ public class ExploreItem {
     /*提问者信息*/
     public UserInfo user_info;
 
-    //public ArrayList<UserInfo> answer_users;
-
     /*回答信息*/
-    public AnswerInfo answer_info;
+    public UserInfo[] answer_users;
+
+    public String post_type;
+
+    /*the title of article if post type is article*/
+    public String title;
 
     /*浏览次数*/
     public int  view_count;

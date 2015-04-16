@@ -35,6 +35,12 @@
     <string name="fab_label_article">文章</string>
     <string name="drawer_item_logout">登出</string>
 
+    <!-- Explore strings -->
+    <string name="explore_recommend">推荐</string>
+    <string name="explore_hot">最热</string>
+    <string name="explore_new">最新</string>
+    <string name="explore_unresponsive">未回答</string>
+
     <!-- Topic strings -->
     <string name="topic_hot">热门话题</string>
     <string name="topic_focus">我关注的话题</string>

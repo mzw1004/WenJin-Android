@@ -102,6 +102,21 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if(getItemViewType(position) == ITEM_VIEW_TYPE_ITEM){
             ExploreItem exploreItem = _DataSet.get(position);
             ItemHolder itemHolder = (ItemHolder) viewHolder;
+
+            if( 0 == exploreItem.post_type.compareTo("article")){
+                itemHolder._tvTitle.setText(exploreItem.title);
+                itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.add_time));
+
+                if(exploreItem.user_info != null) {
+                    itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
+                    if(exploreItem.user_info.avatar_file != ""){
+                        Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
+                    }
+                }
+                itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_article));
+                return;
+            }
+
             itemHolder._tvTitle.setText(exploreItem.question_content);
             itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
             if(0 == exploreItem.answer_count){
@@ -125,8 +140,6 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
 
         }
-
-
 
 
     }

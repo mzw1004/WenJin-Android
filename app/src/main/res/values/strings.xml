@@ -35,6 +35,12 @@
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
+    <!-- Explore strings -->
+    <string name="explore_recommend">Recommend</string>
+    <string name="explore_hot">Hot</string>
+    <string name="explore_new">New</string>
+    <string name="explore_unresponsive">Unresponsive</string>
+
     <!-- Topic strings -->
     <string name="topic_hot">Hot topic</string>
     <string name="topic_focus">Focus topic</string>
