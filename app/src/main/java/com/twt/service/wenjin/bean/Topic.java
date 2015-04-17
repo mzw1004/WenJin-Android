@@ -13,4 +13,8 @@ public class Topic {
 
     public String topic_pic;
 
+    public String focus_count;
+
+    public int has_focus;
+
 }

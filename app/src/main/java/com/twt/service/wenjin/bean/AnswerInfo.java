@@ -15,4 +15,8 @@ public class AnswerInfo {
 
     public int answer_id;
 
+    public int uid;
+
+    public String avatar_file;
+
 }

@@ -21,4 +21,6 @@ public interface TopicListView {
 
     void toastMessage(String msg);
 
+    void startTopicDetailActivity(int position);
+
 }

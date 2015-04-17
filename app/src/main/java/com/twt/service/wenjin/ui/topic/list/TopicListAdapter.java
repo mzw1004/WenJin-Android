@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Topic;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.home.HomeAdapter;
 
 import java.util.ArrayList;
@@ -32,10 +32,12 @@ public class TopicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context mContext;
     private ArrayList<Topic> mTopics = new ArrayList<>();
 
+    private OnItemClickListener listener;
     private boolean useFooter;
 
-    public TopicListAdapter(Context mContext) {
-        this.mContext = mContext;
+    public TopicListAdapter(Context context, OnItemClickListener listener) {
+        this.mContext = context;
+        this.listener = listener;
     }
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
@@ -47,22 +49,12 @@ public class TopicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         @InjectView(R.id.tv_topic_item_description)
         TextView tvDescription;
 
+        View rootview;
+
         public ItemHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
-        }
-    }
-
-    public static class FooterHolder extends RecyclerView.ViewHolder{
-
-        @InjectView(R.id.tv_footer_load_more)
-        TextView tvLoadMore;
-        @InjectView(R.id.pb_footer_load_more)
-        ProgressBar pbLoadMore;
-
-        public FooterHolder(View itemView) {
-            super(itemView);
-            ButterKnife.inject(this,itemView);
+            rootview = itemView;
         }
     }
 
@@ -82,10 +74,18 @@ public class TopicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (getItemViewType(position) == ITEM_VIEW_TYPE_ITEM) {
             Topic topic = mTopics.get(position);
             ItemHolder itemHolder = (ItemHolder) holder;
+
+            itemHolder.rootview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClicked(v, position);
+                }
+            });
+
             itemHolder.tvTitle.setText(topic.topic_title);
             if (topic.topic_description != null) {
                 itemHolder.tvDescription.setText(topic.topic_description);
@@ -130,5 +130,9 @@ public class TopicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void setFooter(boolean useFooter) {
         this.useFooter = useFooter;
         notifyDataSetChanged();
+    }
+
+    public Topic getItem(int position) {
+        return mTopics.get(position);
     }
 }

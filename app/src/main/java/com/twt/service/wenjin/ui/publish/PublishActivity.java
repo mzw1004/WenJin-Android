@@ -5,7 +5,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.squareup.otto.Subscribe;
@@ -14,7 +13,7 @@ import com.twt.service.wenjin.event.SelectPhotoResultEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.common.SelectPhotoDialog;
+import com.twt.service.wenjin.ui.common.SelectPhotoDialogFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -87,7 +86,7 @@ public class PublishActivity extends BaseActivity implements PublishView {
                 mPresenter.publishQuestion(etTitle.getText().toString(), etContent.getText().toString(), "", tagGroup.getTags());
                 break;
             case R.id.action_insert_photo:
-                new SelectPhotoDialog().show(this);
+                new SelectPhotoDialogFragment().show(this);
                 break;
         }
 

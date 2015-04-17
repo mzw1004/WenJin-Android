@@ -3,7 +3,7 @@
     <string name="app_name">WenJin</string>
 
     <string name="network_not_connected">Network is not connected</string>
-    <string name="no_more_infomation">Sorry, no more information</string>
+    <string name="no_more_information">Sorry, no more information</string>
     <string name="load_more">load more …</string>
     <string name="years_ago">years ago</string>
     <string name="months_ago">months ago</string>
@@ -38,12 +38,6 @@
     <!-- Topic strings -->
     <string name="topic_hot">Hot topic</string>
     <string name="topic_focus">Focus topic</string>
-
-    <!-- Explore strings -->
-    <string name="explore_hot">Hot</string>
-    <string name="explore_new">New</string>
-    <string name="explore_recommend">Recommend</string>
-    <string name="explore_unresponsive">Unresponsive</string>>
 
     <!-- Publish activity strings -->
     <string name="title_activity_publish">Publish</string>
@@ -81,6 +75,12 @@
 
     <!-- Profile activity -->
     <string name="title_activity_profile">Profile</string>
+    <string name="profile_focus_topic">Ta\'s Topics</string>
+    <string name="profile_friend">Ta\'s friends</string>
+    <string name="profile_fans">Ta\'s fans</string>
+    <string name="profile_question">Question</string>
+    <string name="profile_answer">Answer</string>
+    <string name="profile_detail">Detail</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">Comment</string>
@@ -89,5 +89,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_topic_detail">Topic Detail</string>
 
 </resources>

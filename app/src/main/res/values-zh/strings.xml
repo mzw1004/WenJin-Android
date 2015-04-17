@@ -3,7 +3,7 @@
     <string name="app_name">问津</string>
 
     <string name="network_not_connected">网络没有连接</string>
-    <string name="no_more_infomation">抱歉，没有更多的信息了</string>
+    <string name="no_more_information">抱歉，没有更多的信息了</string>
     <string name="load_more">加载更多…</string>
     <string name="years_ago">年前</string>
     <string name="months_ago">月前</string>
@@ -39,12 +39,6 @@
     <string name="topic_hot">热门话题</string>
     <string name="topic_focus">我关注的话题</string>
 
-    <!-- Explore strings -->
-    <string name="explore_hot">最热</string>
-    <string name="explore_new">最新</string>
-    <string name="explore_recommend">推荐</string>
-    <string name="explore_unresponsive">等待回答</string>>
-
     <!-- Publish activity strings -->
     <string name="title_activity_publish">提交问题</string>
     <string name="hint_publish_title">问题标题</string>
@@ -67,7 +61,7 @@
 
     <!-- Question activity strings -->
     <string name="title_activity_question">问题</string>
-    <string name="action_focus">关注问题</string>
+    <string name="action_focus">关注</string>
     <string name="action_not_focus">不再关注</string>
     <string name="action_answer">添加回答</string>
 
@@ -81,6 +75,12 @@
 
     <!-- Profile activity -->
     <string name="title_activity_profile">个人主页</string>
+    <string name="profile_focus_topic">Ta的话题</string>
+    <string name="profile_friend">Ta关注的人</string>
+    <string name="profile_fans">关注Ta的人</string>
+    <string name="profile_question">问过</string>
+    <string name="profile_answer">答过</string>
+    <string name="profile_detail">详细信息</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">评论</string>

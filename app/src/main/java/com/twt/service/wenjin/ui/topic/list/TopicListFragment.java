@@ -12,9 +12,12 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.Topic;
+import com.twt.service.wenjin.interactor.TopicDetailInteractor;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.topic.detail.TopicDetailActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +27,8 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class TopicListFragment extends BaseFragment implements TopicListView, SwipeRefreshLayout.OnRefreshListener {
+public class TopicListFragment extends BaseFragment implements
+        TopicListView, SwipeRefreshLayout.OnRefreshListener, OnItemClickListener {
 
     private static final String LOG_TAG = TopicListFragment.class.getSimpleName();
 
@@ -68,7 +72,7 @@ public class TopicListFragment extends BaseFragment implements TopicListView, Sw
         mRefreshLayout.setColorSchemeColors(ResourceHelper.getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
 
-        mAdapter = new TopicListAdapter(getActivity());
+        mAdapter = new TopicListAdapter(getActivity(), this);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -122,6 +126,11 @@ public class TopicListFragment extends BaseFragment implements TopicListView, Sw
     }
 
     @Override
+    public void onItemClicked(View view, int position) {
+        startTopicDetailActivity(position);
+    }
+
+    @Override
     public void stopRefresh() {
         if (mRefreshLayout.isRefreshing()) {
             mRefreshLayout.setRefreshing(false);
@@ -141,6 +150,12 @@ public class TopicListFragment extends BaseFragment implements TopicListView, Sw
     @Override
     public void toastMessage(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void startTopicDetailActivity(int position) {
+        Topic topic = mAdapter.getItem(position);
+        TopicDetailActivity.actionStart(getActivity(), topic.topic_id, topic.topic_title);
     }
 
 }

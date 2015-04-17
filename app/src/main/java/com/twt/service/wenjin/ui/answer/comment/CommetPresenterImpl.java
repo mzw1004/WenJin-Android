@@ -18,6 +18,7 @@ public class CommetPresenterImpl implements
 
     private CommentView mView;
     private CommentInteractor mInteractor;
+    private int answerId;
 
     public CommetPresenterImpl(CommentView view, CommentInteractor interactor) {
         this.mView = view;
@@ -32,6 +33,7 @@ public class CommetPresenterImpl implements
 
     @Override
     public void publishComment(int answerId, String content) {
+        this.answerId = answerId;
         mInteractor.publishComment(answerId, content, this);
     }
 
@@ -53,6 +55,7 @@ public class CommetPresenterImpl implements
 
     @Override
     public void onPublishSuccess() {
+        this.loadComments(answerId);
         mView.clearTextContent();
         mView.toastMessage(ResourceHelper.getString(R.string.comment_success));
     }

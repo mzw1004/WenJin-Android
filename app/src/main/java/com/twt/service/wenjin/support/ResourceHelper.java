@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.support;
 
+import android.graphics.drawable.Drawable;
+
 import com.twt.service.wenjin.WenJinApp;
 
 /**
@@ -9,6 +11,10 @@ public class ResourceHelper {
 
     public static int getColor(int colorId) {
         return WenJinApp.getContext().getResources().getColor(colorId);
+    }
+
+    public static Drawable getDrawable(int drawableId) {
+        return WenJinApp.getContext().getDrawable(drawableId);
     }
 
     public static String getString(int stringId) {

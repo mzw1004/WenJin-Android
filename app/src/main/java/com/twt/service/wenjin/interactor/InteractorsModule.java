@@ -25,7 +25,9 @@ public class InteractorsModule {
     }
 
     @Provides @Singleton
-    public ExploreInteractor provideExploreInteractor(){return new ExploreInteractorImpl();}
+    public ExploreInteractor provideExploreInteractor() {
+        return new ExploreInteractorImpl();
+    }
 
     @Provides @Singleton
     public QuestionInteractor provideQuestionInteractor() {
@@ -60,6 +62,11 @@ public class InteractorsModule {
     @Provides @Singleton
     public TopicListInteractor provideTopicListInteractor() {
         return new TopicListInteractorImpl();
+    }
+
+    @Provides @Singleton
+    public TopicDetailInteractor provideTopicDetailInteractor() {
+        return new TopicDetailInteractorImpl();
     }
 
 }

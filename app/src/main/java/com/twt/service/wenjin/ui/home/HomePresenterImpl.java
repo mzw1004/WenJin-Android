@@ -8,7 +8,6 @@ import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.interactor.HomeInteractor;
 import com.twt.service.wenjin.interactor.HomeInteractorImpl;
 import com.twt.service.wenjin.support.ResourceHelper;
-import com.twt.service.wenjin.ui.publish.OnPublishCallback;
 
 import java.util.ArrayList;
 
@@ -65,15 +64,6 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
                 mHomeView.toastMessage("position " + position + " agreed");
                 break;
         }
-
-//        ArrayList<HomeItem> items = (ArrayList<HomeItem>) homeResponseMessage.rows;
-        //LogHelper.v(LOG_TAG, "size: " + items.size());
-//        for (int i = 0; i < items.size(); i++) {
-//            LogHelper.v(LOG_TAG, "username: " + items.get(i).user_info.user_name);
-//            LogHelper.v(LOG_TAG, "title: "+ items.get(i).question_info.question_content);
-//            LogHelper.v(LOG_TAG, "answer: "+ items.get(i).answer_info.answer_content);
-
-//        }
     }
 
     @Override
@@ -81,7 +71,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         mHomeView.hideRefresh();
 
         if (homeResponse.total_rows == 0) {
-            mHomeView.toastMessage(ResourceHelper.getString(R.string.no_more_infomation));
+            mHomeView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
             mHomeView.hideLoadMoreFooter();
             return;
         }
@@ -90,7 +80,6 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
             isLoadingMore = false;
         } else {
             mHomeView.refreshItems((ArrayList<HomeItem>) homeResponse.rows);
-
         }
     }
 

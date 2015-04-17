@@ -1,9 +1,5 @@
 package com.twt.service.wenjin.bean;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Objects;
-
 /**
  * Created by WGL on 2015/3/28.
  */
@@ -12,7 +8,7 @@ public class ExploreItem {
     /*提问者信息*/
     public UserInfo user_info;
 
-    public UserInfo[] answer_users;
+    //public ArrayList<UserInfo> answer_users;
 
     /*回答信息*/
     public AnswerInfo answer_info;

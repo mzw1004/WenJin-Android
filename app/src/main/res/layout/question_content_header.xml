@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -41,7 +42,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="1px"
         android:layout_below="@+id/tv_question_content" />
 
     <ImageView
@@ -86,7 +87,7 @@
         android:id="@+id/bt_question_focus"
         android:text="@string/action_focus"
         android:textColor="@android:color/white"
-        android:background="@color/color_accent"
+        android:background="@drawable/button_focus"
         android:layout_marginTop="2dp"
         android:layout_width="wrap_content"
         android:layout_height="32dp"

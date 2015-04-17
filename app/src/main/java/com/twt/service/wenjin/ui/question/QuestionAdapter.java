@@ -137,11 +137,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 question.btFocus.setOnClickListener(onClickListener);
                 if (mQuestionResponse.question_info.has_focus == 0) {
                     question.btFocus.setText(ResourceHelper.getString(R.string.action_focus));
-                    question.btFocus.setBackgroundColor(ResourceHelper.getColor(R.color.color_accent));
+                    question.btFocus.setBackgroundResource(R.drawable.button_focus);
                     question.btFocus.setTextColor(ResourceHelper.getColor(android.R.color.white));
                 } else {
                     question.btFocus.setText(ResourceHelper.getString(R.string.action_not_focus));
-                    question.btFocus.setBackgroundColor(ResourceHelper.getColor(R.color.color_drawer_item_selected_background));
+                    question.btFocus.setBackgroundResource(R.drawable.button_focused_background);
                     question.btFocus.setTextColor(ResourceHelper.getColor(R.color.color_accent));
                 }
                 break;
