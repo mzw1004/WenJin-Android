@@ -17,6 +17,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.NumberTextView;
+import com.twt.service.wenjin.ui.profile.askanswer.ProfileAskanswerActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,12 +26,16 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class ProfileActivity extends BaseActivity implements ProfileView {
 
     private static final String LOG_TAG = ProfileActivity.class.getSimpleName();
 
     private static final String PARM_USER_ID = "user_id";
+
+    private static final String ACTION_TYPE_ASK = "ask";
+    private static final String ACTION_TYPE_ANSWER = "answer";
 
     @Inject
     ProfilePresenter mPresenter;
@@ -54,12 +59,28 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
     @InjectView(R.id.ntv_profile_fans_number)
     NumberTextView ntvFans;
 
+    @InjectView(R.id.tv_profile_ask)
+    TextView tvAsk;
+
+    @InjectView(R.id.tv_profile_answer)
+    TextView tvAnswer;
+
     private int uid;
 
     public static void actionStart(Context context, int uid) {
         Intent intent = new Intent(context, ProfileActivity.class);
         intent.putExtra(PARM_USER_ID, uid);
         context.startActivity(intent);
+    }
+
+    @OnClick(R.id.tv_profile_ask)
+    public void startAskActivity(){
+        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ASK);
+    }
+
+    @OnClick(R.id.tv_profile_answer)
+    public void startAnswerActivity(){
+        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ANSWER);
     }
 
     @Override
@@ -72,6 +93,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uid = getIntent().getIntExtra(PARM_USER_ID, 0);
+
     }
 
     @Override

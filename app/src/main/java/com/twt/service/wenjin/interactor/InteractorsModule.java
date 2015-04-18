@@ -69,4 +69,7 @@ public class InteractorsModule {
         return new TopicDetailInteractorImpl();
     }
 
+    @Provides @Singleton ProfileAskanswerInteractor provideProfileAskanswerInteractor(){
+        return new ProfileAskanswerInteractorImpl();
+    }
 }

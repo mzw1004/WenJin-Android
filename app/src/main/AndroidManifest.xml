@@ -56,6 +56,10 @@
             android:name=".ui.topic.detail.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
+        <activity
+            android:name=".ui.profile.askanswer.ProfileAskanswerActivity"
+            android:label="@string/title_activity_profile_askanswer" >
+        </activity>
     </application>
 
 </manifest>

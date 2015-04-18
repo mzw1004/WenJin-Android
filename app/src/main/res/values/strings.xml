@@ -96,5 +96,9 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_topic_detail">Topic Detail</string>
+    <string name="title_activity_profile_askanswer">ProfileAskanswerActivity</string>
 
+    <!--Profile Askanswer activity-->
+    <string name="action_type_questions">Questions</string>
+    <string name="action_type_answers">Answers</string>
 </resources>

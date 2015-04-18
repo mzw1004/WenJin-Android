@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.explore.list;
+package com.twt.service.wenjin.ui.profile.askanswer;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,61 +12,61 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.bean.ExploreItem;
-import com.twt.service.wenjin.bean.UserInfo;
+import com.twt.service.wenjin.bean.MyAnswer;
+import com.twt.service.wenjin.bean.MyQuestion;
 import com.twt.service.wenjin.support.FormatHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 
 /**
- * Created by WGL on 2015/3/28.
+ * Created by Administrator on 2015/4/17.
  */
-public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String ACTION_TYPE_ASK = "ask";
+    private static final String ACTION_TYPE_ANSWER = "answer";
     private static final int ITEM_VIEW_TYPE_ITEM = 0;
     private static final int ITEM_VIEW_TYPE_FOOTER = 1;
 
+    private String _actionType;
     private Context _context;
     private OnItemClickListener _onItemClicked;
 
-    private ArrayList<ExploreItem> _DataSet = new ArrayList<>();
+    private ArrayList<Object> _DataSet = new ArrayList<>();
 
     private boolean _useFooter;
 
     public static class ItemHolder extends RecyclerView.ViewHolder{
 
-        @InjectView(R.id.tv_explore_item_title)
+        @InjectView(R.id.tv_home_item_title)
         TextView _tvTitle;
 
-        @InjectView(R.id.iv_explore_item_avatar)
+        @InjectView(R.id.iv_home_item_avatar)
         ImageView _ivAvatar;
 
-        @InjectView(R.id.tv_explore_item_user)
+        @InjectView(R.id.tv_home_item_username)
         TextView _tvUser;
 
-        @InjectView(R.id.tv_explore_item_state)
+        @InjectView(R.id.tv_home_item_status)
         TextView _tvState;
 
-        @InjectView(R.id.tv_explore_item_time)
+        @InjectView(R.id.tv_home_item_time)
         TextView _tvTime;
+
+        @InjectView(R.id.tv_home_item_content)
+        TextView _tvContent;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this,itemView);
+            ButterKnife.inject(this, itemView);
         }
-    }
-
-    public ExploreListAdapter(Context context,OnItemClickListener onItemClicked){
-        _context = context;
-        _onItemClicked = onItemClicked;
     }
 
     public static class FooterHolder extends RecyclerView.ViewHolder {
@@ -82,7 +82,11 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-
+    public ProfileAskanswerAdapter(Context context,String actionType,OnItemClickListener onItemClicked){
+        _context = context;
+        _onItemClicked = onItemClicked;
+        _actionType = actionType;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -91,7 +95,7 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         RecyclerView.ViewHolder viewHolder;
 
         if(viewType == ITEM_VIEW_TYPE_ITEM){
-            View view = inflater.inflate(R.layout.explore_list_item,viewGroup,false);
+            View view = inflater.inflate(R.layout.home_list_item,viewGroup,false);
             viewHolder = new ItemHolder(view);
         }else{
             View view = inflater.inflate(R.layout.recyclerview_footer_load_more,viewGroup,false);
@@ -102,62 +106,46 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
-
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder,final int position) {
         if(getItemViewType(position) == ITEM_VIEW_TYPE_ITEM){
-            ExploreItem exploreItem = _DataSet.get(position);
             ItemHolder itemHolder = (ItemHolder) viewHolder;
 
             View.OnClickListener onClickListener = new View.OnClickListener(){
-
                 @Override
                 public void onClick(View v) {
                     _onItemClicked.onItemClicked(v,position);
                 }
             };
-            itemHolder._ivAvatar.setOnClickListener(onClickListener);
-            itemHolder._tvUser.setOnClickListener(onClickListener);
+
             itemHolder._tvTitle.setOnClickListener(onClickListener);
+            itemHolder._tvUser.setText(PrefUtils.getPrefUsername());
 
-            if( 0 == exploreItem.post_type.compareTo("article")){
-                itemHolder._tvTitle.setText(exploreItem.title);
-                itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.add_time));
-
-                if(exploreItem.user_info != null) {
-                    itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
-                    if(exploreItem.user_info.avatar_file != ""){
-                        Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
-                    }
-                }
-                itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_article));
-                return;
+            if(PrefUtils.getPrefAvatarFile() != null){
+                Picasso.with(_context).load(ApiClient.getAvatarUrl(PrefUtils.getPrefAvatarFile())).into(itemHolder._ivAvatar);
             }
 
-            itemHolder._tvTitle.setText(exploreItem.question_content);
-            itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
-            if(0 == exploreItem.answer_count){
-                if(exploreItem.user_info != null) {
-                    itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
-                    if(exploreItem.user_info.avatar_file != ""){
-                        Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
-                    }
-                }
+            if(_actionType.compareTo(ACTION_TYPE_ASK) == 0){
+                itemHolder._tvTitle.setOnClickListener(onClickListener);
+                MyQuestion myQuestion = (MyQuestion)_DataSet.get(position);
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_question));
-            }else{
-                if(exploreItem.answer_users.length > 0){
-                    UserInfo userInfo = exploreItem.answer_users[0];
-                    itemHolder._tvUser.setText(userInfo.nick_name);
-                    if(userInfo.avatar_file != ""){
-                        Picasso.with(_context).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(itemHolder._ivAvatar);
-                    }
-                }
-                itemHolder._tvState.setText(ResourceHelper.getString(R.string.reply_question));
+                itemHolder._tvContent.setVisibility(View.INVISIBLE);
+                itemHolder._tvTitle.setText(myQuestion.title);
+                itemHolder._tvTime.setVisibility(View.VISIBLE);
+                itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(myQuestion.add_time));
+            }
 
+            if(_actionType.compareTo(ACTION_TYPE_ANSWER) == 0){
+                itemHolder._tvTitle.setOnClickListener(onClickListener);
+                itemHolder._tvContent.setOnClickListener(onClickListener);
+                MyAnswer myAnswer = (MyAnswer)_DataSet.get(position);
+                itemHolder._tvState.setText(ResourceHelper.getString(R.string.reply_question));
+                itemHolder._tvTitle.setText(myAnswer.question_title);
+                itemHolder._tvTime.setVisibility(View.INVISIBLE);
+                itemHolder._tvContent.setVisibility(View.VISIBLE);
+                itemHolder._tvContent.setText(myAnswer.answer_content);
             }
 
         }
-
-
     }
 
     @Override
@@ -171,18 +159,18 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return position < _DataSet.size() ? ITEM_VIEW_TYPE_ITEM:ITEM_VIEW_TYPE_FOOTER;
     }
 
-    public ExploreItem getItem(int position){
+    public Object getItem(int position){
         return _DataSet.get(position);
     }
 
-    public void updateData(List<ExploreItem> items){
+    public void updateData(List<Object> items){
         _DataSet.clear();
         _DataSet.addAll(items);
         notifyDataSetChanged();
 
     }
 
-    public void addData(List<ExploreItem> items){
+    public void addData(List<Object> items){
         _DataSet.addAll(items);
         notifyDataSetChanged();
     }
