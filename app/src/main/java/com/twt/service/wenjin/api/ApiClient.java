@@ -47,6 +47,8 @@ public class ApiClient {
     private static final String FOCUS_USER_URL = "?/follow/ajax/follow_people/";
     private static final String COMMENT_URL = "api/answer_comment.php";
     private static final String PUBLISH_COMMENT_URL = "?/question/ajax/save_answer_comment/";
+    private static final String MY_ANSWER_URL = "api/my_answer.php";
+    private static final String MY_QUESTION_URL = "api/my_question.php";
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
@@ -205,6 +207,27 @@ public class ApiClient {
         params.put("message", content);
 
         sClient.post(url.toString(), params, handler);
+    }
+
+    public static void getMyAnswer(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+        params.put("page", page);
+        params.put("per_page", perPage);
+
+        sClient.get(BASE_URL + MY_ANSWER_URL, params, handler);
+
+    }
+
+    public static void getMyQuestion(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+        params.put("page", page);
+        params.put("per_page", perPage);
+
+        sClient.get(BASE_URL + MY_QUESTION_URL, params, handler);
+
+
     }
 
 }

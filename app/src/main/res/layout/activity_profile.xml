@@ -160,6 +160,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tv_profile_ask"
                 android:text="@string/profile_question"
                 android:textSize="16sp"
                 android:textColor="@color/color_text_primary"
@@ -175,6 +176,7 @@
                 android:layout_height="1px" />
 
             <TextView
+                android:id="@+id/tv_profile_answer"
                 android:text="@string/profile_answer"
                 android:textSize="16sp"
                 android:textColor="@color/color_text_primary"

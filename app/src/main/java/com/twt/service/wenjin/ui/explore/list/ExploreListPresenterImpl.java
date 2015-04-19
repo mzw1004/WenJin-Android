@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.ui.explore.list;
 
+import android.view.View;
+
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.bean.ExploreResponse;
@@ -8,6 +10,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by WGL on 2015/3/28.
@@ -69,16 +72,31 @@ public class ExploreListPresenterImpl implements ExploreListPresenter,OnGetExplo
     }
 
     @Override
+    public void onItemClicked(View v, int position) {
+        switch (v.getId()){
+            case R.id.tv_explore_item_user:
+                _exploreListView.startProfileActivity(position);
+                break;
+            case R.id.iv_explore_item_avatar:
+                _exploreListView.startProfileActivity(position);
+                break;
+            case R.id.tv_explore_item_title:
+                _exploreListView.startQuestionActivity(position);
+                break;
+        }
+    }
+
+    @Override
     public void onSuccess(ExploreResponse exploreResponse) {
         this._exploreListView.stopRefresh();
 
         if(exploreResponse.total_rows > 0){
-            ArrayList<ExploreItem> items = (ArrayList<ExploreItem>) exploreResponse.rows;
+            List<ExploreItem> items = exploreResponse.rows;
             if(isLoadMore){
                 _exploreListView.addListData(items);
+                isLoadMore = false;
             }else{
                 _exploreListView.updateListData(items);
-                _exploreListView.showFooter();
             }
         }else{
             _exploreListView.hideFooter();

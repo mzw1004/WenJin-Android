@@ -13,7 +13,10 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
+import com.twt.service.wenjin.ui.question.QuestionActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -105,35 +108,6 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     }
 
 
-/*
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if(_recyclerView == null){return;}
-        if(isVisibleToUser){
-            //if(_isFirstTimeVisibleToUser){ _exploreListPresenter.loadExploreItems(type);}
-            //_isFirstTimeVisibleToUser = false;
-
-            _recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener(){
-                @Override
-                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                    super.onScrolled(recyclerView, dx, dy);
-                    int lastPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-                    if( (lastPosition == linearLayoutManager.getItemCount() - 1 ) && dy > 0 ){
-                        _exploreListPresenter.loadMoreExploreItems(type);
-                    }
-                }
-            });
-
-        }else{
-            _recyclerView.setOnScrollListener(null);
-        }
-        LogHelper.v(LOG_TAG,type+"is" +isVisibleToUser);
-
-    }
-*/
-
-
     @Override
     public void startRefresh() {
         if(!_swipeRefreshLayout.isRefreshing()){
@@ -154,13 +128,33 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     }
 
     @Override
-    public void updateListData(ArrayList<ExploreItem> items) {
+    public void updateListData(List<ExploreItem> items) {
         _exploreListAdapter.updateData(items);
     }
 
     @Override
-    public void addListData(ArrayList<ExploreItem> items) {
+    public void addListData(List<ExploreItem> items) {
         _exploreListAdapter.addData(items);
+    }
+
+    @Override
+    public void startQuestionActivity(int position) {
+        ExploreItem item = _exploreListAdapter.getItem(position);
+        if (0 == item.post_type.compareTo("article")) {
+
+        }else{
+            QuestionActivity.actionStart(getActivity(), item.question_id);
+        }
+    }
+
+    @Override
+    public void startProfileActivity(int position) {
+        ExploreItem item = _exploreListAdapter.getItem(position);
+        if (item.answer_users.length > 0 ) {
+            ProfileActivity.actionStart(getActivity(), item.answer_users[0].uid);
+        }else {
+            ProfileActivity.actionStart(getActivity(),item.user_info.uid);
+        }
     }
 
     @Override
@@ -181,6 +175,6 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
 
     @Override
     public void onItemClicked(View view, int position) {
-
+        _exploreListPresenter.onItemClicked(view,position);
     }
 }
