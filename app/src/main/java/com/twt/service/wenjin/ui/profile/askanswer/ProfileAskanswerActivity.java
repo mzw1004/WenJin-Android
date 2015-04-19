@@ -48,16 +48,25 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
     private final static String ACTION_TYPE = "type";
     private static final String ACTION_TYPE_ASK = "ask";
     private static final String ACTION_TYPE_ANSWER = "answer";
+    private static final String USER_ID = "uid";
+    private static final String USER_NAME = "uname";
+    private static final String USER_AVATAR_URL = "avatarurl";
 
     /*Activity类型:答过/问过*/
     private String _type;
 
     private ProfileAskanswerAdapter _adapter;
 
+    private int _uid;
+    private String _uname;
+    private String _avatarurl;
 
-    public static void anctionStart(Context context,String type){
+    public static void anctionStart(Context context,String type,int uid,String userName,String avatarUrl){
         Intent intent = new Intent(context,ProfileAskanswerActivity.class);
         intent.putExtra(ACTION_TYPE,type);
+        intent.putExtra(USER_ID,uid);
+        intent.putExtra(USER_NAME,userName);
+        intent.putExtra(USER_AVATAR_URL,avatarUrl);
         context.startActivity(intent);
     }
 
@@ -69,6 +78,10 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
         ButterKnife.inject(this);
 
         _type = getIntent().getStringExtra(ACTION_TYPE);
+        _uid = getIntent().getIntExtra(USER_ID,0);
+        _uname = getIntent().getStringExtra(USER_NAME);
+        _avatarurl = getIntent().getStringExtra(USER_AVATAR_URL);
+
         if(_type.compareTo(ACTION_TYPE_ASK) == 0){
             _toolbar.setTitle(ResourceHelper.getString(R.string.action_type_questions));
         }
@@ -78,18 +91,18 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
         setSupportActionBar(_toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        _recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        _adapter = new ProfileAskanswerAdapter(this,_type,this);
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        _recyclerView.setLayoutManager(linearLayoutManager);
+        _adapter = new ProfileAskanswerAdapter(this,_type,_uid,_uname,_avatarurl,this);
         _recyclerView.setAdapter(_adapter);
 
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         _recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 int lastitemposition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
                 if (lastitemposition == linearLayoutManager.getItemCount() - 1 && dy > 0) {
-
+                    _presenter.loadMoreItems(_type,_uid);
                 }
             }
         });
@@ -99,7 +112,7 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
     @Override
     protected void onStart() {
         super.onStart();
-        _presenter.refreshItems(_type);
+        _presenter.loadMoreItems(_type,_uid);
     }
 
     @Override
@@ -137,8 +150,12 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
     }
 
     @Override
-    public void addListData(Object items) {
-        _adapter.addData((List<Object>)items);
+    public void addListData(Object items,int totalRows) {
+        if(_adapter.getItemCount() < totalRows) {
+            _adapter.addData((List<Object>) items);
+        }else{
+            toastMessage(ResourceHelper.getString(R.string.no_more_information));
+        }
     }
 
     @Override

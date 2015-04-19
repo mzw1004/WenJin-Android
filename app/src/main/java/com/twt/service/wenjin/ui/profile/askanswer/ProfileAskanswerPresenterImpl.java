@@ -29,8 +29,8 @@ public class ProfileAskanswerPresenterImpl implements
     private ProfileAskanswerView _profileAskanswerView;
     private ProfileAskanswerInteractor _profileAskanswerInteractor;
 
-    private boolean isLoadMore;
-    private int page;
+    private boolean _isLoadMore = false;
+    private int _page = 0;
 
     public ProfileAskanswerPresenterImpl(ProfileAskanswerView profileAskanswerView,
                                          ProfileAskanswerInteractor profileAskanswerInteractor){
@@ -39,14 +39,18 @@ public class ProfileAskanswerPresenterImpl implements
     }
 
     @Override
-    public void loadMoreItems(String type) {
-
+    public void loadMoreItems(String type,int uid) {
+        _page += 1;
+        _isLoadMore = true;
+        _profileAskanswerView.showFooter();
+        getItems(type,uid);
     }
 
     @Override
-    public void refreshItems(String type) {
-        page = 0;
-        getItems(type);
+    public void refreshItems(String type,int uid) {
+        _page = 1;
+        _profileAskanswerView.showFooter();
+        getItems(type,uid);
     }
 
     @Override
@@ -61,14 +65,14 @@ public class ProfileAskanswerPresenterImpl implements
         }
     }
 
-    private void getItems(String type){
+    private void getItems(String type,int uid){
 
         if(type.compareTo(ACTION_TYPE_ANSWER) == 0){
-            _profileAskanswerInteractor.getAnswerItems(PrefUtils.getPrefUid(),page,10,this);
+            _profileAskanswerInteractor.getAnswerItems(uid,_page,10,this);
         }
 
         if(type.compareTo(ACTION_TYPE_ASK) == 0 ){
-           _profileAskanswerInteractor.getAskItems(PrefUtils.getPrefUid(),page,10,this);
+           _profileAskanswerInteractor.getAskItems(uid,_page,10,this);
         }
     }
 
@@ -76,46 +80,48 @@ public class ProfileAskanswerPresenterImpl implements
     public void onGetAnswerSuccess(MyAnswerResponse myAnswerResponse) {
         if(myAnswerResponse.total_rows > 0){
             Object myAnswerList = myAnswerResponse.rows;
-            if(isLoadMore){
-                _profileAskanswerView.addListData(myAnswerList);
-                isLoadMore = false;
+            if(_isLoadMore){
+                _profileAskanswerView.addListData(myAnswerList,myAnswerResponse.total_rows);
+                _isLoadMore = false;
             }else{
-                _profileAskanswerView.refreshListData(myAnswerList);
+                //_profileAskanswerView.refreshListData(myAnswerList);
             }
         }else{
-            _profileAskanswerView.hideFooter();
             _profileAskanswerView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
         }
+        _profileAskanswerView.hideFooter();
+
     }
 
     @Override
     public void onGetAnswerFailed(String msg) {
-        page -= 1;
+        _page -= 1;
         _profileAskanswerView.toastMessage(msg);
-        isLoadMore = false;
+        _isLoadMore = false;
     }
 
     @Override
     public void onGetMyQuestionSuccess(MyQustionResponse myQustionResponse) {
+
         if(myQustionResponse.total_rows > 0){
             Object myQuestions = myQustionResponse.rows;
-            if(isLoadMore){
-                _profileAskanswerView.addListData(myQuestions);
-                isLoadMore = false;
+            if(_isLoadMore){
+                _profileAskanswerView.addListData(myQuestions,myQustionResponse.total_rows);
+                _isLoadMore = false;
             }else{
-                _profileAskanswerView.refreshListData(myQuestions);
+                //_profileAskanswerView.refreshListData(myQuestions);
             }
-
         }else{
-            _profileAskanswerView.hideFooter();
             _profileAskanswerView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
         }
+        _profileAskanswerView.hideFooter();
+
     }
 
     @Override
     public void onGetMyQuestionFailed(String msg) {
-        page -= 1;
+        _page -= 1;
         _profileAskanswerView.toastMessage(msg);
-        isLoadMore = false;
+        _isLoadMore = false;
     }
 }

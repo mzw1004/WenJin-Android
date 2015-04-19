@@ -101,4 +101,5 @@
     <!--Profile Askanswer activity-->
     <string name="action_type_questions">Questions</string>
     <string name="action_type_answers">Answers</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
 </resources>

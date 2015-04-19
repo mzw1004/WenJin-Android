@@ -15,6 +15,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.MyAnswer;
 import com.twt.service.wenjin.bean.MyQuestion;
 import com.twt.service.wenjin.support.FormatHelper;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
@@ -38,8 +39,11 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
     private String _actionType;
     private Context _context;
     private OnItemClickListener _onItemClicked;
+    private int _uid;
+    private String _uname;
+    private String _avatarurl;
 
-    private ArrayList<Object> _DataSet = new ArrayList<>();
+    private List<Object> _DataSet = new ArrayList<>();
 
     private boolean _useFooter;
 
@@ -63,6 +67,9 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
         @InjectView(R.id.tv_home_item_content)
         TextView _tvContent;
 
+        @InjectView(R.id.v_home_divider)
+        View _vDivider;
+
         public ItemHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
@@ -82,10 +89,13 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
     }
 
-    public ProfileAskanswerAdapter(Context context,String actionType,OnItemClickListener onItemClicked){
+    public ProfileAskanswerAdapter(Context context,String actionType,int uid,String uname,String avatarurl,OnItemClickListener onItemClicked){
         _context = context;
         _onItemClicked = onItemClicked;
         _actionType = actionType;
+        _uid = uid;
+        _uname = uname;
+        _avatarurl = avatarurl;
     }
 
     @Override
@@ -118,16 +128,17 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
             };
 
             itemHolder._tvTitle.setOnClickListener(onClickListener);
-            itemHolder._tvUser.setText(PrefUtils.getPrefUsername());
+            itemHolder._tvUser.setText(_uname);
 
-            if(PrefUtils.getPrefAvatarFile() != null){
-                Picasso.with(_context).load(ApiClient.getAvatarUrl(PrefUtils.getPrefAvatarFile())).into(itemHolder._ivAvatar);
+            if(_avatarurl != null){
+                Picasso.with(_context).load(ApiClient.getAvatarUrl(_avatarurl)).into(itemHolder._ivAvatar);
             }
 
             if(_actionType.compareTo(ACTION_TYPE_ASK) == 0){
                 itemHolder._tvTitle.setOnClickListener(onClickListener);
                 MyQuestion myQuestion = (MyQuestion)_DataSet.get(position);
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_question));
+                itemHolder._vDivider.setVisibility(View.VISIBLE);
                 itemHolder._tvContent.setVisibility(View.INVISIBLE);
                 itemHolder._tvTitle.setText(myQuestion.title);
                 itemHolder._tvTime.setVisibility(View.VISIBLE);
@@ -139,6 +150,7 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 itemHolder._tvContent.setOnClickListener(onClickListener);
                 MyAnswer myAnswer = (MyAnswer)_DataSet.get(position);
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.reply_question));
+                itemHolder._vDivider.setVisibility(View.INVISIBLE);
                 itemHolder._tvTitle.setText(myAnswer.question_title);
                 itemHolder._tvTime.setVisibility(View.INVISIBLE);
                 itemHolder._tvContent.setVisibility(View.VISIBLE);
@@ -164,9 +176,9 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     public void updateData(List<Object> items){
-        _DataSet.clear();
-        _DataSet.addAll(items);
-        notifyDataSetChanged();
+        //_DataSet.clear();
+        //_DataSet.addAll(items);
+        //notifyDataSetChanged();
 
     }
 

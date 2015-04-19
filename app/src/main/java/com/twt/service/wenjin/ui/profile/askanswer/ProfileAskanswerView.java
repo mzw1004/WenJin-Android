@@ -13,7 +13,7 @@ public interface ProfileAskanswerView {
 
     void refreshListData(Object items);
 
-    void addListData(Object items);
+    void addListData(Object items,int totalRos);
 
     void startQuestionActivity(int position);
 

@@ -66,6 +66,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
     TextView tvAnswer;
 
     private int uid;
+    private UserInfo _userInfo;
 
     public static void actionStart(Context context, int uid) {
         Intent intent = new Intent(context, ProfileActivity.class);
@@ -75,12 +76,12 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
 
     @OnClick(R.id.tv_profile_ask)
     public void startAskActivity(){
-        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ASK);
+        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ASK,uid,_userInfo.nick_name,_userInfo.avatar_file);
     }
 
     @OnClick(R.id.tv_profile_answer)
     public void startAnswerActivity(){
-        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ANSWER);
+        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ANSWER,uid,_userInfo.nick_name,_userInfo.avatar_file);
     }
 
     @Override
@@ -127,6 +128,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
 
     @Override
     public void bindUserInfo(UserInfo userInfo) {
+        _userInfo = userInfo;
         if (userInfo.avatar_file != null) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(ivAvatar);
         }

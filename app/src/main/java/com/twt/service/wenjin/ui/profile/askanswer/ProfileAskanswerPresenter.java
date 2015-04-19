@@ -7,9 +7,9 @@ import android.view.View;
  */
 public interface ProfileAskanswerPresenter {
 
-    void loadMoreItems(String type);
+    void loadMoreItems(String type,int uid);
 
-    void refreshItems(String type);
+    void refreshItems(String type,int uid);
 
     void onItemClicked(View v, int position);
 
