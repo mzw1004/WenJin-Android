@@ -70,7 +70,7 @@ public class TopicDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
         };
         itemHolder.tvTitle.setText(bestAnswer.question_info.question_content);
-        itemHolder.tvUsername.setVisibility(View.GONE);
+        itemHolder.tvUsername.setText(bestAnswer.answer_info.nick_name);
         if (bestAnswer.answer_info.avatar_file != null) {
             Picasso.with(mContext).load(ApiClient.getAvatarUrl(bestAnswer.answer_info.avatar_file)).into(itemHolder.ivAvatar);
         }

@@ -3,10 +3,11 @@ package com.twt.service.wenjin.ui.profile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.media.session.IMediaControllerCallback;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.UserInfo;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.NumberTextView;
 
@@ -26,7 +28,9 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ProfileActivity extends BaseActivity implements ProfileView {
+import static android.view.View.OnClickListener;
+
+public class ProfileActivity extends BaseActivity implements ProfileView, OnClickListener {
 
     private static final String LOG_TAG = ProfileActivity.class.getSimpleName();
 
@@ -53,6 +57,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
     NumberTextView ntvFriends;
     @InjectView(R.id.ntv_profile_fans_number)
     NumberTextView ntvFans;
+    @InjectView(R.id.bt_profile_focus)
+    Button btFocus;
 
     private int uid;
 
@@ -72,6 +78,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uid = getIntent().getIntExtra(PARM_USER_ID, 0);
+        btFocus.setOnClickListener(this);
     }
 
     @Override
@@ -85,13 +92,12 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
         return Arrays.<Object>asList(new ProfileModule(this));
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_profile, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_profile, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -108,17 +114,49 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
         if (userInfo.avatar_file != null) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(ivAvatar);
         }
-        tvUsername.setText(userInfo.user_name);
+        tvUsername.setText(userInfo.nick_name);
         tvSignature.setText(userInfo.signature);
         ntvFocus.setNumber(Integer.parseInt(userInfo.topic_focus_count));
         ntvFriends.setNumber(Integer.parseInt(userInfo.friend_count));
         ntvFans.setNumber(Integer.parseInt(userInfo.fans_count));
         tvAgreeNumber.setText(userInfo.agree_count);
         tvFavoriteNumber.setText(userInfo.answer_favorite_count);
+        if (uid != PrefUtils.getPrefUid()) {
+            if (userInfo.has_focus == 1) {
+                addFocus();
+            } else {
+                removeFocus();
+            }
+            btFocus.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void toastMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void addFocus() {
+        btFocus.setBackgroundResource(R.drawable.button_focused_background);
+        btFocus.setText(getString(R.string.action_not_focus));
+        btFocus.setTextColor(getResources().getColor(R.color.color_accent));
+    }
+
+    @Override
+    public void removeFocus() {
+        btFocus.setBackgroundResource(R.drawable.button_focus);
+        btFocus.setText(getString(R.string.action_focus));
+        btFocus.setTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bt_profile_focus:
+                mPresenter.actionFocus(uid);
+                break;
+        }
+    }
+
 }

@@ -8,7 +8,7 @@
         android:contentDescription="user profile background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/navigation_drawer_header_height"
-        android:background="@android:color/holo_green_dark" />
+        android:background="@color/color_primary" />
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/user_profile_image"
@@ -34,6 +34,7 @@
 
     <TextView
         android:id="@+id/tv_user_profile_email"
+        android:visibility="gone"
         android:text="******@***.com"
         android:textSize="@dimen/navigation_drawer_text_size"
         android:textColor="@android:color/white"

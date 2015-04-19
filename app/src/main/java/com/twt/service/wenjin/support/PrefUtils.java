@@ -17,6 +17,8 @@ public class PrefUtils {
 
     private static final String PREF_AVATAR_FILE = "avatar_file";
 
+    private static final String PREF_IS_LOGIN = "is_login";
+
     public static SharedPreferences getDefaultSharedPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(WenJinApp.getContext());
     }
@@ -40,4 +42,13 @@ public class PrefUtils {
     public static String getPrefAvatarFile() {
         return getDefaultSharedPreferences().getString(PREF_AVATAR_FILE, null);
     }
+
+    public static void setLogin(boolean isLogin) {
+        getDefaultSharedPreferences().edit().putBoolean(PREF_IS_LOGIN, isLogin).apply();
+    }
+
+    public static boolean isLogin() {
+        return getDefaultSharedPreferences().getBoolean(PREF_IS_LOGIN, false);
+    }
+
 }

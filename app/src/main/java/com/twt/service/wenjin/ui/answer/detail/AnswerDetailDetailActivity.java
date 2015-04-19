@@ -163,7 +163,7 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
         if (answer.avatar_file != null) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(ivAvatar);
         }
-        tvUsername.setText(answer.user_name);
+        tvUsername.setText(answer.nick_name);
         tvSignature.setText(answer.signature);
         ivAgree.setVisibility(View.VISIBLE);
         if (answer.vote_value == 1) {

@@ -12,15 +12,24 @@ import java.util.Date;
 public class FormatHelper {
 
     public static String getTimeFromNow(long date) {
-        Date postDate = new Date(date * 1000);
-        Date nowData = new Date(Calendar.getInstance().getTimeInMillis());
 
-        int years = nowData.getYear() - postDate.getYear();
-        int months = nowData.getMonth() - postDate.getMonth();
-        int days = nowData.getDay() - postDate.getDay();
-        int hours = nowData.getHours() - postDate.getHours();
-        int minutes = nowData.getMinutes() - postDate.getMinutes();
-        int seconds = nowData.getSeconds() - postDate.getSeconds();
+        Calendar calendar = Calendar.getInstance();
+
+        int years = calendar.get(Calendar.YEAR);
+        int months = calendar.get(Calendar.MONTH);
+        int days = calendar.get(Calendar.DAY_OF_MONTH);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        int seconds = calendar.get(Calendar.SECOND);
+
+        calendar.setTimeInMillis(date * 1000);
+
+        years -= calendar.get(Calendar.YEAR);
+        months -= calendar.get(Calendar.MONTH);
+        days -= calendar.get(Calendar.DAY_OF_MONTH);
+        hours -= calendar.get(Calendar.HOUR_OF_DAY);
+        minutes -= calendar.get(Calendar.MINUTE);
+        seconds -= calendar.get(Calendar.SECOND);
 
         if (years > 0) {
             return years + " " + ResourceHelper.getString(R.string.years_ago);
@@ -48,5 +57,9 @@ public class FormatHelper {
 
     public static String formatCommentAtUser(String username) {
         return "@" + username + ":";
+    }
+
+    public static String formatHomeHtmlStr(String html) {
+        return html.replaceAll("<img src=.*?>", ResourceHelper.getString(R.string.pic));
     }
 }

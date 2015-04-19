@@ -69,4 +69,9 @@ public class InteractorsModule {
         return new TopicDetailInteractorImpl();
     }
 
+    @Provides @Singleton
+    public FeedbackInteractor provideFeedbackInteractor() {
+        return new FeedbackInteractorImpl();
+    }
+
 }

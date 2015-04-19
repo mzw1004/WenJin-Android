@@ -6,7 +6,6 @@
     android:paddingLeft="@dimen/login_padding_left_right"
     android:paddingRight="@dimen/login_padding_left_right"
     android:orientation="vertical"
-    android:background="@color/color_primary_light"
     tools:context="com.twt.service.wenjin.ui.login.LoginActivity">
 
     <ImageView
@@ -25,7 +24,7 @@
         android:paddingRight="@dimen/login_padding_control"
         android:hint="@string/login_username_hint"
         android:drawableLeft="@drawable/ic_login_account"
-        android:background="@android:color/white"/>
+        android:background="@drawable/edit_text_background"/>
 
     <EditText
         android:id="@+id/tv_login_password"
@@ -37,13 +36,13 @@
         android:hint="@string/login_password_hint"
         android:inputType="textPassword"
         android:drawableLeft="@drawable/ic_login_password"
-        android:background="@android:color/white"/>
+        android:background="@drawable/edit_text_background"/>
 
     <Button
         android:id="@+id/bt_login"
         android:text="@string/login_btn_text"
         android:textColor="@android:color/white"
-        android:background="@color/color_accent"
+        android:background="@drawable/button_focus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/login_magin_control" />

@@ -1,9 +1,11 @@
 package com.twt.service.wenjin.ui.explore.list;
 
+import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.bean.ExploreResponse;
 import com.twt.service.wenjin.interactor.ExploreInteractor;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.ResourceHelper;
 
 import java.util.ArrayList;
 
@@ -80,7 +82,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter,OnGetExplo
             }
         }else{
             _exploreListView.hideFooter();
-            this._exploreListView.toastMessage("Sorry,No more information");
+            this._exploreListView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
         }
         isLoadMore = false;
     }

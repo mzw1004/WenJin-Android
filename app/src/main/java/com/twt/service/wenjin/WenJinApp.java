@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.loopj.android.http.PersistentCookieStore;
 import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.support.CrashHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +31,9 @@ public class WenJinApp extends Application {
         sContext = getApplicationContext();
         sCookieStore = new PersistentCookieStore(sContext);
         ApiClient.getInstance().setCookieStore(sCookieStore);
+
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(sContext);
     }
 
     private List<Object> getModules() {

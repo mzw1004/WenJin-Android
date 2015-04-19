@@ -38,7 +38,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private boolean mUseHeader;
     String mUsername;
     String mAvatarFile;
-    String mEmail;
+//    String mEmail;
 
     private int mSelectedItemIndex = 0;
 
@@ -63,8 +63,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ImageView mIvBackground;
         @InjectView(R.id.tv_user_profile_name)
         TextView mTvUsername;
-        @InjectView(R.id.tv_user_profile_email)
-        TextView mTvEmail;
+//        @InjectView(R.id.tv_user_profile_email)
+//        TextView mTvEmail;
 
         View mRootView;
 
@@ -132,9 +132,9 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 if (mUsername != null) {
                     headerHolder.mTvUsername.setText(mUsername);
                 }
-                if (mEmail != null) {
-                    headerHolder.mTvEmail.setText(mEmail);
-                }
+//                if (mEmail != null) {
+//                    headerHolder.mTvEmail.setText(mEmail);
+//                }
                 if (mAvatarFile != null) {
                     Picasso.with(mContext).load(ApiClient.getAvatarUrl(mAvatarFile)).into(headerHolder.mIvProfile);
                 }

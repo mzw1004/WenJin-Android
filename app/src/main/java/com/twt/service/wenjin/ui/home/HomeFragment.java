@@ -122,6 +122,7 @@ public class HomeFragment extends BaseFragment implements
     public void onItemClicked(View v, int position) {
         mPresenter.onItemClicked(v, position);
     }
+
     @Override
     public void onRefresh() {
         mPresenter.refreshHomeItems();

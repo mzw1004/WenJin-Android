@@ -35,7 +35,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private ArrayList<HomeItem> mDataset = new ArrayList<>();
 
-    private boolean useFooter = true;
+    private boolean useFooter = false;
 
     private OnItemClickListener onItemClickListener;
 
@@ -120,7 +120,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
             }
 
-            itemHolder.tvUsername.setText(homeItem.user_info.user_name);
+            itemHolder.tvUsername.setText(homeItem.user_info.nick_name);
             itemHolder.tvTime.setText(FormatHelper.getTimeFromNow(homeItem.add_time));
             switch (homeItem.associate_action) {
                 case 101:
@@ -154,7 +154,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
 
                 String content = homeItem.answer_info.answer_content;
-                itemHolder.tvContent.setText(Html.fromHtml(content, new PicassoImageGetter(mContext, itemHolder.tvContent), null));
+                itemHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(content)));
 
 //                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
             } else {

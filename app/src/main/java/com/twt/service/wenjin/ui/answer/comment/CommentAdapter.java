@@ -67,9 +67,9 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 listener.onItemClicked(v, i);
             }
         });
-        itemHolder.tvUsername.setText(item.user_name);
+        itemHolder.tvUsername.setText(item.nick_name);
         if (item.at_user != null) {
-            itemHolder.tvContent.setText(FormatHelper.formatCommentReply(item.at_user.user_name, item.content));
+            itemHolder.tvContent.setText(FormatHelper.formatCommentReply(item.at_user.nick_name, item.content));
         } else {
             itemHolder.tvContent.setText(item.content);
         }
@@ -90,6 +90,6 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public String getUsername(int position) {
-        return mDataSet.get(position).user_name;
+        return mDataSet.get(position).nick_name;
     }
 }

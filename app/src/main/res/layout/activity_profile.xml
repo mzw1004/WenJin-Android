@@ -130,6 +130,7 @@
                 android:layout_height="wrap_content" />
 
             <Button
+                android:visibility="invisible"
                 android:id="@+id/bt_profile_focus"
                 android:text="@string/action_focus"
                 android:textColor="@android:color/white"

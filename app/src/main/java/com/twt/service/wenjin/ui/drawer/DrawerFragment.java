@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.drawer;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -22,7 +23,10 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.ui.feedback.FeedbackActivity;
+import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
+import com.twt.service.wenjin.ui.setting.SettingsActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -71,13 +75,14 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
+
+        mPresenter.selectItem(mCurrentSelectedPosition);
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        mPresenter.selectItem(mCurrentSelectedPosition);
         updateUserInfo();
     }
 
@@ -154,12 +159,16 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mDrawerAdapter.addItem(R.drawable.ic_drawer_home_grey, getString(R.string.drawer_item_home));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_explore_grey, getString(R.string.drawer_item_explore));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_topic_grey, getString(R.string.drawer_item_topic));
-        mDrawerAdapter.addItem(R.drawable.ic_drawer_user_grey, getString(R.string.drawer_item_user));
+//        mDrawerAdapter.addItem(R.drawable.ic_drawer_user_grey, getString(R.string.drawer_item_user));
         mDrawerAdapter.addDivider();
         mDrawerAdapter.addItem(R.drawable.ic_drawer_settings_grey, getString(R.string.drawer_item_setting));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_help_grey, getString(R.string.drawer_item_helper_and_feedback));
         mDrawerAdapter.addDivider();
-        mDrawerAdapter.addItem(R.drawable.ic_drawer_logout_grey, getString(R.string.drawer_item_logout));
+        if (PrefUtils.isLogin()) {
+            mDrawerAdapter.addItem(R.drawable.ic_drawer_logout_grey, getString(R.string.drawer_item_logout));
+        } else {
+            mDrawerAdapter.addItem(R.drawable.ic_drawer_logout_grey, getString(R.string.drawer_item_login));
+        }
     }
 
     @Override
@@ -225,6 +234,22 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     @Override
     public void sendDrawerItemClickedEvent(int position) {
         BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
+    }
+
+    @Override
+    public void startSettingsActivity() {
+        startActivity(new Intent(getActivity(), SettingsActivity.class));
+    }
+
+    @Override
+    public void startFeedbackActivity() {
+        startActivity(new Intent(getActivity(), FeedbackActivity.class));
+    }
+
+    @Override
+    public void startLoginActivity() {
+        startActivity(new Intent(getActivity(), LoginActivity.class));
+        getActivity().finish();
     }
 
 }

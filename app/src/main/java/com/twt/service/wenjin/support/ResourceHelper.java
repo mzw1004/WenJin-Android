@@ -13,9 +13,9 @@ public class ResourceHelper {
         return WenJinApp.getContext().getResources().getColor(colorId);
     }
 
-    public static Drawable getDrawable(int drawableId) {
-        return WenJinApp.getContext().getDrawable(drawableId);
-    }
+//    public static Drawable getDrawable(int drawableId) {
+//        return WenJinApp.getContext().getDrawable(drawableId);
+//    }
 
     public static String getString(int stringId) {
         return WenJinApp.getContext().getResources().getString(stringId);

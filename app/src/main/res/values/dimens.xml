@@ -2,7 +2,7 @@
 
     <!-- Drawer dimens -->
     <dimen name="navigation_drawer_width">280dp</dimen>
-    <dimen name="navigation_drawer_header_height">140dp</dimen>
+    <dimen name="navigation_drawer_header_height">120dp</dimen>
     <dimen name="navigation_drawer_user_profile_size">64dp</dimen>
     <dimen name="navigation_drawer_user_name_height">28dp</dimen>
     <dimen name="navigation_drawer_item_height">48dp</dimen>

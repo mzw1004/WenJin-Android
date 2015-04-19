@@ -19,4 +19,8 @@ public class AnswerInfo {
 
     public String avatar_file;
 
+    public String user_name;
+
+    public String nick_name;
+
 }

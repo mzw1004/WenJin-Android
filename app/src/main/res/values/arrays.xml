@@ -16,4 +16,11 @@
         <item>@string/topic_focus</item>
     </string-array>
 
+    <string-array name="explore_tab_titles">
+        <item>@string/explore_recommend</item>
+        <item>@string/explore_hot</item>
+        <item>@string/explore_new</item>
+        <item>@string/explore_unresponsive</item>
+    </string-array>
+
 </resources>

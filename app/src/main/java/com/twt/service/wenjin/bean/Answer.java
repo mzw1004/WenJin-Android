@@ -21,6 +21,8 @@ public class Answer {
 
     public String user_name;
 
+    public String nick_name;
+
     public String avatar_file;
 
     public String signature;

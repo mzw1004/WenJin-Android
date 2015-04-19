@@ -19,7 +19,6 @@ import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

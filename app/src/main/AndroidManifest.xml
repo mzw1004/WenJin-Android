@@ -56,6 +56,23 @@
             android:name=".ui.topic.detail.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
+        <activity
+            android:name=".ui.setting.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".ui.setting.SettingsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.twt.service.wenjin.ui.setting.SettingsActivity" />
+        </activity>
+        <activity
+            android:name=".ui.feedback.FeedbackActivity"
+            android:label="@string/title_activity_feedback"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
     </application>
 
 </manifest>

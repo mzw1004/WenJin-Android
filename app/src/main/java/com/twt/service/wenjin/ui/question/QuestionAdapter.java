@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.question;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -148,10 +149,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case ITEM_VIEW_TYPE_ANSWER:
                 AnswerHolder answerHolder = (AnswerHolder) holder;
                 Answer answer = mQuestionResponse.answers.get(position - 1);
-                if (answer.avatar_file != null) {
+                if (!TextUtils.isEmpty(answer.avatar_file)) {
                     Picasso.with(mContext).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(answerHolder.ivAvatar);
                 }
-                answerHolder.tvUsername.setText(answer.user_name);
+                answerHolder.tvUsername.setText(answer.nick_name);
                 answerHolder.tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(mContext, answerHolder.tvContent), null));
 
                 answerHolder.ivAvatar.setOnClickListener(onClickListener);
