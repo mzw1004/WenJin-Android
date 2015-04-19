@@ -139,7 +139,7 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 MyQuestion myQuestion = (MyQuestion)_DataSet.get(position);
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_question));
                 itemHolder._vDivider.setVisibility(View.VISIBLE);
-                itemHolder._tvContent.setVisibility(View.INVISIBLE);
+                itemHolder._tvContent.setVisibility(View.GONE);
                 itemHolder._tvTitle.setText(myQuestion.title);
                 itemHolder._tvTime.setVisibility(View.VISIBLE);
                 itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(myQuestion.add_time));
@@ -150,9 +150,9 @@ public class ProfileAskanswerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 itemHolder._tvContent.setOnClickListener(onClickListener);
                 MyAnswer myAnswer = (MyAnswer)_DataSet.get(position);
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.reply_question));
-                itemHolder._vDivider.setVisibility(View.INVISIBLE);
+                itemHolder._vDivider.setVisibility(View.GONE);
                 itemHolder._tvTitle.setText(myAnswer.question_title);
-                itemHolder._tvTime.setVisibility(View.INVISIBLE);
+                itemHolder._tvTime.setVisibility(View.GONE);
                 itemHolder._tvContent.setVisibility(View.VISIBLE);
                 itemHolder._tvContent.setText(myAnswer.answer_content);
             }
