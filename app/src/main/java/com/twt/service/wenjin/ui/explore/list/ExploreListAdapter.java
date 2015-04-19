@@ -19,10 +19,12 @@ import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by WGL on 2015/3/28.
@@ -80,6 +82,8 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
+
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
@@ -98,10 +102,37 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
+
         if(getItemViewType(position) == ITEM_VIEW_TYPE_ITEM){
             ExploreItem exploreItem = _DataSet.get(position);
             ItemHolder itemHolder = (ItemHolder) viewHolder;
+
+            View.OnClickListener onClickListener = new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    _onItemClicked.onItemClicked(v,position);
+                }
+            };
+            itemHolder._ivAvatar.setOnClickListener(onClickListener);
+            itemHolder._tvUser.setOnClickListener(onClickListener);
+            itemHolder._tvTitle.setOnClickListener(onClickListener);
+
+            if( 0 == exploreItem.post_type.compareTo("article")){
+                itemHolder._tvTitle.setText(exploreItem.title);
+                itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.add_time));
+
+                if(exploreItem.user_info != null) {
+                    itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
+                    if(exploreItem.user_info.avatar_file != ""){
+                        Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
+                    }
+                }
+                itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_article));
+                return;
+            }
+
             itemHolder._tvTitle.setText(exploreItem.question_content);
             itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
             if(0 == exploreItem.answer_count){
@@ -127,8 +158,6 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
 
-
-
     }
 
     @Override
@@ -142,14 +171,18 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return position < _DataSet.size() ? ITEM_VIEW_TYPE_ITEM:ITEM_VIEW_TYPE_FOOTER;
     }
 
-    public void updateData(ArrayList<ExploreItem> items){
+    public ExploreItem getItem(int position){
+        return _DataSet.get(position);
+    }
+
+    public void updateData(List<ExploreItem> items){
         _DataSet.clear();
         _DataSet.addAll(items);
         notifyDataSetChanged();
 
     }
 
-    public void addData(ArrayList<ExploreItem> items){
+    public void addData(List<ExploreItem> items){
         _DataSet.addAll(items);
         notifyDataSetChanged();
     }

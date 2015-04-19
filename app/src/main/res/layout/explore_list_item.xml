@@ -15,10 +15,10 @@
 
         <TextView
             android:id="@+id/tv_explore_item_title"
-            android:text="Title title"
-            android:textSize="18sp"
-            android:textColor="@color/color_text_primary"
+            android:textSize="16sp"
+            android:textColor="@color/color_primary_dark"
             android:gravity="center_vertical"
+            android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_width="match_parent"
@@ -29,28 +29,31 @@
             android:background="@color/color_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/tv_explore_item_title" />
+            android:layout_below="@id/tv_explore_item_title" />
 
         <ImageView
             android:id="@+id/iv_explore_item_avatar"
             android:src="@drawable/ic_user_avatar"
             android:layout_marginTop="4dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_below="@+id/divider" />
+            android:layout_below="@id/divider" />
 
         <TextView
             android:id="@+id/tv_explore_item_user"
-            android:text="mazhiwei"
             android:textSize="14sp"
-            android:textColor="@color/color_text_primary"
+            android:textColor="@color/color_primary_dark"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
             android:layout_below="@+id/divider"
-            android:layout_toRightOf="@+id/iv_explore_item_avatar" />
+            android:layout_toRightOf="@id/iv_explore_item_avatar"
+            android:layout_toEndOf="@id/iv_explore_item_avatar"
+            />
 
         <TextView
             android:id="@+id/tv_explore_item_state"
@@ -61,19 +64,21 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/tv_explore_item_user"
-            android:layout_below="@+id/divider" />
+            android:layout_marginStart="4dp"
+            android:layout_toRightOf="@id/tv_explore_item_user"
+            android:layout_toEndOf="@id/tv_explore_item_user"
+            android:layout_below="@id/divider" />
 
         <TextView
             android:id="@+id/tv_explore_item_time"
-            android:text="52 minutes ago"
             android:textSize="14sp"
             android:textColor="@color/color_text_secondary"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_alignRight="@+id/tv_explore_item_title"
-            android:layout_below="@+id/divider"/>
+            android:layout_alignRight="@id/tv_explore_item_title"
+            android:layout_alignEnd="@id/tv_explore_item_title"
+            android:layout_below="@id/divider"/>
 
     </RelativeLayout>
 

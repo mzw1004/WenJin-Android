@@ -35,6 +35,12 @@
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
+    <!-- Explore strings -->
+    <string name="explore_recommend">Recommend</string>
+    <string name="explore_hot">Hot</string>
+    <string name="explore_new">New</string>
+    <string name="explore_unresponsive">Unresponsive</string>
+
     <!-- Topic strings -->
     <string name="topic_hot">Hot topic</string>
     <string name="topic_focus">Focus topic</string>
@@ -90,5 +96,10 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_topic_detail">Topic Detail</string>
+    <string name="title_activity_profile_askanswer">ProfileAskanswerActivity</string>
 
+    <!--Profile Askanswer activity-->
+    <string name="action_type_questions">Questions</string>
+    <string name="action_type_answers">Answers</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
 </resources>

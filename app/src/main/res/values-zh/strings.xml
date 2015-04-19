@@ -35,6 +35,12 @@
     <string name="fab_label_article">文章</string>
     <string name="drawer_item_logout">登出</string>
 
+    <!-- Explore strings -->
+    <string name="explore_recommend">推荐</string>
+    <string name="explore_hot">最热</string>
+    <string name="explore_new">最新</string>
+    <string name="explore_unresponsive">未回答</string>
+
     <!-- Topic strings -->
     <string name="topic_hot">热门话题</string>
     <string name="topic_focus">我关注的话题</string>
@@ -85,5 +91,9 @@
     <!-- Comment activity -->
     <string name="title_activity_comment">评论</string>
     <string name="comment_success">评论成功</string>
+
+    <!--Profile Askanswer activity-->
+    <string name="action_type_questions">问过</string>
+    <string name="action_type_answers">答过</string>
 
 </resources>

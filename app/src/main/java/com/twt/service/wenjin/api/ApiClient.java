@@ -6,6 +6,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.twt.service.wenjin.WenJinApp;
+import com.twt.service.wenjin.support.LogHelper;
 
 /**
  * Created by M on 2015/3/23.
@@ -28,7 +29,7 @@ public class ApiClient {
     private static final AsyncHttpClient sClient = new AsyncHttpClient();
     private static final int DEFAULT_TIMEOUT = 20000;
 
-    private static final String BASE_URL = "http://2014shequ.twtstudio.com/";
+    private static final String BASE_URL = "http://wenjin.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
     private static final String EXPLORE_URL = "?/api/explore/";
@@ -45,6 +46,8 @@ public class ApiClient {
     private static final String USER_INFO_URL = "?/api/account/get_userinfo/";
     private static final String COMMENT_URL = "api/answer_comment.php";
     private static final String PUBLISH_COMMENT_URL = "?/question/ajax/save_answer_comment/";
+    private static final String MY_ANSWER_URL = "api/my_answer.php";
+    private static final String MY_QUESTION_URL = "api/my_question.php";
 
     private boolean isLogin;
 
@@ -197,6 +200,27 @@ public class ApiClient {
         params.put("message", content);
 
         sClient.post(url.toString(), params, handler);
+    }
+
+    public static void getMyAnswer(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+        params.put("page", page);
+        params.put("per_page", perPage);
+
+        sClient.get(BASE_URL + MY_ANSWER_URL, params, handler);
+
+    }
+
+    public static void getMyQuestion(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+        params.put("page", page);
+        params.put("per_page", perPage);
+
+        sClient.get(BASE_URL + MY_QUESTION_URL, params, handler);
+
+
     }
 
 }
