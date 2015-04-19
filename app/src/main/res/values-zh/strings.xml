@@ -112,7 +112,11 @@
     <string name="title_activity_about">关于</string>
 
     <!--Profile Askanswer activity-->
+    <string name="title_activity_profile_askanswer">个人主页问答</string>
     <string name="action_type_questions">问过</string>
     <string name="action_type_answers">答过</string>
+
+    <!-- Welcome activity -->
+    <string name="title_activity_welcome">欢迎</string>
 
 </resources>

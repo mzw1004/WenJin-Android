@@ -15,9 +15,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".ui.welcome.WelcomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:name=".ui.welcome.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +39,7 @@
         </activity>
 
         <activity
-            android:name=".ui.answer.detail.AnswerDetailDetailActivity"
+            android:name=".ui.answer.detail.AnswerDetailActivity"
             android:label="@string/title_activity_answer_detail" >
         </activity>
 

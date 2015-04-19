@@ -66,7 +66,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tv_topic_detail_description"
-        android:layout_marginTop="8dp"
         android:scrollbars="vertical" />
 
 </LinearLayout>

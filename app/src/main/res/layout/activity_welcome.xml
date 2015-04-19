@@ -2,7 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_login_logo"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.twt.service.wenjin.ui.welcome.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/iv_splash_logo"
+        android:src="@drawable/ic_login_logo"
+        android:scaleType="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

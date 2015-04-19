@@ -186,20 +186,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp" />
 
-            <View
-                android:background="@color/color_divider"
-                android:layout_width="match_parent"
-                android:layout_height="1px" />
+            <!--<View-->
+                <!--android:background="@color/color_divider"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px" />-->
 
-            <TextView
-                android:text="@string/profile_detail"
-                android:textSize="16sp"
-                android:textColor="@color/color_text_primary"
-                android:gravity="center_vertical"
-                android:drawableRight="@drawable/ic_action_chevron_right"
-                android:padding="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="48dp" />
+            <!--<TextView-->
+                <!--android:text="@string/profile_detail"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textColor="@color/color_text_primary"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:drawableRight="@drawable/ic_action_chevron_right"-->
+                <!--android:padding="8dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="48dp" />-->
 
         </LinearLayout>
 

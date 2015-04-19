@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,9 +33,9 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDetailView, View.OnClickListener {
+public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView, View.OnClickListener {
 
-    private static final String LOG_TAG = AnswerDetailDetailActivity.class.getSimpleName();
+    private static final String LOG_TAG = AnswerDetailActivity.class.getSimpleName();
 
     private static final String PARAM_ANSWER_ID = "answer_id";
     private static final String PARAM_QUESTION = "question";
@@ -66,7 +67,7 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
     private int uid;
 
     public static void actionStart(Context context, int answerId, String question) {
-        Intent intent = new Intent(context, AnswerDetailDetailActivity.class);
+        Intent intent = new Intent(context, AnswerDetailActivity.class);
         intent.putExtra(PARAM_ANSWER_ID, answerId);
         intent.putExtra(PARAM_QUESTION, question);
         context.startActivity(intent);
@@ -160,7 +161,7 @@ public class AnswerDetailDetailActivity extends BaseActivity implements AnswerDe
     @Override
     public void bindAnswerData(Answer answer) {
         uid = answer.uid;
-        if (answer.avatar_file != null) {
+        if (!TextUtils.isEmpty(answer.avatar_file)) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(ivAvatar);
         }
         tvUsername.setText(answer.nick_name);

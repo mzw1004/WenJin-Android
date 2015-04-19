@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,7 +38,6 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     private static final String LOG_TAG = ProfileActivity.class.getSimpleName();
 
     private static final String PARM_USER_ID = "user_id";
-
     private static final String ACTION_TYPE_ASK = "ask";
     private static final String ACTION_TYPE_ANSWER = "answer";
 
@@ -64,10 +64,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     NumberTextView ntvFans;
     @InjectView(R.id.bt_profile_focus)
     Button btFocus;
-
     @InjectView(R.id.tv_profile_ask)
     TextView tvAsk;
-
     @InjectView(R.id.tv_profile_answer)
     TextView tvAnswer;
 
@@ -81,13 +79,13 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     }
 
     @OnClick(R.id.tv_profile_ask)
-    public void startAskActivity(){
-        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ASK,uid,_userInfo.nick_name,_userInfo.avatar_file);
+    public void startAskActivity() {
+        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ASK, uid, _userInfo.nick_name, _userInfo.avatar_file);
     }
 
     @OnClick(R.id.tv_profile_answer)
-    public void startAnswerActivity(){
-        ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ANSWER,uid,_userInfo.nick_name,_userInfo.avatar_file);
+    public void startAnswerActivity() {
+        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
     }
 
     @Override
@@ -134,7 +132,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     @Override
     public void bindUserInfo(UserInfo userInfo) {
         _userInfo = userInfo;
-        if (userInfo.avatar_file != null) {
+        if (!TextUtils.isEmpty(userInfo.avatar_file)) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(ivAvatar);
         }
         tvUsername.setText(userInfo.nick_name);

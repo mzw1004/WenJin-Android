@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.home;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,7 +117,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.tvContent.setOnClickListener(clickListener);
 
             HomeItem homeItem = mDataset.get(position);
-            if (homeItem.user_info.avatar_file != null) {
+            if (!TextUtils.isEmpty(homeItem.user_info.avatar_file)) {
                 Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
             }
 

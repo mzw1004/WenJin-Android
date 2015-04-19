@@ -26,6 +26,7 @@
     <string name="drawer_item_setting">Setting</string>
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
     <string name="drawer_item_logout">Logout</string>
+    <string name="drawer_item_login">Login</string>
     
     <!-- Home strings -->
     <string name="post_question">post this question</string>
