@@ -7,4 +7,6 @@ public interface FeedbackView {
 
     void toastMessage(String msg);
 
+    void finishActivity();
+
 }

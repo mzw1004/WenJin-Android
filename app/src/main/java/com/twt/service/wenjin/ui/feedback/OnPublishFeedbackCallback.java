@@ -5,7 +5,7 @@ package com.twt.service.wenjin.ui.feedback;
  */
 public interface OnPublishFeedbackCallback {
 
-    void onPublishSuccess(String msg);
+    void onPublishSuccess();
 
     void onPublishFailure(String errorMsg);
 

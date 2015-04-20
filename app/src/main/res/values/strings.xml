@@ -122,4 +122,10 @@
     <!-- Welcome activity -->
     <string name="title_activity_welcome">Welcome</string>
 
+    <!-- Update dialog strings -->
+    <string name="update_message">Find new version, do you update immediately?</string>
+    <string name="update">Update</string>
+    <string name="update_later">Later</string>
+    <string name="no_new_version">It is latest version</string>
+
 </resources>

@@ -94,9 +94,9 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
             case android.R.id.home:
                 this.finishActivity();
                 break;
-            case R.id.action_insert_photo:
-                new SelectPhotoDialogFragment().show(this);
-                break;
+//            case R.id.action_insert_photo:
+//                new SelectPhotoDialogFragment().show(this);
+//                break;
             case R.id.action_publish:
                 mPresenter.publishAnswer(questionId, etContent.getText().toString(), "", cbAnonymous.isChecked());
                 break;

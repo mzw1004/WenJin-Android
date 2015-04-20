@@ -10,7 +10,7 @@ import com.twt.service.wenjin.BuildConfig;
 public class DeviceUtils {
 
     public static String getVersionName() {
-        return BuildConfig.VERSION_NAME + "." + BuildConfig.VERSION_CODE;
+        return BuildConfig.VERSION_NAME;
     }
 
     public static String getModel() {
@@ -23,6 +23,10 @@ public class DeviceUtils {
 
     public static String getSystemVersion() {
         return Build.VERSION.RELEASE;
+    }
+
+    public static String getSource() {
+        return "Android" + getBrand() + " " + getModel();
     }
 
 }

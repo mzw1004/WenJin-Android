@@ -59,6 +59,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
                 finish();
                 break;
             case R.id.action_publish:
+                mPresenter.publish(etContent.getText().toString(), etDetail.getText().toString());
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -67,6 +68,11 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void toastMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void finishActivity() {
+        this.finish();
     }
 
 }

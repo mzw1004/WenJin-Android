@@ -1,7 +1,12 @@
 package com.twt.service.wenjin.ui.publish;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -13,6 +18,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.event.SelectPhotoResultEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.SelectPhotoDialogFragment;
 
@@ -94,9 +100,9 @@ public class PublishActivity extends BaseActivity implements PublishView {
                         cbAnonymous.isChecked()
                 );
                 break;
-            case R.id.action_insert_photo:
-                new SelectPhotoDialogFragment().show(this);
-                break;
+//            case R.id.action_insert_photo:
+//                new SelectPhotoDialogFragment().show(this);
+//                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -105,8 +111,16 @@ public class PublishActivity extends BaseActivity implements PublishView {
     @Subscribe
     public void onSelectPhotoResult(SelectPhotoResultEvent event) {
         if (event.getPhotoFilePath() != null) {
-            LogHelper.v(LOG_TAG, "select photo result");
+//            LogHelper.v(LOG_TAG, "select photo result");
             LogHelper.v(LOG_TAG, "photo file path: " + event.getPhotoFilePath());
+            String path = event.getPhotoFilePath();
+//            Bitmap bitmap = BitmapFactory.decodeFile(path);
+            Bitmap bitmap = ResourceHelper.readBitmapAutoSize(path, etContent.getWidth(), etContent.getHeight());
+            ImageSpan span = new ImageSpan(this, bitmap);
+            SpannableString ss = new SpannableString(path);
+            ss.setSpan(span, 0, path.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            etContent.setText(ss);
+            LogHelper.d(LOG_TAG, etContent.getText().toString());
         }
     }
 

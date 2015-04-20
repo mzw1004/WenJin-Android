@@ -3,6 +3,7 @@ package com.twt.service.wenjin;
 import android.app.Application;
 import android.content.Context;
 
+import com.activeandroid.ActiveAndroid;
 import com.loopj.android.http.PersistentCookieStore;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.CrashHandler;
@@ -34,6 +35,8 @@ public class WenJinApp extends Application {
 
         CrashHandler crashHandler = CrashHandler.getInstance();
         crashHandler.init(sContext);
+
+        ActiveAndroid.initialize(this);
     }
 
     private List<Object> getModules() {

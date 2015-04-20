@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.drawer;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -135,7 +136,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 //                if (mEmail != null) {
 //                    headerHolder.mTvEmail.setText(mEmail);
 //                }
-                if (mAvatarFile != null) {
+                if (!TextUtils.isEmpty(mAvatarFile)) {
                     Picasso.with(mContext).load(ApiClient.getAvatarUrl(mAvatarFile)).into(headerHolder.mIvProfile);
                 }
                 headerHolder.mIvProfile.setOnClickListener(new View.OnClickListener() {
