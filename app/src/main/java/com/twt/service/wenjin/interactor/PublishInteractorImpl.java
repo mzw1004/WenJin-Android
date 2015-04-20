@@ -17,8 +17,8 @@ public class PublishInteractorImpl implements PublishInteractor {
     private static final String LOG_TAG = PublishInteractorImpl.class.getSimpleName();
 
     @Override
-    public void publishQuestion(String title, String content, String attachKey, String topics, final OnPublishCallback callback) {
-        ApiClient.publishQuestion(title, content, attachKey, topics, new JsonHttpResponseHandler() {
+    public void publishQuestion(String title, String content, String attachKey, String topics, boolean isAnonymous, final OnPublishCallback callback) {
+        ApiClient.publishQuestion(title, content, attachKey, topics, isAnonymous, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);

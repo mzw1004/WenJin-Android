@@ -16,8 +16,8 @@ import org.json.JSONObject;
 public class AnswerInteractorImpl implements AnswerInteractor {
 
     @Override
-    public void publishAnswer(int questionId, String content, String attachKey, final OnAnswerCallback callback) {
-        ApiClient.answer(questionId, content, attachKey, new JsonHttpResponseHandler() {
+    public void publishAnswer(int questionId, String content, String attachKey, boolean isAnonymous, final OnAnswerCallback callback) {
+        ApiClient.answer(questionId, content, attachKey, isAnonymous, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);

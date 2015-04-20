@@ -7,5 +7,6 @@ import com.twt.service.wenjin.ui.answer.OnAnswerCallback;
  */
 public interface AnswerInteractor {
 
-    void publishAnswer(int questionId, String Content, String attachKey, OnAnswerCallback callback);
+    void publishAnswer(int questionId, String Content, String attachKey, boolean isAnonymous, OnAnswerCallback callback);
+
 }

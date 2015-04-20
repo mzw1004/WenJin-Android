@@ -23,6 +23,17 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/cb_answer_anonymous"
+        android:text="@string/publish_anonymous"
+        android:textColor="@color/color_text_primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 
 </LinearLayout>

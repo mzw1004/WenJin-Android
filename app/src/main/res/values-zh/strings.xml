@@ -58,6 +58,7 @@
     <string name="action_publish">发布</string>
     <string name="action_insert_photo">插入图片</string>
     <string name="publish_success">发布成功</string>
+    <string name="publish_anonymous">匿名发布</string>
 
     <!-- Photo select dialog strings -->
     <string name="title_dialog_photo_select">选择图片</string>

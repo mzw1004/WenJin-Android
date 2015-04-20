@@ -71,12 +71,17 @@ public class ApiClient {
         PrefUtils.setLogin(false);
     }
 
-    public static void publishQuestion(String title, String content, String attachKey, String topics, JsonHttpResponseHandler handler) {
+    public static void publishQuestion(String title, String content, String attachKey, String topics, boolean isAnonymous, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("question_content", title);
         params.put("question_detail", content);
         params.put("attach_access_key", attachKey);
         params.put("topics", topics);
+        if (isAnonymous) {
+            params.put("anonymous", 1);
+        } else {
+            params.put("anonymous", 0);
+        }
 
         sClient.post(BASE_URL + PUBLISH_QUESTION_URL, params, handler);
     }
@@ -164,11 +169,16 @@ public class ApiClient {
         sClient.post(BASE_URL + ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
     }
 
-    public static void answer(int questionId, String content, String attachKey, JsonHttpResponseHandler handler) {
+    public static void answer(int questionId, String content, String attachKey, boolean isAnonymous, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("question_id", questionId);
         params.put("answer_content", content);
         params.put("attach_access_key", attachKey);
+        if (isAnonymous) {
+            params.put("anonymous", 1);
+        } else {
+            params.put("anonymous", 0);
+        }
 
         sClient.post(BASE_URL + ANSWER_URL, params, handler);
     }

@@ -18,7 +18,7 @@ public class PublishPresenterImpl implements PublishPresenter, OnPublishCallback
     }
 
     @Override
-    public void publishQuestion(String title, String content, String attachKey, String[] topics) {
+    public void publishQuestion(String title, String content, String attachKey, String[] topics, boolean isAnonymous) {
         String s = "";
         if (topics.length > 0) {
             s += topics[0];
@@ -26,7 +26,7 @@ public class PublishPresenterImpl implements PublishPresenter, OnPublishCallback
                 s += topics[i];
             }
         }
-        mInteractor.publishQuestion(title, content, attachKey, s, this);
+        mInteractor.publishQuestion(title, content, attachKey, s, isAnonymous, this);
     }
 
     @Override

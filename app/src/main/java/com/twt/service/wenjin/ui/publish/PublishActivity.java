@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,6 +40,8 @@ public class PublishActivity extends BaseActivity implements PublishView {
     EditText etContent;
     @InjectView(R.id.tag_group_publish)
     TagGroup tagGroup;
+    @InjectView(R.id.cb_publish_anonymous)
+    CheckBox cbAnonymous;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +86,13 @@ public class PublishActivity extends BaseActivity implements PublishView {
                 this.finish();
                 break;
             case R.id.action_publish:
-                mPresenter.publishQuestion(etTitle.getText().toString(), etContent.getText().toString(), "", tagGroup.getTags());
+                mPresenter.publishQuestion(
+                        etTitle.getText().toString(),
+                        etContent.getText().toString(),
+                        "",
+                        tagGroup.getTags(),
+                        cbAnonymous.isChecked()
+                );
                 break;
             case R.id.action_insert_photo:
                 new SelectPhotoDialogFragment().show(this);

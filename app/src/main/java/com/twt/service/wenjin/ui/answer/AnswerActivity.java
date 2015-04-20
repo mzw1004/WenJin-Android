@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     Toolbar toolbar;
     @InjectView(R.id.et_answer_content)
     EditText etContent;
+    @InjectView(R.id.cb_answer_anonymous)
+    CheckBox cbAnonymous;
 
     private int questionId;
 
@@ -95,7 +98,7 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
                 new SelectPhotoDialogFragment().show(this);
                 break;
             case R.id.action_publish:
-                mPresenter.publishAnswer(questionId, etContent.getText().toString(), "");
+                mPresenter.publishAnswer(questionId, etContent.getText().toString(), "", cbAnonymous.isChecked());
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -5,6 +5,6 @@ package com.twt.service.wenjin.ui.answer;
  */
 public interface AnswerPresenter {
 
-    void publishAnswer(int questionId, String content, String attachKey);
+    void publishAnswer(int questionId, String content, String attachKey, boolean isAnonymous);
 
 }

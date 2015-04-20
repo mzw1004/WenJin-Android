@@ -18,8 +18,8 @@ public class AnswerPresenterImpl implements AnswerPresenter, OnAnswerCallback {
     }
 
     @Override
-    public void publishAnswer(int questionId, String content, String attachKey) {
-        mInteractor.publishAnswer(questionId, content, attachKey, this);
+    public void publishAnswer(int questionId, String content, String attachKey, boolean isAnonymous) {
+        mInteractor.publishAnswer(questionId, content, attachKey, isAnonymous, this);
     }
 
     @Override

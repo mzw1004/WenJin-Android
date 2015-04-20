@@ -58,6 +58,7 @@
     <string name="action_publish">Publish</string>
     <string name="action_insert_photo">Insert photo</string>
     <string name="publish_success">Publish successfully</string>
+    <string name="publish_anonymous">Anonymous</string>
 
     <!-- Photo select dialog strings -->
     <string name="title_dialog_photo_select">Select photo</string>

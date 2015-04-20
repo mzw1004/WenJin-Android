@@ -7,6 +7,6 @@ import com.twt.service.wenjin.ui.publish.OnPublishCallback;
  */
 public interface PublishInteractor {
 
-    void publishQuestion(String title, String content, String attachKey, String topics, OnPublishCallback callback);
+    void publishQuestion(String title, String content, String attachKey, String topics, boolean isAnoymous, OnPublishCallback callback);
 
 }
