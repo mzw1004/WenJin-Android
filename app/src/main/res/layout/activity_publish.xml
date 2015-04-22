@@ -12,60 +12,72 @@
         android:minHeight="?attr/actionBarSize"
         android:background="@android:color/transparent" />
 
-    <EditText
-        android:id="@+id/et_publish_title"
-        android:hint="@string/hint_publish_title"
-        android:background="@android:color/transparent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <me.gujun.android.taggroup.TagGroup
-            android:id="@+id/tag_group_publish"
-            app:isAppendMode="true"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/et_publish_title"
+                android:hint="@string/hint_publish_title"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <CheckBox
-            android:id="@+id/cb_publish_anonymous"
-            android:text="@string/publish_anonymous"
-            android:textColor="@color/color_text_primary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
 
-    </LinearLayout>
+                <me.gujun.android.taggroup.TagGroup
+                    android:id="@+id/tag_group_publish"
+                    app:isAppendMode="true"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/color_divider"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp" />
+                <CheckBox
+                    android:id="@+id/cb_publish_anonymous"
+                    android:text="@string/publish_anonymous"
+                    android:textColor="@color/color_text_primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/et_publish_content"
-        android:hint="@string/hint_publish_content"
-        android:inputType="textMultiLine"
-        android:minLines="5"
-        android:gravity="start"
-        android:background="@android:color/transparent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/color_divider"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/et_publish_content"
+                android:hint="@string/hint_publish_content"
+                android:inputType="textMultiLine"
+                android:gravity="start"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

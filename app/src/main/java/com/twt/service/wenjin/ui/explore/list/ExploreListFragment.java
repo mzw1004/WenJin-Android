@@ -95,6 +95,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
             }
         });
 
+        _exploreListPresenter.loadExploreItems(type);
 
         return rootView;
     }
@@ -102,7 +103,6 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     @Override
     public void onStart() {
         super.onStart();
-        _exploreListPresenter.loadExploreItems(type);
     }
 
 

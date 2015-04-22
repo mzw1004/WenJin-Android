@@ -79,17 +79,19 @@ public class ApiClient {
         PrefUtils.setLogin(false);
     }
 
-    public static void uploadFile(String type, String md5, File file, JsonHttpResponseHandler handler) {
+    public static void uploadFile(String type, String attachKey, File file, JsonHttpResponseHandler handler) {
+        Uri url = Uri.parse(BASE_URL + UPLOAD_FILE_URL).buildUpon()
+                .appendQueryParameter("id", type)
+                .appendQueryParameter("attach_access_key", attachKey)
+                .build();
         RequestParams params = new RequestParams();
-        params.put("id", type);
-        params.put("attach_access_key", md5);
         try {
             params.put("qqfile", file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        sClient.post(BASE_URL + UPLOAD_FILE_URL, params, handler);
+        sClient.post(url.toString(), params, handler);
     }
 
     public static void publishQuestion(String title, String content, String attachKey, String topics, boolean isAnonymous, JsonHttpResponseHandler handler) {

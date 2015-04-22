@@ -1,7 +1,6 @@
 package com.twt.service.wenjin.ui.publish;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.otto.Subscribe;
@@ -100,17 +100,16 @@ public class PublishActivity extends BaseActivity implements PublishView {
                         item.setEnabled(true);
                     }
                 }, 2000);
-                mPresenter.publishQuestion(
+                mPresenter.actionPublish(
                         etTitle.getText().toString(),
                         etContent.getText().toString(),
-                        "",
                         tagGroup.getTags(),
                         cbAnonymous.isChecked()
                 );
                 break;
-//            case R.id.action_insert_photo:
-//                new SelectPhotoDialogFragment().show(this);
-//                break;
+            case R.id.action_insert_photo:
+                new SelectPhotoDialogFragment().show(this);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -122,12 +121,19 @@ public class PublishActivity extends BaseActivity implements PublishView {
 //            LogHelper.v(LOG_TAG, "select photo result");
             LogHelper.v(LOG_TAG, "photo file path: " + event.getPhotoFilePath());
             String path = event.getPhotoFilePath();
+            mPresenter.addPath(path);
 //            Bitmap bitmap = BitmapFactory.decodeFile(path);
-            Bitmap bitmap = ResourceHelper.readBitmapAutoSize(path, etContent.getWidth(), etContent.getHeight());
-            ImageSpan span = new ImageSpan(this, bitmap);
-            SpannableString ss = new SpannableString(path);
-            ss.setSpan(span, 0, path.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            etContent.setText(ss);
+            Bitmap bitmap = ResourceHelper.readBitmapAutoSize(path, etContent.getWidth(), etContent.getWidth());
+            ImageSpan span = new ImageSpan(bitmap, ImageSpan.ALIGN_BASELINE);
+
+            int start = etContent.getSelectionStart();
+            int end = start + path.length();
+            etContent.getText().insert(start, path);
+
+            SpannableString ss = new SpannableString(etContent.getText());
+            ss.setSpan(span, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            etContent.setText(ss, TextView.BufferType.SPANNABLE);
             LogHelper.d(LOG_TAG, etContent.getText().toString());
         }
     }
