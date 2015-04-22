@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.topic.list;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,7 +91,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             if (topic.topic_description != null) {
                 itemHolder.tvDescription.setText(topic.topic_description);
             }
-            if (topic.topic_pic.equals("")) {
+            if (TextUtils.isEmpty(topic.topic_pic)) {
                 itemHolder.imageView.setImageResource(R.drawable.ic_topic_pic);
             } else {
                 Picasso.with(mContext).load(ApiClient.getTopicPicUrl(topic.topic_pic)).into(itemHolder.imageView);

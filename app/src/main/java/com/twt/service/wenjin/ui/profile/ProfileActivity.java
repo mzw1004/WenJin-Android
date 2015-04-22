@@ -78,15 +78,15 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         context.startActivity(intent);
     }
 
-    @OnClick(R.id.tv_profile_ask)
-    public void startAskActivity() {
-        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ASK, uid, _userInfo.nick_name, _userInfo.avatar_file);
-    }
-
-    @OnClick(R.id.tv_profile_answer)
-    public void startAnswerActivity() {
-        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
-    }
+//    @OnClick(R.id.tv_profile_ask)
+//    public void startAskActivity() {
+//        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ASK, uid, _userInfo.nick_name, _userInfo.avatar_file);
+//    }
+//
+//    @OnClick(R.id.tv_profile_answer)
+//    public void startAnswerActivity() {
+//        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,6 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uid = getIntent().getIntExtra(PARM_USER_ID, 0);
-        btFocus.setOnClickListener(this);
     }
 
     @Override
@@ -150,6 +149,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
             }
             btFocus.setVisibility(View.VISIBLE);
         }
+        btFocus.setOnClickListener(this);
+        tvAsk.setOnClickListener(this);
+        tvAnswer.setOnClickListener(this);
     }
 
     @Override
@@ -176,6 +178,12 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         switch (v.getId()) {
             case R.id.bt_profile_focus:
                 mPresenter.actionFocus(uid);
+                break;
+            case R.id.tv_profile_ask:
+                ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ASK, uid, _userInfo.nick_name, _userInfo.avatar_file);
+                break;
+            case R.id.tv_profile_answer:
+                ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
                 break;
         }
     }

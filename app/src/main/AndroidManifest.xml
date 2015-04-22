@@ -68,8 +68,7 @@
 
         <activity
             android:name=".ui.answer.comment.CommentActivity"
-            android:label="@string/title_activity_comment"
-            android:windowSoftInputMode="adjustResize" >
+            android:label="@string/title_activity_comment" >
         </activity>
 
         <activity

@@ -27,7 +27,7 @@ public class AboutActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        tvVersion.setText(DeviceUtils.getVersionName());
+        tvVersion.setText("version: " + DeviceUtils.getVersionName());
     }
 
 }

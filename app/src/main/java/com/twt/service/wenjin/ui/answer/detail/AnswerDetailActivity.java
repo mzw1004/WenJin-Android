@@ -143,7 +143,9 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
                 startProfileActivity();
                 break;
             case R.id.action_comment:
-                startCommentActivity();
+                if (!tvCommentCount.getText().toString().equals("…")) {
+                    startCommentActivity();
+                }
                 break;
         }
     }

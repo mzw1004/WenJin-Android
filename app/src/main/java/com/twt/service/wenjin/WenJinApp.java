@@ -33,8 +33,8 @@ public class WenJinApp extends Application {
         sCookieStore = new PersistentCookieStore(sContext);
         ApiClient.getInstance().setCookieStore(sCookieStore);
 
-        CrashHandler crashHandler = CrashHandler.getInstance();
-        crashHandler.init(sContext);
+//        CrashHandler crashHandler = CrashHandler.getInstance();
+//        crashHandler.init(sContext);
 
         ActiveAndroid.initialize(this);
     }

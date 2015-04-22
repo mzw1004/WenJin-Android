@@ -128,7 +128,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     tagStrings.add(topic.topic_title);
                 }
                 question.tagGroup.setTags(tagStrings);
-                question.tagGroup.setOnClickListener(onClickListener);
+//                question.tagGroup.setOnClickListener(onClickListener);
 
                 // focus and comment number
                 question.tvFocus.setText("" + mQuestionResponse.question_info.focus_count);
@@ -151,6 +151,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 Answer answer = mQuestionResponse.answers.get(position - 1);
                 if (!TextUtils.isEmpty(answer.avatar_file)) {
                     Picasso.with(mContext).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(answerHolder.ivAvatar);
+                } else {
+                    answerHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
                 }
                 answerHolder.tvUsername.setText(answer.nick_name);
                 answerHolder.tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(mContext, answerHolder.tvContent), null));

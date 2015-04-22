@@ -6,8 +6,6 @@ import android.os.Handler;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
 
 import com.activeandroid.query.Select;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -21,9 +19,6 @@ import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 
 import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class WelcomeActivity extends ActionBarActivity {
 

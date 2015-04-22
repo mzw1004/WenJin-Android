@@ -87,7 +87,9 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     @Override
     public void onFailure(String errorString) {
         mHomeView.hideRefresh();
-        mHomeView.toastMessage(errorString);
+        if (errorString != null) {
+            mHomeView.toastMessage(errorString);
+        }
     }
 
 }
