@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.twt.service.wenjin.ui.answer.AnswerActivity">
 
-    <!--<item-->
-        <!--android:id="@+id/action_insert_photo"-->
-        <!--android:icon="@drawable/ic_action_insert_photo"-->
-        <!--android:title="@string/action_insert_photo"-->
-        <!--app:showAsAction="always" />-->
+    <item
+        android:id="@+id/action_insert_photo"
+        android:icon="@drawable/ic_action_insert_photo"
+        android:title="@string/action_insert_photo"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_publish"
