@@ -101,6 +101,10 @@
             android:windowSoftInputMode="adjustResize" >
         </activity>
 
+        <activity
+            android:name=".ui.profile.follows.FollowsActivity"
+            android:label="@string/title_activity_follows">
+        </activity>
     </application>
 
 </manifest>

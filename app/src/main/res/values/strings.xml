@@ -129,4 +129,9 @@
     <string name="update_later">Later</string>
     <string name="no_new_version">It is the latest version</string>
 
+    <!--Follows Activity-->
+    <string name="title_activity_follows">Follows</string>
+    <string name="action_type_following">Following</string>
+    <string name="action_type_followers">Followers</string>
+
 </resources>

@@ -57,6 +57,8 @@ public class ApiClient {
     private static final String MY_QUESTION_URL = "api/my_question.php";
     private static final String FEEDBACK_URL = "?/api/ticket/publish/";
     private static final String CHECK_UPDATE_URL = "?/api/update/check/";
+    private static final String MY_FOCUS_USER = "api/my_focus_user.php";
+    private static final String MY_FANS_USER = "api/my_fans_user.php";
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
@@ -270,11 +272,29 @@ public class ApiClient {
 
         sClient.post(BASE_URL + FEEDBACK_URL, params, handler);
     }
+
+    public static void getMyFocusUser(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid",uid);
+        params.put("page",page);
+        params.put("per_page",perPage);
+        sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
+    }
+
     public static void checkNewVersion(String version, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("version", version);
 
         sClient.post(BASE_URL + CHECK_UPDATE_URL, params, handler);
+    }
+
+    public static void getMyFansUser(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid",uid);
+        params.put("page",page);
+        params.put("per_page",perPage);
+
+        sClient.get(BASE_URL + MY_FANS_USER,params,handler);
     }
 
 }

@@ -68,7 +68,7 @@
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">用户登录</string>
-    <string name="login_username_hint">天外天用户名/Email</string>
+    <string name="login_username_hint">天外天账号/Email</string>
     <string name="login_password_hint">密码</string>
     <string name="login_btn_text">登录</string>
     <string name="login_error_empty">不能为空</string>
@@ -126,5 +126,9 @@
     <string name="update">立即更新</string>
     <string name="update_later">稍后</string>
     <string name="no_new_version">当前已是最新版本</string>
+
+    <!--Follows Activity-->
+    <string name="action_type_following">关注</string>
+    <string name="action_type_followers">被关注</string>
 
 </resources>
