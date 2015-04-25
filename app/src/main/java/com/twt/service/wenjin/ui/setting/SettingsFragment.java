@@ -55,7 +55,8 @@ public class SettingsFragment extends PreferenceFragment {
                             String isNew = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("is_new");
                             if (isNew.equals("1")) {
                                 String url = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("url");
-                                UpdateDialogFragment.newInstance(url).show((ActionBarActivity) getActivity());
+                                String description = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("description");
+                                UpdateDialogFragment.newInstance(url, description).show((ActionBarActivity) getActivity());
                             } else {
                                 TextDialogFragment.newInstance(getString(R.string.no_new_version)).show((ActionBarActivity) getActivity());
                             }
@@ -69,4 +70,11 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ApiClient.getInstance().cancelRequests(getActivity(), false);
+    }
+
 }

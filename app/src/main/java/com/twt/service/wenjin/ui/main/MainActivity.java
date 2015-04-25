@@ -19,7 +19,6 @@ import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.common.TextDialogFragment;
 import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
@@ -86,7 +85,8 @@ public class MainActivity extends BaseActivity implements MainView {
                     String isNew = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("is_new");
                     if (isNew.equals("1")) {
                         String url = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("url");
-                        UpdateDialogFragment.newInstance(url).show(MainActivity.this);
+                        String description = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("description");
+                        UpdateDialogFragment.newInstance(url, description).show(MainActivity.this);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -105,6 +105,7 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void onStop() {
         super.onStop();
         BusProvider.getBusInstance().unregister(this);
+        ApiClient.getInstance().cancelRequests(this, false);
     }
 
     @Subscribe

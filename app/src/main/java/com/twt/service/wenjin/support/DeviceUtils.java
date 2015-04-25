@@ -26,7 +26,7 @@ public class DeviceUtils {
     }
 
     public static String getSource() {
-        return "Android" + getBrand() + " " + getModel();
+        return getBrand() + " " + getModel();
     }
 
 }

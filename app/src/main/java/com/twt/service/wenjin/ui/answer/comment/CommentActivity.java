@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.answer.comment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -78,7 +79,14 @@ public class CommentActivity extends BaseActivity implements CommentView, OnItem
 
         ivPublish.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
+                v.setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        v.setClickable(true);
+                    }
+                }, 2000);
                 mPresenter.publishComment(answerId, etContent.getText().toString());
             }
         });

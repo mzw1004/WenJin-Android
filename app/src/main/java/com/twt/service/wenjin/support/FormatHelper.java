@@ -41,8 +41,10 @@ public class FormatHelper {
             return hours + " " + ResourceHelper.getString(R.string.hours_ago);
         } else if (minutes > 0) {
             return minutes + " " + ResourceHelper.getString(R.string.minutes_ago);
-        } else {
+        } else if (seconds > 0){
             return seconds + " " + ResourceHelper.getString(R.string.seconds_ago);
+        } else {
+            return ResourceHelper.getString(R.string.just_now);
         }
     }
 

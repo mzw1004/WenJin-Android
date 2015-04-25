@@ -12,6 +12,7 @@
     <string name="hours_ago">hours ago</string>
     <string name="minutes_ago">minutes ago</string>
     <string name="seconds_ago">seconds ago</string>
+    <string name="just_now">Just now</string>
     <string name="add_in">add in</string>
     <string name="reply">Reply</string>
     <string name="quit">Press again to quit</string>
@@ -67,7 +68,7 @@
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">LoginActivity</string>
-    <string name="login_username_hint">Username/Email</string>
+    <string name="login_username_hint">TWT Username/Email</string>
     <string name="login_password_hint">Password</string>
     <string name="login_btn_text">Login</string>
     <string name="login_error_empty">Can Not Be Empty</string>
@@ -123,7 +124,7 @@
     <string name="title_activity_welcome">Welcome</string>
 
     <!-- Update dialog strings -->
-    <string name="update_message">Find new version, do you update immediately?</string>
+    <string name="update_message">Find new version</string>
     <string name="update">Update</string>
     <string name="update_later">Later</string>
     <string name="no_new_version">It is the latest version</string>

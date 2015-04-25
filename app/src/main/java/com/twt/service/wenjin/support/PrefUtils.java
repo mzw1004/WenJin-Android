@@ -26,7 +26,7 @@ public class PrefUtils {
     public static void setDefaultPrefUserInfo(UserInfo userInfo) {
         getDefaultSharedPreferences().edit()
                 .putInt(PREF_UID, userInfo.uid)
-                .putString(PREF_USERNAME, userInfo.user_name)
+                .putString(PREF_USERNAME, userInfo.nick_name)
                 .putString(PREF_AVATAR_FILE, userInfo.avatar_file)
                 .apply();
     }

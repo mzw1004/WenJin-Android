@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.feedback;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,12 +54,19 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
             case R.id.action_publish:
+                item.setEnabled(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        item.setEnabled(true);
+                    }
+                }, 2000);
                 mPresenter.publish(etContent.getText().toString(), etDetail.getText().toString());
                 break;
         }

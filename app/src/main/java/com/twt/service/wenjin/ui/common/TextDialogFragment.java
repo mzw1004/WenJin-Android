@@ -4,7 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -38,7 +38,7 @@ public class TextDialogFragment extends DialogFragment {
                 .build();
     }
 
-    public void show(ActionBarActivity context) {
+    public void show(AppCompatActivity context) {
         show(context.getSupportFragmentManager(), "TEXT_DISPLAY");
     }
 }

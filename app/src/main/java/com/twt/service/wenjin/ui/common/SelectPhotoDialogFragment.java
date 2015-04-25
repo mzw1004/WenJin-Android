@@ -9,7 +9,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -62,7 +62,7 @@ public class SelectPhotoDialogFragment extends DialogFragment implements View.On
         return dialog;
     }
 
-    public void show(ActionBarActivity context) {
+    public void show(AppCompatActivity context) {
         show(context.getSupportFragmentManager(), "PHOTO_SELECTOR");
     }
 
