@@ -102,4 +102,8 @@
     <string name="action_type_questions">Questions</string>
     <string name="action_type_answers">Answers</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+    <!--Follows Activity-->
+    <string name="title_activity_follows">FollowsActivity</string>
+    <string name="action_type_following">Following</string>
+    <string name="action_type_followers">Followers</string>
 </resources>

@@ -48,6 +48,8 @@ public class ApiClient {
     private static final String PUBLISH_COMMENT_URL = "?/question/ajax/save_answer_comment/";
     private static final String MY_ANSWER_URL = "api/my_answer.php";
     private static final String MY_QUESTION_URL = "api/my_question.php";
+    private static final String MY_FOCUS_USER = "api/my_focus_user.php";
+    private static final String MY_FANS_USER = "my_fans_user";
 
     private boolean isLogin;
 
@@ -219,8 +221,24 @@ public class ApiClient {
         params.put("per_page", perPage);
 
         sClient.get(BASE_URL + MY_QUESTION_URL, params, handler);
+    }
 
+    public static void getMyFocusUser(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid",uid);
+        params.put("page",page);
+        params.put("per_page",perPage);
 
+        sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
+    }
+
+    public static void getMyFansUser(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("uid",uid);
+        params.put("page",page);
+        params.put("per_page",perPage);
+
+        sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
     }
 
 }

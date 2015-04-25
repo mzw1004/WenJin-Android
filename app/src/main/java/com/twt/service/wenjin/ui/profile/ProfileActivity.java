@@ -14,10 +14,12 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.bean.Follows;
 import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.NumberTextView;
 import com.twt.service.wenjin.ui.profile.askanswer.ProfileAskanswerActivity;
+import com.twt.service.wenjin.ui.profile.follows.FollowsActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,6 +38,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
 
     private static final String ACTION_TYPE_ASK = "ask";
     private static final String ACTION_TYPE_ANSWER = "answer";
+
+    private static final String ACTION_TYPE_FOLLOWING = "following";
+    private static final String ACTION_TYPE_FOLLOWERS = "followers";
 
     @Inject
     ProfilePresenter mPresenter;
@@ -82,6 +87,16 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
     @OnClick(R.id.tv_profile_answer)
     public void startAnswerActivity(){
         ProfileAskanswerActivity.anctionStart(this,ACTION_TYPE_ANSWER,uid,_userInfo.nick_name,_userInfo.avatar_file);
+    }
+
+    @OnClick(R.id.ntv_profile_friends_number)
+    public void startFollowersActivity(){
+        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWING,uid);
+    }
+
+    @OnClick(R.id.ntv_profile_fans_number)
+    public void startFollowingActivity(){
+        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWERS,uid);
     }
 
     @Override

@@ -72,4 +72,8 @@ public class InteractorsModule {
     @Provides @Singleton ProfileAskanswerInteractor provideProfileAskanswerInteractor(){
         return new ProfileAskanswerInteractorImpl();
     }
+
+    @Provides @Singleton FollowsInteractor provideFollowsInteractor(){
+        return new FollowsInteracotrImpl();
+    }
 }
