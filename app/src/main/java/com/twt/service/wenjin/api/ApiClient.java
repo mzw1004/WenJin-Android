@@ -49,7 +49,7 @@ public class ApiClient {
     private static final String MY_ANSWER_URL = "api/my_answer.php";
     private static final String MY_QUESTION_URL = "api/my_question.php";
     private static final String MY_FOCUS_USER = "api/my_focus_user.php";
-    private static final String MY_FANS_USER = "my_fans_user";
+    private static final String MY_FANS_USER = "api/my_fans_user.php";
 
     private boolean isLogin;
 
@@ -238,7 +238,7 @@ public class ApiClient {
         params.put("page",page);
         params.put("per_page",perPage);
 
-        sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
+        sClient.get(BASE_URL + MY_FANS_USER,params,handler);
     }
 
 }
