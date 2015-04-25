@@ -72,7 +72,7 @@ public class ProfileAskanswerPresenterImpl implements
         }
 
         if(type.compareTo(ACTION_TYPE_ASK) == 0 ){
-           _profileAskanswerInteractor.getAskItems(uid,_page,10,this);
+            _profileAskanswerInteractor.getAskItems(uid,_page,10,this);
         }
     }
 
