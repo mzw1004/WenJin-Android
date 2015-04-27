@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/ll_comment" />
 
     <ProgressBar
         android:id="@+id/pb_comment_loading"
@@ -23,6 +24,7 @@
         android:layout_centerInParent="true" />
 
     <LinearLayout
+        android:id="@+id/ll_comment"
         android:orientation="horizontal"
         android:background="@android:color/white"
         android:gravity="center_vertical"
@@ -32,7 +34,7 @@
 
         <EditText
             android:id="@+id/et_comment_content"
-            android:layout_weight="7"
+            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -42,8 +44,7 @@
         <ImageView
             android:id="@+id/iv_comment_publish"
             android:src="@drawable/ic_action_publish"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@android:style/Widget.ActionButton"/>
 

@@ -9,6 +9,8 @@ public interface HomePresenter {
 
     void refreshHomeItems();
 
+    void firstTimeRefreshHomeItems();
+
     void loadMoreHomeItems();
 
     void onItemClicked(View v, int position);

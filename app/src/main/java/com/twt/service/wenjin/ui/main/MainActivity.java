@@ -1,26 +1,33 @@
 package com.twt.service.wenjin.ui.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.otto.Subscribe;
+import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.home.HomeFragment;
-import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
-import com.twt.service.wenjin.ui.user.UserFragment;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +56,9 @@ public class MainActivity extends BaseActivity implements MainView {
     private HomeFragment mHomeFragment;
     private ExploreFragment mExploreFragment;
     private TopicFragment mTopicFragment;
-    private UserFragment mUserFragment;
+//    private UserFragment mUserFragment;
+
+    private long exitTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +76,23 @@ public class MainActivity extends BaseActivity implements MainView {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_container, new HomeFragment())
                 .commit();
+
+        ApiClient.checkNewVersion(BuildConfig.VERSION_CODE + "", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    String isNew = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("is_new");
+                    if (isNew.equals("1")) {
+                        String url = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("url");
+                        String description = response.getJSONObject(ApiClient.RESP_MSG_KEY).getJSONObject("info").getString("description");
+                        UpdateDialogFragment.newInstance(url, description).show(MainActivity.this);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
@@ -79,6 +105,7 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void onStop() {
         super.onStop();
         BusProvider.getBusInstance().unregister(this);
+        ApiClient.getInstance().cancelRequests(this, false);
     }
 
     @Subscribe
@@ -116,12 +143,12 @@ public class MainActivity extends BaseActivity implements MainView {
                 }
                 fragment = mTopicFragment;
                 break;
-            case 3:
-                if (mUserFragment == null) {
-                    mUserFragment = new UserFragment();
-                }
-                fragment = mUserFragment;
-                break;
+//            case 3:
+//                if (mUserFragment == null) {
+//                    mUserFragment = new UserFragment();
+//                }
+//                fragment = mUserFragment;
+//                break;
         }
         fragmentManager.beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
@@ -135,19 +162,34 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public void startNewActivity(int position) {
-        LogHelper.v(LOG_TAG, "start new activity: " + position);
-        switch (position) {
-            case 4:
-                LogHelper.v(LOG_TAG, "start setting activity");
-                break;
-            case 5:
-                LogHelper.v(LOG_TAG, "start help activity");
-                break;
-            case 6:
-                LogHelper.v(LOG_TAG, "user logout");
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (System.currentTimeMillis() - exitTime > 2000) {
+                Toast.makeText(this, getString(R.string.quit), Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
         }
+        return super.onKeyDown(keyCode, event);
     }
+
+    //    @Override
+//    public void startNewActivity(int position) {
+//        LogHelper.v(LOG_TAG, "start new activity: " + position);
+//        switch (position) {
+//            case 4:
+//                LogHelper.v(LOG_TAG, "start setting activity");
+//                break;
+//            case 5:
+//                LogHelper.v(LOG_TAG, "start help activity");
+//                break;
+//            case 6:
+//                LogHelper.v(LOG_TAG, "user logout");
+//                startActivity(new Intent(this, LoginActivity.class));
+//                break;
+//        }
+//    }
 }

@@ -14,10 +14,14 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
+        <meta-data android:name="AA_DB_NAME" android:value="WenJin.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value=".bean.CrashInfo" />
+
         <activity
-            android:name=".ui.welcome.WelcomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:name=".ui.welcome.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,45 +32,73 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:label="@string/app_name" >
-
         </activity>
+
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+
         <activity
             android:name=".ui.question.QuestionActivity"
             android:label="@string/title_activity_question" >
         </activity>
+
         <activity
-            android:name=".ui.answer.detail.AnswerDetailDetailActivity"
+            android:name=".ui.answer.detail.AnswerDetailActivity"
             android:label="@string/title_activity_answer_detail" >
         </activity>
+
         <activity
             android:name=".ui.publish.PublishActivity"
             android:label="@string/title_activity_publish"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+
         <activity
             android:name=".ui.answer.AnswerActivity"
-            android:label="@string/title_activity_answer" >
+            android:label="@string/title_activity_answer"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
+
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
+
         <activity
             android:name=".ui.answer.comment.CommentActivity"
-            android:label="@string/title_activity_comment"
-            android:windowSoftInputMode="adjustResize" >
+            android:label="@string/title_activity_comment" >
         </activity>
+
         <activity
             android:name=".ui.topic.detail.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
+        
         <activity
             android:name=".ui.profile.askanswer.ProfileAskanswerActivity"
             android:label="@string/title_activity_profile_askanswer" >
+        </activity>
+
+        <activity
+            android:name=".ui.setting.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".ui.setting.SettingsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.twt.service.wenjin.ui.setting.SettingsActivity" />
+        </activity>
+
+        <activity
+            android:name=".ui.feedback.FeedbackActivity"
+            android:label="@string/title_activity_feedback"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
 
         <activity

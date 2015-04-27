@@ -7,4 +7,6 @@ public interface ProfilePresenter {
 
     void getUserInfo(int uid);
 
+    void actionFocus(int uid);
+
 }

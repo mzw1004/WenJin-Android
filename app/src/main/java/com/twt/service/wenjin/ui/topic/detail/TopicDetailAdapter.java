@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.topic.detail;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,9 +71,11 @@ public class TopicDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
         };
         itemHolder.tvTitle.setText(bestAnswer.question_info.question_content);
-        itemHolder.tvUsername.setVisibility(View.GONE);
-        if (bestAnswer.answer_info.avatar_file != null) {
+        itemHolder.tvUsername.setText(bestAnswer.answer_info.nick_name);
+        if (!TextUtils.isEmpty(bestAnswer.answer_info.avatar_file)) {
             Picasso.with(mContext).load(ApiClient.getAvatarUrl(bestAnswer.answer_info.avatar_file)).into(itemHolder.ivAvatar);
+        } else {
+            itemHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
         }
         itemHolder.tvAddTime.setVisibility(View.GONE);
 

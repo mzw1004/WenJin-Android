@@ -11,4 +11,8 @@ public interface ProfileView {
 
     void toastMessage(String msg);
 
+    void addFocus();
+
+    void removeFocus();
+
 }

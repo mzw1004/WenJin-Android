@@ -19,7 +19,7 @@ import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
-import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
@@ -149,7 +149,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     public void startAnswerDetailActivty(int position) {
         Answer answer = mQuestionAdapter.getAnswer(position);
         QuestionInfo questionInfo = mQuestionAdapter.getQuestionInfo();
-        AnswerDetailDetailActivity.actionStart(this, answer.answer_id, questionInfo.question_content);
+        AnswerDetailActivity.actionStart(this, answer.answer_id, questionInfo.question_content);
     }
 
     @Override

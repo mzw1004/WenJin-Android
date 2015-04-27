@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
+    app:cardUseCompatPadding="true"
     app:cardElevation="1dp">
 
     <RelativeLayout
@@ -22,16 +23,17 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="wrap_content" />
 
         <View
             android:id="@+id/divider"
             android:background="@color/color_divider"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@id/tv_explore_item_title" />
+            android:layout_below="@+id/tv_explore_item_title"
+            android:layout_marginTop="8dp"/>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_explore_item_avatar"
             android:src="@drawable/ic_user_avatar"
             android:layout_marginTop="4dp"
@@ -39,7 +41,7 @@
             android:layout_marginStart="16dp"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_below="@id/divider" />
+            android:layout_below="@+id/divider" />
 
         <TextView
             android:id="@+id/tv_explore_item_user"

@@ -21,7 +21,7 @@ public class PicassoImageGetter implements Html.ImageGetter {
     final Picasso pablo;
     final TextView textView;
 
-    public PicassoImageGetter(final Context context, final TextView textView) {
+    public PicassoImageGetter(Context context, TextView textView) {
         this.textView  = textView;
         this.resources = context.getResources();
         this.pablo = Picasso.with(context);
@@ -29,6 +29,7 @@ public class PicassoImageGetter implements Html.ImageGetter {
 
     @Override
     public Drawable getDrawable(final String source) {
+
         final BitmapDrawablePlaceHolder result = new BitmapDrawablePlaceHolder();
 
         new AsyncTask<Void, Void, Bitmap>() {
@@ -45,7 +46,10 @@ public class PicassoImageGetter implements Html.ImageGetter {
             @Override
             protected void onPostExecute(final Bitmap bitmap) {
                 try {
-                    final BitmapDrawable drawable = new BitmapDrawable(resources, bitmap);
+                    int width = bitmap.getWidth();
+                    int height = bitmap.getHeight();
+                    Bitmap b = bitmap.createScaledBitmap(bitmap, textView.getWidth(), textView.getWidth() * height / width, true);
+                    final BitmapDrawable drawable = new BitmapDrawable(resources, b);
 
                     drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 
@@ -58,7 +62,7 @@ public class PicassoImageGetter implements Html.ImageGetter {
                 }
             }
 
-        }.execute((Void) null);
+        }.execute();
 
         return result;
     }

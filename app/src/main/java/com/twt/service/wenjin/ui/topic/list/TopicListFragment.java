@@ -87,6 +87,8 @@ public class TopicListFragment extends BaseFragment implements
             }
         });
 
+        mPresenter.refreshTopics(type);
+
         return rootView;
     }
 
@@ -99,7 +101,6 @@ public class TopicListFragment extends BaseFragment implements
     public void onStart() {
         super.onStart();
         LogHelper.v(LOG_TAG, "onStart, type: " + type);
-        mPresenter.refreshTopics(type);
     }
 
     @Override

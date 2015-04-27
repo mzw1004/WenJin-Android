@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.question;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.bean.QuestionInfo;
 import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.bean.Topic;
+import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
@@ -127,7 +129,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     tagStrings.add(topic.topic_title);
                 }
                 question.tagGroup.setTags(tagStrings);
-                question.tagGroup.setOnClickListener(onClickListener);
+//                question.tagGroup.setOnClickListener(onClickListener);
 
                 // focus and comment number
                 question.tvFocus.setText("" + mQuestionResponse.question_info.focus_count);
@@ -148,11 +150,13 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case ITEM_VIEW_TYPE_ANSWER:
                 AnswerHolder answerHolder = (AnswerHolder) holder;
                 Answer answer = mQuestionResponse.answers.get(position - 1);
-                if (answer.avatar_file != null) {
+                if (!TextUtils.isEmpty(answer.avatar_file)) {
                     Picasso.with(mContext).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(answerHolder.ivAvatar);
+                } else {
+                    answerHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
                 }
-                answerHolder.tvUsername.setText(answer.user_name);
-                answerHolder.tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(mContext, answerHolder.tvContent), null));
+                answerHolder.tvUsername.setText(answer.nick_name);
+                answerHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(answer.answer_content)));
 
                 answerHolder.ivAvatar.setOnClickListener(onClickListener);
                 answerHolder.tvUsername.setOnClickListener(onClickListener);

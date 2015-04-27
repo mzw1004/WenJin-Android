@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.explore.list;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,8 +83,6 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
@@ -125,8 +124,10 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                 if(exploreItem.user_info != null) {
                     itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
-                    if(exploreItem.user_info.avatar_file != ""){
+                    if(!TextUtils.isEmpty(exploreItem.user_info.avatar_file)){
                         Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
+                    } else {
+                        itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
                     }
                 }
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_article));
@@ -138,8 +139,10 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             if(0 == exploreItem.answer_count){
                 if(exploreItem.user_info != null) {
                     itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
-                    if(exploreItem.user_info.avatar_file != ""){
+                    if(!TextUtils.isEmpty(exploreItem.user_info.avatar_file)){
                         Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
+                    } else {
+                        itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
                     }
                 }
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_question));
@@ -147,8 +150,10 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 if(exploreItem.answer_users.length > 0){
                     UserInfo userInfo = exploreItem.answer_users[0];
                     itemHolder._tvUser.setText(userInfo.nick_name);
-                    if(userInfo.avatar_file != ""){
+                    if (!TextUtils.isEmpty(exploreItem.user_info.avatar_file)) {
                         Picasso.with(_context).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(itemHolder._ivAvatar);
+                    } else {
+                        itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
                     }
                 }
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.reply_question));
@@ -156,7 +161,6 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
 
         }
-
 
     }
 

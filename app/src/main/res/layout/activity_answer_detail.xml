@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity">
+    tools:context="com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -17,6 +17,7 @@
 
     <ImageView
         android:id="@+id/iv_answer_avatar"
+        android:src="@drawable/ic_user_avatar"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
@@ -34,7 +35,9 @@
         android:layout_marginStart="8dp"
         android:layout_below="@id/toolbar"
         android:layout_toRightOf="@+id/iv_answer_avatar"
-        android:layout_toEndOf="@+id/iv_answer_avatar" />
+        android:layout_toEndOf="@+id/iv_answer_avatar"
+        android:layout_toLeftOf="@+id/iv_answer_agree"
+        android:layout_toStartOf="@+id/iv_answer_agree" />
 
     <TextView
         android:id="@+id/tv_answer_signature"
@@ -44,6 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_answer_username"
         android:layout_alignStart="@+id/tv_answer_username"
+        android:layout_alignRight="@+id/tv_answer_username"
+        android:layout_alignEnd="@+id/tv_answer_username"
         android:layout_below="@+id/tv_answer_username" />
 
     <ImageView
@@ -73,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_below="@+id/iv_answer_avatar" >
+        android:layout_below="@+id/tv_answer_signature" >
 
         <LinearLayout
             android:orientation="vertical"

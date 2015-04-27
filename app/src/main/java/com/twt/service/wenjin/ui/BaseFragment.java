@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 
 import com.twt.service.wenjin.WenJinApp;
+import com.twt.service.wenjin.api.ApiClient;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        ApiClient.getInstance().cancelRequests(getActivity(), false);
     }
 
     protected abstract List<Object> getModules();

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
-import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.publish.PublishActivity;
@@ -63,7 +64,8 @@ public class HomeFragment extends BaseFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.refreshHomeItems();
+     //   mPresenter.refreshHomeItems();
+
     }
 
     @Override
@@ -91,13 +93,14 @@ public class HomeFragment extends BaseFragment implements
                     LogHelper.v(LOG_TAG, "start loading more");
                     mPresenter.loadMoreHomeItems();
                 }
-                if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
-//                    LogHelper.v(LOG_TAG, "scroll down");
-                    hideFabMenu();
-                } else if(firstVisibleItemPosition < mPrevFirstVisiblePosition) {
-//                    LogHelper.v(LOG_TAG, "scroll up");
-                    showFabMenu();
-                }
+//                if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
+////                    LogHelper.v(LOG_TAG, "scroll down");
+//                    hideFabMenu();
+//                    mPresenter.loadMoreHomeItems();
+//                } else if(firstVisibleItemPosition < mPrevFirstVisiblePosition) {
+////                    LogHelper.v(LOG_TAG, "scroll up");
+//                    showFabMenu();
+//                }
                 mPrevFirstVisiblePosition = firstVisibleItemPosition;
             }
         });
@@ -110,6 +113,7 @@ public class HomeFragment extends BaseFragment implements
             }
         });
 
+        mPresenter.firstTimeRefreshHomeItems();
         return rootView;
     }
 
@@ -122,6 +126,7 @@ public class HomeFragment extends BaseFragment implements
     public void onItemClicked(View v, int position) {
         mPresenter.onItemClicked(v, position);
     }
+
     @Override
     public void onRefresh() {
         mPresenter.refreshHomeItems();
@@ -147,10 +152,15 @@ public class HomeFragment extends BaseFragment implements
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
     public void startAnswerActivity(int position) {
         HomeItem item = mHomeAdapter.getItem(position);
         if (item.answer_info != null) {
-            AnswerDetailDetailActivity.actionStart(getActivity(), item.answer_info.answer_id, item.question_info.question_content);
+            AnswerDetailActivity.actionStart(getActivity(), item.answer_info.answer_id, item.question_info.question_content);
         }
     }
 

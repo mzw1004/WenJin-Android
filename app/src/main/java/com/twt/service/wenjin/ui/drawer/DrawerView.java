@@ -13,4 +13,10 @@ public interface DrawerView {
 
     void sendDrawerItemClickedEvent(int position);
 
+    void startSettingsActivity();
+
+    void startFeedbackActivity();
+
+    void startLoginActivity();
+
 }

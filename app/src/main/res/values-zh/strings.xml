@@ -4,15 +4,18 @@
 
     <string name="network_not_connected">网络没有连接</string>
     <string name="no_more_information">抱歉，没有更多的信息了</string>
-    <string name="load_more">加载更多…</string>
+    <string name="pic">[图片]</string>
+    <string name="load_more">加载中…</string>
     <string name="years_ago">年前</string>
     <string name="months_ago">月前</string>
     <string name="days_ago">天前</string>
     <string name="hours_ago">小时前</string>
     <string name="minutes_ago">分钟前</string>
     <string name="seconds_ago">秒前</string>
+    <string name="just_now">刚刚</string>
     <string name="add_in">添加于</string>
     <string name="reply">回复</string>
+    <string name="quit">再按一次退出程序</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>
@@ -23,6 +26,8 @@
     <string name="drawer_item_user">用户</string>
     <string name="drawer_item_setting">设置</string>
     <string name="drawer_item_helper_and_feedback">帮助 &amp; 反馈</string>
+    <string name="drawer_item_logout">登出</string>
+    <string name="drawer_item_login">登入</string>
 
     <!-- Home strings -->
     <string name="post_question">发起了问题</string>
@@ -33,17 +38,19 @@
     <string name="agree_article">赞同了该文章</string>
     <string name="fab_label_question">问题</string>
     <string name="fab_label_article">文章</string>
-    <string name="drawer_item_logout">登出</string>
 
     <!-- Explore strings -->
-    <string name="explore_recommend">推荐</string>
     <string name="explore_hot">最热</string>
     <string name="explore_new">最新</string>
-    <string name="explore_unresponsive">未回答</string>
+    <string name="explore_recommend">推荐</string>
+    <string name="explore_unresponsive">等待回答</string>
 
     <!-- Topic strings -->
     <string name="topic_hot">热门话题</string>
     <string name="topic_focus">我关注的话题</string>
+
+    <!-- Topic detail strings -->
+    <string name="title_activity_topic_detail">话题详情</string>
 
     <!-- Publish activity strings -->
     <string name="title_activity_publish">提交问题</string>
@@ -52,6 +59,7 @@
     <string name="action_publish">发布</string>
     <string name="action_insert_photo">插入图片</string>
     <string name="publish_success">发布成功</string>
+    <string name="publish_anonymous">匿名发布</string>
 
     <!-- Photo select dialog strings -->
     <string name="title_dialog_photo_select">选择图片</string>
@@ -60,7 +68,7 @@
 
     <!-- Login Activity strings -->
     <string name="title_activity_login">用户登录</string>
-    <string name="login_username_hint">用户名/Email地址</string>
+    <string name="login_username_hint">天外天账号/Email</string>
     <string name="login_password_hint">密码</string>
     <string name="login_btn_text">登录</string>
     <string name="login_error_empty">不能为空</string>
@@ -92,12 +100,36 @@
     <string name="title_activity_comment">评论</string>
     <string name="comment_success">评论成功</string>
 
+    <!-- Feedback activity -->
+    <string name="title_activity_feedback">帮助 &amp; 反馈</string>
+    <string name="hint_feedback_content">写下你的建议…</string>
+    <string name="hint_feedback_detail">建议细节（选填）</string>
+
+    <!-- Settings activity -->
+    <string name="title_activity_settings">设置</string>
+    <string name="pref_about_title">关于</string>
+    <string name="pref_check_version_title">检查新版本</string>
+
+    <!-- About activity -->
+    <string name="title_activity_about">关于</string>
+
     <!--Profile Askanswer activity-->
+    <string name="title_activity_profile_askanswer">个人主页问答</string>
     <string name="action_type_questions">问过</string>
     <string name="action_type_answers">答过</string>
+
+    <!-- Welcome activity -->
+    <string name="title_activity_welcome">欢迎</string>
+
+    <!-- Update dialog strings -->
+    <string name="update_message">发现新版本</string>
+    <string name="update">立即更新</string>
+    <string name="update_later">稍后</string>
+    <string name="no_new_version">当前已是最新版本</string>
 
     <!--Follows Activity-->
     <string name="action_type_following">关注</string>
     <string name="action_type_followers">被关注</string>
+    <string name="default_signature_profile_follows">主人,我也想要一个签名...</string>
 
 </resources>

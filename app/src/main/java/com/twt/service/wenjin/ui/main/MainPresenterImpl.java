@@ -13,11 +13,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        if (position < 4) {
             mMainView.replaceFragment(position);
             mMainView.setMainTitle(position);
-        } else {
-            mMainView.startNewActivity(position);
-        }
     }
 }

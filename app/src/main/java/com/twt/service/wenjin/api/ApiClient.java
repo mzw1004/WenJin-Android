@@ -5,8 +5,13 @@ import android.net.Uri;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.WenJinApp;
-import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.DeviceUtils;
+import com.twt.service.wenjin.support.PrefUtils;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  * Created by M on 2015/3/23.
@@ -29,7 +34,7 @@ public class ApiClient {
     private static final AsyncHttpClient sClient = new AsyncHttpClient();
     private static final int DEFAULT_TIMEOUT = 20000;
 
-    private static final String BASE_URL = "http://wenjin.twtstudio.com/";
+    private static final String BASE_URL = "http://wj.oursays.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
     private static final String EXPLORE_URL = "?/api/explore/";
@@ -41,17 +46,19 @@ public class ApiClient {
     private static final String FOCUS_QUESTION_URL = "?/question/ajax/focus/";
     private static final String ANSWER_DETAIL_URL = "?/api/question/answer_detail/";
     private static final String ANSWER_VOTE_URL = "?/question/ajax/answer_vote/";
+    private static final String UPLOAD_FILE_URL = "?/api/publish/attach_upload/";
     private static final String PUBLISH_QUESTION_URL = "?/api/publish/publish_question/";
     private static final String ANSWER_URL = "?/api/publish/save_answer/";
     private static final String USER_INFO_URL = "?/api/account/get_userinfo/";
+    private static final String FOCUS_USER_URL = "?/follow/ajax/follow_people/";
     private static final String COMMENT_URL = "api/answer_comment.php";
     private static final String PUBLISH_COMMENT_URL = "?/question/ajax/save_answer_comment/";
     private static final String MY_ANSWER_URL = "api/my_answer.php";
     private static final String MY_QUESTION_URL = "api/my_question.php";
+    private static final String FEEDBACK_URL = "?/api/ticket/publish/";
+    private static final String CHECK_UPDATE_URL = "?/api/update/check/";
     private static final String MY_FOCUS_USER = "api/my_focus_user.php";
     private static final String MY_FANS_USER = "api/my_fans_user.php";
-
-    private boolean isLogin;
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
@@ -71,14 +78,35 @@ public class ApiClient {
 
     public static void userLogout() {
         WenJinApp.getCookieStore().clear();
+        PrefUtils.setLogin(false);
     }
 
-    public static void publishQuestion(String title, String content, String attachKey, String topics, JsonHttpResponseHandler handler) {
+    public static void uploadFile(String type, String attachKey, File file, JsonHttpResponseHandler handler) {
+        Uri url = Uri.parse(BASE_URL + UPLOAD_FILE_URL).buildUpon()
+                .appendQueryParameter("id", type)
+                .appendQueryParameter("attach_access_key", attachKey)
+                .build();
+        RequestParams params = new RequestParams();
+        try {
+            params.put("qqfile", file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        sClient.post(url.toString(), params, handler);
+    }
+
+    public static void publishQuestion(String title, String content, String attachKey, String topics, boolean isAnonymous, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("question_content", title);
         params.put("question_detail", content);
         params.put("attach_access_key", attachKey);
         params.put("topics", topics);
+        if (isAnonymous) {
+            params.put("anonymous", 1);
+        } else {
+            params.put("anonymous", 0);
+        }
 
         sClient.post(BASE_URL + PUBLISH_QUESTION_URL, params, handler);
     }
@@ -166,11 +194,16 @@ public class ApiClient {
         sClient.post(BASE_URL + ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
     }
 
-    public static void answer(int questionId, String content, String attachKey, JsonHttpResponseHandler handler) {
+    public static void answer(int questionId, String content, String attachKey, boolean isAnonymous, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("question_id", questionId);
         params.put("answer_content", content);
         params.put("attach_access_key", attachKey);
+        if (isAnonymous) {
+            params.put("anonymous", 1);
+        } else {
+            params.put("anonymous", 0);
+        }
 
         sClient.post(BASE_URL + ANSWER_URL, params, handler);
     }
@@ -180,6 +213,13 @@ public class ApiClient {
         params.put("uid", uid);
 
         sClient.get(BASE_URL + USER_INFO_URL, params, handler);
+    }
+
+    public static void focusUser(int uid, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+
+        sClient.get(BASE_URL + FOCUS_USER_URL, params, handler);
     }
 
     public static String getAvatarUrl(String url) {
@@ -204,17 +244,16 @@ public class ApiClient {
         sClient.post(url.toString(), params, handler);
     }
 
-    public static void getMyAnswer(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+    public static void getMyAnswer(int uid, int page, int perPage, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("uid", uid);
         params.put("page", page);
         params.put("per_page", perPage);
 
         sClient.get(BASE_URL + MY_ANSWER_URL, params, handler);
-
     }
 
-    public static void getMyQuestion(int uid,int page,int perPage,JsonHttpResponseHandler handler){
+    public static void getMyQuestion(int uid, int page, int perPage, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("uid", uid);
         params.put("page", page);
@@ -223,13 +262,30 @@ public class ApiClient {
         sClient.get(BASE_URL + MY_QUESTION_URL, params, handler);
     }
 
+    public static void publishFeedback(String title, String message, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("title", title);
+        params.put("message", message);
+        params.put("version", BuildConfig.VERSION_NAME);
+        params.put("system", DeviceUtils.getVersionName());
+        params.put("source", DeviceUtils.getSource());
+
+        sClient.post(BASE_URL + FEEDBACK_URL, params, handler);
+    }
+
     public static void getMyFocusUser(int uid,int page,int perPage,JsonHttpResponseHandler handler){
         RequestParams params = new RequestParams();
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-
         sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
+    }
+
+    public static void checkNewVersion(String version, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("version", version);
+
+        sClient.post(BASE_URL + CHECK_UPDATE_URL, params, handler);
     }
 
     public static void getMyFansUser(int uid,int page,int perPage,JsonHttpResponseHandler handler){

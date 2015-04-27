@@ -31,9 +31,9 @@ public class HomeInteractorImpl implements HomeInteractor {
                     switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
                         case ApiClient.SUCCESS_CODE:
                             Gson gson = new Gson();
-                            HomeResponse hrm =
+                            HomeResponse hr =
                                     gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).toString(), HomeResponse.class);
-                            onGetItemsCallback.onSuccess(hrm);
+                            onGetItemsCallback.onSuccess(hr);
                             break;
                         case ApiClient.ERROR_CODE:
                             onGetItemsCallback.onFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
@@ -44,6 +44,11 @@ public class HomeInteractorImpl implements HomeInteractor {
                 }
             }
 
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                onGetItemsCallback.onFailure(responseString);
+            }
         });
     }
 

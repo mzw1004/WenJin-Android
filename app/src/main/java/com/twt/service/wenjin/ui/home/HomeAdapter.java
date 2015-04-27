@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.home;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private ArrayList<HomeItem> mDataset = new ArrayList<>();
 
-    private boolean useFooter = true;
+    private boolean useFooter = false;
 
     private OnItemClickListener onItemClickListener;
 
@@ -116,11 +117,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.tvContent.setOnClickListener(clickListener);
 
             HomeItem homeItem = mDataset.get(position);
-            if (homeItem.user_info.avatar_file != null) {
+            if (!TextUtils.isEmpty(homeItem.user_info.avatar_file)) {
                 Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
+            } else {
+                itemHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
             }
 
-            itemHolder.tvUsername.setText(homeItem.user_info.user_name);
+            itemHolder.tvUsername.setText(homeItem.user_info.nick_name);
             itemHolder.tvTime.setText(FormatHelper.getTimeFromNow(homeItem.add_time));
             switch (homeItem.associate_action) {
                 case 101:
@@ -154,7 +157,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
 
                 String content = homeItem.answer_info.answer_content;
-                itemHolder.tvContent.setText(Html.fromHtml(content, new PicassoImageGetter(mContext, itemHolder.tvContent), null));
+                itemHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(content)));
 
 //                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
             } else {

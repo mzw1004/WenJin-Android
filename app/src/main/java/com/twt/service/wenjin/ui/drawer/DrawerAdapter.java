@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.drawer;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private boolean mUseHeader;
     String mUsername;
     String mAvatarFile;
-    String mEmail;
+    String mSignature;
+//    String mEmail;
 
     private int mSelectedItemIndex = 0;
 
@@ -63,8 +65,10 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ImageView mIvBackground;
         @InjectView(R.id.tv_user_profile_name)
         TextView mTvUsername;
-        @InjectView(R.id.tv_user_profile_email)
-        TextView mTvEmail;
+        @InjectView(R.id.tv_user_profile_signature)
+        TextView mTvUserSignature;
+//        @InjectView(R.id.tv_user_profile_email)
+//        TextView mTvEmail;
 
         View mRootView;
 
@@ -132,10 +136,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 if (mUsername != null) {
                     headerHolder.mTvUsername.setText(mUsername);
                 }
-                if (mEmail != null) {
-                    headerHolder.mTvEmail.setText(mEmail);
+//                if (mEmail != null) {
+//                    headerHolder.mTvEmail.setText(mEmail);
+//                }
+                if(mSignature != null){
+                    headerHolder.mTvUserSignature.setText(mSignature);
                 }
-                if (mAvatarFile != null) {
+                if (!TextUtils.isEmpty(mAvatarFile)) {
                     Picasso.with(mContext).load(ApiClient.getAvatarUrl(mAvatarFile)).into(headerHolder.mIvProfile);
                 }
                 headerHolder.mIvProfile.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +238,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void updateUserInfo() {
         mUsername = PrefUtils.getPrefUsername();
         mAvatarFile = PrefUtils.getPrefAvatarFile();
+        mSignature = PrefUtils.getPrefSignature();
         notifyDataSetChanged();
     }
 

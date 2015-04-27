@@ -24,6 +24,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     private int mItemsPerPage = 20;
     private int mPage = 0;
     private boolean isLoadingMore = false;
+    private boolean isFirstTimeLoad = true;
 
     public HomePresenterImpl(HomeView homeView, HomeInteractor homeInteractor) {
         this.mHomeView = homeView;
@@ -34,6 +35,12 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     public void refreshHomeItems() {
         mPage = 0;
         mHomeView.showRefresh();
+        mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
+    }
+
+    @Override
+    public void firstTimeRefreshHomeItems() {
+        mPage = 0;
         mHomeView.useLoadMoreFooter();
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
     }
@@ -42,6 +49,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     public void loadMoreHomeItems() {
         mPage += 1;
         isLoadingMore = true;
+        mHomeView.useLoadMoreFooter();
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
     }
 
@@ -69,7 +77,6 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
     @Override
     public void onSuccess(HomeResponse homeResponse) {
         mHomeView.hideRefresh();
-
         if (homeResponse.total_rows == 0) {
             mHomeView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
             mHomeView.hideLoadMoreFooter();
@@ -77,16 +84,24 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         }
         if (isLoadingMore) {
             mHomeView.loadMoreItems((ArrayList<HomeItem>) homeResponse.rows);
+            mHomeView.hideLoadMoreFooter();
             isLoadingMore = false;
         } else {
             mHomeView.refreshItems((ArrayList<HomeItem>) homeResponse.rows);
+            if(isFirstTimeLoad){
+                mHomeView.hideLoadMoreFooter();
+                isFirstTimeLoad = !isFirstTimeLoad;
+            }
         }
+        isLoadingMore = false;
     }
 
     @Override
     public void onFailure(String errorString) {
         mHomeView.hideRefresh();
-        mHomeView.toastMessage(errorString);
+        if (errorString != null) {
+            mHomeView.toastMessage(errorString);
+        }
     }
 
 }

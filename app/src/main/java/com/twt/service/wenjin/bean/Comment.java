@@ -11,6 +11,8 @@ public class Comment {
 
     public String user_name;
 
+    public String nick_name;
+
     public String content;
 
     public long add_time;

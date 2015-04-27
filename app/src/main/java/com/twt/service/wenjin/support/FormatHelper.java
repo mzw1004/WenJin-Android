@@ -12,7 +12,6 @@ import java.util.Date;
 public class FormatHelper {
 
     public static String getTimeFromNow(long date) {
-        Date postDate = new Date(date * 1000);
 
         Calendar calendar = Calendar.getInstance();
 
@@ -32,8 +31,6 @@ public class FormatHelper {
         minutes -= calendar.get(Calendar.MINUTE);
         seconds -= calendar.get(Calendar.SECOND);
 
-        calendar.clear();
-
         if (years > 0) {
             return years + " " + ResourceHelper.getString(R.string.years_ago);
         } else if (months > 0) {
@@ -44,8 +41,10 @@ public class FormatHelper {
             return hours + " " + ResourceHelper.getString(R.string.hours_ago);
         } else if (minutes > 0) {
             return minutes + " " + ResourceHelper.getString(R.string.minutes_ago);
-        } else {
+        } else if (seconds > 0){
             return seconds + " " + ResourceHelper.getString(R.string.seconds_ago);
+        } else {
+            return ResourceHelper.getString(R.string.just_now);
         }
     }
 
@@ -60,5 +59,9 @@ public class FormatHelper {
 
     public static String formatCommentAtUser(String username) {
         return "@" + username + ":";
+    }
+
+    public static String formatHomeHtmlStr(String html) {
+        return html.replaceAll("<img src=.*?>", ResourceHelper.getString(R.string.pic));
     }
 }

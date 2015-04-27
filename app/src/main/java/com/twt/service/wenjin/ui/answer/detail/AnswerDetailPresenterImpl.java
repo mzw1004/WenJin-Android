@@ -44,7 +44,7 @@ public class AnswerDetailPresenterImpl implements AnswerDetailPresenter, OnGetAn
 
     @Override
     public void onSuccess(Answer answer) {
-        LogHelper.v(LOG_TAG, "answer content: " + answer.answer_content);
+        LogHelper.v(LogHelper.makeLogTag(AnswerDetailPresenterImpl.class), "answer content: " + answer.answer_content);
         if (answer.vote_value == 1) {
             isAgree = true;
         } else {

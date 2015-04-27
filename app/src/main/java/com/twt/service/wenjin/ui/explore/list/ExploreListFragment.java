@@ -13,12 +13,10 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
-import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -97,6 +95,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
             }
         });
 
+        _exploreListPresenter.firstTimeLoadExploreItems(type);
 
         return rootView;
     }
@@ -104,7 +103,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     @Override
     public void onStart() {
         super.onStart();
-        _exploreListPresenter.loadExploreItems(type);
+
     }
 
 

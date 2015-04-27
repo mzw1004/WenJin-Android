@@ -2,7 +2,6 @@ package com.twt.service.wenjin.ui.profile.askanswer;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,16 +14,12 @@ import android.widget.Toast;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.MyAnswer;
 import com.twt.service.wenjin.bean.MyQuestion;
-import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.answer.AnswerActivity;
-import com.twt.service.wenjin.ui.answer.detail.AnswerDetailDetailActivity;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -175,7 +170,7 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
     @Override
     public void startAnswerActivity(int position) {
         MyAnswer item = (MyAnswer)_adapter.getItem(position);
-        AnswerDetailDetailActivity.actionStart(this,item.answer_id,item.question_title);
+        AnswerDetailActivity.actionStart(this, item.answer_id, item.question_title);
     }
 
     @Override

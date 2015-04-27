@@ -12,7 +12,7 @@ import dagger.Provides;
  * Created by M on 2015/3/29.
  */
 @Module(
-        injects = AnswerDetailDetailActivity.class,
+        injects = AnswerDetailActivity.class,
         addsTo = AppModule.class,
         library = true
 )

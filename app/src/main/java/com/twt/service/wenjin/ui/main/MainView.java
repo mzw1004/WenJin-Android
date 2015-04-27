@@ -9,6 +9,6 @@ public interface MainView {
 
     void setMainTitle(int position);
 
-    void startNewActivity(int position);
+//    void startNewActivity(int position);
 
 }

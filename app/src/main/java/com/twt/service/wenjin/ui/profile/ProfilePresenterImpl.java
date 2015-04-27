@@ -7,7 +7,7 @@ import com.twt.service.wenjin.support.LogHelper;
 /**
  * Created by M on 2015/4/5.
  */
-public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCallback {
+public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCallback, OnUserFocusCallback {
 
     private static final String LOG_TAG = ProfilePresenterImpl.class.getSimpleName();
 
@@ -25,6 +25,11 @@ public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCall
     }
 
     @Override
+    public void actionFocus(int uid) {
+        mInteractor.actionFocus(uid, this);
+    }
+
+    @Override
     public void onGetSuccess(UserInfo userInfo) {
         LogHelper.i(LOG_TAG, "signature: " + userInfo.signature);
         mView.bindUserInfo(userInfo);
@@ -34,4 +39,19 @@ public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCall
     public void onGetFailure(String errorMsg) {
         mView.toastMessage(errorMsg);
     }
+
+    @Override
+    public void onFocusSuccess(boolean isfocused) {
+        if (isfocused) {
+            mView.addFocus();
+        } else {
+            mView.removeFocus();
+        }
+    }
+
+    @Override
+    public void onFocusFailure(String errorMsg) {
+        mView.toastMessage(errorMsg);
+    }
+
 }
