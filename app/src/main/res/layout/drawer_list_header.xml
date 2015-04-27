@@ -28,9 +28,10 @@
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="@dimen/navigation_drawer_user_name_height"
-        android:layout_below="@+id/user_profile_image"
-        android:layout_marginTop="2dp"
-        android:layout_alignLeft="@+id/user_profile_image" />
+        android:layout_toRightOf="@+id/user_profile_image"
+        android:layout_marginTop="@dimen/navigation_drawer_user_signatrue_margin_top"
+        android:layout_marginLeft="@dimen/navigation_drawer_user_signatrue_margin_left"
+        />
 
     <TextView
         android:id="@+id/tv_user_profile_signature"
@@ -41,7 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/user_profile_image"
-        android:layout_marginTop="@dimen/navigation_drawer_user_signatrue_margin_top"
+        android:layout_below="@+id/tv_user_profile_name"
+        android:layout_marginTop="2dp"
         android:layout_marginLeft="@dimen/navigation_drawer_user_signatrue_margin_left"
         android:layout_marginRight="@dimen/navigation_drawer_user_signatrue_margin_right"
         />

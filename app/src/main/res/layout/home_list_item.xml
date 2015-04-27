@@ -14,7 +14,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="4dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_home_item_avatar"
             android:src="@drawable/ic_user_avatar"
             android:layout_alignLeft="@+id/tv_home_item_title"
