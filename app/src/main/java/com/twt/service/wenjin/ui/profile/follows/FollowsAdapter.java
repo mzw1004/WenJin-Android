@@ -107,10 +107,12 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     _onItemClickListener.onItemClicked(v,position);
                 }
             });
-            Follows follow = (Follows)_DataSet.get(position);
+            Follows follow = _DataSet.get(position);
             itemHolder._tvName.setText(follow.nick_name);
-            itemHolder._tvSignatrue.setText(follow.signature);
-            if(follow.avatar_file != null){
+            if(follow.signature.length() > 0){
+                itemHolder._tvSignatrue.setText(follow.signature);
+            }
+            if(follow.avatar_file.length() > 0){
                 Picasso.with(_context).load(ApiClient.getAvatarUrl(follow.avatar_file)).into(itemHolder._ivAvatar);
             }
         }

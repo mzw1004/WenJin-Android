@@ -130,5 +130,6 @@
     <!--Follows Activity-->
     <string name="action_type_following">关注</string>
     <string name="action_type_followers">被关注</string>
+    <string name="default_signature_profile_follows">主人,我也想要一个签名...</string>
 
 </resources>

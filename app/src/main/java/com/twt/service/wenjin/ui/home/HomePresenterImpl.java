@@ -80,7 +80,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
             isLoadingMore = false;
         } else {
             mHomeView.refreshItems((ArrayList<HomeItem>) homeResponse.rows);
-            mHomeView.useLoadMoreFooter();
+            mHomeView.hideLoadMoreFooter();
         }
     }
 

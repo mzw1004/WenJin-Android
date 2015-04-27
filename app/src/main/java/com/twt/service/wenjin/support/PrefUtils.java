@@ -2,6 +2,7 @@ package com.twt.service.wenjin.support;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.bean.UserInfo;
@@ -17,6 +18,8 @@ public class PrefUtils {
 
     private static final String PREF_AVATAR_FILE = "avatar_file";
 
+    private static final String PREF_SIGNATURE = "signature";
+
     private static final String PREF_IS_LOGIN = "is_login";
 
     public static SharedPreferences getDefaultSharedPreferences() {
@@ -28,6 +31,7 @@ public class PrefUtils {
                 .putInt(PREF_UID, userInfo.uid)
                 .putString(PREF_USERNAME, userInfo.nick_name)
                 .putString(PREF_AVATAR_FILE, userInfo.avatar_file)
+                .putString(PREF_SIGNATURE,userInfo.signature)
                 .apply();
     }
 
@@ -41,6 +45,10 @@ public class PrefUtils {
 
     public static String getPrefAvatarFile() {
         return getDefaultSharedPreferences().getString(PREF_AVATAR_FILE, null);
+    }
+
+    public static String getPrefSignature(){
+        return getDefaultSharedPreferences().getString(PREF_SIGNATURE,null);
     }
 
     public static void setLogin(boolean isLogin) {

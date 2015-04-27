@@ -133,5 +133,6 @@
     <string name="title_activity_follows">Follows</string>
     <string name="action_type_following">Following</string>
     <string name="action_type_followers">Followers</string>
+    <string name="default_signature_profile_follows">There is nothing...</string>
 
 </resources>

@@ -33,6 +33,20 @@
         android:layout_alignLeft="@+id/user_profile_image" />
 
     <TextView
+        android:id="@+id/tv_user_profile_signature"
+        android:text= "@string/default_signature_profile_follows"
+        android:textSize="@dimen/navigation_drawer_text_size"
+        android:textColor="@android:color/white"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/user_profile_image"
+        android:layout_marginTop="@dimen/navigation_drawer_user_signatrue_margin_top"
+        android:layout_marginLeft="@dimen/navigation_drawer_user_signatrue_margin_left"
+        android:layout_marginRight="@dimen/navigation_drawer_user_signatrue_margin_right"
+        />
+
+    <TextView
         android:id="@+id/tv_user_profile_email"
         android:visibility="gone"
         android:text="******@***.com"
