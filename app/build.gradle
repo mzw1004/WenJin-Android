@@ -39,6 +39,7 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.6'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.umeng.analytics:analytics:latest.integration'
 
     compile 'de.hdodenhof:circleimageview:1.2.2'
     compile 'com.getbase:floatingactionbutton:1.9.0'

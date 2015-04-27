@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.activeandroid.query.Select;
@@ -17,10 +17,11 @@ import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
-public class WelcomeActivity extends ActionBarActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class WelcomeActivity extends ActionBarActivity {
                 crashInfo.delete();
             }
         }
+
+        MobclickAgent.updateOnlineConfig(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override

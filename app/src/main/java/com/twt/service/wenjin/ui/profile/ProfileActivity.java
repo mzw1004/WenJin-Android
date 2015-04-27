@@ -92,16 +92,16 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
 //    public void startAnswerActivity() {
 //        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
 //    }
-
-    @OnClick(R.id.ntv_profile_friends_number)
-    public void startFollowersActivity(){
-        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWING,uid);
-    }
-
-    @OnClick(R.id.ntv_profile_fans_number)
-    public void startFollowingActivity(){
-        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWERS,uid);
-    }
+//
+//    @OnClick(R.id.ntv_profile_friends_number)
+//    public void startFollowersActivity(){
+//        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWING,uid);
+//    }
+//
+//    @OnClick(R.id.ntv_profile_fans_number)
+//    public void startFollowingActivity(){
+//        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWERS,uid);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,6 +167,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         btFocus.setOnClickListener(this);
         tvAsk.setOnClickListener(this);
         tvAnswer.setOnClickListener(this);
+        ntvFans.setOnClickListener(this);
+        ntvFriends.setOnClickListener(this);
     }
 
     @Override
@@ -199,6 +201,12 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
                 break;
             case R.id.tv_profile_answer:
                 ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
+                break;
+            case R.id.ntv_profile_friends_number:
+                FollowsActivity.actionStart(this, ACTION_TYPE_FOLLOWING, uid);
+                break;
+            case R.id.ntv_profile_fans_number:
+                FollowsActivity.actionStart(this, ACTION_TYPE_FOLLOWERS, uid);
                 break;
         }
     }

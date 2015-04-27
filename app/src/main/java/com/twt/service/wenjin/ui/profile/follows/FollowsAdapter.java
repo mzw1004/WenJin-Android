@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.profile.follows;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,11 +108,13 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     _onItemClickListener.onItemClicked(v,position);
                 }
             });
-            Follows follow = (Follows)_DataSet.get(position);
+            Follows follow = _DataSet.get(position);
             itemHolder._tvName.setText(follow.nick_name);
             itemHolder._tvSignatrue.setText(follow.signature);
-            if(follow.avatar_file != null){
+            if(!TextUtils.isEmpty(follow.avatar_file)){
                 Picasso.with(_context).load(ApiClient.getAvatarUrl(follow.avatar_file)).into(itemHolder._ivAvatar);
+            } else {
+                itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
             }
         }
     }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.api.ApiClient;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
@@ -22,6 +23,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mActivityGraph = ((WenJinApp) getApplication()).createScopedGraph(getModlues().toArray());
         mActivityGraph.inject(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override
