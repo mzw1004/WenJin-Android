@@ -35,6 +35,7 @@ public class ApiClient {
     private static final int DEFAULT_TIMEOUT = 20000;
 
     private static final String BASE_URL = "http://wj.oursays.com/";
+//    private static final String BASE_URL = "http://wenjin.test.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
     private static final String EXPLORE_URL = "?/api/explore/";

@@ -1,9 +1,11 @@
 package com.twt.service.wenjin.ui.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -76,6 +78,13 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     public void hideProgressBar() {
         mPbLogin.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideKeyboard() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getApplicationContext().
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(mEtPassword.getWindowToken(),0);
     }
 
     @Override
