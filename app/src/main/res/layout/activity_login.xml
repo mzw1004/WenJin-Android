@@ -24,6 +24,8 @@
         android:paddingRight="@dimen/login_padding_control"
         android:hint="@string/login_username_hint"
         android:drawableLeft="@drawable/ic_login_account"
+        android:maxLines="1"
+        android:singleLine="true"
         android:background="@drawable/edit_text_background"/>
 
     <EditText

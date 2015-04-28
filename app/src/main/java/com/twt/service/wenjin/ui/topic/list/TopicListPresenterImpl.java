@@ -13,7 +13,7 @@ public class TopicListPresenterImpl implements TopicListPresenter, OnGetTopicsCa
     private TopicListView mView;
     private TopicListInteractor mInteractor;
 
-    private int page = 0;
+    private int page = 1;
     private boolean isLoadMore = false;
 
     public TopicListPresenterImpl(TopicListView view, TopicListInteractor interactor) {
@@ -39,7 +39,7 @@ public class TopicListPresenterImpl implements TopicListPresenter, OnGetTopicsCa
     @Override
     public void refreshTopics(int type) {
         mView.startRefresh();
-        page = 0;
+        page = 1;
         switch (type) {
             case 0:
                 mInteractor.getTopics("hot", page, this);

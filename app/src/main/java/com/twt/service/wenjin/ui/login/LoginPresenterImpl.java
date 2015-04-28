@@ -24,6 +24,7 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginCallback {
 
     @Override
     public void validateLogin(String username, String password) {
+        mLoginView.hideKeyboard();
         if (!NetworkHelper.isOnline()) {
             mLoginView.toastMessage(ResourceHelper.getString(R.string.network_not_connected));
             return;
