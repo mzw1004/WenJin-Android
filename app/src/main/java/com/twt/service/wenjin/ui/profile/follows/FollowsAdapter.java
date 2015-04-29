@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.profile.follows;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private List<Follows> _DataSet = new ArrayList<>();
 
-    public static class ItemHolder extends RecyclerView.ViewHolder{
+    static class ItemHolder extends RecyclerView.ViewHolder{
 
         @InjectView(R.id.iv_follows_item_avatar)
         ImageView _ivAvatar;
@@ -55,10 +56,10 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         View rootView;
 
-        public ItemHolder(View itemView) {
-            super(itemView);
-            ButterKnife.inject(this,itemView);
-            rootView = itemView;
+            public ItemHolder(View itemView) {
+                super(itemView);
+                ButterKnife.inject(this,itemView);
+                rootView = itemView;
         }
     }
 
@@ -108,13 +109,19 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     _onItemClickListener.onItemClicked(v,position);
                 }
             });
+
             Follows follow = _DataSet.get(position);
             itemHolder._tvName.setText(follow.nick_name);
-            if(follow.signature != null && follow.signature != ""){
+
+            if(!TextUtils.isEmpty(follow.signature)){
                 itemHolder._tvSignatrue.setText(follow.signature);
+            }else{
+                itemHolder._tvSignatrue.setText("");
             }
-            if(follow.avatar_file != null && follow.signature != ""){
+            if(!TextUtils.isEmpty(follow.avatar_file) ){
                 Picasso.with(_context).load(ApiClient.getAvatarUrl(follow.avatar_file)).into(itemHolder._ivAvatar);
+            }else{
+                itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
             }
         }
     }
@@ -128,7 +135,14 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        return position < _DataSet.size() ? ITEM_VIEW_TYPE_ITEM:ITEM_VIEW_TYPE_FOOTER;
+        if (!_useFooter) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else if (position < getItemCount() - 1) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else {
+            return ITEM_VIEW_TYPE_FOOTER;
+        }
+
     }
 
     public void addData(List<Follows> items){
@@ -142,6 +156,6 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void setUseFooter(boolean useFooter){
         _useFooter = useFooter;
-        //notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 }
