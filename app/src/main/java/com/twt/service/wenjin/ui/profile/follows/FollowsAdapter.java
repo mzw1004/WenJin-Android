@@ -109,10 +109,10 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             });
             Follows follow = _DataSet.get(position);
             itemHolder._tvName.setText(follow.nick_name);
-            if(follow.signature.length() > 0){
+            if(follow.signature != null && follow.signature != ""){
                 itemHolder._tvSignatrue.setText(follow.signature);
             }
-            if(follow.avatar_file.length() > 0){
+            if(follow.avatar_file != null && follow.signature != ""){
                 Picasso.with(_context).load(ApiClient.getAvatarUrl(follow.avatar_file)).into(itemHolder._ivAvatar);
             }
         }

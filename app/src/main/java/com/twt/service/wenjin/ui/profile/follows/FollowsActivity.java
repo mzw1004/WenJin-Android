@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.Follows;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
@@ -143,6 +144,8 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
 
     @Override
     public void addData(List<Follows> followsList,int totalRows) {
+        LogHelper.v("followList count is:",_followsAdapter.getItemCount());
+        LogHelper.v("totalRows count is:",totalRows);
         if(_followsAdapter.getItemCount() < totalRows){
             _followsAdapter.addData(followsList);
         }else{

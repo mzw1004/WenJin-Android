@@ -8,6 +8,7 @@ import com.loopj.android.http.RequestParams;
 import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.support.DeviceUtils;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 
 import java.io.File;
@@ -294,7 +295,7 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-
+        LogHelper.v("UID","UID is "+uid);
         sClient.get(BASE_URL + MY_FANS_USER,params,handler);
     }
 
