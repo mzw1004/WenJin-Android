@@ -102,12 +102,12 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
             }
         });
 
+        _presenter.loadMoreItems(_type,_uid);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        _presenter.loadMoreItems(_type,_uid);
     }
 
     @Override
