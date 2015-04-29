@@ -79,9 +79,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.twt.service.wenjin" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a8bfc64-004f-477c-bd82-40a27bbf0afe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="8a8bfc64-004f-477c-bd82-40a27bbf0afe" name="Default" comment="" />
     <ignored path="WenJin.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
