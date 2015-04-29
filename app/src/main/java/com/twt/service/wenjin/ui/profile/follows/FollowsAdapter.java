@@ -15,6 +15,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Follows;
 import com.twt.service.wenjin.support.FormatHelper;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
@@ -122,6 +123,7 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemCount() {
         int count = _DataSet.size();
         return _useFooter? ++count:count;
+        //return _DataSet.size();
     }
 
     @Override
@@ -140,6 +142,6 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void setUseFooter(boolean useFooter){
         _useFooter = useFooter;
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 }

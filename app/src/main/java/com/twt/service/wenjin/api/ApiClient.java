@@ -295,7 +295,6 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-        LogHelper.v("UID","UID is "+uid);
         sClient.get(BASE_URL + MY_FANS_USER,params,handler);
     }
 
