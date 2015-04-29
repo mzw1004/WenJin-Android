@@ -80,90 +80,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a8bfc64-004f-477c-bd82-40a27bbf0afe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_share.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_share.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_share.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_share.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_share_logo.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_AtFriends.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_QQZone_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_QQZone_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_QQZone_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_Sina.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_UserCenter.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_WeiXin_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_WeiXin_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_actionbarview.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_comment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_email.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_evernote.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_facebook_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_facebook_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_flickr.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_instagram.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_kakao.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_laiwang_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_laiwang_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_like.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_line.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_linkedin.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_pinterest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_pocket.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_renren_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_renren_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_scrshot.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_shake.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_sms.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_tencentWB_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_tencentWB_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_tencentWB_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_tumblr.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_whatsapp.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_yixin_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_yixin_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SocialSDK_ynote.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/httpmime_4_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/umeng_social_sdk.xml" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\activeandroid_3_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\android_async_http_1_4_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\appcompat_v7_22_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\butterknife_6_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\cardview_v7_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\circleimageview_1_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\dagger_1_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\dagger_compiler_1_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\floatingactionbutton_1_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\gson_2_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\guava_15_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\javawriter_2_5_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\javax_inject_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\library_1_0_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\library_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\material_dialogs_0_6_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\otto_1_3_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\picasso_2_5_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\recyclerview_v7_21_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\support_annotations_22_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\support_v4_22_1_0.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/.gitignore" afterPath="$PROJECT_DIR$/app/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/DeviceUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/DeviceUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/FormatHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/FormatHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/welcome/WelcomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/welcome/WelcomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/WenJinApp.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/WenJinApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_question.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_question.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WenJin.iws" />
@@ -2877,7 +2793,11 @@
       <created>1430121111371</created>
       <updated>1430121111371</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="添加分享功能">
+      <created>1430305056153</created>
+      <updated>1430305056153</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2949,7 +2869,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="fix textview html" />
     <MESSAGE value="update answer activity" />
     <MESSAGE value="add question focus" />
     <MESSAGE value="replace publish dialog with activity" />
@@ -2974,7 +2893,8 @@
     <MESSAGE value="add insert picture" />
     <MESSAGE value="add answer insert picture" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="添加分享功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加分享功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3088,6 +3008,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37151247" vertical-offset="1035" max-vertical-offset="3703">
           <caret line="94" column="11" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3113,6 +3034,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.452276" vertical-offset="469" max-vertical-offset="4209">
           <caret line="128" column="15" selection-start-line="128" selection-start-column="15" selection-end-line="128" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3186,6 +3108,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17065868" vertical-offset="1105" max-vertical-offset="6992">
           <caret line="63" column="56" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3201,6 +3124,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.67547727" vertical-offset="0" max-vertical-offset="1058">
           <caret line="31" column="73" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3240,6 +3164,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.06754772" vertical-offset="207" max-vertical-offset="1173">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
