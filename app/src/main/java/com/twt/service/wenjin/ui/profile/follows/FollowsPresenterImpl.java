@@ -22,7 +22,7 @@ public class FollowsPresenterImpl implements FollowsPresenter,OnGetFollowCallbac
     private FollowsInteractor _interactor;
 
     private boolean _isLoadMore = false;
-    private int _page = 0;
+    private int _page = 1;
 
     public FollowsPresenterImpl(FollowsView followsView,FollowsInteractor followsInteractor){
         _followsView = followsView;
@@ -31,6 +31,7 @@ public class FollowsPresenterImpl implements FollowsPresenter,OnGetFollowCallbac
 
     @Override
     public void onGetFollowersSuccess(FollowsResponse response) {
+        _page += 1;
         if(response.total_rows > 0){
             List<Follows> followsList = response.rows;
             if(_isLoadMore){
@@ -58,7 +59,6 @@ public class FollowsPresenterImpl implements FollowsPresenter,OnGetFollowCallbac
 
     @Override
     public void loadMoreItems(String type, int uid) {
-        _page += 1;
         _isLoadMore = true;
         _followsView.showFooter();
         getItems(type,uid);
