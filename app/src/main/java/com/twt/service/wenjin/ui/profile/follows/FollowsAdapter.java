@@ -130,7 +130,6 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemCount() {
         int count = _DataSet.size();
         return _useFooter? ++count:count;
-        //return _DataSet.size();
     }
 
     @Override
