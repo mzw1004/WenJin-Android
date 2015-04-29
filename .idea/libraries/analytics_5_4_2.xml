@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="analytics-5.4.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.analytics/analytics/5.4.2/75ef4894b1489017838dc57dbe9a5782ab12c427/analytics-5.4.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.umeng.analytics/analytics/5.4.2/fdcea7db3cff238ea101d8790d581fe96b8c872/analytics-5.4.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
