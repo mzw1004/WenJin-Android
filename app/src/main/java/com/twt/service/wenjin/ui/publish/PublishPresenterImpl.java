@@ -39,7 +39,7 @@ public class PublishPresenterImpl implements PublishPresenter, OnPublishCallback
         mContent = content;
         parseTopics(topics);
         mAttachKey = MD5Utils.createAttachKey();
-        System.out.println(mAttachKey);
+//        System.out.println(mAttachKey);
         mIsAnonymous = isAnonymous;
         if (mFilePath.size() > 0) {
             for (int i = 0; i < mFilePath.size(); i++) {
@@ -77,6 +77,7 @@ public class PublishPresenterImpl implements PublishPresenter, OnPublishCallback
         if (topics.length > 0) {
             mTopics += topics[0];
             for (int i = 1; i < topics.length; i++) {
+                mTopics += ",";
                 mTopics += topics[i];
             }
         }

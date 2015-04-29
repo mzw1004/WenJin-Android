@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import dagger.ObjectGraph;
+import im.fir.sdk.FIR;
 
 /**
  * Created by M on 2015/3/19.
@@ -25,6 +26,7 @@ public class WenJinApp extends Application {
 
     @Override
     public void onCreate() {
+        FIR.init(this);
         super.onCreate();
         objectGraph = ObjectGraph.create(getModules().toArray());
         objectGraph.inject(this);
@@ -32,9 +34,6 @@ public class WenJinApp extends Application {
         sContext = getApplicationContext();
         sCookieStore = new PersistentCookieStore(sContext);
         ApiClient.getInstance().setCookieStore(sCookieStore);
-
-//        CrashHandler crashHandler = CrashHandler.getInstance();
-//        crashHandler.init(sContext);
 
         ActiveAndroid.initialize(this);
     }

@@ -7,19 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
-import com.activeandroid.query.Select;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.R;
-import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.bean.CrashInfo;
-import com.twt.service.wenjin.support.LogHelper;
-import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 import com.umeng.analytics.MobclickAgent;
-
-import java.util.List;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -30,17 +22,17 @@ public class WelcomeActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
 
-        List<CrashInfo> crashInfos = new Select()
-                .from(CrashInfo.class)
-                .execute();
-        LogHelper.d(LogHelper.makeLogTag(this.getClass()), "crash info number: " + crashInfos.size());
-        if (crashInfos.size() > 0 && NetworkHelper.isOnline()) {
-            for (int i = 0; i < crashInfos.size(); i++) {
-                CrashInfo crashInfo = crashInfos.get(i);
-                ApiClient.publishFeedback("Android Crash Info", crashInfo.detail, new JsonHttpResponseHandler());
-                crashInfo.delete();
-            }
-        }
+//        List<CrashInfo> crashInfos = new Select()
+//                .from(CrashInfo.class)
+//                .execute();
+//        LogHelper.d(LogHelper.makeLogTag(this.getClass()), "crash info number: " + crashInfos.size());
+//        if (crashInfos.size() > 0 && NetworkHelper.isOnline()) {
+//            for (int i = 0; i < crashInfos.size(); i++) {
+//                CrashInfo crashInfo = crashInfos.get(i);
+//                ApiClient.publishFeedback("Android Crash Info", crashInfo.detail, new JsonHttpResponseHandler());
+//                crashInfo.delete();
+//            }
+//        }
 
         MobclickAgent.updateOnlineConfig(this);
 

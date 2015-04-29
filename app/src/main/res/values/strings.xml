@@ -78,6 +78,7 @@
     <string name="action_focus">Focus</string>
     <string name="action_not_focus">Not focus</string>
     <string name="action_answer">Add Answer</string>
+    <string name="action_share">Share</string>
 
     <!-- Answer detail activity strings -->
     <string name="title_activity_answer_detail">Answer detail</string>

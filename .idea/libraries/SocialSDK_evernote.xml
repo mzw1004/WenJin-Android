@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SocialSDK_evernote">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/SocialSDK_evernote.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

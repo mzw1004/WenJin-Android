@@ -20,6 +20,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.UmengShareHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
@@ -64,7 +65,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     private TextView tvCommentCount;
 
     private int answerId;
-    private int uid;
+    private Answer answer;
 
     public static void actionStart(Context context, int answerId, String question) {
         Intent intent = new Intent(context, AnswerDetailActivity.class);
@@ -126,6 +127,15 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.action_share:
+                UmengShareHelper.init(this);
+                UmengShareHelper.setContent(
+                        this,
+                        getIntent().getStringExtra(PARAM_QUESTION),
+                        FormatHelper.formatQuestionLink(answer.question_id)
+                );
+
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -162,7 +172,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void bindAnswerData(Answer answer) {
-        uid = answer.uid;
+        this.answer = answer;
         if (!TextUtils.isEmpty(answer.avatar_file)) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(ivAvatar);
         }
@@ -197,7 +207,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void startProfileActivity() {
-        ProfileActivity.actionStart(this, uid);
+        ProfileActivity.actionStart(this, answer.uid);
     }
 
     @Override

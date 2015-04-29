@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.support.DeviceUtils;
 import com.twt.service.wenjin.support.PrefUtils;
@@ -62,10 +61,25 @@ public class ApiClient {
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
+        sClient.addHeader("User-Agent", getUserAgent());
     }
 
     public static AsyncHttpClient getInstance() {
         return sClient;
+    }
+
+    public static String getUserAgent() {
+        // User-Agent Wenjin/1.0.2 (Adnroid; 4.4.4; ...)
+        String isRooted = DeviceUtils.isRooted() ? "rooted" : "unrooted";
+        String userAgent = "Wenjin/" + DeviceUtils.getVersionName() + " (" +
+                "Android; " +
+                DeviceUtils.getSystemVersion() + "; " +
+                DeviceUtils.getBrand() + "; " +
+                DeviceUtils.getModel() + "; " +
+                DeviceUtils.getNetworkType() + "; " +
+                isRooted +
+                ")";
+        return userAgent;
     }
 
     public static void userLogin(String username, String password, JsonHttpResponseHandler handler) {
@@ -266,8 +280,8 @@ public class ApiClient {
         RequestParams params = new RequestParams();
         params.put("title", title);
         params.put("message", message);
-        params.put("version", BuildConfig.VERSION_NAME);
-        params.put("system", DeviceUtils.getVersionName());
+        params.put("version", DeviceUtils.getVersionName());
+        params.put("system", DeviceUtils.getSystemVersion());
         params.put("source", DeviceUtils.getSource());
 
         sClient.post(BASE_URL + FEEDBACK_URL, params, handler);

@@ -40,6 +40,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'im.fir:sdk:1.2.0+'
 
     compile 'de.hdodenhof:circleimageview:1.2.2'
     compile 'com.getbase:floatingactionbutton:1.9.0'

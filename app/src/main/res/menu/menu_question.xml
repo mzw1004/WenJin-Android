@@ -4,6 +4,12 @@
     tools:context="com.twt.service.wenjin.ui.question.QuestionActivity">
 
     <item
+        android:id="@+id/action_share"
+        android:title="@string/action_share"
+        android:icon="@drawable/ic_action_share"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_answer"
         android:title="@string/action_answer"
         app:showAsAction="always" />
