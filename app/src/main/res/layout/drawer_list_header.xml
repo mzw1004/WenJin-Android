@@ -15,7 +15,7 @@
         android:layout_width="@dimen/navigation_drawer_user_profile_size"
         android:layout_height="@dimen/navigation_drawer_user_profile_size"
         android:layout_marginLeft="@dimen/navigation_drawer_icon_margin_left"
-        android:layout_marginTop="@dimen/navigation_drawer_icon_margin_left"
+        android:layout_marginTop="@dimen/navigation_drawer_icon_margin_top"
         android:src="@drawable/ic_user_avatar"
         app:border_color="@color/color_divider"
         app:border_width="0dp" />
@@ -28,9 +28,25 @@
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="@dimen/navigation_drawer_user_name_height"
-        android:layout_below="@+id/user_profile_image"
+        android:layout_toRightOf="@+id/user_profile_image"
+        android:layout_marginTop="@dimen/navigation_drawer_user_signatrue_margin_top"
+        android:layout_marginLeft="@dimen/navigation_drawer_user_signatrue_margin_left"
+        />
+
+    <TextView
+        android:id="@+id/tv_user_profile_signature"
+        android:text= "@string/default_signature_profile_follows"
+        android:textSize="@dimen/navigation_drawer_text_size"
+        android:textColor="@android:color/white"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/user_profile_image"
+        android:layout_below="@+id/tv_user_profile_name"
         android:layout_marginTop="2dp"
-        android:layout_alignLeft="@+id/user_profile_image" />
+        android:layout_marginLeft="@dimen/navigation_drawer_user_signatrue_margin_left"
+        android:layout_marginRight="@dimen/navigation_drawer_user_signatrue_margin_right"
+        />
 
     <TextView
         android:id="@+id/tv_user_profile_email"

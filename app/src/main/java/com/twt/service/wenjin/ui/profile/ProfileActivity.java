@@ -113,12 +113,12 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uid = getIntent().getIntExtra(PARM_USER_ID, 0);
+        mPresenter.getUserInfo(uid);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mPresenter.getUserInfo(uid);
     }
 
     @Override

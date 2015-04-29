@@ -16,6 +16,7 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Follows;
 import com.twt.service.wenjin.support.FormatHelper;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
@@ -42,7 +43,7 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private List<Follows> _DataSet = new ArrayList<>();
 
-    public static class ItemHolder extends RecyclerView.ViewHolder{
+    static class ItemHolder extends RecyclerView.ViewHolder{
 
         @InjectView(R.id.iv_follows_item_avatar)
         ImageView _ivAvatar;
@@ -56,9 +57,9 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         View rootView;
 
         public ItemHolder(View itemView) {
-            super(itemView);
-            ButterKnife.inject(this,itemView);
-            rootView = itemView;
+                super(itemView);
+                ButterKnife.inject(this,itemView);
+                rootView = itemView;
         }
     }
 
@@ -111,6 +112,11 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Follows follow = _DataSet.get(position);
             itemHolder._tvName.setText(follow.nick_name);
             itemHolder._tvSignatrue.setText(follow.signature);
+            if(!TextUtils.isEmpty(follow.signature)){
+                itemHolder._tvSignatrue.setText(follow.signature);
+            }else{
+                itemHolder._tvSignatrue.setText("");
+            }
             if(!TextUtils.isEmpty(follow.avatar_file)){
                 Picasso.with(_context).load(ApiClient.getAvatarUrl(follow.avatar_file)).into(itemHolder._ivAvatar);
             } else {
@@ -127,7 +133,14 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        return position < _DataSet.size() ? ITEM_VIEW_TYPE_ITEM:ITEM_VIEW_TYPE_FOOTER;
+        if (!_useFooter) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else if (position < getItemCount() - 1) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else {
+            return ITEM_VIEW_TYPE_FOOTER;
+        }
+
     }
 
     public void addData(List<Follows> items){

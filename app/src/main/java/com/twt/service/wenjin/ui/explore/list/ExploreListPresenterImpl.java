@@ -25,6 +25,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
     private boolean isLoadMore;
     //发现模块page取0或者1都是第一页
     private int page = 1;
+    private boolean isFirstTimeLoad = true;
 
     public ExploreListPresenterImpl(ExploreListView exploreListView, ExploreInteractor exploreInteractor) {
         this._exploreListView = exploreListView;
@@ -36,6 +37,13 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
     public void loadExploreItems(int type) {
         this._exploreListView.startRefresh();
         page = 1;
+        getExploreItems(type);
+    }
+
+    @Override
+    public void firstTimeLoadExploreItems(int type) {
+        page = 1;
+        _exploreListView.showFooter();
         getExploreItems(type);
     }
 
@@ -96,6 +104,10 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
                 isLoadMore = false;
             } else {
                 _exploreListView.updateListData(items);
+                if(isFirstTimeLoad){
+                    _exploreListView.hideFooter();
+                    isFirstTimeLoad = !isFirstTimeLoad;
+                }
             }
         } else {
             _exploreListView.hideFooter();

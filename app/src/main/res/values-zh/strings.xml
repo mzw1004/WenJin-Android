@@ -5,7 +5,7 @@
     <string name="network_not_connected">网络没有连接</string>
     <string name="no_more_information">抱歉，没有更多的信息了</string>
     <string name="pic">[图片]</string>
-    <string name="load_more">加载更多…</string>
+    <string name="load_more">加载中…</string>
     <string name="years_ago">年前</string>
     <string name="months_ago">月前</string>
     <string name="days_ago">天前</string>
@@ -132,5 +132,6 @@
     <string name="title_activity_follows">关注</string>
     <string name="action_type_following">关注</string>
     <string name="action_type_followers">被关注</string>
+    <string name="default_signature_profile_follows">主人,我也想要一个签名...</string>
 
 </resources>

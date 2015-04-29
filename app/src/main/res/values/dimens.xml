@@ -10,7 +10,11 @@
     <dimen name="navigation_drawer_text_margin_left">72dp</dimen>
     <dimen name="navigation_drawer_icon_size">24dp</dimen>
     <dimen name="navigation_drawer_icon_margin_left">16dp</dimen>
+    <dimen name="navigation_drawer_icon_margin_top">34dp</dimen>
     <dimen name="navigation_drawer_divider_height">8dp</dimen>
+    <dimen name="navigation_drawer_user_signatrue_margin_top">38dp</dimen>
+    <dimen name="navigation_drawer_user_signatrue_margin_left">8dp</dimen>
+    <dimen name="navigation_drawer_user_signatrue_margin_right">16dp</dimen>
 
     <!-- Login Activity dimens -->
     <dimen name="login_padding_top">56dp</dimen>

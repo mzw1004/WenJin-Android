@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.Follows;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
@@ -27,6 +28,8 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+
+import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 /**
  * Created by Administrator on 2015/4/25.
@@ -46,7 +49,8 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
     RecyclerView _recyclerView;
 
     private FollowsAdapter _followsAdapter;
-
+    private RecyclerView.OnScrollListener _onScrollListener;
+    private boolean _isScrollListenerLoadingItems = false;
     private int _uid;
     private String _type;
 
@@ -78,19 +82,21 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
         _recyclerView.setLayoutManager(linearLayoutManager);
         _followsAdapter = new FollowsAdapter(this,_type,this);
         _recyclerView.setAdapter(_followsAdapter);
-
-        _recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        _onScrollListener = new RecyclerView.OnScrollListener(){
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 int lastPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-                if(lastPosition == linearLayoutManager.getItemCount() -1 && dy > 0){
+                if(lastPosition == linearLayoutManager.getItemCount() -1 && dy > 0 && !_isScrollListenerLoadingItems){
+                    _isScrollListenerLoadingItems = true;
                     _presenter.loadMoreItems(_type,_uid);
                 }
             }
-        });
+        };
+        _recyclerView.setOnScrollListener(_onScrollListener);
 
         _presenter.loadMoreItems(_type,_uid);
+
     }
 
     @Override
@@ -112,7 +118,6 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
     @Override
     protected void onStart() {
         super.onStart();
-
     }
 
     @Override
@@ -145,6 +150,7 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
     public void addData(List<Follows> followsList,int totalRows) {
         if(_followsAdapter.getItemCount() < totalRows){
             _followsAdapter.addData(followsList);
+            _isScrollListenerLoadingItems = false;
         }else{
             showMSG(ResourceHelper.getString(R.string.no_more_information));
         }

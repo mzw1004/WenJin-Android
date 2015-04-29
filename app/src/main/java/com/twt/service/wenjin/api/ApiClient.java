@@ -7,6 +7,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.support.DeviceUtils;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 
 import java.io.File;
@@ -34,6 +35,7 @@ public class ApiClient {
     private static final int DEFAULT_TIMEOUT = 20000;
 
     private static final String BASE_URL = "http://wj.oursays.com/";
+//    private static final String BASE_URL = "http://wenjin.test.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     private static final String HOME_URL = "?/api/home/";
     private static final String EXPLORE_URL = "?/api/explore/";
@@ -307,7 +309,6 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-
         sClient.get(BASE_URL + MY_FANS_USER,params,handler);
     }
 

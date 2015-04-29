@@ -16,7 +16,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_topic_item_pic"
             android:src="@drawable/ic_topic_pic"
             android:scaleType="centerCrop"

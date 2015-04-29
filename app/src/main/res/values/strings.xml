@@ -5,7 +5,7 @@
     <string name="network_not_connected">Network is not connected</string>
     <string name="no_more_information">Sorry, no more information</string>
     <string name="pic">[picture]</string>
-    <string name="load_more">load more …</string>
+    <string name="load_more">Loading...</string>
     <string name="years_ago">years ago</string>
     <string name="months_ago">months ago</string>
     <string name="days_ago">days ago</string>
@@ -134,5 +134,6 @@
     <string name="title_activity_follows">Follows</string>
     <string name="action_type_following">Following</string>
     <string name="action_type_followers">Followers</string>
+    <string name="default_signature_profile_follows">There is nothing...</string>
 
 </resources>

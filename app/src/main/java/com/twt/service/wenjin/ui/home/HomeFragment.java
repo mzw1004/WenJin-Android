@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +64,8 @@ public class HomeFragment extends BaseFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.refreshHomeItems();
+     //   mPresenter.refreshHomeItems();
+
     }
 
     @Override
@@ -91,13 +93,14 @@ public class HomeFragment extends BaseFragment implements
                     LogHelper.v(LOG_TAG, "start loading more");
                     mPresenter.loadMoreHomeItems();
                 }
-                if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
-//                    LogHelper.v(LOG_TAG, "scroll down");
-                    hideFabMenu();
-                } else if(firstVisibleItemPosition < mPrevFirstVisiblePosition) {
-//                    LogHelper.v(LOG_TAG, "scroll up");
-                    showFabMenu();
-                }
+//                if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
+////                    LogHelper.v(LOG_TAG, "scroll down");
+//                    hideFabMenu();
+//                    mPresenter.loadMoreHomeItems();
+//                } else if(firstVisibleItemPosition < mPrevFirstVisiblePosition) {
+////                    LogHelper.v(LOG_TAG, "scroll up");
+//                    showFabMenu();
+//                }
                 mPrevFirstVisiblePosition = firstVisibleItemPosition;
             }
         });
@@ -110,6 +113,7 @@ public class HomeFragment extends BaseFragment implements
             }
         });
 
+        mPresenter.firstTimeRefreshHomeItems();
         return rootView;
     }
 
@@ -145,6 +149,11 @@ public class HomeFragment extends BaseFragment implements
             LogHelper.v(LOG_TAG, "start question activity");
             QuestionActivity.actionStart(getActivity(), item.question_info.question_id);
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override

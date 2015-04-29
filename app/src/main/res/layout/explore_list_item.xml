@@ -33,7 +33,7 @@
             android:layout_below="@+id/tv_explore_item_title"
             android:layout_marginTop="8dp"/>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_explore_item_avatar"
             android:src="@drawable/ic_user_avatar"
             android:layout_marginTop="4dp"
