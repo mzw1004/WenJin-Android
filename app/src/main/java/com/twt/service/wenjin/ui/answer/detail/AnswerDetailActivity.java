@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -186,6 +187,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         }
         tvAgreeNumber.setText("" + answer.agree_count);
         tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
+        tvContent.setMovementMethod(LinkMovementMethod.getInstance());
         tvAddTime.setText(FormatHelper.formatAddDate(answer.add_time));
         tvCommentCount.setText("" + answer.comment_count);
     }

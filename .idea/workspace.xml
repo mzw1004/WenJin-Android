@@ -85,27 +85,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a8bfc64-004f-477c-bd82-40a27bbf0afe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/activeandroid_3_1_0_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/activeandroid_3_1_0_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/analytics_5_4_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/analytics_5_4_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_async_http_1_4_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_async_http_1_4_6.xml" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\SocialSDK_Sina.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\SocialSDK_WeiXin_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\SocialSDK_WeiXin_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\activeandroid_3_1_0_SNAPSHOT.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\analytics_5_4_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\android_async_http_1_4_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\butterknife_6_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\cardview_v7_21_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\circleimageview_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\dagger_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\dagger_compiler_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\floatingactionbutton_1_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\gson_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\guava_15_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\httpmime_4_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\javawriter_2_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\javax_inject_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\library_1_0_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\library_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\material_dialogs_0_6_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\otto_1_3_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\picasso_2_5_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\recyclerview_v7_21_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\sdk_1_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\Android\WenJin-Android\.idea\libraries\umeng_social_sdk.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/butterknife_6_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/butterknife_6_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/cardview_v7_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/cardview_v7_21_0_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/circleimageview_1_2_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/circleimageview_1_2_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/dagger_1_2_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/dagger_1_2_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/drawer_list_header.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/drawer_list_header.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/guava_15_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/guava_15_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/javawriter_2_5_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/javawriter_2_5_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/library_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/library_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/otto_1_3_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/otto_1_3_6.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_21_0_3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/recyclerview_footer_load_more.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recyclerview_footer_load_more.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WenJin.iws" />
@@ -142,51 +159,47 @@
       <file leaf-file-name="UmengShareHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="1587">
-              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="1403">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+              <folding>
+                <element signature="e#1884#1927#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5741556" vertical-offset="1472" max-vertical-offset="4255">
+              <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
+              <folding>
+                <element signature="e#3045#4158#0" expanded="true" />
+                <element signature="e#4147#4148#0" expanded="true" />
+                <element signature="e#4202#4436#0" expanded="true" />
+                <element signature="e#4425#4426#0" expanded="true" />
+                <element signature="e#6410#6411#0" expanded="true" />
+                <element signature="e#6458#6459#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomePresenterImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="2231">
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java">
+      <file leaf-file-name="HomePresenter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2392" max-vertical-offset="4232">
-              <caret line="104" column="49" selection-start-line="104" selection-start-column="49" selection-end-line="104" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu_answer_detail.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="575">
-              <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnswerDetailActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2498" max-vertical-offset="4232">
-              <caret line="154" column="37" selection-start-line="154" selection-start-column="37" selection-end-line="154" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="drawer_list_header.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/drawer_list_header.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75729644" vertical-offset="312" max-vertical-offset="1725">
-              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="506">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -1095,9 +1108,9 @@
                 <option name="name" value="prepareComAfollestadMaterialDialogs0671Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:appcompat-v7:22.1.0" />
+                <option name="description" value="Prepare com.android.support:appcompat-v7:22.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportAppcompatV72210Library" />
+                <option name="name" value="prepareComAndroidSupportAppcompatV72211Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:cardview-v7:21.0.3" />
@@ -1110,9 +1123,9 @@
                 <option name="name" value="prepareComAndroidSupportRecyclerviewV72103Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:support-v4:22.1.0" />
+                <option name="description" value="Prepare com.android.support:support-v4:22.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportSupportV42210Library" />
+                <option name="name" value="prepareComAndroidSupportSupportV42211Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.getbase:floatingactionbutton:1.9.0" />
@@ -1242,7 +1255,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4290667986816" />
+        <entry key="$PROJECT_DIR$" value="4290750922697" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1408,7 +1421,7 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
-                            <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.1.0/appcompat-v7-22.1.0.aar" />
+                            <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.1.1/appcompat-v7-22.1.1.aar" />
                             <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/recyclerview-v7/21.0.3/recyclerview-v7-21.0.3.aar" />
                             <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/cardview-v7/21.0.3/cardview-v7-21.0.3.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.dagger/dagger/1.2.2/e8f912ee19ad84958510883ea191135276b091f8/dagger-1.2.2.jar" />
@@ -1425,9 +1438,9 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jpardogo.materialtabstrip/library/1.0.9/334a11c516c6de98ad68cf3747c0d2071335521e/library-1.0.9.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.afollestad/material-dialogs/0.6.7.1/30bb40fe38b6f3c39f2cf5a08d252f282d6f3d8d/material-dialogs-0.6.7.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.gujun.android.taggroup/library/1.1/fe68be4f7d5bc7fcd8bcf72e54f94749128aa52e/library-1.1.aar" />
-                            <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/support-v4/22.1.0/support-v4-22.1.0.aar" />
+                            <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/support-v4/22.1.1/support-v4-22.1.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar" />
-                            <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.0/support-annotations-22.1.0.jar" />
+                            <option value="$PROJECT_DIR$/../Sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar" />
                             <option value="$MODULE_DIR$/libs/httpmime-4.1.3.jar" />
                             <option value="$MODULE_DIR$/libs/SocialSDK_Sina.jar" />
                             <option value="$MODULE_DIR$/libs/SocialSDK_WeiXin_1.jar" />
@@ -1675,10 +1688,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/AnswerInteractor.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/interactor/AnswerInteractorImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/BaseFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/explore/list/ExploreListPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/setting/SettingsFragment.java" />
@@ -1705,13 +1714,10 @@
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_comment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/DeviceUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/WenJinApp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/welcome/WelcomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/FormatHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/topic/list/TopicListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/explore/list/ExploreListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java" />
@@ -1720,12 +1726,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/wxapi/WXEntryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/umeng_socialize_strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_answer_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/drawer_list_header.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/recyclerview_footer_load_more.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/app_toolbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java" />
       </list>
     </option>
   </component>
@@ -1780,7 +1793,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1833,7 +1846,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2204,6 +2216,82 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="profile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WenJin-Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WenJin-Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wenjin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WenJin-Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WenJin-Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wenjin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="answer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2372,6 +2460,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2386,7 +2475,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="MX31CA1ALF3R9E1338" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.102:5555 MX31CA1ALF3R9E1338" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
@@ -2824,7 +2913,11 @@
       <created>1430308017559</created>
       <updated>1430308017559</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Merge remote-tracking branch 'origin/greenlim'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;app/app.iml&#10;&#9;app/src/main/java/com/twt/service/wenjin/WenJinApp.java&#10;&#9;app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java&#10;&#9;app/src/main/java/com/twt/service/wenjin/ui/profile/follows/FollowsAdapter.java&#10;&#9;app/src/main/res/layout/follow_list_item.xml&#10;">
+      <created>1430308052206</created>
+      <updated>1430308052206</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2870,7 +2963,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17203608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14561856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31460676" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2929,86 +3022,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/setting/SettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3847283" vertical-offset="0" max-vertical-offset="1403">
-          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_list_item.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24731183" vertical-offset="0" max-vertical-offset="2668">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_follows.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42396313" vertical-offset="0" max-vertical-offset="651">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/follow_list_item.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21198156" vertical-offset="0" max-vertical-offset="1334">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/common/UpdateDialogFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="1495">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.133333" vertical-offset="0" max-vertical-offset="506">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_topic_detail.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5652842" vertical-offset="0" max-vertical-offset="1771">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42584434" vertical-offset="147" max-vertical-offset="1035">
@@ -3023,36 +3036,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/follows/FollowsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66226137" vertical-offset="1527" max-vertical-offset="2829">
-          <caret line="113" column="16" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_question.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.6666665" vertical-offset="0" max-vertical-offset="713">
           <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/ProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.452276" vertical-offset="469" max-vertical-offset="4209">
           <caret line="128" column="15" selection-start-line="128" selection-start-column="15" selection-end-line="128" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/question_content_header.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.155146" vertical-offset="108" max-vertical-offset="2346">
           <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
@@ -3060,6 +3062,9 @@
             <element signature="e#3318#3340#0" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/proguard-rules.pro">
@@ -3086,39 +3091,31 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="2796" max-vertical-offset="4922">
           <caret line="131" column="12" selection-start-line="131" selection-start-column="12" selection-end-line="131" selection-end-column="12" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comment.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comment.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39938557" vertical-offset="545" max-vertical-offset="1357">
           <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/DeviceUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3847283" vertical-offset="0" max-vertical-offset="1288">
           <caret line="59" column="64" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17065868" vertical-offset="1105" max-vertical-offset="6992">
-          <caret line="63" column="56" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3176,34 +3173,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="331" max-vertical-offset="1288">
-          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="732" max-vertical-offset="3956">
-          <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/topic/list/TopicListFragment.java">
@@ -3281,14 +3253,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="1587">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/publish/PublishPresenterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.270191" vertical-offset="745" max-vertical-offset="2277">
@@ -3304,22 +3268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3243">
-          <caret line="104" column="49" selection-start-line="104" selection-start-column="49" selection-end-line="104" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2498" max-vertical-offset="4232">
-          <caret line="154" column="37" selection-start-line="154" selection-start-column="37" selection-end-line="154" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/PrefUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4185022" vertical-offset="0" max-vertical-offset="1403">
@@ -3328,14 +3276,159 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/drawer_list_header.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/bean/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69603527" vertical-offset="285" max-vertical-offset="966">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recyclerview_footer_load_more.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5299539" vertical-offset="0" max-vertical-offset="690">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/api/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5868263" vertical-offset="967" max-vertical-offset="6992">
+          <caret line="36" column="66" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/drawer_list_header.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.75729644" vertical-offset="312" max-vertical-offset="1725">
           <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/question/QuestionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3243">
+          <caret line="104" column="49" selection-start-line="104" selection-start-column="49" selection-end-line="104" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5609398" vertical-offset="469" max-vertical-offset="1288">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="95" max-vertical-offset="851">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/profile/follows/FollowsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.35095447" vertical-offset="2194" max-vertical-offset="3105">
+          <caret line="113" column="16" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/answer/detail/AnswerDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52716595" vertical-offset="3068" max-vertical-offset="4255">
+          <caret line="186" column="9" selection-start-line="186" selection-start-column="9" selection-end-line="186" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="506">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomePresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="2231">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/support/UmengShareHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="1403">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+          <folding>
+            <element signature="e#1884#1927#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_list_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2668">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_toolbar.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21198156" vertical-offset="0" max-vertical-offset="651">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twt/service/wenjin/ui/home/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5741556" vertical-offset="1472" max-vertical-offset="4255">
+          <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
+          <folding>
+            <element signature="e#3045#4158#0" expanded="true" />
+            <element signature="e#4147#4148#0" expanded="true" />
+            <element signature="e#4202#4436#0" expanded="true" />
+            <element signature="e#4425#4426#0" expanded="true" />
+            <element signature="e#6410#6411#0" expanded="true" />
+            <element signature="e#6458#6459#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
