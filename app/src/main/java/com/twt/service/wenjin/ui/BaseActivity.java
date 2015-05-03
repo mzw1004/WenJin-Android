@@ -21,7 +21,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivityGraph = ((WenJinApp) getApplication()).createScopedGraph(getModlues().toArray());
+        mActivityGraph = ((WenJinApp) getApplication()).createScopedGraph(getModules().toArray());
         mActivityGraph.inject(this);
     }
 
@@ -38,11 +38,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mActivityGraph = null;
+    protected void onStop() {
+        super.onStop();
         ApiClient.getInstance().cancelRequests(this, false);
     }
 
-    protected abstract List<Object> getModlues();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mActivityGraph = null;
+    }
+
+    protected abstract List<Object> getModules();
 }

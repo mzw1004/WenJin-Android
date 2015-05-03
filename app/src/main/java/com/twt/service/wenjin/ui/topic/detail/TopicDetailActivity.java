@@ -85,7 +85,7 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new TopicDetailModule(this));
     }
 

@@ -121,7 +121,7 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new FollowsModule(this));
     }
 

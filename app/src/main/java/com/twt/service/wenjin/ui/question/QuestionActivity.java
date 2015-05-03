@@ -106,7 +106,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new QuestionModule(this));
     }
 

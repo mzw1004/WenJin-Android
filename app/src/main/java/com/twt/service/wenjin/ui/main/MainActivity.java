@@ -115,7 +115,7 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new MainModule(this));
     }
 

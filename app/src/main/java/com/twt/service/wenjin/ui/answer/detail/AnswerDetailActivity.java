@@ -107,7 +107,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new AnswerDetailModule(this));
     }
 

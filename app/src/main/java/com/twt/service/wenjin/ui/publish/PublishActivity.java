@@ -74,7 +74,7 @@ public class PublishActivity extends BaseActivity implements PublishView {
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new PublishModule(this));
     }
 

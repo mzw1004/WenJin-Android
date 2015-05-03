@@ -122,7 +122,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new ProfileModule(this));
     }
 

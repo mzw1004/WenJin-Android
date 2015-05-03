@@ -84,7 +84,7 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new AnswerModule(this));
     }
 
