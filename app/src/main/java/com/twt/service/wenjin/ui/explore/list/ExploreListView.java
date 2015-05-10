@@ -23,6 +23,8 @@ public interface ExploreListView {
 
     void startProfileActivity(int position);
 
+    void startAnswerActivity(int position);
+
     void showFooter();
 
     void hideFooter();
