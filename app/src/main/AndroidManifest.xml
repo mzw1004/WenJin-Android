@@ -16,83 +16,79 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
-        <meta-data android:name="BUG_HD_SDK_GENERAL_KEY" android:value="0d377ef5e746db9ac47196038ad6a0c7" />
-        <meta-data android:name="UMENG_APPKEY" android:value="553cc331e0f55aca9d0059bf" />
-        <meta-data android:name="UMENG_CHANNEL" android:value="WenJin" />
-
-        <meta-data android:name="AA_DB_NAME" android:value="WenJin.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="0d377ef5e746db9ac47196038ad6a0c7" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="553cc331e0f55aca9d0059bf" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="WenJin" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="WenJin.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
         <meta-data
             android:name="AA_MODELS"
             android:value=".bean.CrashInfo" />
 
-        <activity
-            android:name=".ui.welcome.WelcomeActivity" >
+        <activity android:name=".ui.welcome.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.main.MainActivity"
             android:label="@string/app_name" >
         </activity>
-
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
-
         <activity
             android:name=".ui.question.QuestionActivity"
             android:label="@string/title_activity_question" >
         </activity>
-
         <activity
             android:name=".ui.answer.detail.AnswerDetailActivity"
             android:label="@string/title_activity_answer_detail" >
         </activity>
-
         <activity
             android:name=".ui.publish.PublishActivity"
             android:label="@string/title_activity_publish"
             android:windowSoftInputMode="adjustResize" >
         </activity>
-
         <activity
             android:name=".ui.answer.AnswerActivity"
             android:label="@string/title_activity_answer"
             android:windowSoftInputMode="adjustResize" >
         </activity>
-
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
-
         <activity
             android:name=".ui.answer.comment.CommentActivity"
             android:label="@string/title_activity_comment"
             android:windowSoftInputMode="stateHidden" >
         </activity>
-
         <activity
             android:name=".ui.topic.detail.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
-        
         <activity
             android:name=".ui.profile.askanswer.ProfileAskanswerActivity"
             android:label="@string/title_activity_profile_askanswer" >
         </activity>
-
         <activity
             android:name=".ui.setting.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
-
         <activity
             android:name=".ui.about.AboutActivity"
             android:label="@string/title_activity_about"
@@ -101,18 +97,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.twt.service.wenjin.ui.setting.SettingsActivity" />
         </activity>
-
         <activity
             android:name=".ui.feedback.FeedbackActivity"
             android:label="@string/title_activity_feedback"
             android:windowSoftInputMode="adjustResize" >
         </activity>
-
         <activity
             android:name=".ui.profile.follows.FollowsActivity"
-            android:label="@string/title_activity_follows">
+            android:label="@string/title_activity_follows" >
         </activity>
-
         <activity
             android:name="com.umeng.socialize.view.ShareActivity"
             android:configChanges="orientation|keyboard"
@@ -121,14 +114,16 @@
             android:theme="@style/Theme.UMDialog"
             android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
-
         <activity
             android:name=".wxapi.WXEntryActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".ui.profile.edit.ProfileEditActivity"
+            android:label="@string/title_activity_profile_edit" >
+        </activity>
     </application>
 
 </manifest>

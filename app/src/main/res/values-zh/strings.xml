@@ -96,6 +96,7 @@
     <string name="profile_question">问过</string>
     <string name="profile_answer">答过</string>
     <string name="profile_detail">详细信息</string>
+    <string name="action_edit">编辑</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">评论</string>
@@ -133,5 +134,9 @@
     <string name="action_type_following">关注</string>
     <string name="action_type_followers">被关注</string>
     <string name="default_signature_profile_follows">主人,我也想要一个签名...</string>
+
+    <!-- Profile Edit activity -->
+    <string name="title_activity_profile_edit">主页修改</string>
+
 
 </resources>

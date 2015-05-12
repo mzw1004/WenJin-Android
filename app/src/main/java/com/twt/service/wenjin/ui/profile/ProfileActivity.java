@@ -22,6 +22,7 @@ import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.NumberTextView;
 import com.twt.service.wenjin.ui.profile.askanswer.ProfileAskanswerActivity;
+import com.twt.service.wenjin.ui.profile.edit.ProfileEditActivity;
 import com.twt.service.wenjin.ui.profile.follows.FollowsActivity;
 
 import java.util.Arrays;
@@ -126,18 +127,23 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         return Arrays.<Object>asList(new ProfileModule(this));
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_profile, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        if (uid == PrefUtils.getPrefUid()) {
+            getMenuInflater().inflate(R.menu.menu_profile, menu);
+        }
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
+                break;
+            case R.id.action_edit:
+                ProfileEditActivity.actionStart(this, uid);
                 break;
         }
         return super.onOptionsItemSelected(item);

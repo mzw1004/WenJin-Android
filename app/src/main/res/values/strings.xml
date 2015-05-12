@@ -96,6 +96,7 @@
     <string name="profile_question">Question</string>
     <string name="profile_answer">Answer</string>
     <string name="profile_detail">Detail</string>
+    <string name="action_edit">Edit</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">Comment</string>
@@ -135,5 +136,11 @@
     <string name="action_type_following">Following</string>
     <string name="action_type_followers">Followers</string>
     <string name="default_signature_profile_follows">There is nothing...</string>
+
+    <!-- Profile Edit activity -->
+    <string name="title_activity_profile_edit">Profile Edit</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

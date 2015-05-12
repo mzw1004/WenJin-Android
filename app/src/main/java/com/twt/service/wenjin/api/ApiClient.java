@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.api;
 
 import android.net.Uri;
+import android.text.TextUtils;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -60,6 +61,7 @@ public class ApiClient {
     private static final String CHECK_UPDATE_URL = "?/api/update/check/";
     private static final String MY_FOCUS_USER = "api/my_focus_user.php";
     private static final String MY_FANS_USER = "api/my_fans_user.php";
+    private static final String PROFILE_EDIT_URL = "api/profile_setting.php";
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
@@ -294,7 +296,7 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-        sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
+        sClient.get(BASE_URL + MY_FOCUS_USER, params, handler);
     }
 
     public static void checkNewVersion(String version, JsonHttpResponseHandler handler) {
@@ -309,7 +311,18 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-        sClient.get(BASE_URL + MY_FANS_USER,params,handler);
+        sClient.get(BASE_URL + MY_FANS_USER, params, handler);
+    }
+
+    public static void editProfile(int uid, String username, String signature, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+        params.put("nick_name", username);
+        if (!TextUtils.isEmpty(signature)) {
+            params.put("signature", signature);
+        }
+
+        sClient.post(BASE_URL + PROFILE_EDIT_URL, params, handler);
     }
 
 }
