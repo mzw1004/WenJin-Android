@@ -10,8 +10,11 @@ public class ExploreItem {
 
     //public ArrayList<UserInfo> answer_users;
 
+    //是否匿名
+    public int anonymous;
+
     /*回答信息*/
-    public UserInfo[] answer_users;
+    public AnswerInfo[] answer_users;
 
     public String post_type;
 
