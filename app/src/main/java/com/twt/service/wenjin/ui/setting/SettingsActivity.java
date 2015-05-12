@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.support.StatusBarHelper;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -20,6 +21,8 @@ public class SettingsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ButterKnife.inject(this);
+
+        StatusBarHelper.setStatusBar(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

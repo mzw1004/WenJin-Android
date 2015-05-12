@@ -6,6 +6,8 @@
     android:paddingLeft="@dimen/login_padding_left_right"
     android:paddingRight="@dimen/login_padding_left_right"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
     tools:context="com.twt.service.wenjin.ui.login.LoginActivity">
 
     <ImageView
