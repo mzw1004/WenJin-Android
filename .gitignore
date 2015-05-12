@@ -27,6 +27,7 @@ proguard/
 
 # Intelij project files
 .idea/
+/.idea/workspace.xml
 
 # Mac cache files
 .DS_Store
