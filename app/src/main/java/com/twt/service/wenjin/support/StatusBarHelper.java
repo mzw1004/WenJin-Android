@@ -2,8 +2,6 @@ package com.twt.service.wenjin.support;
 
 import android.app.Activity;
 import android.os.Build;
-
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
 
