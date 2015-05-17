@@ -20,6 +20,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
+import com.twt.service.wenjin.ui.draft.DraftFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.home.HomeFragment;
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity implements MainView {
     private HomeFragment mHomeFragment;
     private ExploreFragment mExploreFragment;
     private TopicFragment mTopicFragment;
+    private DraftFragment mDraftFragment;
 //    private UserFragment mUserFragment;
 
     private long exitTime = 0;
@@ -143,12 +145,12 @@ public class MainActivity extends BaseActivity implements MainView {
                 }
                 fragment = mTopicFragment;
                 break;
-//            case 3:
-//                if (mUserFragment == null) {
-//                    mUserFragment = new UserFragment();
-//                }
-//                fragment = mUserFragment;
-//                break;
+            case 3:
+                if (mDraftFragment == null) {
+                    mDraftFragment = new DraftFragment();
+                }
+                fragment = mDraftFragment;
+                break;
         }
         fragmentManager.beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)

@@ -4,9 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.activeandroid.ActiveAndroid;
-import com.loopj.android.http.PersistentCookieStore;
-import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.support.CrashHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +17,6 @@ import im.fir.sdk.FIR;
 public class WenJinApp extends Application {
 
     private static Context sContext;
-    private static PersistentCookieStore sCookieStore;
 
     private ObjectGraph objectGraph;
 
@@ -32,8 +28,6 @@ public class WenJinApp extends Application {
         objectGraph.inject(this);
 
         sContext = getApplicationContext();
-        sCookieStore = new PersistentCookieStore(sContext);
-        ApiClient.getInstance().setCookieStore(sCookieStore);
 
         ActiveAndroid.initialize(this);
     }
@@ -50,7 +44,4 @@ public class WenJinApp extends Application {
         return sContext;
     }
 
-    public static PersistentCookieStore getCookieStore() {
-        return sCookieStore;
-    }
 }

@@ -5,10 +5,10 @@ import android.text.TextUtils;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.support.DeviceUtils;
-import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 
 import java.io.File;
@@ -33,6 +33,7 @@ public class ApiClient {
     public static final int ERROR_CODE = -1;
 
     private static final AsyncHttpClient sClient = new AsyncHttpClient();
+    private static final PersistentCookieStore sCookieStore = new PersistentCookieStore(WenJinApp.getContext());
     private static final int DEFAULT_TIMEOUT = 20000;
 
     private static final String BASE_URL = "http://wj.oursays.com/";
@@ -65,6 +66,7 @@ public class ApiClient {
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
+        sClient.setCookieStore(sCookieStore);
         sClient.addHeader("User-Agent", getUserAgent());
     }
 
@@ -95,7 +97,7 @@ public class ApiClient {
     }
 
     public static void userLogout() {
-        WenJinApp.getCookieStore().clear();
+        sCookieStore.clear();
         PrefUtils.setLogin(false);
     }
 

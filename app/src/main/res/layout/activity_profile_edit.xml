@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
     tools:context="com.twt.service.wenjin.ui.profile.edit.ProfileEditActivity">
 
     <include

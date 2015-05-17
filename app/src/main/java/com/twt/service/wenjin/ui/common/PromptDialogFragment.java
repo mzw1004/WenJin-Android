@@ -12,18 +12,18 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.support.ResourceHelper;
 
 /**
- * Created by M on 2015/4/11.
+ * Created by M on 2015/5/15.
  */
-public class TextDialogFragment extends DialogFragment {
+public class PromptDialogFragment extends DialogFragment {
 
-    private static final String PARAM_TEXT = "text";
+    private static final String PARAM_PROMPT = "prompt";
 
     private MaterialDialog.ButtonCallback callback;
 
-    public static TextDialogFragment newInstance(String text) {
-        TextDialogFragment fragment = new TextDialogFragment();
+    public static PromptDialogFragment newInstance(String prompt) {
+        PromptDialogFragment fragment = new PromptDialogFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(PARAM_TEXT, text);
+        bundle.putString(PARAM_PROMPT, prompt);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -37,16 +37,17 @@ public class TextDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         TextView textView = new TextView(getActivity());
         textView.setTextColor(ResourceHelper.getColor(R.color.color_text_primary));
-        textView.setText(getArguments().getString(PARAM_TEXT));
+        textView.setText(getArguments().getString(PARAM_PROMPT));
         return new MaterialDialog.Builder(getActivity())
                 .customView(textView, true)
                 .positiveText(android.R.string.ok)
+                .negativeText(android.R.string.cancel)
                 .callback(callback)
                 .build();
     }
 
     public void show(AppCompatActivity context) {
-        show(context.getSupportFragmentManager(), "TEXT_DISPLAY");
+        show(context.getSupportFragmentManager(), "PROMPT_DISPLAY");
     }
 
     @Override
@@ -54,5 +55,4 @@ public class TextDialogFragment extends DialogFragment {
         super.onPause();
         dismiss();
     }
-
 }

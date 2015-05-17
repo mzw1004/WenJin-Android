@@ -30,10 +30,10 @@
             android:value="WenJin.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="1" />
+            android:value="2" />
         <meta-data
             android:name="AA_MODELS"
-            android:value=".bean.CrashInfo" />
+            android:value=".bean.CrashInfo, .bean.QuestionDraft" />
 
         <activity android:name=".ui.welcome.WelcomeActivity" >
             <intent-filter>

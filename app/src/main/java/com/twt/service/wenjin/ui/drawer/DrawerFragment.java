@@ -159,6 +159,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mDrawerAdapter.addItem(R.drawable.ic_drawer_home_grey, getString(R.string.drawer_item_home));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_explore_grey, getString(R.string.drawer_item_explore));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_topic_grey, getString(R.string.drawer_item_topic));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_draft_grey, getString(R.string.drawer_item_draft));
 //        mDrawerAdapter.addItem(R.drawable.ic_drawer_user_grey, getString(R.string.drawer_item_user));
         mDrawerAdapter.addDivider();
         mDrawerAdapter.addItem(R.drawable.ic_drawer_settings_grey, getString(R.string.drawer_item_setting));

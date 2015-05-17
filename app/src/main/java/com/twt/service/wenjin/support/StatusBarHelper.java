@@ -2,9 +2,9 @@ package com.twt.service.wenjin.support;
 
 import android.app.Activity;
 import android.os.Build;
-import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
 
 /**
@@ -22,7 +22,7 @@ public class StatusBarHelper {
             SystemBarTintManager tintManager = new SystemBarTintManager(activity);
             // enable status bar tint
             tintManager.setStatusBarTintEnabled(true);
-            tintManager.setStatusBarTintColor(activity.getResources().getColor(R.color.color_primary_dark));
+            tintManager.setStatusBarTintColor(activity.getResources().getColor(R.color.color_primary));
         }
     }
 }
