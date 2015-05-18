@@ -70,7 +70,7 @@ public class AnswerPresenterImpl implements AnswerPresenter, OnAnswerCallback, O
     @Override
     public void onAnswerSuccess(int answerId) {
         mView.toastMessage(ResourceHelper.getString(R.string.publish_success));
-        mView.finishActivity();
+        mView.finishWithoutHint();
     }
 
     @Override

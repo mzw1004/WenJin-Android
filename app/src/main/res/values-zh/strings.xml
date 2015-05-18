@@ -139,5 +139,13 @@
     <!-- Profile Edit activity -->
     <string name="title_activity_profile_edit">主页修改</string>
 
+    <!-- Prompt Dialog strings -->
+    <string name="save_as_draft">是否保存为草稿？</string>
+    <string name="save_successfully">保存成功</string>
+
+    <!-- Draft fragment strings -->
+    <string name="no_any_drafts">不存在任何草稿。</string>
+    <string name="action_delete">删除</string>
+
 
 </resources>

@@ -166,7 +166,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
 
     @Override
     public void startAnswerActivity() {
-        AnswerActivity.actionStart(this, questionId);
+        AnswerActivity.actionStart(this, questionId, mQuestionAdapter.getQuestionInfo().question_content);
     }
 
     @Override

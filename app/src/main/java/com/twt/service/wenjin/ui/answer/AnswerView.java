@@ -9,4 +9,6 @@ public interface AnswerView {
 
     void finishActivity();
 
+    void finishWithoutHint();
+
 }

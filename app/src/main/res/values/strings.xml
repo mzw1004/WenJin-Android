@@ -141,7 +141,12 @@
     <!-- Profile Edit activity -->
     <string name="title_activity_profile_edit">Profile Edit</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <!-- Prompt Dialog strings -->
+    <string name="save_as_draft">Are want to save as draft?</string>
+    <string name="save_successfully">save successfully</string>
+
+    <!-- Draft fragment strings -->
+    <string name="no_any_drafts">There are not any drafts.</string>
+    <string name="action_delete">Delete</string>
 
 </resources>

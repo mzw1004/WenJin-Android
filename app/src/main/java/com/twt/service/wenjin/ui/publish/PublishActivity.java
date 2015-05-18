@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.TextUtils;
 import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,16 +14,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.otto.Subscribe;
 import com.twt.service.wenjin.R;
-import com.twt.service.wenjin.bean.QuestionDraft;
 import com.twt.service.wenjin.event.SelectPhotoResultEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.common.PromptDialogFragment;
 import com.twt.service.wenjin.ui.common.SelectPhotoDialogFragment;
 
 import java.util.Arrays;
@@ -150,45 +146,46 @@ public class PublishActivity extends BaseActivity implements PublishView {
 
     @Override
     public void finishActivity() {
-        final String title = etTitle.getText().toString();
-        String topics = "";
-        if (tagGroup.getTags().length > 0) {
-            topics = tagGroup.getTags()[0];
-            for (int i = 1; i < tagGroup.getTags().length; i++) {
-                topics += ",";
-                topics += tagGroup.getTags()[i];
-            }
-        }
-        final String content = etContent.getText().toString();
-        final boolean anonymous = cbAnonymous.isChecked();
-
-        if (!TextUtils.isEmpty(title) || !TextUtils.isEmpty(topics) || !TextUtils.isEmpty(content) || anonymous) {
-            PromptDialogFragment dialogFragment = PromptDialogFragment.newInstance("Are you sure?");
-            final String finalTopics = topics;
-            dialogFragment.setCallback(new MaterialDialog.ButtonCallback() {
-                @Override
-                public void onPositive(MaterialDialog dialog) {
-                    super.onPositive(dialog);
-                    QuestionDraft draft = new QuestionDraft();
-                    draft.title = title;
-                    draft.topics = finalTopics;
-                    draft.content = content;
-                    draft.anonymous = anonymous;
-                    draft.save();
-                    toastMessage("save successfully");
-                    finish();
-                }
-
-                @Override
-                public void onNegative(MaterialDialog dialog) {
-                    super.onNegative(dialog);
-                    finish();
-                }
-            });
-            dialogFragment.show(this);
-        } else {
-        this.finish();
-        }
+//        final String title = etTitle.getText().toString();
+//        String topics = "";
+//        if (tagGroup.getTags().length > 0) {
+//            topics = tagGroup.getTags()[0];
+//            for (int i = 1; i < tagGroup.getTags().length; i++) {
+//                topics += ",";
+//                topics += tagGroup.getTags()[i];
+//            }
+//        }
+//        final String content = etContent.getText().toString();
+//        final boolean anonymous = cbAnonymous.isChecked();
+//
+//        if (!TextUtils.isEmpty(title) || !TextUtils.isEmpty(topics) || !TextUtils.isEmpty(content) || anonymous) {
+//            PromptDialogFragment dialogFragment = PromptDialogFragment.newInstance("Are you sure?");
+//            final String finalTopics = topics;
+//            dialogFragment.setCallback(new MaterialDialog.ButtonCallback() {
+//                @Override
+//                public void onPositive(MaterialDialog dialog) {
+//                    super.onPositive(dialog);
+//                    QuestionDraft draft = new QuestionDraft();
+//                    draft.title = title;
+//                    draft.topics = finalTopics;
+//                    draft.content = content;
+//                    draft.anonymous = anonymous;
+//                    draft.save();
+//                    toastMessage("save successfully");
+//                    finish();
+//                }
+//
+//                @Override
+//                public void onNegative(MaterialDialog dialog) {
+//                    super.onNegative(dialog);
+//                    finish();
+//                }
+//            });
+//            dialogFragment.show(this);
+//        } else {
+//        this.finish();
+//        }
+        finish();
     }
 
 }
