@@ -7,10 +7,12 @@ import com.activeandroid.ActiveAndroid;
 import com.loopj.android.http.PersistentCookieStore;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.CrashHandler;
+import com.twt.service.wenjin.support.JPushHelper;
 
 import java.util.Arrays;
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
 import dagger.ObjectGraph;
 
 /**
@@ -37,6 +39,11 @@ public class WenJinApp extends Application {
 //       crashHandler.init(sContext);
 
         ActiveAndroid.initialize(this);
+
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+        JPushHelper.mContext = getApplicationContext();
+        JPushHelper.setNotiStyleBasic();
     }
 
     private List<Object> getModules() {

@@ -23,6 +23,7 @@ import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.home.HomeFragment;
+import com.twt.service.wenjin.ui.notification.NotificationFragment;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
 
 import org.apache.http.Header;
@@ -36,6 +37,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import cn.jpush.android.api.JPushInterface;
 
 
 public class MainActivity extends BaseActivity implements MainView {
@@ -56,6 +58,7 @@ public class MainActivity extends BaseActivity implements MainView {
     private HomeFragment mHomeFragment;
     private ExploreFragment mExploreFragment;
     private TopicFragment mTopicFragment;
+    private NotificationFragment mNotificationFragment;
 //    private UserFragment mUserFragment;
 
     private long exitTime = 0;
@@ -99,6 +102,9 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void onStart() {
         super.onStart();
         BusProvider.getBusInstance().register(this);
+        if(JPushInterface.isPushStopped(this)){
+            JPushInterface.onResume(this);
+        }
     }
 
     @Override
@@ -106,6 +112,18 @@ public class MainActivity extends BaseActivity implements MainView {
         super.onStop();
         BusProvider.getBusInstance().unregister(this);
         ApiClient.getInstance().cancelRequests(this, false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
     }
 
     @Subscribe
@@ -143,6 +161,11 @@ public class MainActivity extends BaseActivity implements MainView {
                 }
                 fragment = mTopicFragment;
                 break;
+            case 3:
+                if(mNotificationFragment == null){
+                    mNotificationFragment = new NotificationFragment();
+                }
+                fragment = mNotificationFragment;
 //            case 3:
 //                if (mUserFragment == null) {
 //                    mUserFragment = new UserFragment();

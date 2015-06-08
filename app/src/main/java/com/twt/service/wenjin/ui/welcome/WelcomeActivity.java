@@ -12,6 +12,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.CrashInfo;
+import com.twt.service.wenjin.support.JPushHelper;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
@@ -19,6 +20,8 @@ import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 
 import java.util.List;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class WelcomeActivity extends ActionBarActivity {
 
@@ -56,4 +59,15 @@ public class WelcomeActivity extends ActionBarActivity {
         }, 2000);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
 }

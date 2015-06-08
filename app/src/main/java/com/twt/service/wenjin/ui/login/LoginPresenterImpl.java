@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.interactor.LoginInteractor;
+import com.twt.service.wenjin.support.JPushHelper;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
@@ -47,6 +49,11 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginCallback {
     public void onSuccess(UserInfo userInfo) {
         PrefUtils.setDefaultPrefUserInfo(userInfo);
         PrefUtils.setLogin(true);
+
+        JPushHelper jPushHelper = new JPushHelper(String.valueOf(userInfo.uid),null);
+        jPushHelper.setAlias();
+
+
         mLoginView.hideProgressBar();
         mLoginView.startMainActivity();
     }
