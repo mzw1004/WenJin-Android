@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.welcome;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Handler;
@@ -23,7 +24,8 @@ import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
 
-public class WelcomeActivity extends ActionBarActivity {
+public class WelcomeActivity extends Activity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class WelcomeActivity extends ActionBarActivity {
                 WelcomeActivity.this.startActivity(intent);
                 WelcomeActivity.this.finish();
             }
-        }, 2000);
+        }, 1000);
     }
 
     @Override

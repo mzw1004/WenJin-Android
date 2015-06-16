@@ -23,6 +23,8 @@ public class WenJinApp extends Application {
     private static Context sContext;
     private static PersistentCookieStore sCookieStore;
 
+    private static boolean sIsAppLunched;
+
     private ObjectGraph objectGraph;
 
     @Override
@@ -60,5 +62,13 @@ public class WenJinApp extends Application {
 
     public static PersistentCookieStore getCookieStore() {
         return sCookieStore;
+    }
+
+    public static boolean isAppLunched(){
+        return sIsAppLunched;
+    }
+
+    public static void setAppLunchState(Boolean argState){
+        sIsAppLunched = argState;
     }
 }

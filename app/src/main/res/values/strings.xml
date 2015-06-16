@@ -23,6 +23,7 @@
     <string name="drawer_item_home">Home</string>
     <string name="drawer_item_explore">Explore</string>
     <string name="drawer_item_topic">Topic</string>
+    <string name="drawer_item_notification">Notification</string>
     <string name="drawer_item_user">User</string>
     <string name="drawer_item_setting">Setting</string>
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>

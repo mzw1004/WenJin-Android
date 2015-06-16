@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,12 +14,15 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.otto.Subscribe;
 import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
+import com.twt.service.wenjin.receiver.NotificationBuffer;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
@@ -69,17 +73,32 @@ public class MainActivity extends BaseActivity implements MainView {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
+        WenJinApp.setAppLunchState(true);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         mDrawerFragment = (DrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mDrawerFragment.setUp(R.id.main_container, mDrawerLayout, toolbar);
+        mDrawerFragment.setNavigationIcon();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_container, new HomeFragment())
                 .commit();
 
+
+
+        if(NotificationBuffer.getsIntent() != null){
+            Intent intent = NotificationBuffer.getsIntent();
+            intent.setClass(this, AnswerDetailActivity.class);
+            this.startActivity(intent);
+            NotificationBuffer.setsIntent(null);
+        }
+
+        /*
         ApiClient.checkNewVersion(BuildConfig.VERSION_CODE + "", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -96,6 +115,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 }
             }
         });
+        */
     }
 
     @Override
@@ -197,6 +217,12 @@ public class MainActivity extends BaseActivity implements MainView {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        WenJinApp.setAppLunchState(false);
     }
 
     //    @Override

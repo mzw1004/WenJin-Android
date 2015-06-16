@@ -19,4 +19,6 @@ public interface DrawerView {
 
     void startLoginActivity();
 
+    void setNavigationIcon();
+
 }

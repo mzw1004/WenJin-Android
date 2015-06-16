@@ -1,17 +1,21 @@
-package com.twt.service.wenjin.ui.notification;
+package com.twt.service.wenjin.receiver;
 
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.bean.NotificationMsg;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
+import com.twt.service.wenjin.ui.notification.NotificationType;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
+import com.twt.service.wenjin.ui.welcome.WelcomeActivity;
 
 import java.util.Iterator;
 import java.util.List;
@@ -88,6 +92,9 @@ public class JPushNotiReceiver extends BroadcastReceiver {
     private static final String PARAM_ANSWER_ID = "answer_id";
     private static final String PARAM_QUESTION = "question";
 
+    public static final String INTENT_FLAG_NOTIFICATION = "intent_flag_notification";
+    public static final int INTENT_FLAG_NOTIFICATION_VALUE = 8000; //表示通知方式打开
+
     /*
       处理通知消息
      */
@@ -104,6 +111,7 @@ public class JPushNotiReceiver extends BroadcastReceiver {
                 || notificationMsg.type == NotificationType.TYPE_MOD_QUESTION){
             Intent intent = new Intent(context, QuestionActivity.class);
             intent.putExtra(PARAM_QUESTION_ID, notificationMsg.id);
+            intent.putExtra(INTENT_FLAG_NOTIFICATION, INTENT_FLAG_NOTIFICATION_VALUE);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(intent);
 
@@ -112,40 +120,46 @@ public class JPushNotiReceiver extends BroadcastReceiver {
                 ||notificationMsg.type == NotificationType.TYPE_ANSWER_COMMENT_AT_ME
                 ||notificationMsg.type == NotificationType.TYPE_ANSWER_AT_ME
                 ||notificationMsg.type == NotificationType.TYPE_ANSWER_COMMENT){
-            Intent intent = new Intent(context, AnswerDetailActivity.class);
+            Intent intent = new Intent();
             intent.putExtra(PARAM_ANSWER_ID, notificationMsg.id);
             intent.putExtra(PARAM_QUESTION, "Answer");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            context.startActivity(intent);
+            intent.putExtra(INTENT_FLAG_NOTIFICATION, INTENT_FLAG_NOTIFICATION_VALUE);
+            if(!WenJinApp.isAppLunched()){
+                NotificationBuffer.setsIntent(intent);
+                Intent intentMain = new Intent(context, WelcomeActivity.class);
+                intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(intentMain);
+
+            }else {
+                intent.setClass(context, AnswerDetailActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+            Log.v("answer "," activity started!  ");
+
         }
 
-
-
-        //打开自定义的Activity
-        //Intent intent = new Intent(context, QuestionActivity.class);
-        //intent.putExtras(bundle);
-        //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
-        //context.startActivity(intent);
     }
 
     /*
       判断app是否在进程之中
      */
     private static boolean isAppInProcess(Context context){
+
+        Boolean retBool = false;
+
         String packName = "com.twt.service.wenjin";
+
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> procsInfo = activityManager.getRunningAppProcesses();
+        List<ActivityManager.RunningAppProcessInfo> appLists = activityManager.getRunningAppProcesses();
 
-        if(procsInfo == null) return false;
-
-        Iterator<ActivityManager.RunningAppProcessInfo> iter = procsInfo.iterator();
-        while (iter.hasNext()){
-            if(iter.next().processName.equals(packName)){
-                return true;
+        for(ActivityManager.RunningAppProcessInfo running:appLists){
+            Log.v("running process name:",running.processName);
+            if(running.processName.equals(packName) ){
+                retBool =  true;
+                break;
             }
-
         }
-        return  false;
+        return retBool;
     }
 }

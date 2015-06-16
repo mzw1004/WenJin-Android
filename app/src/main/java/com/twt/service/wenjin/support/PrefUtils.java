@@ -12,6 +12,7 @@ import com.twt.service.wenjin.bean.UserInfo;
  */
 public class PrefUtils {
 
+
     private static final String PREF_UID = "uid";
 
     private static final String PREF_USERNAME = "user_name";

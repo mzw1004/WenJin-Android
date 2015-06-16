@@ -19,11 +19,13 @@ import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Answer;
+import com.twt.service.wenjin.receiver.JPushNotiReceiver;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
+import com.twt.service.wenjin.ui.main.MainActivity;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
 import java.util.Arrays;
@@ -67,6 +69,8 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     private int answerId;
     private int uid;
 
+    private int mIntentNotiFlag;
+
     public static void actionStart(Context context, int answerId, String question) {
         Intent intent = new Intent(context, AnswerDetailActivity.class);
         intent.putExtra(PARAM_ANSWER_ID, answerId);
@@ -88,6 +92,9 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         LogHelper.v(LOG_TAG, "answer id: " + answerId);
 
         String question = getIntent().getStringExtra(PARAM_QUESTION);
+
+        mIntentNotiFlag = getIntent().getIntExtra(JPushNotiReceiver.INTENT_FLAG_NOTIFICATION,0);
+
         toolbar.setTitle(question);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -164,6 +171,11 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     @Override
     public void bindAnswerData(Answer answer) {
         uid = answer.uid;
+
+        if(mIntentNotiFlag == JPushNotiReceiver.INTENT_FLAG_NOTIFICATION_VALUE){
+            mPresenter.loadTitle(answer.question_id);
+        }
+
         if (!TextUtils.isEmpty(answer.avatar_file)) {
             Picasso.with(this).load(ApiClient.getAvatarUrl(answer.avatar_file)).into(ivAvatar);
         }
@@ -180,6 +192,12 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         tvContent.setMovementMethod(LinkMovementMethod.getInstance());
         tvAddTime.setText(FormatHelper.formatAddDate(answer.add_time));
         tvCommentCount.setText("" + answer.comment_count);
+
+    }
+
+    @Override
+    public void bindTitle(String title) {
+        toolbar.setTitle(title);
     }
 
     @Override

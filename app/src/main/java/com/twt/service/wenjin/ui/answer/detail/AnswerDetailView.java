@@ -13,6 +13,8 @@ public interface AnswerDetailView {
 
     void bindAnswerData(Answer answer);
 
+    void bindTitle(String title);
+
     void toastMessage(String msg);
 
     void setAgree(boolean isAgree, int agreeCount);

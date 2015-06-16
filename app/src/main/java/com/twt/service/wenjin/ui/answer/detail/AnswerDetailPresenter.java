@@ -9,4 +9,6 @@ public interface AnswerDetailPresenter {
 
     void actionVote(int answerId, int value);
 
+    void loadTitle(int argQuestionId);
+
 }
