@@ -63,6 +63,7 @@ public class ApiClient {
     private static final String MY_FANS_USER = "api/my_fans_user.php";
 
     private static final String NOTIFICATIONS_URL = "?/api/notification/notifications/";
+    private static final String NOTIFICATIONS_LIST_URL = "?/api/notification/list/";
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
@@ -302,7 +303,15 @@ public class ApiClient {
 
     public static void getNotificationsNumberInfo(long argTimestampNow, JsonHttpResponseHandler handler){
         RequestParams params = new RequestParams();
-        params.put("time", "1434944866163");
+        params.put("time", argTimestampNow);
         sClient.get(BASE_URL + NOTIFICATIONS_URL, params, handler);
+    }
+
+    public static void getNotificationsList(int argPageNum, int argIsUnreadFlag, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("page", argPageNum);
+        params.put("flag", argIsUnreadFlag);
+
+        sClient.get(BASE_URL + NOTIFICATIONS_LIST_URL, params, handler);
     }
 }
