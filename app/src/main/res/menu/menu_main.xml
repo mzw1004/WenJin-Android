@@ -1,7 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context="com.twt.service.wenjin.ui.main.MainActivity">
+
+    <item
+        android:id="@+id/action_notification"
+        android:icon="@drawable/ic_action_notifications"
+        android:title="@string/action_notification"
+        app:actionLayout="@layout/menu_badge"
+        app:showAsAction="always" />
 
 
 </menu>

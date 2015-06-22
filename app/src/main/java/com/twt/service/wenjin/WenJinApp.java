@@ -64,6 +64,7 @@ public class WenJinApp extends Application {
         return sCookieStore;
     }
 
+
     public static boolean isAppLunched(){
         return sIsAppLunched;
     }

@@ -164,7 +164,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mDrawerAdapter.addItem(R.drawable.ic_drawer_home_grey, getString(R.string.drawer_item_home));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_explore_grey, getString(R.string.drawer_item_explore));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_topic_grey, getString(R.string.drawer_item_topic));
-        mDrawerAdapter.addItem(R.drawable.ic_drawer_notification_grey,getString(R.string.drawer_item_notification));
+//        mDrawerAdapter.addItem(R.drawable.ic_drawer_notification_grey,getString(R.string.drawer_item_notification));
 //        mDrawerAdapter.addItem(R.drawable.ic_drawer_user_grey, getString(R.string.drawer_item_user));
         mDrawerAdapter.addDivider();
         mDrawerAdapter.addItem(R.drawable.ic_drawer_settings_grey, getString(R.string.drawer_item_setting));
@@ -258,10 +258,5 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         getActivity().finish();
     }
 
-    @Override
-    public void setNavigationIcon() {
-        mDrawerToggle.syncState();
-        mToolbar.setNavigationIcon(R.drawable.ic_drawer_explore_grey);
-    }
 
 }

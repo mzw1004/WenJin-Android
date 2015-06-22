@@ -1,25 +1,36 @@
 package com.twt.service.wenjin.ui.main;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.Theme;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.mikepenz.actionitembadge.library.ActionItemBadge;
+import com.mikepenz.iconics.typeface.FontAwesome;
 import com.squareup.otto.Subscribe;
 import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.bean.NotificationNumInfo;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
+import com.twt.service.wenjin.interactor.NotificationInteractor;
+import com.twt.service.wenjin.interactor.NotificationInteractorImpl;
 import com.twt.service.wenjin.receiver.NotificationBuffer;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
@@ -35,6 +46,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -44,7 +56,7 @@ import butterknife.InjectView;
 import cn.jpush.android.api.JPushInterface;
 
 
-public class MainActivity extends BaseActivity implements MainView {
+public class MainActivity extends BaseActivity implements MainView,OnGetNotificationNumberInfoCallback {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -65,7 +77,10 @@ public class MainActivity extends BaseActivity implements MainView {
     private NotificationFragment mNotificationFragment;
 //    private UserFragment mUserFragment;
 
+    private int mBadgeCount = 0;
     private long exitTime = 0;
+
+    private NotificationInteractor notificationInteractor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +90,9 @@ public class MainActivity extends BaseActivity implements MainView {
 
         WenJinApp.setAppLunchState(true);
 
+
+        notificationInteractor = new NotificationInteractorImpl();
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -83,7 +101,6 @@ public class MainActivity extends BaseActivity implements MainView {
         mDrawerFragment = (DrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mDrawerFragment.setUp(R.id.main_container, mDrawerLayout, toolbar);
-        mDrawerFragment.setNavigationIcon();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_container, new HomeFragment())
@@ -97,6 +114,7 @@ public class MainActivity extends BaseActivity implements MainView {
             this.startActivity(intent);
             NotificationBuffer.setsIntent(null);
         }
+
 
         /*
         ApiClient.checkNewVersion(BuildConfig.VERSION_CODE + "", new JsonHttpResponseHandler() {
@@ -119,12 +137,53 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        if(mBadgeCount > 0){
+            ActionItemBadge.update(this, menu.findItem(R.id.action_notification)
+                    ,ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_notifications,null)
+            ,ActionItemBadge.BadgeStyle.RED
+            ,mBadgeCount);
+        }else {
+            ActionItemBadge.hide(menu.findItem(R.id.action_notification));
+        }
+
+        /*
+        new ActionItemBadge.Add().act(this).menu(menu).title(R.string.action_notification)
+                .itemDetails(0, R.id.action_notification, 1)
+                .showAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+                .build(
+                        ResourcesCompat.getDrawable(getResources(),
+                                R.drawable.ic_action_notifications,
+                                null)
+                        ,ActionItemBadge.BadgeStyle.RED, 1);
+        */
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_notification){
+            Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         BusProvider.getBusInstance().register(this);
         if(JPushInterface.isPushStopped(this)){
             JPushInterface.onResume(this);
         }
+
+        notificationInteractor.getNotificationNumberInfo(Calendar.getInstance().getTimeInMillis(), this);
+
+
+
     }
 
     @Override
@@ -138,6 +197,7 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void onResume() {
         super.onResume();
         JPushInterface.onResume(this);
+
     }
 
     @Override
@@ -181,11 +241,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 }
                 fragment = mTopicFragment;
                 break;
-            case 3:
-                if(mNotificationFragment == null){
-                    mNotificationFragment = new NotificationFragment();
-                }
-                fragment = mNotificationFragment;
+
 //            case 3:
 //                if (mUserFragment == null) {
 //                    mUserFragment = new UserFragment();
@@ -223,6 +279,20 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void onDestroy() {
         super.onDestroy();
         WenJinApp.setAppLunchState(false);
+    }
+
+    @Override
+    public void onGetNotificationNumberInfoSuccess(NotificationNumInfo notificationNumInfo) {
+        mBadgeCount = notificationNumInfo.notifications_num;
+        if(mBadgeCount > 99)
+            mBadgeCount = 99;
+        invalidateOptionsMenu();
+
+    }
+
+    @Override
+    public void onGetNotificationNumberInfoFailed(String argErrorMSG) {
+
     }
 
     //    @Override

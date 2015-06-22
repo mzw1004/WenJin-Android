@@ -62,6 +62,8 @@ public class ApiClient {
     private static final String MY_FOCUS_USER = "api/my_focus_user.php";
     private static final String MY_FANS_USER = "api/my_fans_user.php";
 
+    private static final String NOTIFICATIONS_URL = "?/api/notification/notifications/";
+
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
     }
@@ -280,7 +282,7 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-        sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
+        sClient.get(BASE_URL + MY_FOCUS_USER, params, handler);
     }
 
     public static void checkNewVersion(String version, JsonHttpResponseHandler handler) {
@@ -295,7 +297,12 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-        sClient.get(BASE_URL + MY_FANS_USER,params,handler);
+        sClient.get(BASE_URL + MY_FANS_USER, params, handler);
     }
 
+    public static void getNotificationsNumberInfo(long argTimestampNow, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("time", "1434944866163");
+        sClient.get(BASE_URL + NOTIFICATIONS_URL, params, handler);
+    }
 }

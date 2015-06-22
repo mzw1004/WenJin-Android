@@ -19,16 +19,16 @@ public class DrawerPresenterImpl implements DrawerPresenter {
     public void selectItem(int position) {
         LogHelper.v(LOG_TAG, "clicked position: " + position);
         mDrawerView.closeDrawer();
-        if (position < 4) {
+        if (position < 3) {
             mDrawerView.setSelectedItemColor(position);
             mDrawerView.sendDrawerItemClickedEvent(position);
-        } else if (position == 4) {
+        } else if (position == 3) {
             // start SettingsActivity
             mDrawerView.startSettingsActivity();
-        } else if (position == 5) {
+        } else if (position == 4) {
             // start FeedbackActivity
             mDrawerView.startFeedbackActivity();
-        } else if (position == 6) {
+        } else if (position == 5) {
             mDrawerView.startLoginActivity();
         }
     }
