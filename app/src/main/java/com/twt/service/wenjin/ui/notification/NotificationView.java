@@ -3,15 +3,16 @@ package com.twt.service.wenjin.ui.notification;
 import com.twt.service.wenjin.bean.NotificationItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Green on 15-6-22.
  */
 public interface NotificationView {
 
-    void showRefresh();
+    void startRefresh();
 
-    void hideRefresh();
+    void stopRefresh();
 
     void hideLoadMoreFooter();
 
@@ -20,9 +21,9 @@ public interface NotificationView {
 
     void toastMessage(String message);
 
-    void refreshItems(ArrayList<NotificationItem> items);
+    void refreshItems(List<NotificationItem> items);
 
-    void loadMoreItems(ArrayList<NotificationItem> items);
+    void addMoreItems(List<NotificationItem> items, int argTotalRows);
 
     void startQuestionActivity(int position);
 

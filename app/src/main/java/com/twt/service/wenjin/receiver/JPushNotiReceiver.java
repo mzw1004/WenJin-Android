@@ -105,8 +105,7 @@ public class JPushNotiReceiver extends BroadcastReceiver {
         Gson gson = new Gson();
         NotificationMsg notificationMsg = gson.fromJson(extras, NotificationMsg.class);
 
-        if(notificationMsg.type == NotificationType.TYPE_NEW_ANSWER
-                || notificationMsg.type == NotificationType.TYPE_INVITE_QUESTION
+        if(notificationMsg.type == NotificationType.TYPE_INVITE_QUESTION
                 || notificationMsg.type == NotificationType.TYPE_QUESTION_COMMENT
                 || notificationMsg.type == NotificationType.TYPE_MOD_QUESTION){
             Intent intent = new Intent(context, QuestionActivity.class);
@@ -115,7 +114,8 @@ public class JPushNotiReceiver extends BroadcastReceiver {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(intent);
 
-        }else if(notificationMsg.type == NotificationType.TYPE_ANSWER_AGREE
+        }else if(notificationMsg.type == NotificationType.TYPE_NEW_ANSWER
+                ||notificationMsg.type == NotificationType.TYPE_ANSWER_AGREE
                 ||notificationMsg.type == NotificationType.TYPE_ANSWER_THANK
                 ||notificationMsg.type == NotificationType.TYPE_ANSWER_COMMENT_AT_ME
                 ||notificationMsg.type == NotificationType.TYPE_ANSWER_AT_ME

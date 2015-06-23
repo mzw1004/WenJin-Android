@@ -166,7 +166,18 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_notification){
-            Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            if(mNotificationFragment == null){
+                mNotificationFragment = new NotificationFragment();
+            }
+
+            fragmentManager.beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+                    .replace(R.id.main_container, mNotificationFragment)
+                    .commit();
+            getSupportActionBar().setTitle(R.string.action_notification);
+
         }
 
         return super.onOptionsItemSelected(item);

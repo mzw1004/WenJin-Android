@@ -141,9 +141,15 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         }
         tvUsername.setText(userInfo.nick_name);
         tvSignature.setText(userInfo.signature);
-        ntvFocus.setNumber(Integer.parseInt(userInfo.topic_focus_count));
-        ntvFriends.setNumber(Integer.parseInt(userInfo.friend_count));
-        ntvFans.setNumber(Integer.parseInt(userInfo.fans_count));
+        if(userInfo.topic_focus_count != null) {
+            ntvFocus.setNumber(Integer.parseInt(userInfo.topic_focus_count));
+        }
+        if(userInfo.friend_count != null) {
+            ntvFriends.setNumber(Integer.parseInt(userInfo.friend_count));
+        }
+        if(userInfo.fans_count != null) {
+            ntvFans.setNumber(Integer.parseInt(userInfo.fans_count));
+        }
         tvAgreeNumber.setText(userInfo.agree_count);
         tvFavoriteNumber.setText(userInfo.answer_favorite_count);
         if (uid != PrefUtils.getPrefUid()) {

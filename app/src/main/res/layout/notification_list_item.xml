@@ -15,69 +15,70 @@
         android:paddingBottom="4dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_home_item_avatar"
+            android:id="@+id/iv_notifi_item_avatar"
             android:src="@drawable/ic_user_avatar"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:layout_width="32dp"
-            android:layout_height="32dp" />
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
 
         <TextView
-            android:id="@+id/tv_home_item_username"
+            android:id="@+id/tv_notifi_item_username"
             android:textSize="14sp"
             android:textColor="@color/color_primary_dark"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="36dp"
             android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/iv_home_item_avatar" />
+            android:layout_toRightOf="@+id/iv_notifi_item_avatar" />
 
         <TextView
-            android:id="@+id/tv_home_item_status"
+            android:id="@+id/tv_notifi_item_status"
             android:textSize="14sp"
             android:textColor="@color/color_text_secondary"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="36dp"
             android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/tv_home_item_username" />
+            android:layout_toRightOf="@+id/tv_notifi_item_username" />
 
         <TextView
-            android:id="@+id/tv_home_item_title"
+            android:id="@+id/tv_notifi_item_title"
             android:textSize="16sp"
             android:textColor="@color/color_primary_dark"
             android:gravity="center_vertical"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_home_item_username" />
+            android:layout_below="@+id/tv_notifi_item_username" />
 
         <TextView
-            android:id="@+id/tv_home_item_content"
+            android:id="@+id/tv_notifi_item_content"
+            android:visibility="gone"
             android:textSize="14sp"
             android:maxLines="5"
             android:ellipsize="end"
             android:textColor="@color/color_text_primary"
-            android:layout_alignLeft="@id/tv_home_item_title"
-            android:layout_alignRight="@id/tv_home_item_title"
+            android:layout_alignLeft="@id/tv_notifi_item_title"
+            android:layout_alignRight="@id/tv_notifi_item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_home_item_title"/>
+            android:layout_below="@id/tv_notifi_item_title"/>
 
         <View
-            android:id="@+id/v_home_divider"
+            android:id="@+id/v_notifi_divider"
             android:background="@color/color_divider"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_below="@+id/tv_home_item_content" />
+            android:layout_below="@+id/tv_notifi_item_content" />
 
         <TextView
-            android:id="@+id/tv_home_item_time"
+            android:id="@+id/tv_notifi_item_time"
             android:textSize="14sp"
             android:textColor="@color/color_text_secondary"
             android:gravity="center_vertical"
@@ -85,28 +86,21 @@
             android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
-            android:layout_below="@+id/v_home_divider"/>
+            android:layout_below="@+id/v_notifi_divider"/>
 
-        <ImageView
-            android:id="@+id/iv_home_item_agree"
-            android:visibility="gone"
-            android:src="@drawable/ic_action_agree"
-            android:scaleType="centerCrop"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:padding="2dp"
-            android:layout_below="@+id/v_home_divider"
-            android:layout_toLeftOf="@+id/tv_home_item_agree_number"/>
+
 
         <TextView
-            android:id="@+id/tv_home_item_agree_number"
-            android:visibility="gone"
+            android:id="@+id/tv_notifi_item_markasread"
+            android:text="@string/markasread"
+            android:textColor="@color/color_text_secondary"
             android:textSize="14sp"
             android:gravity="center"
-            android:layout_width="24dp"
+            android:layout_width="wrap_content"
             android:layout_height="24dp"
-            android:layout_below="@+id/v_home_divider"
-            android:layout_alignRight="@+id/tv_home_item_title"/>
+            android:layout_below="@+id/v_notifi_divider"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
 

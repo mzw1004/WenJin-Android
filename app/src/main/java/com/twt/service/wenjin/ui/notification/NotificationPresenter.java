@@ -7,6 +7,8 @@ import android.view.View;
  */
 public interface NotificationPresenter {
 
+    void firstTimeLoadNotificationItems();
+
     void refreshNotificationItems();
 
     void loadMoreNotificationItems();

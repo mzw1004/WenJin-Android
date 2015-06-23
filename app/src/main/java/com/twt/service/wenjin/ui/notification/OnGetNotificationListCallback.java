@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.notification;
 
 import com.twt.service.wenjin.bean.NotificationItem;
+import com.twt.service.wenjin.bean.NotificationResponse;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface OnGetNotificationListCallback {
 
-    void onGetNotificationListSuccess(List<NotificationItem> itemList);
+    void onGetNotificationListSuccess(NotificationResponse argResponse);
 
     void onGetNotificationListFailed(String argErrorMsg);
 }

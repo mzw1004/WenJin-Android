@@ -43,6 +43,23 @@
     <string name="fab_label_question">问题</string>
     <string name="fab_label_article">文章</string>
 
+    <!-- Notification strings -->
+    <string name="followed_you">关注了你</string>
+    <string name="question_comment_ated_you">在问题评论中提到你</string>
+    <string name="invite_you_answer_question">邀请你回答问题</string>
+    <string name="replied_your_comment">回复了你的评论</string>
+    <string name="comment_your_question">评论了你的问题</string>
+    <string name="thanked_your_answer">感谢了你的回答</string>
+    <string name="edited_your_question">编辑了你的问题</string>
+    <string name="deleted_your_question">删除了你的问题</string>
+    <string name="thanked_your_question">感谢了你的问题</string>
+    <string name="answer_ated_you">在回答中提到你</string>
+    <string name="answer_comment_atted_you">在答案评论中提到你</string>
+
+    <string name="anonymous">匿名用户</string>
+    <string name="markasread">标记为已读</string>
+
+
     <!-- Explore strings -->
     <string name="explore_hot">最热</string>
     <string name="explore_new">最新</string>

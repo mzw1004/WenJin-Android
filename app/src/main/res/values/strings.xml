@@ -44,6 +44,23 @@
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
+
+    <!-- Notification strings -->
+    <string name="followed_you">followed you</string>
+    <string name="question_comment_ated_you">question comment ated you</string>
+    <string name="invite_you_answer_question">invited you to answer quesion</string>
+    <string name="replied_your_comment">replied your comment</string>
+    <string name="comment_your_question">comment your question</string>
+    <string name="thanked_your_answer">thanked your answer</string>
+    <string name="edited_your_question">edited your question</string>
+    <string name="deleted_your_question">deleted your question</string>
+    <string name="thanked_your_question">thanked your question</string>
+    <string name="answer_ated_you">answer ated you</string>
+    <string name="answer_comment_atted_you">answer comment atted you</string>
+    
+    <string name="anonymous">Anonymous</string>
+    <string name="markasread">Mark as read</string>
+
     <!-- Explore strings -->
     <string name="explore_hot">Hot</string>
     <string name="explore_new">New</string>
