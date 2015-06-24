@@ -11,4 +11,6 @@ public interface NotificationInteractor {
     void getNotificationNumberInfo(long argTimestampNow,OnGetNotificationNumberInfoCallback callback);
 
     void getNotificationList(int argPage, OnGetNotificationListCallback callback);
+
+    void setNotificationMarkasread(int argNotificationId);
 }

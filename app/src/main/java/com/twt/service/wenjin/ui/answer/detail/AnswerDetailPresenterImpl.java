@@ -4,6 +4,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.interactor.AnswerDetailInteractor;
+import com.twt.service.wenjin.interactor.NotificationInteractor;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.question.OnGetQuestionCallback;
 
@@ -16,13 +17,17 @@ public class AnswerDetailPresenterImpl implements AnswerDetailPresenter, OnGetAn
 
     private AnswerDetailView mAnswerDetailView;
     private AnswerDetailInteractor mAnswerDetailInteractor;
+    private NotificationInteractor mNotificationInteractor;
 
     private boolean isAgree;
     private int agreeCount;
 
-    public AnswerDetailPresenterImpl(AnswerDetailView answerDetailView, AnswerDetailInteractor answerDetailInteractor) {
+    public AnswerDetailPresenterImpl(AnswerDetailView answerDetailView,
+                                     AnswerDetailInteractor answerDetailInteractor,
+                                     NotificationInteractor notificationInteractor) {
         this.mAnswerDetailView = answerDetailView;
         this.mAnswerDetailInteractor = answerDetailInteractor;
+        this.mNotificationInteractor = notificationInteractor;
     }
 
     @Override
@@ -47,6 +52,11 @@ public class AnswerDetailPresenterImpl implements AnswerDetailPresenter, OnGetAn
     @Override
     public void loadTitle(int argQuestionId) {
         mAnswerDetailInteractor.getQuestionContent(argQuestionId, this);
+    }
+
+    @Override
+    public void markNoticeAsRead(int argNoticeId) {
+        mNotificationInteractor.setNotificationMarkasread(argNoticeId);
     }
 
     @Override
@@ -75,4 +85,6 @@ public class AnswerDetailPresenterImpl implements AnswerDetailPresenter, OnGetAn
     public void onFailure(String errorMsg) {
         mAnswerDetailView.toastMessage(errorMsg);
     }
+
+
 }

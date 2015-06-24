@@ -23,4 +23,6 @@ public interface AnswerDetailView {
 
     void startCommentActivity();
 
+    void startQuestionActivity();
+
 }

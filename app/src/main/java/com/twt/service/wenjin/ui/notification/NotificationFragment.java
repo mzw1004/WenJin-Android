@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.notification;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -44,6 +45,8 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     private NotificationAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
 
+    private IUpdateNotificationIcon mUpdateNotifiIconListener;
+
     @Override
     protected List<Object> getModules() {
         return Arrays.<Object>asList(new NotificationModule(this));
@@ -75,8 +78,9 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
                 int fstVisibleItemPos = mLinearLayoutManager.findFirstVisibleItemPosition();
                 int lstVisibleItemPos = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
                 int totalItemCount = mLinearLayoutManager.getItemCount();
-                if(lstVisibleItemPos == totalItemCount - 1 && dy > 0 ){
+                if(lstVisibleItemPos == totalItemCount - 1  && dy > 0 ){
                     mPresenter.loadMoreNotificationItems();
+                    mUpdateNotifiIconListener.updateNotificationIcon();
                 }
             }
         });
@@ -121,11 +125,24 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
     @Override
     public void addMoreItems(List<NotificationItem> items, int argTotalRows) {
-        if( mAdapter.getItemCount() < argTotalRows) {
+        if( mAdapter.getItemCount() < argTotalRows -1) {
             mAdapter.addItems(items);
         }else {
-            this.toastMessage(getResources().getString(R.string.no_more_information));
+            //this.toastMessage(getResources().getString(R.string.no_more_information));
         }
+    }
+
+    @Override
+    public void deleteItem(int argPosition) {
+        NotificationItem item = mAdapter.getItems(argPosition);
+        mPresenter.markNotificationAsRead(item.notification_id);
+        mAdapter.deleteItem(argPosition);
+        if(mAdapter.getItemCount() < 5){
+            mPresenter.loadMoreNotificationItems();
+        }
+
+        mUpdateNotifiIconListener.updateNotificationIcon();
+
     }
 
     @Override
@@ -160,5 +177,15 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     @Override
     public void onItemClicked(View view, int position) {
         mPresenter.onItemClick(view, position);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mUpdateNotifiIconListener = (IUpdateNotificationIcon) activity;
+    }
+
+    public interface IUpdateNotificationIcon{
+        void updateNotificationIcon();
     }
 }

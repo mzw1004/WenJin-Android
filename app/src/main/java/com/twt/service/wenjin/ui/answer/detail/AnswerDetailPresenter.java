@@ -11,4 +11,6 @@ public interface AnswerDetailPresenter {
 
     void loadTitle(int argQuestionId);
 
+    void markNoticeAsRead(int argNoticeId);
+
 }

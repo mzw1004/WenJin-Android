@@ -5,6 +5,19 @@ package com.twt.service.wenjin.ui.notification;
  */
 public class NotificationType {
 
+    /*
+    * 推送消息附加字段EXTRA格式为：
+    * {"type":"800","id":"800"}
+    * 其中：
+    * type表示推送消息的类型，该类即定义type类型
+    * id表示与消息关联的id编号
+    * */
+
+    public static int  TYPE_DEFAULT_VALUE = 800;  //推送tyep默认值
+
+    public static int  TYPE_PRIVATE_MSG = 900;  //私信
+    public static int  TYPE_WEBSITE = 700;  //推送一个网址
+
     public static int  TYPE_PEOPLE_FOCUS = 101;  // 被人关注
     public static int  TYPE_NEW_ANSWER   = 102;  // 关注的问题增加了新回复 q
     public static int  TYPE_COMMENT_AT_ME    = 103;  // 有评论@提到我

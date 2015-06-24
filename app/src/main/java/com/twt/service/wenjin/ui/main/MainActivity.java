@@ -27,6 +27,7 @@ import com.twt.service.wenjin.bean.NotificationNumInfo;
 import com.twt.service.wenjin.event.DrawerItemClickedEvent;
 import com.twt.service.wenjin.interactor.NotificationInteractor;
 import com.twt.service.wenjin.interactor.NotificationInteractorImpl;
+import com.twt.service.wenjin.receiver.JPushNotifiInMainReceiver;
 import com.twt.service.wenjin.receiver.NotificationBuffer;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
@@ -56,7 +57,8 @@ import butterknife.InjectView;
 import cn.jpush.android.api.JPushInterface;
 
 
-public class MainActivity extends BaseActivity implements MainView,OnGetNotificationNumberInfoCallback {
+public class MainActivity extends BaseActivity implements MainView,OnGetNotificationNumberInfoCallback,
+        NotificationFragment.IUpdateNotificationIcon {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -77,6 +79,8 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     private NotificationFragment mNotificationFragment;
 //    private UserFragment mUserFragment;
 
+    private JPushNotifiInMainReceiver mReceiver;
+
     private int mBadgeCount = 0;
     private long exitTime = 0;
 
@@ -90,13 +94,10 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
         WenJinApp.setAppLunchState(true);
 
-
         notificationInteractor = new NotificationInteractorImpl();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
         mDrawerFragment = (DrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -107,10 +108,12 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
                 .commit();
 
 
+        mReceiver = new JPushNotifiInMainReceiver(this);
+        registerReceiver(mReceiver, JPushNotifiInMainReceiver.getIntentFilterInstance());
 
         if(NotificationBuffer.getsIntent() != null){
             Intent intent = NotificationBuffer.getsIntent();
-            intent.setClass(this, AnswerDetailActivity.class);
+            intent.setClass(this, (Class) NotificationBuffer.getObjClass());
             this.startActivity(intent);
             NotificationBuffer.setsIntent(null);
         }
@@ -150,16 +153,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             ActionItemBadge.hide(menu.findItem(R.id.action_notification));
         }
 
-        /*
-        new ActionItemBadge.Add().act(this).menu(menu).title(R.string.action_notification)
-                .itemDetails(0, R.id.action_notification, 1)
-                .showAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                .build(
-                        ResourcesCompat.getDrawable(getResources(),
-                                R.drawable.ic_action_notifications,
-                                null)
-                        ,ActionItemBadge.BadgeStyle.RED, 1);
-        */
+
         return true;
     }
 
@@ -191,10 +185,6 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             JPushInterface.onResume(this);
         }
 
-        notificationInteractor.getNotificationNumberInfo(Calendar.getInstance().getTimeInMillis(), this);
-
-
-
     }
 
     @Override
@@ -208,7 +198,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     protected void onResume() {
         super.onResume();
         JPushInterface.onResume(this);
-
+        updateNotificationIcon();
     }
 
     @Override
@@ -290,6 +280,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     protected void onDestroy() {
         super.onDestroy();
         WenJinApp.setAppLunchState(false);
+        unregisterReceiver(mReceiver);
     }
 
     @Override
@@ -304,6 +295,11 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     public void onGetNotificationNumberInfoFailed(String argErrorMSG) {
 
+    }
+
+    @Override
+    public void updateNotificationIcon() {
+        notificationInteractor.getNotificationNumberInfo(Calendar.getInstance().getTimeInMillis(), this);
     }
 
     //    @Override

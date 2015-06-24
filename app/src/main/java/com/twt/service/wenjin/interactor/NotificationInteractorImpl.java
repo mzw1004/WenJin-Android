@@ -95,4 +95,34 @@ public class NotificationInteractorImpl implements NotificationInteractor {
             }
         });
     }
+
+    @Override
+    public void setNotificationMarkasread(int argNotificationId) {
+        ApiClient.setNotificationsMarkasread(argNotificationId, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                LogHelper.v(LOG_TAG, response.toString());
+
+                try{
+                    int errorCode = response.getInt(ApiClient.RESP_ERROR_CODE_KEY);
+                    switch (errorCode){
+                        case ApiClient.SUCCESS_CODE:
+                            break;
+                        case ApiClient.ERROR_CODE:
+                            break;
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                LogHelper.v(LOG_TAG, responseString);
+            }
+        });
+    }
 }

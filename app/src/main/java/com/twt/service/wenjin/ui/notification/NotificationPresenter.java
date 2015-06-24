@@ -13,5 +13,7 @@ public interface NotificationPresenter {
 
     void loadMoreNotificationItems();
 
+    void markNotificationAsRead(int argNotifiId);
+
     void onItemClick(View argView, int argPosition);
 }

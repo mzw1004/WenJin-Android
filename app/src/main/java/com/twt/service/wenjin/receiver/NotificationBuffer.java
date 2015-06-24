@@ -8,6 +8,7 @@ import android.content.Intent;
 public class NotificationBuffer {
 
     private static Intent sIntent = null;
+    private static Object objClass = null;
 
     public static Intent getsIntent(){
         if(sIntent != null){
@@ -17,7 +18,11 @@ public class NotificationBuffer {
         }
     }
 
+    public static Object getObjClass(){
+        return objClass;
+    }
+
     public static void setsIntent(Intent argIntent){ sIntent = argIntent;}
 
-
+    public static void setObjClass(Object argObjClass){objClass = argObjClass; }
 }

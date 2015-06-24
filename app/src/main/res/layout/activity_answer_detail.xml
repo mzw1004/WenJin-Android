@@ -14,6 +14,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+    <TextView
+        android:id="@+id/tv_answer_title"
+        android:textSize="16sp"
+        android:textColor="@color/color_text_primary"
+        android:background="@color/color_answer_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginBottom="4dp"
+        android:layout_below="@id/toolbar"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_answer_avatar"
@@ -22,7 +35,7 @@
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/tv_answer_title" />
 
     <TextView
         android:id="@+id/tv_answer_username"
@@ -33,7 +46,7 @@
         android:layout_alignTop="@+id/iv_answer_avatar"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/tv_answer_title"
         android:layout_toRightOf="@+id/iv_answer_avatar"
         android:layout_toEndOf="@+id/iv_answer_avatar"
         android:layout_toLeftOf="@+id/iv_answer_agree"
@@ -59,7 +72,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:padding="2dp"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/tv_answer_title"
         android:layout_marginTop="16dp"
         android:layout_toLeftOf="@+id/tv_answer_agree_number" />
 
@@ -69,7 +82,7 @@
         android:gravity="center"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/tv_answer_title"
         android:layout_marginTop="16dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp" />

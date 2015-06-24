@@ -5,7 +5,7 @@ package com.twt.service.wenjin.bean;
  */
 public class NotificationItem {
 
-    public String notification_id;
+    public int notification_id;
 
     public String model_type;
 

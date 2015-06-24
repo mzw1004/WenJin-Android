@@ -108,17 +108,24 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     mOnItemClickListener.onItemClicked(v, argPosition);
                 }
             };
-            itemHolder.tvUsername.setOnClickListener(clickListener);
+
             itemHolder.tvTitle.setOnClickListener(clickListener);
             itemHolder.tvContent.setOnClickListener(clickListener);
-            itemHolder.ivAvatar.setOnClickListener(clickListener);
+
             itemHolder.tvMarkasread.setOnClickListener(clickListener);
 
             NotificationItem notificationItem = mDataSet.get(argPosition);
             if(notificationItem.anonymous == 1){
+                itemHolder.ivAvatar.setOnClickListener(null);
+                itemHolder.tvUsername.setOnClickListener(null);
+
                 itemHolder.tvUsername.setText(ResourceHelper.getString(R.string.anonymous));
                 itemHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
+
             }else {
+                itemHolder.ivAvatar.setOnClickListener(clickListener);
+                itemHolder.tvUsername.setOnClickListener(clickListener);
+
                 itemHolder.tvUsername.setText(notificationItem.nick_name);
                 if (!TextUtils.isEmpty(notificationItem.avatar)) {
                     Picasso.with(mContext).load(ApiClient.getAvatarUrl(notificationItem.avatar)).into(itemHolder.ivAvatar);
@@ -222,6 +229,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public NotificationItem getItems(int argPosition){
         return mDataSet.get(argPosition);
+    }
+
+    public void deleteItem(int argPostion){
+        mDataSet.remove(argPostion);
+        notifyDataSetChanged();
     }
 
 

@@ -55,6 +55,11 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
     }
 
     @Override
+    public void markNotificationAsRead(int argNotifiId) {
+        mInteractor.setNotificationMarkasread(argNotifiId);
+    }
+
+    @Override
     public void onItemClick(View argView, int argPosition) {
         switch (argView.getId()){
             case R.id.iv_notifi_item_avatar:
@@ -65,13 +70,13 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
                 break;
             case R.id.tv_notifi_item_title:
                 mView.startQuestionActivity(argPosition);
+                mView.deleteItem(argPosition);
                 break;
             case R.id.tv_notifi_item_content:
                 mView.startAnswerActivity(argPosition);
                 break;
             case R.id.tv_notifi_item_markasread:
-
-                mView.toastMessage("mark as down");
+                mView.deleteItem(argPosition);
                 break;
         }
     }

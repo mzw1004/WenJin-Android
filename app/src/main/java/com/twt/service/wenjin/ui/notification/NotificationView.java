@@ -25,6 +25,8 @@ public interface NotificationView {
 
     void addMoreItems(List<NotificationItem> items, int argTotalRows);
 
+    void deleteItem(int argPosition);
+
     void startQuestionActivity(int position);
 
     void startAnswerActivity(int position);

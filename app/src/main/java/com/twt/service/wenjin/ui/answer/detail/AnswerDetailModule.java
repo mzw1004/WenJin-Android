@@ -2,6 +2,7 @@ package com.twt.service.wenjin.ui.answer.detail;
 
 import com.twt.service.wenjin.AppModule;
 import com.twt.service.wenjin.interactor.AnswerDetailInteractor;
+import com.twt.service.wenjin.interactor.NotificationInteractor;
 
 import javax.inject.Singleton;
 
@@ -30,7 +31,8 @@ public class AnswerDetailModule {
     }
 
     @Provides @Singleton
-    public AnswerDetailPresenter provideAnswerPresenter(AnswerDetailView answerDetailView, AnswerDetailInteractor answerDetailInteractor) {
-        return new AnswerDetailPresenterImpl(answerDetailView, answerDetailInteractor);
+    public AnswerDetailPresenter provideAnswerPresenter(AnswerDetailView answerDetailView, AnswerDetailInteractor answerDetailInteractor,
+                                                        NotificationInteractor notificationInteractor) {
+        return new AnswerDetailPresenterImpl(answerDetailView, answerDetailInteractor, notificationInteractor);
     }
 }

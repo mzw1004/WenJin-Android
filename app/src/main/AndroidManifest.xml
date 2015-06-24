@@ -66,6 +66,7 @@
 
         <activity
             android:name=".ui.question.QuestionActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_question" >
         </activity>
 

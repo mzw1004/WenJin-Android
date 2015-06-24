@@ -27,6 +27,7 @@ import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
 import com.twt.service.wenjin.ui.main.MainActivity;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
+import com.twt.service.wenjin.ui.question.QuestionActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,6 +49,8 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
+    @InjectView(R.id.tv_answer_title)
+    TextView tvAnswerTitle;
     @InjectView(R.id.pb_answer_loading)
     ProgressBar mPbLoading;
     @InjectView(R.id.iv_answer_avatar)
@@ -68,6 +71,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     private int answerId;
     private int uid;
+    private int questionId;
 
     private int mIntentNotiFlag;
 
@@ -95,7 +99,10 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
         mIntentNotiFlag = getIntent().getIntExtra(JPushNotiReceiver.INTENT_FLAG_NOTIFICATION,0);
 
-        toolbar.setTitle(question);
+        toolbar.setTitle(R.string.title_activity_answer_detail);
+        if(mIntentNotiFlag == 0){
+            tvAnswerTitle.setText(question);
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -104,6 +111,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         ivAgree.setOnClickListener(this);
         ivAvatar.setOnClickListener(this);
         tvUsername.setOnClickListener(this);
+        tvAnswerTitle.setOnClickListener(this);
     }
 
     @Override
@@ -155,6 +163,12 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
                     startCommentActivity();
                 }
                 break;
+            case R.id.tv_answer_title:
+                if(questionId > 0) {
+                    startQuestionActivity();
+                }
+                finish();
+                break;
         }
     }
 
@@ -171,6 +185,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     @Override
     public void bindAnswerData(Answer answer) {
         uid = answer.uid;
+        questionId = answer.question_id;
 
         if(mIntentNotiFlag == JPushNotiReceiver.INTENT_FLAG_NOTIFICATION_VALUE){
             mPresenter.loadTitle(answer.question_id);
@@ -197,7 +212,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void bindTitle(String title) {
-        toolbar.setTitle(title);
+        tvAnswerTitle.setText(title);
     }
 
     @Override
@@ -223,6 +238,11 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     @Override
     public void startCommentActivity() {
         CommentActivity.actionStart(this, answerId, Integer.parseInt(tvCommentCount.getText().toString()));
+    }
+
+    @Override
+    public void startQuestionActivity() {
+        QuestionActivity.actionStart(this, questionId);
     }
 
 }

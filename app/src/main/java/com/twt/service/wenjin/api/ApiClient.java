@@ -64,6 +64,7 @@ public class ApiClient {
 
     private static final String NOTIFICATIONS_URL = "?/api/notification/notifications/";
     private static final String NOTIFICATIONS_LIST_URL = "?/api/notification/list/";
+    private static final String NOTIFICATIONS_MARKASREAD_URL = "?/api/notification/read_notification/";
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
@@ -313,5 +314,12 @@ public class ApiClient {
         params.put("flag", argIsUnreadFlag);
 
         sClient.get(BASE_URL + NOTIFICATIONS_LIST_URL, params, handler);
+    }
+
+    public static void setNotificationsMarkasread(int argNotificationId, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("notification_id", argNotificationId);
+
+        sClient.get(BASE_URL + NOTIFICATIONS_MARKASREAD_URL, params, handler);
     }
 }

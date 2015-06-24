@@ -28,6 +28,8 @@ public class JPushHelper {
     private static final int MSG_SET_ALIAS = 1001;
     private static final int MSG_SET_TAGS = 1002;
 
+    private static final int MSG_CANCEL_ALIAS = 1003;
+
 
     private String mAlias;
     private Set<String> mTags;
@@ -45,10 +47,13 @@ public class JPushHelper {
 
             switch (msg.what){
                 case MSG_SET_ALIAS:
-                    LogHelper.v(LOG_TAG,"set alias in handler");
+                    LogHelper.v(LOG_TAG, "set alias in handler");
                     JPushInterface.setAliasAndTags(mContext, (String) msg.obj, null, mAliaCallback);
                     break;
-
+                case MSG_CANCEL_ALIAS:
+                    LogHelper.v(LOG_TAG,"cancel alias in handler");
+                    JPushInterface.setAliasAndTags(mContext, "", null, mAliaCallback);
+                    break;
                 case MSG_SET_TAGS:
                     LogHelper.v(LOG_TAG,"set tags in handler");
                     JPushInterface.setAliasAndTags(mContext, null, (Set<String>) msg.obj, mTagsCallback);
@@ -65,7 +70,7 @@ public class JPushHelper {
         public void gotResult(int code, String alias, Set<String> tags) {
             switch (code){
                 case 0:
-                    LogHelper.v(LOG_TAG,"Set alias and tag success");
+                    LogHelper.v(LOG_TAG,"Set or Cancel alias and tag success");
                     break;
 
                 case 6002:
@@ -126,6 +131,10 @@ public class JPushHelper {
         }
 
         mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, mAlias));
+    }
+
+    public void cancelAlias(){
+        mHandler.sendMessage(mHandler.obtainMessage(MSG_CANCEL_ALIAS, ""));
     }
 
     public static void setNotiStyleBasic(){
