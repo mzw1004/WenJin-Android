@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface NotificationView {
 
+    void hideViewMarkAll();
+
     void startRefresh();
 
     void stopRefresh();

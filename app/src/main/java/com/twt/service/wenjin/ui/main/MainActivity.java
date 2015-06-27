@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mikepenz.actionitembadge.library.ActionItemBadge;
 import com.squareup.otto.Subscribe;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.WenJinApp;
@@ -145,7 +144,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         if(mBadgeCount > 0){
             BadgeView badgeView = new BadgeView(this, notificationIcon);
             badgeView.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
-            badgeView.setBadgeBackgroundColor(ResourceHelper.getColor(R.color.holo_green));
+            badgeView.setBadgeBackgroundColor(ResourceHelper.getColor(R.color.color_button));
             badgeView.setTextSize(8);
             if(mBadgeCount > 99){
                 badgeView.setText("99+");
@@ -299,8 +298,9 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
             fragmentManager.beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
-                    .replace(R.id.main_container, mNotificationMainFragment)
+                    .replace(R.id.main_container, mNotificationMainFragment, ResourceHelper.getString(R.string.action_notification))
                     .commit();
+
             getSupportActionBar().setTitle(R.string.action_notification);
 
         }

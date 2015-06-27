@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Green on 15-6-22.
  */
-public class NotificationPresenterImpl implements NotificationPresenter , OnGetNotificationListCallback{
+public class NotificationPresenterImpl implements NotificationPresenter , OnGetNotificationListCallback, OnMarkallCallback {
 
     private static final String LOG_TAG = NotificationPresenterImpl.class.getSimpleName();
 
@@ -64,6 +64,11 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
     }
 
     @Override
+    public void markAllNotificationAsRead() {
+        mInteractor.setNotificationMarkAllasread(this);
+    }
+
+    @Override
     public void onItemClick(View argView, int argPosition) {
         switch (argView.getId()){
             case R.id.iv_notifi_item_avatar:
@@ -111,15 +116,19 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
 
     }
 
+
     @Override
     public void onGetNotificationListFailed(String argErrorMsg) {
-        isLoadingMore = false;
-        isRefreshing = false;
-        mView.stopRefresh();
-        mPage -= 1;
-        if(argErrorMsg != null){
-            mView.toastMessage(argErrorMsg);
-        }
+
+    }
+
+    @Override
+    public void onMarkAllNotificationSuccess() {
+        mView.hideViewMarkAll();
+    }
+
+    @Override
+    public void onMarkAllNotificationFailed(String argErrorMsg) {
 
     }
 }

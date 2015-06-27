@@ -48,6 +48,7 @@
     <!-- Notification strings -->
     <string name="notification_unread">Unread</string>
     <string name="notification_read">Read</string>
+    <string name="notification_markall">Mark all</string>
 
     <string name="agree_your_answer">Upvote your answer</string>
     <string name="agree_your_article">Upvote your article</string>

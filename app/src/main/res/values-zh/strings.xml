@@ -46,6 +46,7 @@
     <!-- Notification strings -->
     <string name="notification_unread">未读</string>
     <string name="notification_read">已读</string>
+    <string name="notification_markall">标记全部</string>
 
     <string name="agree_your_answer">赞同了你的回答</string>
     <string name="agree_your_article">赞同了你的文章</string>

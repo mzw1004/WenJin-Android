@@ -322,4 +322,8 @@ public class ApiClient {
 
         sClient.get(BASE_URL + NOTIFICATIONS_MARKASREAD_URL, params, handler);
     }
+
+    public static void setNotificationsMarkAllasread(JsonHttpResponseHandler handler){
+        sClient.get(BASE_URL + NOTIFICATIONS_MARKASREAD_URL,handler);
+    }
 }

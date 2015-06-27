@@ -277,15 +277,15 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-        if(scrollState == ScrollState.UP){
-            if(toolbarIsShown()){
-                hideToolbar();
-            }
-        }else if(scrollState == scrollState.DOWN){
-            if(toobarIsHidden()){
-                showToolbar();
-            }
-        }
+//        if(scrollState == ScrollState.UP){
+//            if(toolbarIsShown()){
+//                hideToolbar();
+//            }
+//        }else if(scrollState == scrollState.DOWN){
+//            if(toobarIsHidden()){
+//                showToolbar();
+//            }
+//        }
     }
 
     private boolean toolbarIsShown(){

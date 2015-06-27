@@ -1,8 +1,12 @@
 package com.twt.service.wenjin.ui.notification.readlist;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +17,7 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.NotificationItem;
+import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
@@ -33,6 +38,11 @@ import butterknife.InjectView;
 public class NotificationFragment extends BaseFragment implements NotificationView,
         SwipeRefreshLayout.OnRefreshListener,OnItemClickListener {
 
+
+    public interface IUpdateNotificationIcon{
+        void updateNotificationIcon();
+    }
+
     public final static String PARAM_TYPE = "TYPE";
     private int type;
 
@@ -44,6 +54,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     @InjectView(R.id.notification_recycler_view)
     RecyclerView mRecyclerView;
 
+    private View mTvMarkall;
     private NotificationAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
 
@@ -79,6 +90,16 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
         mAdapter = new NotificationAdapter(getActivity(),type, this);
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
+        mTvMarkall = getParentFragment().getView().findViewById(R.id.tv_mark_all);
+        if(type == 0){
+            mTvMarkall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mPresenter.markAllNotificationAsRead();
+                    hideMarkAllView();
+                }
+            });
+        }
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -89,7 +110,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
                 int fstVisibleItemPos = mLinearLayoutManager.findFirstVisibleItemPosition();
                 int lstVisibleItemPos = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
                 int totalItemCount = mLinearLayoutManager.getItemCount();
-                if(lstVisibleItemPos == totalItemCount - 1  && dy > 0 ){
+                if (lstVisibleItemPos == totalItemCount - 1 && dy > 0) {
                     mPresenter.loadMoreNotificationItems(type);
                     mUpdateNotifiIconListener.updateNotificationIcon();
                 }
@@ -98,6 +119,32 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
         mPresenter.firstTimeLoadNotificationItems(type);
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(type != 0){
+            hideMarkAllView();
+        }else {
+            if(mAdapter.getItemCount() > 0){
+                showMarkAllView();
+            }
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(type == 0){
+            hideMarkAllView();
+        }
+    }
+
+    @Override
+    public void hideViewMarkAll() {
+        hideMarkAllView();
+        mPresenter.refreshNotificationItems(type);
     }
 
     @Override
@@ -131,6 +178,9 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
     @Override
     public void refreshItems(List<NotificationItem> items) {
+        if(type == 0 &&items != null && items.size() > 0){
+            showMarkAllView();
+        }
         mAdapter.refreshItems(items);
     }
 
@@ -141,6 +191,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         }else {
             //this.toastMessage(getResources().getString(R.string.no_more_information));
         }
+
     }
 
     @Override
@@ -148,9 +199,11 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         NotificationItem item = mAdapter.getItems(argPosition);
         mPresenter.markNotificationAsRead(item.notification_id);
         mAdapter.deleteItem(argPosition);
-        if(mAdapter.getItemCount() < 5){
+        if(mAdapter.getItemCount() == 4){
             mPresenter.loadMoreNotificationItems(type);
         }
+
+        hideMarkAllView();
 
         mUpdateNotifiIconListener.updateNotificationIcon();
 
@@ -168,7 +221,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     public void startAnswerActivity(int position) {
         NotificationItem item = mAdapter.getItems(position);
         if(item.related != null){
-            AnswerDetailActivity.actionStart(getActivity(), Integer.valueOf( item.related.answer_id),"");
+            AnswerDetailActivity.actionStart(getActivity(), Integer.valueOf(item.related.answer_id),"");
         }
     }
 
@@ -196,7 +249,35 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         mUpdateNotifiIconListener = (IUpdateNotificationIcon) activity;
     }
 
-    public interface IUpdateNotificationIcon{
-        void updateNotificationIcon();
+
+    public void showMarkAllView(){
+        if(mTvMarkall.getVisibility() == View.GONE && type == 0 && mAdapter.getItemCount() > 0){
+            mTvMarkall.setTranslationY(mTvMarkall.getHeight());
+            mTvMarkall.setVisibility(View.VISIBLE);
+            mTvMarkall.setAlpha(0.0f);
+            mTvMarkall.animate().translationY(0)
+                    .alpha(1.0f)
+                    .setDuration(300)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mTvMarkall.setVisibility(View.VISIBLE);
+                        }
+                    });
+        }
+    }
+
+    public void hideMarkAllView(){
+        mTvMarkall.animate().translationY(mTvMarkall.getHeight())
+                .alpha(0.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mTvMarkall.setVisibility(View.GONE);
+                    }
+                });
     }
 }

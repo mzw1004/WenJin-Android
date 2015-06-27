@@ -15,5 +15,7 @@ public interface NotificationPresenter {
 
     void markNotificationAsRead(int argNotifiId);
 
+    void markAllNotificationAsRead();
+
     void onItemClick(View argView, int argPosition);
 }

@@ -8,6 +8,7 @@ import com.twt.service.wenjin.bean.NotificationResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.main.OnGetNotificationNumberInfoCallback;
 import com.twt.service.wenjin.ui.notification.readlist.OnGetNotificationListCallback;
+import com.twt.service.wenjin.ui.notification.readlist.OnMarkallCallback;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -121,5 +122,37 @@ public class NotificationInteractorImpl implements NotificationInteractor {
                 LogHelper.v(LOG_TAG, responseString);
             }
         });
+    }
+
+    @Override
+    public void setNotificationMarkAllasread(final OnMarkallCallback callback) {
+        ApiClient.setNotificationsMarkAllasread(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                LogHelper.v(LOG_TAG, response.toString());
+
+                try {
+                    int errorCode = response.getInt(ApiClient.RESP_ERROR_CODE_KEY);
+                    switch (errorCode) {
+                        case ApiClient.SUCCESS_CODE:
+                            callback.onMarkAllNotificationSuccess();
+                            break;
+                        case ApiClient.ERROR_CODE:
+                            break;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                LogHelper.v(LOG_TAG, responseString);
+            }
+        });
+
     }
 }
