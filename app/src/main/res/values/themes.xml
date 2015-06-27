@@ -7,11 +7,14 @@
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <!--toobar color -->
         <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorAccent">@color/color_accent</item>
+        <item name="colorAccent">@color/color_primary</item>
+
         <!--back button style-->
 
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
 
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
         <!--<item name="android:windowBackground">@color/activity_background</item>-->
     </style>
 

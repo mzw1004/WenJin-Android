@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.twt.service.wenjin.support.LogHelper;
-import com.twt.service.wenjin.ui.notification.NotificationFragment;
+import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
 
 import cn.jpush.android.api.JPushInterface;
 

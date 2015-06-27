@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.notification;
+package com.twt.service.wenjin.ui.notification.readlist;
 
 import android.view.View;
 
@@ -23,6 +23,7 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
     private int mPage = 0;
     private boolean isLoadingMore = false;
     private boolean isFirstTimeLoad = true;
+    private boolean isRefreshing = false;
 
     public NotificationPresenterImpl(NotificationView argView, NotificationInteractor argNotificationPresenter){
 
@@ -32,26 +33,29 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
     }
 
     @Override
-    public void firstTimeLoadNotificationItems() {
+    public void firstTimeLoadNotificationItems(int type) {
+        isRefreshing = true;
         mPage = 0;
         mView.useLoadMoreFooter();
-        mInteractor.getNotificationList(mPage, this);
+        mInteractor.getNotificationList(mPage, type, this);
     }
 
     @Override
-    public void refreshNotificationItems() {
+    public void refreshNotificationItems(int type) {
+        if(isRefreshing){ return;}
         mPage = 0;
         mView.startRefresh();
-        mInteractor.getNotificationList(mPage,this);
+        mInteractor.getNotificationList(mPage, type, this);
 
     }
 
     @Override
-    public void loadMoreNotificationItems() {
+    public void loadMoreNotificationItems(int type) {
+        if(isLoadingMore){return;}
         mPage += 1;
         isLoadingMore = true;
         mView.useLoadMoreFooter();
-        mInteractor.getNotificationList(mPage,this);
+        mInteractor.getNotificationList(mPage, type, this);
     }
 
     @Override
@@ -103,11 +107,14 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
         }
 
         isLoadingMore = false;
+        isRefreshing = false;
 
     }
 
     @Override
     public void onGetNotificationListFailed(String argErrorMsg) {
+        isLoadingMore = false;
+        isRefreshing = false;
         mView.stopRefresh();
         mPage -= 1;
         if(argErrorMsg != null){

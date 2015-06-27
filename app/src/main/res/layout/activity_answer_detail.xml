@@ -14,19 +14,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+    <RelativeLayout
+        android:id="@+id/answer_detail_head"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/tv_answer_title"
         android:textSize="16sp"
         android:textColor="@color/color_text_primary"
-        android:background="@color/color_answer_detail_title"
+        android:background="@color/color_low_gray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:layout_marginBottom="4dp"
-        android:layout_below="@id/toolbar"/>
+        android:layout_marginBottom="4dp"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_answer_avatar"
@@ -87,11 +91,15 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp" />
 
-    <ScrollView
+    </RelativeLayout>
+
+    <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
+        android:id="@+id/obscroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/tv_answer_signature" >
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        android:fillViewport="true"
+        >
 
         <LinearLayout
             android:orientation="vertical"
@@ -118,6 +126,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
 
 </RelativeLayout>

@@ -123,7 +123,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                                 null));
 
                 // tag group
-                question.tagGroup.setBrightColor(ResourceHelper.getColor(R.color.color_primary));
+                question.tagGroup.setBrightColor(ResourceHelper.getColor(R.color.color_accent));
                 ArrayList<String> tagStrings = new ArrayList<>();
                 for (Topic topic : mQuestionResponse.question_topics) {
                     tagStrings.add(topic.topic_title);

@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.notification;
+package com.twt.service.wenjin.ui.notification.readlist;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -32,9 +32,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private static final int ITEM_VIEW_TYPE_ITEM = 0;
     private static final int ITEM_VIEW_TYPE_FOOTER = 1;
+    private static final int UNREAD = 0;
+    private static final int READ = 1;
 
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
+    private int mPageType;  //0:unread 1:read
 
     private List<NotificationItem> mDataSet = new ArrayList<>();
 
@@ -76,9 +79,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    public NotificationAdapter(Context argContext, OnItemClickListener argOnItemClickListener){
+    public NotificationAdapter(Context argContext,int argPageType , OnItemClickListener argOnItemClickListener){
         this.mContext = argContext;
         this.mOnItemClickListener = argOnItemClickListener;
+        this.mPageType = argPageType;
     }
 
     @Override
@@ -98,6 +102,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder argHolder, final int argPosition) {
+
         int type = getItemViewType(argPosition);
         if(type == ITEM_VIEW_TYPE_ITEM){
             ItemHolder itemHolder = (ItemHolder) argHolder;
@@ -112,7 +117,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             itemHolder.tvTitle.setOnClickListener(clickListener);
             itemHolder.tvContent.setOnClickListener(clickListener);
 
-            itemHolder.tvMarkasread.setOnClickListener(clickListener);
+            if(mPageType == READ){
+                itemHolder.tvMarkasread.setVisibility(View.GONE);
+            }else {
+                itemHolder.tvMarkasread.setOnClickListener(clickListener);
+            }
 
             NotificationItem notificationItem = mDataSet.get(argPosition);
             if(notificationItem.anonymous == 1){
@@ -155,7 +164,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.comment_your_question));
                     break;
                 case "107":
-                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_answer));
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_your_answer));
                     break;
                 case "108":
                     itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.thanked_your_answer));

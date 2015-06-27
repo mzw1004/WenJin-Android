@@ -26,7 +26,7 @@
     <string name="drawer_item_home">Home</string>
     <string name="drawer_item_explore">Explore</string>
     <string name="drawer_item_topic">Topic</string>
-    <string name="drawer_item_notification">Notification</string>
+    <string name="drawer_item_notification">Notifications</string>
     <string name="drawer_item_user">User</string>
     <string name="drawer_item_setting">Setting</string>
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
@@ -35,31 +35,37 @@
 
     
     <!-- Home strings -->
-    <string name="post_question">post this question</string>
-    <string name="concern_question">concern this question</string>
-    <string name="reply_question">reply this question</string>
-    <string name="agree_answer">agree to answer questions</string>
-    <string name="post_article">post this article</string>
-    <string name="agree_article">agree this article</string>
+    <string name="post_question">Question asked</string>
+    <string name="concern_question">Question followed</string>
+    <string name="reply_question">Answer written</string>
+    <string name="agree_answer">Upvote this answer</string>
+    <string name="post_article">Article post written</string>
+    <string name="agree_article">Upvote this article</string>
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
 
     <!-- Notification strings -->
-    <string name="followed_you">followed you</string>
-    <string name="question_comment_ated_you">question comment ated you</string>
-    <string name="invite_you_answer_question">invited you to answer quesion</string>
-    <string name="replied_your_comment">replied your comment</string>
-    <string name="comment_your_question">comment your question</string>
-    <string name="thanked_your_answer">thanked your answer</string>
-    <string name="edited_your_question">edited your question</string>
-    <string name="deleted_your_question">deleted your question</string>
-    <string name="thanked_your_question">thanked your question</string>
-    <string name="answer_ated_you">answer ated you</string>
-    <string name="answer_comment_atted_you">answer comment atted you</string>
+    <string name="notification_unread">Unread</string>
+    <string name="notification_read">Read</string>
+
+    <string name="agree_your_answer">Upvote your answer</string>
+    <string name="agree_your_article">Upvote your article</string>
+    <string name="followed_you">Followed you</string>
+    <string name="question_comment_ated_you">Question comment mentioned you</string>
+    <string name="invite_you_answer_question">Invited you to answer quesion</string>
+    <string name="replied_your_comment">Replied your comment</string>
+    <string name="comment_your_question">Commented your question</string>
+    <string name="thanked_your_answer">Thanked your answer</string>
+    <string name="edited_your_question">Edited your question</string>
+    <string name="deleted_your_question">Deleted your question</string>
+    <string name="thanked_your_question">Thanked your question</string>
+    <string name="answer_ated_you">Answer mentioned you</string>
+    <string name="answer_comment_atted_you">Answer comment mentioned you</string>
     
     <string name="anonymous">Anonymous</string>
     <string name="markasread">Mark as read</string>
+
 
     <!-- Explore strings -->
     <string name="explore_hot">Hot</string>

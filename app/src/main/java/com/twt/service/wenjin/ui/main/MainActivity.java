@@ -1,25 +1,23 @@
 package com.twt.service.wenjin.ui.main;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.Theme;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.mikepenz.actionitembadge.library.ActionItemBadge;
-import com.mikepenz.iconics.typeface.FontAwesome;
 import com.squareup.otto.Subscribe;
-import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.api.ApiClient;
@@ -29,22 +27,17 @@ import com.twt.service.wenjin.interactor.NotificationInteractor;
 import com.twt.service.wenjin.interactor.NotificationInteractorImpl;
 import com.twt.service.wenjin.receiver.JPushNotifiInMainReceiver;
 import com.twt.service.wenjin.receiver.NotificationBuffer;
+import com.twt.service.wenjin.support.BadgeView;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
-import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
-import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.home.HomeFragment;
-import com.twt.service.wenjin.ui.notification.NotificationFragment;
+import com.twt.service.wenjin.ui.notification.NotificationMainFragment;
+import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
-
-import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -58,7 +51,7 @@ import cn.jpush.android.api.JPushInterface;
 
 
 public class MainActivity extends BaseActivity implements MainView,OnGetNotificationNumberInfoCallback,
-        NotificationFragment.IUpdateNotificationIcon {
+        NotificationFragment.IUpdateNotificationIcon,View.OnClickListener {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -76,7 +69,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     private HomeFragment mHomeFragment;
     private ExploreFragment mExploreFragment;
     private TopicFragment mTopicFragment;
-    private NotificationFragment mNotificationFragment;
+    private NotificationMainFragment mNotificationMainFragment;
 //    private UserFragment mUserFragment;
 
     private JPushNotifiInMainReceiver mReceiver;
@@ -106,6 +99,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_container, new HomeFragment())
                 .commit();
+        setMainTitle(0);
 
 
         mReceiver = new JPushNotifiInMainReceiver(this);
@@ -144,13 +138,21 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
+        View menuNotification = menu.findItem(R.id.action_notification).getActionView();
+        menuNotification.setOnClickListener(this);
+
+        View notificationIcon = menuNotification.findViewById(R.id.iv_action_notification);
         if(mBadgeCount > 0){
-            ActionItemBadge.update(this, menu.findItem(R.id.action_notification)
-                    ,ResourcesCompat.getDrawable(getResources(),R.drawable.ic_action_notifications,null)
-            ,ActionItemBadge.BadgeStyle.RED
-            ,mBadgeCount);
-        }else {
-            ActionItemBadge.hide(menu.findItem(R.id.action_notification));
+            BadgeView badgeView = new BadgeView(this, notificationIcon);
+            badgeView.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
+            badgeView.setBadgeBackgroundColor(ResourceHelper.getColor(R.color.holo_green));
+            badgeView.setTextSize(8);
+            if(mBadgeCount > 99){
+                badgeView.setText("99+");
+            }else {
+                badgeView.setText(String.valueOf(mBadgeCount));
+            }
+            badgeView.show();
         }
 
 
@@ -159,20 +161,6 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.action_notification){
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            if(mNotificationFragment == null){
-                mNotificationFragment = new NotificationFragment();
-            }
-
-            fragmentManager.beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
-                    .replace(R.id.main_container, mNotificationFragment)
-                    .commit();
-            getSupportActionBar().setTitle(R.string.action_notification);
-
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -286,8 +274,6 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     public void onGetNotificationNumberInfoSuccess(NotificationNumInfo notificationNumInfo) {
         mBadgeCount = notificationNumInfo.notifications_num;
-        if(mBadgeCount > 99)
-            mBadgeCount = 99;
         invalidateOptionsMenu();
 
     }
@@ -300,6 +286,24 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     public void updateNotificationIcon() {
         notificationInteractor.getNotificationNumberInfo(Calendar.getInstance().getTimeInMillis(), this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.action_notification){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            if(mNotificationMainFragment == null){
+                mNotificationMainFragment = new NotificationMainFragment();
+            }
+
+            fragmentManager.beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+                    .replace(R.id.main_container, mNotificationMainFragment)
+                    .commit();
+            getSupportActionBar().setTitle(R.string.action_notification);
+
+        }
     }
 
     //    @Override

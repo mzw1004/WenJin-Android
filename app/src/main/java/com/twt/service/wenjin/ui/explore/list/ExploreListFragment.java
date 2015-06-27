@@ -86,7 +86,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
         _recyclerView.setLayoutManager(linearLayoutManager);
         _recyclerView.setAdapter(_exploreListAdapter);
 
-        _recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener(){
+        _recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);

@@ -111,6 +111,7 @@ public class JPushNotiReceiver extends BroadcastReceiver {
             NotificationMsg notificationMsg = gson.fromJson(extras, NotificationMsg.class);
 
             if (notificationMsg.type == NotificationType.TYPE_INVITE_QUESTION
+                    || notificationMsg.type == NotificationType.TYPE_COMMENT_AT_ME
                     || notificationMsg.type == NotificationType.TYPE_QUESTION_COMMENT
                     || notificationMsg.type == NotificationType.TYPE_MOD_QUESTION) {
                 Intent intent = new Intent(context, QuestionActivity.class);

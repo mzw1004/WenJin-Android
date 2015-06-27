@@ -93,7 +93,7 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
                 }
             }
         };
-        _recyclerView.setOnScrollListener(_onScrollListener);
+        _recyclerView.addOnScrollListener(_onScrollListener);
 
         _presenter.loadMoreItems(_type,_uid);
 

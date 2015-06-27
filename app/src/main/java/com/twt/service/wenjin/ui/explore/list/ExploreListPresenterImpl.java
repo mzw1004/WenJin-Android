@@ -22,10 +22,12 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
     private ExploreListView _exploreListView;
     private ExploreInteractor _exploreInteractor;
 
-    private boolean isLoadMore;
+    private boolean isLoadMore = false;
     //发现模块page取0或者1都是第一页
     private int page = 1;
     private boolean isFirstTimeLoad = true;
+
+    private boolean isRefreshing = false;
 
     public ExploreListPresenterImpl(ExploreListView exploreListView, ExploreInteractor exploreInteractor) {
         this._exploreListView = exploreListView;
@@ -35,6 +37,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
 
     @Override
     public void loadExploreItems(int type) {
+        if(isRefreshing){return;}
         this._exploreListView.startRefresh();
         page = 1;
         getExploreItems(type);
@@ -42,6 +45,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
 
     @Override
     public void firstTimeLoadExploreItems(int type) {
+        isRefreshing = true;
         page = 1;
         _exploreListView.showFooter();
         getExploreItems(type);
@@ -70,7 +74,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
 
     @Override
     public void loadMoreExploreItems(int type) {
-
+        if(isLoadMore){return;}
         page += 1;
         isLoadMore = true;
         _exploreListView.showFooter();
@@ -117,6 +121,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
             this._exploreListView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
         }
         isLoadMore = false;
+        isRefreshing = false;
     }
 
 
@@ -126,5 +131,6 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
         this._exploreListView.stopRefresh();
         this._exploreListView.toastMessage(errorString);
         isLoadMore = false;
+        isRefreshing = false;
     }
 }

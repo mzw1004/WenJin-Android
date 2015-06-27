@@ -311,7 +311,7 @@ public class ApiClient {
     public static void getNotificationsList(int argPageNum, int argIsUnreadFlag, JsonHttpResponseHandler handler){
         RequestParams params = new RequestParams();
         params.put("page", argPageNum);
-        params.put("flag", argIsUnreadFlag);
+        params.put("flag", argIsUnreadFlag);  //0:未读  1:已读
 
         sClient.get(BASE_URL + NOTIFICATIONS_LIST_URL, params, handler);
     }

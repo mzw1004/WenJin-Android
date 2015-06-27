@@ -44,6 +44,11 @@
     <string name="fab_label_article">文章</string>
 
     <!-- Notification strings -->
+    <string name="notification_unread">未读</string>
+    <string name="notification_read">已读</string>
+
+    <string name="agree_your_answer">赞同了你的回答</string>
+    <string name="agree_your_article">赞同了你的文章</string>
     <string name="followed_you">关注了你</string>
     <string name="question_comment_ated_you">在问题评论中提到你</string>
     <string name="invite_you_answer_question">邀请你回答问题</string>
@@ -149,6 +154,7 @@
     <string name="no_new_version">当前已是最新版本</string>
 
     <!--Follows Activity-->
+    <string name="title_activity_follows">关注</string>
     <string name="action_type_following">关注</string>
     <string name="action_type_followers">被关注</string>
     <string name="default_signature_profile_follows">主人,我也想要一个签名...</string>

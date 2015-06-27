@@ -2,19 +2,31 @@ package com.twt.service.wenjin.ui.answer.detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+import com.github.ksoichiro.android.observablescrollview.ScrollState;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.view.ViewHelper;
 import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
@@ -37,7 +49,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView, View.OnClickListener {
+public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView, View.OnClickListener,ObservableScrollViewCallbacks {
 
     private static final String LOG_TAG = AnswerDetailActivity.class.getSimpleName();
 
@@ -67,6 +79,13 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     TextView tvContent;
     @InjectView(R.id.tv_answer_add_time)
     TextView tvAddTime;
+    @InjectView(R.id.obscroll)
+    ObservableScrollView scrollView;
+    @InjectView(R.id.answer_detail_head)
+    View answer_detail_head;
+
+
+
     private TextView tvCommentCount;
 
     private int answerId;
@@ -87,6 +106,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_detail);
         ButterKnife.inject(this);
+        scrollView.setScrollViewCallbacks(this);
 
         if (savedInstanceState != null) {
             answerId = savedInstanceState.getInt(PARAM_ANSWER_ID);
@@ -244,5 +264,69 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     public void startQuestionActivity() {
         QuestionActivity.actionStart(this, questionId);
     }
+
+    @Override
+    public void onScrollChanged(int i, boolean b, boolean b1) {
+
+    }
+
+    @Override
+    public void onDownMotionEvent() {
+
+    }
+
+    @Override
+    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        if(scrollState == ScrollState.UP){
+            if(toolbarIsShown()){
+                hideToolbar();
+            }
+        }else if(scrollState == scrollState.DOWN){
+            if(toobarIsHidden()){
+                showToolbar();
+            }
+        }
+    }
+
+    private boolean toolbarIsShown(){
+        return ViewHelper.getTranslationY(toolbar) == 0;
+    }
+
+    private boolean toobarIsHidden(){
+        return ViewHelper.getTranslationY(toolbar) == -toolbar.getHeight();
+    }
+
+    private void showToolbar(){ moveToolbar(0);}
+
+    private void hideToolbar(){moveToolbar(-toolbar.getHeight());}
+
+    private void moveToolbar(final float toTranslationY){
+        if (ViewHelper.getTranslationY(toolbar) == toTranslationY) {
+            return;
+        }
+        ValueAnimator animator = ValueAnimator.ofFloat(ViewHelper.getTranslationY(toolbar), toTranslationY).setDuration(200);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float translationY = (float) animation.getAnimatedValue();
+                ViewHelper.setTranslationY(toolbar, translationY);
+                ViewHelper.setTranslationY( scrollView, translationY);
+                ViewHelper.setTranslationY(answer_detail_head, translationY);
+                RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) scrollView.getLayoutParams();
+                lp.height = (int) -translationY + getScreenHight() - lp.topMargin;
+                scrollView.requestLayout();
+            }
+        });
+        animator.start();
+    }
+
+    private int getScreenHight(){
+        DisplayMetrics display = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(display);
+        return display.heightPixels;
+    }
+
+
+
 
 }

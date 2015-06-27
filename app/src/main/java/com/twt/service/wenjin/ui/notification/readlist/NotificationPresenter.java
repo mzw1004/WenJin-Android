@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.notification;
+package com.twt.service.wenjin.ui.notification.readlist;
 
 import android.view.View;
 
@@ -7,11 +7,11 @@ import android.view.View;
  */
 public interface NotificationPresenter {
 
-    void firstTimeLoadNotificationItems();
+    void firstTimeLoadNotificationItems(int type);
 
-    void refreshNotificationItems();
+    void refreshNotificationItems(int type);
 
-    void loadMoreNotificationItems();
+    void loadMoreNotificationItems(int type);
 
     void markNotificationAsRead(int argNotifiId);
 

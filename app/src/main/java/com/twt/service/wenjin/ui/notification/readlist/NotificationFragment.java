@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.notification;
+package com.twt.service.wenjin.ui.notification.readlist;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,7 +19,6 @@ import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,6 +33,9 @@ import butterknife.InjectView;
 public class NotificationFragment extends BaseFragment implements NotificationView,
         SwipeRefreshLayout.OnRefreshListener,OnItemClickListener {
 
+    public final static String PARAM_TYPE = "TYPE";
+    private int type;
+
     @Inject
     NotificationPresenter mPresenter;
 
@@ -47,6 +49,14 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
     private IUpdateNotificationIcon mUpdateNotifiIconListener;
 
+    public static NotificationFragment getInstance(int position){
+        NotificationFragment notificationFragment = new NotificationFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(NotificationFragment.PARAM_TYPE, position);
+        notificationFragment.setArguments(bundle);
+        return notificationFragment;
+    }
+
     @Override
     protected List<Object> getModules() {
         return Arrays.<Object>asList(new NotificationModule(this));
@@ -55,6 +65,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        type = getArguments().getInt(PARAM_TYPE);
     }
 
     @Nullable
@@ -66,7 +77,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
 
-        mAdapter = new NotificationAdapter(getActivity(), this);
+        mAdapter = new NotificationAdapter(getActivity(),type, this);
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -79,13 +90,13 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
                 int lstVisibleItemPos = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
                 int totalItemCount = mLinearLayoutManager.getItemCount();
                 if(lstVisibleItemPos == totalItemCount - 1  && dy > 0 ){
-                    mPresenter.loadMoreNotificationItems();
+                    mPresenter.loadMoreNotificationItems(type);
                     mUpdateNotifiIconListener.updateNotificationIcon();
                 }
             }
         });
 
-        mPresenter.firstTimeLoadNotificationItems();
+        mPresenter.firstTimeLoadNotificationItems(type);
         return rootView;
     }
 
@@ -138,7 +149,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         mPresenter.markNotificationAsRead(item.notification_id);
         mAdapter.deleteItem(argPosition);
         if(mAdapter.getItemCount() < 5){
-            mPresenter.loadMoreNotificationItems();
+            mPresenter.loadMoreNotificationItems(type);
         }
 
         mUpdateNotifiIconListener.updateNotificationIcon();
@@ -171,7 +182,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
     @Override
     public void onRefresh() {
-        mPresenter.refreshNotificationItems();
+        mPresenter.refreshNotificationItems(type);
     }
 
     @Override

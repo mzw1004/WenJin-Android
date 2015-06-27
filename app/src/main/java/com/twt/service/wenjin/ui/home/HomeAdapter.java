@@ -196,7 +196,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public void addItems(ArrayList<HomeItem> items) {
-        mDataset.addAll(items);
+        setUseFooter(false);
+        mDataset.addAll(getItemCount(), items);
         notifyDataSetChanged();
     }
 

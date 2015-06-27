@@ -3,18 +3,15 @@ package com.twt.service.wenjin.interactor;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
-import com.twt.service.wenjin.bean.NotificationItem;
 import com.twt.service.wenjin.bean.NotificationNumInfo;
 import com.twt.service.wenjin.bean.NotificationResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.main.OnGetNotificationNumberInfoCallback;
-import com.twt.service.wenjin.ui.notification.OnGetNotificationListCallback;
+import com.twt.service.wenjin.ui.notification.readlist.OnGetNotificationListCallback;
 
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.List;
 
 /**
  * Created by Green on 15-6-22.
@@ -51,7 +48,7 @@ public class NotificationInteractorImpl implements NotificationInteractor {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                LogHelper.v(LOG_TAG, errorResponse.toString());
+                //LogHelper.v(LOG_TAG, errorResponse.toString());
             }
 
             @Override
@@ -64,8 +61,8 @@ public class NotificationInteractorImpl implements NotificationInteractor {
     }
 
     @Override
-    public void getNotificationList(int argPage, final OnGetNotificationListCallback callback) {
-        ApiClient.getNotificationsList(argPage, 0 , new JsonHttpResponseHandler(){
+    public void getNotificationList(int argPage,int type, final OnGetNotificationListCallback callback) {
+        ApiClient.getNotificationsList(argPage, type , new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 LogHelper.v(LOG_TAG, response.toString());

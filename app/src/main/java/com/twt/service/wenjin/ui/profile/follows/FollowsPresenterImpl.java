@@ -42,6 +42,7 @@ public class FollowsPresenterImpl implements FollowsPresenter,OnGetFollowCallbac
         }else{
             _followsView.showMSG(ResourceHelper.getString(R.string.no_more_information));
         }
+        _isLoadMore = false;
         _followsView.hideFooter();
     }
 
@@ -59,6 +60,7 @@ public class FollowsPresenterImpl implements FollowsPresenter,OnGetFollowCallbac
 
     @Override
     public void loadMoreItems(String type, int uid) {
+        if(_isLoadMore){return;}
         _isLoadMore = true;
         _followsView.showFooter();
         getItems(type,uid);

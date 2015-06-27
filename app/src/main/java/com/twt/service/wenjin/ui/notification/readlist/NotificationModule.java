@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.notification;
+package com.twt.service.wenjin.ui.notification.readlist;
 
 import com.twt.service.wenjin.interactor.NotificationInteractor;
 import com.twt.service.wenjin.ui.main.MainModule;
