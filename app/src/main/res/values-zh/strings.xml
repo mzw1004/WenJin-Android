@@ -133,9 +133,17 @@
     <string name="hint_feedback_detail">建议细节（选填）</string>
 
     <!-- Settings activity -->
+    <string name="pref_category_notification">通知</string>
+    <string name="pref_category_others">其他</string>
+
     <string name="title_activity_settings">设置</string>
     <string name="pref_about_title">关于</string>
     <string name="pref_check_version_title">检查新版本</string>
+    <string name="pref_notification_title">启用通知</string>
+
+
+    <!-- NotificationSetting activity -->
+    <string name="title_activity_notificationsetting">推送</string>
 
     <!-- About activity -->
     <string name="title_activity_about">关于</string>

@@ -121,6 +121,14 @@
                 android:value="com.twt.service.wenjin.ui.setting.SettingsActivity" />
         </activity>
 
+        <activity android:name=".ui.setting.NotificationSettingActivity"
+            android:label="@string/title_activity_notificationsetting"
+            android:parentActivityName=".ui.setting.SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.twt.service.wenjin.ui.setting.SettingsActivity"/>
+        </activity>
+
         <activity
             android:name=".ui.feedback.FeedbackActivity"
             android:label="@string/title_activity_feedback"

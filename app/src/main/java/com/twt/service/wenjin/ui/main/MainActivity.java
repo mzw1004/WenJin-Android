@@ -29,6 +29,7 @@ import com.twt.service.wenjin.receiver.NotificationBuffer;
 import com.twt.service.wenjin.support.BadgeView;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
@@ -168,10 +169,6 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     protected void onStart() {
         super.onStart();
         BusProvider.getBusInstance().register(this);
-        if(JPushInterface.isPushStopped(this)){
-            JPushInterface.onResume(this);
-        }
-
     }
 
     @Override
@@ -184,7 +181,9 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     protected void onResume() {
         super.onResume();
-        JPushInterface.onResume(this);
+        if(JPushInterface.isPushStopped(this) && PrefUtils.isLaunchNotification()){
+            JPushInterface.onResume(this);
+        }
         updateNotificationIcon();
     }
 

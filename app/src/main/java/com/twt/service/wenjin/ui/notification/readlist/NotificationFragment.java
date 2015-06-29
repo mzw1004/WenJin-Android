@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.NotificationItem;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
@@ -124,21 +125,13 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     @Override
     public void onResume() {
         super.onResume();
-        if(type != 0){
-            hideMarkAllView();
-        }else {
-            if(mAdapter.getItemCount() > 0){
-                showMarkAllView();
-            }
-        }
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if(type == 0){
-            hideMarkAllView();
-        }
+
     }
 
     @Override
@@ -178,16 +171,18 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
     @Override
     public void refreshItems(List<NotificationItem> items) {
-        if(type == 0 &&items != null && items.size() > 0){
+        LogHelper.v("showMarkAllviewInfo","type = "+type + "items.size() = "+items.size());
+        mAdapter.refreshItems(items);
+        if(mAdapter.getItemCount() > 0){
             showMarkAllView();
         }
-        mAdapter.refreshItems(items);
     }
 
     @Override
     public void addMoreItems(List<NotificationItem> items, int argTotalRows) {
         if( mAdapter.getItemCount() < argTotalRows -1) {
             mAdapter.addItems(items);
+            showMarkAllView();
         }else {
             //this.toastMessage(getResources().getString(R.string.no_more_information));
         }
@@ -202,8 +197,9 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         if(mAdapter.getItemCount() == 4){
             mPresenter.loadMoreNotificationItems(type);
         }
-
-        hideMarkAllView();
+        if(mAdapter.getItemCount() < 1) {
+            hideMarkAllView();
+        }
 
         mUpdateNotifiIconListener.updateNotificationIcon();
 
@@ -249,9 +245,15 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
         mUpdateNotifiIconListener = (IUpdateNotificationIcon) activity;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        hideMarkAllView();
+    }
 
     public void showMarkAllView(){
-        if(mTvMarkall.getVisibility() == View.GONE && type == 0 && mAdapter.getItemCount() > 0){
+        if(mTvMarkall == null){return;}
+        if(mTvMarkall.getVisibility() == View.GONE && type == 0){
             mTvMarkall.setTranslationY(mTvMarkall.getHeight());
             mTvMarkall.setVisibility(View.VISIBLE);
             mTvMarkall.setAlpha(0.0f);
@@ -269,15 +271,18 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     }
 
     public void hideMarkAllView(){
-        mTvMarkall.animate().translationY(mTvMarkall.getHeight())
-                .alpha(0.0f)
-                .setDuration(300)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        mTvMarkall.setVisibility(View.GONE);
-                    }
-                });
+        if(mTvMarkall == null){return;}
+        if(mTvMarkall.getVisibility() == View.VISIBLE) {
+            mTvMarkall.animate().translationY(mTvMarkall.getHeight())
+                    .alpha(0.0f)
+                    .setDuration(300)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mTvMarkall.setVisibility(View.GONE);
+                        }
+                    });
+        }
     }
 }

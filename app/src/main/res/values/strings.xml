@@ -135,11 +135,19 @@
     <string name="hint_feedback_detail">Suggest detail(Optional)</string>
 
     <!-- Settings activity -->
+    <string name="pref_category_notification">Notification</string>
+    <string name="pref_category_others">Others</string>
+
     <string name="title_activity_settings">Settings</string>
     <string name="pref_about_key" translatable="false">about</string>
     <string name="pref_about_title">About</string>
     <string name="pref_check_version_key" translatable="false">check</string>
     <string name="pref_check_version_title">Check new version</string>
+    <string name="pref_launch_notification_key" translatable="false">Launch Notification</string>
+    <string name="pref_launch_notification_title">Launch notification</string>
+
+    <!-- NotificationSetting activity -->
+    <string name="title_activity_notificationsetting">Notification</string>
 
     <!-- About activity -->
     <string name="title_activity_about">About</string>

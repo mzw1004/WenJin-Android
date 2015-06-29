@@ -33,6 +33,7 @@ public class NotificationMainFragment extends Fragment {
     @InjectView(R.id.tv_mark_all)
     TextView mTvMarkall;
 
+
     private FragmentPagerAdapter mFragmentPagerAdapter;
 
     @Override
@@ -52,11 +53,11 @@ public class NotificationMainFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                if(position != 0) {
-                    ((NotificationFragment)mFragmentPagerAdapter.getItem(position)).hideMarkAllView();
+                if (position != 0) {
+                    ((NotificationFragment) mFragmentPagerAdapter.getItem(position)).hideMarkAllView();
 
-                }else {
-                    ((NotificationFragment)mFragmentPagerAdapter.getItem(position)).showMarkAllView();
+                } else {
+                    ((NotificationFragment) mFragmentPagerAdapter.getItem(position)).showMarkAllView();
                 }
             }
 
@@ -66,7 +67,16 @@ public class NotificationMainFragment extends Fragment {
             }
         });
 
+
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onResume();
+        if(mViewPager != null) {
+            mViewPager.setCurrentItem(0);
+        }
     }
 
     @Override

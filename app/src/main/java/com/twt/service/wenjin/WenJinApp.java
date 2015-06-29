@@ -8,6 +8,7 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.CrashHandler;
 import com.twt.service.wenjin.support.JPushHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 
 import java.util.Arrays;
 import java.util.List;
