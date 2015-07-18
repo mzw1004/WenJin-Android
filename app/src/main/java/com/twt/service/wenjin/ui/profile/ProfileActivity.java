@@ -142,9 +142,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
             case android.R.id.home:
                 this.finish();
                 break;
-            case R.id.action_edit:
-                ProfileEditActivity.actionStart(this, uid);
-                break;
+//            case R.id.action_edit:
+//                ProfileEditActivity.actionStart(this, uid);
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }
