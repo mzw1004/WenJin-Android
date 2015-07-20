@@ -329,6 +329,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
                         fy_bottom_actions.setVisibility(View.GONE);
                     }
                 });
+
     }
 
     private void moveToolbar(final float toTranslationY){
