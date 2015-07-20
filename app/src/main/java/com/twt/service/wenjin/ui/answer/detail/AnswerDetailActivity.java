@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.ui.answer.detail;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
@@ -83,6 +85,8 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     ObservableScrollView scrollView;
     @InjectView(R.id.answer_detail_head)
     View answer_detail_head;
+    @InjectView(R.id.fl_bottom_actions)
+    View fy_bottom_actions;
 
 
 
@@ -277,28 +281,55 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-//        if(scrollState == ScrollState.UP){
-//            if(toolbarIsShown()){
-//                hideToolbar();
-//            }
-//        }else if(scrollState == scrollState.DOWN){
-//            if(toobarIsHidden()){
-//                showToolbar();
-//            }
-//        }
+        if(scrollState == ScrollState.UP){
+            if(toolbarIsShown()){
+                hideToolbar();
+            }
+        }else if(scrollState == scrollState.DOWN){
+            if(toobarIsHidden()){
+                showToolbar();
+            }
+        }
     }
 
     private boolean toolbarIsShown(){
-        return ViewHelper.getTranslationY(toolbar) == 0;
+        return fy_bottom_actions.getVisibility() == View.VISIBLE;
     }
 
     private boolean toobarIsHidden(){
-        return ViewHelper.getTranslationY(toolbar) == -toolbar.getHeight();
+        return fy_bottom_actions.getVisibility() == View.GONE;
     }
 
-    private void showToolbar(){ moveToolbar(0);}
+    private void showToolbar(){
+        fy_bottom_actions.setTranslationY(fy_bottom_actions.getHeight());
+        fy_bottom_actions.setVisibility(View.VISIBLE);
+        fy_bottom_actions.setAlpha(0.0f);
+        fy_bottom_actions.animate()
+                .translationY(0)
+                .alpha(1.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        fy_bottom_actions.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
 
-    private void hideToolbar(){moveToolbar(-toolbar.getHeight());}
+    private void hideToolbar(){
+        fy_bottom_actions.animate()
+                .translationY(fy_bottom_actions.getHeight())
+                .alpha(0.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        fy_bottom_actions.setVisibility(View.GONE);
+                    }
+                });
+    }
 
     private void moveToolbar(final float toTranslationY){
         if (ViewHelper.getTranslationY(toolbar) == toTranslationY) {
