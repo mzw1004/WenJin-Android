@@ -357,6 +357,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         getWindowManager().getDefaultDisplay().getMetrics(display);
         return display.heightPixels;
 
+
     }
 
 
