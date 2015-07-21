@@ -41,7 +41,6 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
     }
 
-    @Override
     public void firstTimeRefreshHomeItems() {
         mPage = 0;
         isRefreshing = true;
