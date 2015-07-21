@@ -7,8 +7,8 @@ import com.twt.service.wenjin.bean.QuestionResponse;
  */
 public interface OnGetQuestionCallback {
 
-    void onSuccess(QuestionResponse questionResponse);
+    void onGetQuestionSuccess(QuestionResponse questionResponse);
 
-    void onFailure(String errorString);
+    void onGetQuestionFailure(String errorString);
 
 }

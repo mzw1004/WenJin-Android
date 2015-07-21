@@ -17,6 +17,9 @@
     <string name="reply">回复</string>
     <string name="quit">再按一次退出程序</string>
 
+    <!-- Main Activity -->
+    <string name="action_notification">通知</string>
+
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>
     <string name="drawer_close">关闭侧边栏</string>
@@ -24,6 +27,7 @@
     <string name="drawer_item_explore">发现</string>
     <string name="drawer_item_topic">话题</string>
     <string name="drawer_item_draft">草稿</string>
+    <string name="drawer_item_notification">通知</string>
     <string name="drawer_item_user">用户</string>
     <string name="drawer_item_setting">设置</string>
     <string name="drawer_item_helper_and_feedback">帮助 &amp; 反馈</string>
@@ -39,6 +43,29 @@
     <string name="agree_article">赞同了该文章</string>
     <string name="fab_label_question">问题</string>
     <string name="fab_label_article">文章</string>
+
+    <!-- Notification strings -->
+    <string name="notification_unread">未读</string>
+    <string name="notification_read">已读</string>
+    <string name="notification_markall">标记全部</string>
+
+    <string name="agree_your_answer">赞同了你的回答</string>
+    <string name="agree_your_article">赞同了你的文章</string>
+    <string name="followed_you">关注了你</string>
+    <string name="question_comment_ated_you">在问题评论中提到你</string>
+    <string name="invite_you_answer_question">邀请你回答问题</string>
+    <string name="replied_your_comment">回复了你的评论</string>
+    <string name="comment_your_question">评论了你的问题</string>
+    <string name="thanked_your_answer">感谢了你的回答</string>
+    <string name="edited_your_question">编辑了你的问题</string>
+    <string name="deleted_your_question">删除了你的问题</string>
+    <string name="thanked_your_question">感谢了你的问题</string>
+    <string name="answer_ated_you">在回答中提到你</string>
+    <string name="answer_comment_atted_you">在答案评论中提到你</string>
+
+    <string name="anonymous">匿名用户</string>
+    <string name="markasread">标记为已读</string>
+
 
     <!-- Explore strings -->
     <string name="explore_hot">最热</string>
@@ -109,9 +136,16 @@
     <string name="hint_feedback_detail">建议细节（选填）</string>
 
     <!-- Settings activity -->
+    <string name="pref_category_notification">通知</string>
+    <string name="pref_category_others">其他</string>
     <string name="title_activity_settings">设置</string>
     <string name="pref_about_title">关于</string>
     <string name="pref_check_version_title">检查新版本</string>
+    <string name="pref_notification_title">启用通知</string>
+
+
+    <!-- NotificationSetting activity -->
+    <string name="title_activity_notificationsetting">推送</string>
 
     <!-- About activity -->
     <string name="title_activity_about">关于</string>

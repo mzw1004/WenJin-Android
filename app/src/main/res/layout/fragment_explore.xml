@@ -10,10 +10,10 @@
         android:id="@+id/tabs_explore"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_primary"
-        android:textColor="@color/color_primary_light"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/color_low_gray"
         app:pstsTextColorSelected="@android:color/white"
-        app:pstsIndicatorColor="@color/color_accent"
+        app:pstsIndicatorColor="@android:color/white"
         app:pstsShouldExpand="true" />
 
     <android.support.v4.view.ViewPager

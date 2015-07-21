@@ -23,4 +23,8 @@
         <item>@string/explore_unresponsive</item>
     </string-array>
 
+    <string-array name="notification_tab_titles">
+        <item>@string/notification_unread</item>
+        <item>@string/notification_read</item>
+    </string-array>
 </resources>

@@ -8,10 +8,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.bean.CrashInfo;
+import com.twt.service.wenjin.support.JPushHelper;
+import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 import com.umeng.analytics.MobclickAgent;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -48,7 +55,18 @@ public class WelcomeActivity extends AppCompatActivity {
                 WelcomeActivity.this.startActivity(intent);
                 WelcomeActivity.this.finish();
             }
-        }, 2000);
+        }, 1000);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
 }

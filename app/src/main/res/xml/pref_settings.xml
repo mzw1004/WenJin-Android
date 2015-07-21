@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference
-        android:key="@string/pref_check_version_key"
-        android:title="@string/pref_check_version_title" />
+    <PreferenceCategory
+        android:key="@string/pref_category_notification"
+        android:title="@string/pref_category_notification"
+        >
+        <SwitchPreference
+            android:key="@string/pref_launch_notification_key"
+            android:title="@string/pref_launch_notification_title"
+            android:icon="@drawable/ic_action_notifications_black"
+            />
 
-    <Preference
-        android:key="@string/pref_about_key"
-        android:title="@string/pref_about_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="@string/pref_category_others"
+        android:title="@string/pref_category_others"
+        >
+        <Preference
+            android:key="@string/pref_check_version_key"
+            android:title="@string/pref_check_version_title" />
+
+        <Preference
+            android:key="@string/pref_about_key"
+            android:title="@string/pref_about_title" />
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

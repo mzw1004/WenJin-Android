@@ -22,10 +22,12 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
     private ExploreListView _exploreListView;
     private ExploreInteractor _exploreInteractor;
 
-    private boolean isLoadMore;
+    private boolean isLoadMore = false;
     //发现模块page取0或者1都是第一页
     private int page = 1;
     private boolean isFirstTimeLoad = true;
+
+    private boolean isRefreshing = false;
 
     public ExploreListPresenterImpl(ExploreListView exploreListView, ExploreInteractor exploreInteractor) {
         this._exploreListView = exploreListView;
@@ -35,6 +37,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
 
     @Override
     public void loadExploreItems(int type) {
+        if(isRefreshing){return;}
         this._exploreListView.startRefresh();
         page = 1;
         getExploreItems(type);
@@ -42,6 +45,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
 
     @Override
     public void firstTimeLoadExploreItems(int type) {
+        isRefreshing = true;
         page = 1;
         _exploreListView.showFooter();
         getExploreItems(type);
@@ -50,19 +54,19 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
     private void getExploreItems(int type) {
         switch (type) {
             case 0:
-                this._exploreInteractor.getExploreItems(10, page, 30, 0, "new", this);
+                this._exploreInteractor.getExploreItems(10, page, 7, 0, "new", this);
                 LogHelper.v(LOG_TAG, "page:" + page + " new");
                 break;
             case 1:
-                this._exploreInteractor.getExploreItems(10, page, 30, 0, "hot", this);
+                this._exploreInteractor.getExploreItems(10, page, 7, 0, "hot", this);
                 LogHelper.v(LOG_TAG, "page:" + page + " hot");
                 break;
             case 2:
-                this._exploreInteractor.getExploreItems(10, page, 30, 1, "new", this);
+                this._exploreInteractor.getExploreItems(10, page, 7, 1, "new", this);
                 LogHelper.v(LOG_TAG, "page:" + page + " recommend");
                 break;
             case 3:
-                this._exploreInteractor.getExploreItems(10, page, 30, 0, "unresponsive", this);
+                this._exploreInteractor.getExploreItems(10, page, 7, 0, "unresponsive", this);
                 LogHelper.v(LOG_TAG, "page:" + page + " unresponsive");
                 break;
         }
@@ -70,7 +74,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
 
     @Override
     public void loadMoreExploreItems(int type) {
-
+        if(isLoadMore){return;}
         page += 1;
         isLoadMore = true;
         _exploreListView.showFooter();
@@ -81,13 +85,16 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
     @Override
     public void onItemClicked(View v, int position) {
         switch (v.getId()) {
-            case R.id.tv_explore_item_user:
+            case R.id.tv_home_item_username:
                 _exploreListView.startProfileActivity(position);
                 break;
-            case R.id.iv_explore_item_avatar:
+            case R.id.iv_home_item_avatar:
                 _exploreListView.startProfileActivity(position);
                 break;
-            case R.id.tv_explore_item_title:
+            case R.id.tv_home_item_title:
+                _exploreListView.startQuestionActivity(position);
+                break;
+            case R.id.tv_home_item_content:
                 _exploreListView.startQuestionActivity(position);
                 break;
         }
@@ -114,6 +121,7 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
             this._exploreListView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
         }
         isLoadMore = false;
+        isRefreshing = false;
     }
 
 
@@ -123,5 +131,6 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
         this._exploreListView.stopRefresh();
         this._exploreListView.toastMessage(errorString);
         isLoadMore = false;
+        isRefreshing = false;
     }
 }

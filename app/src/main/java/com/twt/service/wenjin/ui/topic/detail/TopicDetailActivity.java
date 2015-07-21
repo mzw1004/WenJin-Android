@@ -129,7 +129,7 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     public void addFocus() {
         btFocus.setBackgroundResource(R.drawable.button_focused_background);
         btFocus.setText(getString(R.string.action_not_focus));
-        btFocus.setTextColor(getResources().getColor(R.color.color_accent));
+        btFocus.setTextColor(getResources().getColor(R.color.color_primary_dark));
     }
 
     @Override

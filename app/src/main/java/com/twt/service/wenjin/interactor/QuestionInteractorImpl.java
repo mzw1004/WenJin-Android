@@ -37,10 +37,10 @@ public class QuestionInteractorImpl implements QuestionInteractor {
                             LogHelper.v(LOG_TAG, "detail: " + qr.question_info.question_detail);
                             LogHelper.v(LOG_TAG, "focus count: " + qr.question_info.focus_count);
                             LogHelper.v(LOG_TAG, "answer count: " + qr.answer_count);
-                            onGetQuestionCallback.onSuccess(qr);
+                            onGetQuestionCallback.onGetQuestionSuccess(qr);
                             break;
                         case ApiClient.ERROR_CODE:
-                            onGetQuestionCallback.onFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
+                            onGetQuestionCallback.onGetQuestionFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
                             break;
                     }
                 } catch (JSONException e) {

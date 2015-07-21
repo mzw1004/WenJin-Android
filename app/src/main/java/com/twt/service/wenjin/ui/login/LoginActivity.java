@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.support.JPushHelper;
 import com.twt.service.wenjin.support.NetworkHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 
@@ -24,6 +26,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import cn.jpush.android.api.JPushInterface;
 
 public class LoginActivity extends BaseActivity implements LoginView, View.OnClickListener {
 
@@ -46,7 +49,14 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
 
+
+        JPushInterface.clearAllNotifications(getApplicationContext());
+        JPushHelper jPushHelper = new JPushHelper(null,null);
+        jPushHelper.cancelAlias();
+
         ApiClient.userLogout();
+
+
         mBtLogin.setOnClickListener(this);
     }
 

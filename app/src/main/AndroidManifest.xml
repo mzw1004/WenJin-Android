@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.twt.service.wenjin" >
 
+    <!-- Required -->
+    <permission android:name="com.twt.service.wenjin.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -9,6 +12,24 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- JPush Required  -->
+    <uses-permission android:name="com.twt.service.wenjin.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <!-- JPush Optional for location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:name=".WenJinApp"
@@ -35,60 +56,78 @@
             android:name="AA_MODELS"
             android:value=".bean.CrashInfo, .bean.QuestionDraft" />
 
-        <activity android:name=".ui.welcome.WelcomeActivity" >
+        <activity
+            android:name=".ui.welcome.WelcomeActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.main.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            >
         </activity>
+
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+
         <activity
             android:name=".ui.question.QuestionActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_question" >
         </activity>
+
         <activity
             android:name=".ui.answer.detail.AnswerDetailActivity"
             android:label="@string/title_activity_answer_detail" >
         </activity>
+
         <activity
             android:name=".ui.publish.PublishActivity"
             android:label="@string/title_activity_publish"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+
         <activity
             android:name=".ui.answer.AnswerActivity"
             android:label="@string/title_activity_answer"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
+
         <activity
             android:name=".ui.answer.comment.CommentActivity"
             android:label="@string/title_activity_comment"
             android:windowSoftInputMode="stateHidden" >
         </activity>
+
         <activity
             android:name=".ui.topic.detail.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
+        
         <activity
             android:name=".ui.profile.askanswer.ProfileAskanswerActivity"
             android:label="@string/title_activity_profile_askanswer" >
         </activity>
+
         <activity
             android:name=".ui.setting.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+
         <activity
             android:name=".ui.about.AboutActivity"
             android:label="@string/title_activity_about"
@@ -97,15 +136,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.twt.service.wenjin.ui.setting.SettingsActivity" />
         </activity>
+
+        <activity android:name=".ui.setting.NotificationSettingActivity"
+            android:label="@string/title_activity_notificationsetting"
+            android:parentActivityName=".ui.setting.SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.twt.service.wenjin.ui.setting.SettingsActivity"/>
+        </activity>
+
         <activity
             android:name=".ui.feedback.FeedbackActivity"
             android:label="@string/title_activity_feedback"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+
         <activity
             android:name=".ui.profile.follows.FollowsActivity"
             android:label="@string/title_activity_follows" >
         </activity>
+        
         <activity
             android:name="com.umeng.socialize.view.ShareActivity"
             android:configChanges="orientation|keyboard"
@@ -124,6 +174,83 @@
             android:name=".ui.profile.edit.ProfileEditActivity"
             android:label="@string/title_activity_profile_edit" >
         </activity>
+        
+        <!-- JPush Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.twt.service.wenjin" />
+            </intent-filter>
+        </activity>
+
+        <!-- JPush Required SDK 核心功能-->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+
+            </intent-filter>
+        </service>
+
+        <!-- JPush Required  SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <!-- Required SDK核心功能-->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
+                <category android:name="com.twt.service.wenjin" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+
+        </receiver>
+
+        <receiver android:name=".receiver.JPushNotiReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.twt.service.wenjin" />
+
+            </intent-filter>
+
+        </receiver>
+
+        <!-- JPush Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- JPush Required  . Enable it you can get statistics data with channel -->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="5fb608f1d509c30234c4bbaa" /> <!--  </>值来自开发者平台取得的AppKey-->
+
     </application>
 
 </manifest>

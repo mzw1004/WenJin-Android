@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.bean.AnswerInfo;
 import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
+import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
@@ -84,7 +86,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
         _recyclerView.setLayoutManager(linearLayoutManager);
         _recyclerView.setAdapter(_exploreListAdapter);
 
-        _recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener(){
+        _recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -153,6 +155,15 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
             ProfileActivity.actionStart(getActivity(), item.answer_users[0].uid);
         }else {
             ProfileActivity.actionStart(getActivity(),item.user_info.uid);
+        }
+    }
+
+    @Override
+    public void startAnswerActivity(int position) {
+        ExploreItem item = _exploreListAdapter.getItem(position);
+        if(item.answer_users.length > 0) {
+            AnswerInfo answerInfo = item.answer_users[0];
+            AnswerDetailActivity.actionStart(getActivity(), answerInfo.answer_id, answerInfo.answer_content);
         }
     }
 
