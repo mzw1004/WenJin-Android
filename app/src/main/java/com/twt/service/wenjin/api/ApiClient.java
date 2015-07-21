@@ -62,6 +62,10 @@ public class ApiClient {
     private static final String MY_FOCUS_USER = "api/my_focus_user.php";
     private static final String MY_FANS_USER = "api/my_fans_user.php";
 
+    private static final String NOTIFICATIONS_URL = "?/api/notification/notifications/";
+    private static final String NOTIFICATIONS_LIST_URL = "?/api/notification/list/";
+    private static final String NOTIFICATIONS_MARKASREAD_URL = "?/api/notification/read_notification/";
+
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
     }
@@ -280,7 +284,7 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-        sClient.get(BASE_URL + MY_FOCUS_USER,params,handler);
+        sClient.get(BASE_URL + MY_FOCUS_USER, params, handler);
     }
 
     public static void checkNewVersion(String version, JsonHttpResponseHandler handler) {
@@ -295,7 +299,31 @@ public class ApiClient {
         params.put("uid",uid);
         params.put("page",page);
         params.put("per_page",perPage);
-        sClient.get(BASE_URL + MY_FANS_USER,params,handler);
+        sClient.get(BASE_URL + MY_FANS_USER, params, handler);
     }
 
+    public static void getNotificationsNumberInfo(long argTimestampNow, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("time", argTimestampNow);
+        sClient.get(BASE_URL + NOTIFICATIONS_URL, params, handler);
+    }
+
+    public static void getNotificationsList(int argPageNum, int argIsUnreadFlag, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("page", argPageNum);
+        params.put("flag", argIsUnreadFlag);  //0:未读  1:已读
+
+        sClient.get(BASE_URL + NOTIFICATIONS_LIST_URL, params, handler);
+    }
+
+    public static void setNotificationsMarkasread(int argNotificationId, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("notification_id", argNotificationId);
+
+        sClient.get(BASE_URL + NOTIFICATIONS_MARKASREAD_URL, params, handler);
+    }
+
+    public static void setNotificationsMarkAllasread(JsonHttpResponseHandler handler){
+        sClient.get(BASE_URL + NOTIFICATIONS_MARKASREAD_URL,handler);
+    }
 }

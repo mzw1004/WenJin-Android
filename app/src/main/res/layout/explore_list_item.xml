@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/tv_explore_item_title"
             android:textSize="16sp"
-            android:textColor="@color/color_primary_dark"
+            android:textColor="@color/color_text_primary_b"
             android:gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
@@ -46,7 +46,7 @@
         <TextView
             android:id="@+id/tv_explore_item_user"
             android:textSize="14sp"
-            android:textColor="@color/color_primary_dark"
+            android:textColor="@color/color_text_primary_b"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="40dp"

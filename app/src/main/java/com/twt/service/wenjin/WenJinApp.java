@@ -7,10 +7,13 @@ import com.activeandroid.ActiveAndroid;
 import com.loopj.android.http.PersistentCookieStore;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.CrashHandler;
+import com.twt.service.wenjin.support.JPushHelper;
+import com.twt.service.wenjin.support.PrefUtils;
 
 import java.util.Arrays;
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
 import dagger.ObjectGraph;
 
 /**
@@ -20,6 +23,8 @@ public class WenJinApp extends Application {
 
     private static Context sContext;
     private static PersistentCookieStore sCookieStore;
+
+    private static boolean sIsAppLunched;
 
     private ObjectGraph objectGraph;
 
@@ -37,6 +42,11 @@ public class WenJinApp extends Application {
 //       crashHandler.init(sContext);
 
         ActiveAndroid.initialize(this);
+
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+        JPushHelper.mContext = getApplicationContext();
+        JPushHelper.setNotiStyleBasic();
     }
 
     private List<Object> getModules() {
@@ -53,5 +63,14 @@ public class WenJinApp extends Application {
 
     public static PersistentCookieStore getCookieStore() {
         return sCookieStore;
+    }
+
+
+    public static boolean isAppLunched(){
+        return sIsAppLunched;
+    }
+
+    public static void setAppLunchState(Boolean argState){
+        sIsAppLunched = argState;
     }
 }

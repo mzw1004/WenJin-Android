@@ -81,4 +81,7 @@ public class InteractorsModule {
     @Provides @Singleton FollowsInteractor provideFollowsInteractor(){
         return new FollowsInteracotrImpl();
     }
+
+    @Provides @Singleton
+    public NotificationInteractor provideNotificationInteractor(){return new NotificationInteractorImpl();}
 }

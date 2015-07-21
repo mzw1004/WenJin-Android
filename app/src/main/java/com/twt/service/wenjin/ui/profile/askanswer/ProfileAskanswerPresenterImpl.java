@@ -40,6 +40,7 @@ public class ProfileAskanswerPresenterImpl implements
 
     @Override
     public void loadMoreItems(String type,int uid) {
+        if(_isLoadMore){return;}
         _page += 1;
         _isLoadMore = true;
         _profileAskanswerView.showFooter();
@@ -115,6 +116,7 @@ public class ProfileAskanswerPresenterImpl implements
             _profileAskanswerView.toastMessage(ResourceHelper.getString(R.string.no_more_information));
         }
         _profileAskanswerView.hideFooter();
+        _isLoadMore = false;
 
     }
 

@@ -14,6 +14,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+    <RelativeLayout
+        android:id="@+id/answer_detail_head"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_answer_title"
+        android:textSize="16sp"
+        android:textColor="@color/color_text_primary"
+        android:background="@color/color_low_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginBottom="4dp"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_answer_avatar"
@@ -22,7 +40,7 @@
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/tv_answer_title" />
 
     <TextView
         android:id="@+id/tv_answer_username"
@@ -33,7 +51,7 @@
         android:layout_alignTop="@+id/iv_answer_avatar"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/tv_answer_title"
         android:layout_toRightOf="@+id/iv_answer_avatar"
         android:layout_toEndOf="@+id/iv_answer_avatar"
         android:layout_toLeftOf="@+id/iv_answer_agree"
@@ -59,7 +77,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:padding="2dp"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/tv_answer_title"
         android:layout_marginTop="16dp"
         android:layout_toLeftOf="@+id/tv_answer_agree_number" />
 
@@ -69,28 +87,32 @@
         android:gravity="center"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/tv_answer_title"
         android:layout_marginTop="16dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/tv_answer_signature" >
+    </RelativeLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
+    <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
+        android:id="@+id/obscroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/answer_detail_head"
+        android:fillViewport="true"
+        >
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
             <TextView
                 android:id="@+id/tv_answer_content"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textColor="@color/color_text_primary"
+                android:lineSpacingExtra="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -98,13 +120,63 @@
                 android:id="@+id/tv_answer_add_time"
                 android:textSize="14sp"
                 android:textColor="@color/color_text_secondary"
+                android:layout_below="@+id/tv_answer_content"
                 android:gravity="right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-    </ScrollView>
+    </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
+
+    <FrameLayout
+        android:id="@+id/fl_bottom_actions"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:orientation="horizontal"
+            android:background="@color/color_low_gray"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_action_agree"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_action_disagree"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_action_favorite"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_action_forum"
+                />
+
+        </LinearLayout>
+    </FrameLayout>
 
 </RelativeLayout>

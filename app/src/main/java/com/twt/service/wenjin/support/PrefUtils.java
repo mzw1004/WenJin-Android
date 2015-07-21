@@ -12,6 +12,7 @@ import com.twt.service.wenjin.bean.UserInfo;
  */
 public class PrefUtils {
 
+
     private static final String PREF_UID = "uid";
 
     private static final String PREF_USERNAME = "user_name";
@@ -21,6 +22,8 @@ public class PrefUtils {
     private static final String PREF_SIGNATURE = "signature";
 
     private static final String PREF_IS_LOGIN = "is_login";
+
+    private static final String PREF_IS_LAUNCH_NOTIFICATION = "is_launch_notification";
 
     public static SharedPreferences getDefaultSharedPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(WenJinApp.getContext());
@@ -58,5 +61,15 @@ public class PrefUtils {
     public static boolean isLogin() {
         return getDefaultSharedPreferences().getBoolean(PREF_IS_LOGIN, false);
     }
+
+    public static void setLaunchNotification(boolean argIsLaunchNotification) {
+        getDefaultSharedPreferences().edit().putBoolean(PREF_IS_LAUNCH_NOTIFICATION, argIsLaunchNotification).apply();
+    }
+
+    public static boolean isLaunchNotification() {
+        return getDefaultSharedPreferences().getBoolean(PREF_IS_LAUNCH_NOTIFICATION, true);
+    }
+
+
 
 }

@@ -21,6 +21,8 @@ import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
+import com.twt.service.wenjin.receiver.JPushNotiReceiver;
+import com.twt.service.wenjin.ui.main.MainActivity;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 
 import java.util.Arrays;
@@ -37,6 +39,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
 
     private static final String PARAM_QUESTION_ID = "question_id";
 
+
     @Inject
     QuestionPresenter mPresenter;
 
@@ -50,6 +53,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     private QuestionAdapter mQuestionAdapter;
     private LinearLayoutManager mLinearLayoutManager;
     private int questionId;
+    private int mIntentFlag;
 
     public static void actionStart(Context context, int questionId) {
         Intent intent = new Intent(context, QuestionActivity.class);
@@ -70,6 +74,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
         questionId = getIntent().getIntExtra(PARAM_QUESTION_ID, 0);
+        mIntentFlag = getIntent().getIntExtra(JPushNotiReceiver.INTENT_FLAG_NOTIFICATION, 0 );
         LogHelper.v(LOG_TAG, "question id:" + questionId);
         mPresenter.loadingContent(questionId);
     }

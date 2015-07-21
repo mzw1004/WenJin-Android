@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.welcome;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.CrashInfo;
+import com.twt.service.wenjin.support.JPushHelper;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
@@ -20,7 +22,10 @@ import com.twt.service.wenjin.ui.main.MainActivity;
 
 import java.util.List;
 
-public class WelcomeActivity extends ActionBarActivity {
+import cn.jpush.android.api.JPushInterface;
+
+public class WelcomeActivity extends Activity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,18 @@ public class WelcomeActivity extends ActionBarActivity {
                 WelcomeActivity.this.startActivity(intent);
                 WelcomeActivity.this.finish();
             }
-        }, 2000);
+        }, 1000);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
 }

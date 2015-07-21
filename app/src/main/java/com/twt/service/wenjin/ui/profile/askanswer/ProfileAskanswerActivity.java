@@ -91,7 +91,7 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
         _adapter = new ProfileAskanswerAdapter(this,_type,_uid,_uname,_avatarurl,this);
         _recyclerView.setAdapter(_adapter);
 
-        _recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        _recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);

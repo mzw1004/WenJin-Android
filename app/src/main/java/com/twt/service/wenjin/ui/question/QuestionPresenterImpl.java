@@ -31,13 +31,13 @@ public class QuestionPresenterImpl implements QuestionPresenter, OnGetQuestionCa
     }
 
     @Override
-    public void onSuccess(QuestionResponse questionResponse) {
+    public void onGetQuestionSuccess(QuestionResponse questionResponse) {
         mQuestionView.hideProgressBar();
         mQuestionView.setAdapter(questionResponse);
     }
 
     @Override
-    public void onFailure(String errorString) {
+    public void onGetQuestionFailure(String errorString) {
         mQuestionView.toastMessage(errorString);
     }
 
