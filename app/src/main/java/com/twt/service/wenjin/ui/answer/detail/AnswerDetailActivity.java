@@ -36,6 +36,7 @@ import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.receiver.JPushNotiReceiver;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.UmengShareHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
@@ -93,6 +94,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     private TextView tvCommentCount;
 
     private int answerId;
+    private Answer answer;
     private int uid;
     private int questionId;
 
@@ -145,7 +147,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new AnswerDetailModule(this));
     }
 
@@ -165,6 +167,15 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                break;
+            case R.id.action_share:
+                UmengShareHelper.init(this);
+                UmengShareHelper.setContent(
+                        this,
+                        getIntent().getStringExtra(PARAM_QUESTION),
+                        FormatHelper.formatQuestionLink(answer.question_id)
+                );
+
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -208,6 +219,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void bindAnswerData(Answer answer) {
+        this.answer = answer;
         uid = answer.uid;
         questionId = answer.question_id;
 
@@ -231,7 +243,6 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         tvContent.setMovementMethod(LinkMovementMethod.getInstance());
         tvAddTime.setText(FormatHelper.formatAddDate(answer.add_time));
         tvCommentCount.setText("" + answer.comment_count);
-
     }
 
     @Override
@@ -256,7 +267,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void startProfileActivity() {
-        ProfileActivity.actionStart(this, uid);
+        ProfileActivity.actionStart(this, answer.uid);
     }
 
     @Override

@@ -7,8 +7,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <!-- JPush Required  -->
     <uses-permission android:name="com.twt.service.wenjin.permission.JPUSH_MESSAGE" />
@@ -34,12 +37,24 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
-        <meta-data android:name="AA_DB_NAME" android:value="WenJin.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="0d377ef5e746db9ac47196038ad6a0c7" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="553cc331e0f55aca9d0059bf" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="WenJin" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="WenJin.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="2" />
         <meta-data
             android:name="AA_MODELS"
-            android:value=".bean.CrashInfo" />
+            android:value=".bean.CrashInfo, .bean.QuestionDraft" />
 
         <activity
             android:name=".ui.welcome.WelcomeActivity"
@@ -47,8 +62,8 @@
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -94,7 +109,8 @@
 
         <activity
             android:name=".ui.answer.comment.CommentActivity"
-            android:label="@string/title_activity_comment" >
+            android:label="@string/title_activity_comment"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
 
         <activity
@@ -137,9 +153,28 @@
 
         <activity
             android:name=".ui.profile.follows.FollowsActivity"
-            android:label="@string/title_activity_follows">
+            android:label="@string/title_activity_follows" >
         </activity>
-
+        
+        <activity
+            android:name="com.umeng.socialize.view.ShareActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDialog"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".ui.profile.edit.ProfileEditActivity"
+            android:label="@string/title_activity_profile_edit" >
+        </activity>
+        
         <!-- JPush Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"

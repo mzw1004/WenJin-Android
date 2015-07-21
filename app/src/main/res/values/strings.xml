@@ -26,13 +26,13 @@
     <string name="drawer_item_home">Home</string>
     <string name="drawer_item_explore">Explore</string>
     <string name="drawer_item_topic">Topic</string>
+    <string name="drawer_item_draft">Draft</string>
     <string name="drawer_item_notification">Notifications</string>
     <string name="drawer_item_user">User</string>
     <string name="drawer_item_setting">Setting</string>
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
     <string name="drawer_item_logout">Logout</string>
     <string name="drawer_item_login">Login</string>
-
     
     <!-- Home strings -->
     <string name="post_question">Question asked</string>
@@ -107,6 +107,7 @@
     <string name="action_focus">Focus</string>
     <string name="action_not_focus">Not focus</string>
     <string name="action_answer">Add Answer</string>
+    <string name="action_share">Share</string>
 
     <!-- Answer detail activity strings -->
     <string name="title_activity_answer_detail">Answer detail</string>
@@ -124,6 +125,7 @@
     <string name="profile_question">Question</string>
     <string name="profile_answer">Answer</string>
     <string name="profile_detail">Detail</string>
+    <string name="action_edit">Edit</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">Comment</string>
@@ -137,7 +139,6 @@
     <!-- Settings activity -->
     <string name="pref_category_notification">Notification</string>
     <string name="pref_category_others">Others</string>
-
     <string name="title_activity_settings">Settings</string>
     <string name="pref_about_key" translatable="false">about</string>
     <string name="pref_about_title">About</string>
@@ -171,5 +172,16 @@
     <string name="action_type_following">Following</string>
     <string name="action_type_followers">Followers</string>
     <string name="default_signature_profile_follows">There is nothing...</string>
+
+    <!-- Profile Edit activity -->
+    <string name="title_activity_profile_edit">Profile Edit</string>
+
+    <!-- Prompt Dialog strings -->
+    <string name="save_as_draft">Are want to save as draft?</string>
+    <string name="save_successfully">save successfully</string>
+
+    <!-- Draft fragment strings -->
+    <string name="no_any_drafts">There are not any drafts.</string>
+    <string name="action_delete">Delete</string>
 
 </resources>

@@ -64,4 +64,9 @@ public class FormatHelper {
     public static String formatHomeHtmlStr(String html) {
         return html.replaceAll("<img src=.*?>", ResourceHelper.getString(R.string.pic));
     }
+
+    public static String formatQuestionLink(int questionId) {
+        return "http://wenjin.twtstudio.com/?/question/" + questionId;
+    }
+
 }

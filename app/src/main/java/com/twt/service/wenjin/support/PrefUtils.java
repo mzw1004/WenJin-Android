@@ -34,7 +34,7 @@ public class PrefUtils {
                 .putInt(PREF_UID, userInfo.uid)
                 .putString(PREF_USERNAME, userInfo.nick_name)
                 .putString(PREF_AVATAR_FILE, userInfo.avatar_file)
-                .putString(PREF_SIGNATURE,userInfo.signature)
+                .putString(PREF_SIGNATURE, userInfo.signature)
                 .apply();
     }
 
@@ -51,7 +51,7 @@ public class PrefUtils {
     }
 
     public static String getPrefSignature(){
-        return getDefaultSharedPreferences().getString(PREF_SIGNATURE,null);
+        return getDefaultSharedPreferences().getString(PREF_SIGNATURE, null);
     }
 
     public static void setLogin(boolean isLogin) {

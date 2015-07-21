@@ -65,4 +65,10 @@ public class UpdateDialogFragment extends DialogFragment {
     public void show(AppCompatActivity context) {
         show(context.getSupportFragmentManager(), "UPDATE");
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dismiss();
+    }
 }

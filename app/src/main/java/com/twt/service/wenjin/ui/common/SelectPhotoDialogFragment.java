@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.common;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -52,6 +53,12 @@ public class SelectPhotoDialogFragment extends DialogFragment implements View.On
         MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
                 .customView(R.layout.dialog_photo_select, true)
 //                .title(R.string.title_dialog_photo_select)
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        SelectPhotoDialogFragment.this.dismiss();
+                    }
+                })
                 .build();
 
         ButterKnife.inject(this, dialog.getCustomView());

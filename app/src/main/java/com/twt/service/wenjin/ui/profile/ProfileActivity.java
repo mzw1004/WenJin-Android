@@ -22,6 +22,7 @@ import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.NumberTextView;
 import com.twt.service.wenjin.ui.profile.askanswer.ProfileAskanswerActivity;
+import com.twt.service.wenjin.ui.profile.edit.ProfileEditActivity;
 import com.twt.service.wenjin.ui.profile.follows.FollowsActivity;
 
 import java.util.Arrays;
@@ -92,6 +93,16 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
 //    public void startAnswerActivity() {
 //        ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
 //    }
+//
+//    @OnClick(R.id.ntv_profile_friends_number)
+//    public void startFollowersActivity(){
+//        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWING,uid);
+//    }
+//
+//    @OnClick(R.id.ntv_profile_fans_number)
+//    public void startFollowingActivity(){
+//        FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWERS,uid);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,16 +123,18 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new ProfileModule(this));
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_profile, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        if (uid == PrefUtils.getPrefUid()) {
+            getMenuInflater().inflate(R.menu.menu_profile, menu);
+        }
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -129,6 +142,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
             case android.R.id.home:
                 this.finish();
                 break;
+//            case R.id.action_edit:
+//                ProfileEditActivity.actionStart(this, uid);
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -163,9 +179,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         btFocus.setOnClickListener(this);
         tvAsk.setOnClickListener(this);
         tvAnswer.setOnClickListener(this);
-        ntvFriends.setOnClickListener(this);
         ntvFans.setOnClickListener(this);
-
+        ntvFriends.setOnClickListener(this);
     }
 
     @Override
@@ -200,10 +215,10 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
                 ProfileAskanswerActivity.anctionStart(this, ACTION_TYPE_ANSWER, uid, _userInfo.nick_name, _userInfo.avatar_file);
                 break;
             case R.id.ntv_profile_friends_number:
-                FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWING,uid);
+                FollowsActivity.actionStart(this, ACTION_TYPE_FOLLOWING, uid);
                 break;
             case R.id.ntv_profile_fans_number:
-                FollowsActivity.actionStart(this,ACTION_TYPE_FOLLOWERS,uid);
+                FollowsActivity.actionStart(this, ACTION_TYPE_FOLLOWERS, uid);
                 break;
         }
     }

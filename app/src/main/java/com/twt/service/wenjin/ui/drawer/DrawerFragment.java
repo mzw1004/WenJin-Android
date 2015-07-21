@@ -113,7 +113,6 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mToolbar = toolbar;
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
-
         mDrawerToggle = new ActionBarDrawerToggle(
                 getActivity(),
                 mDrawerLayout,
@@ -145,7 +144,6 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         };
 
         //mDrawerToggle
-
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
             mDrawerLayout.openDrawer(Gravity.START);
         }
@@ -164,6 +162,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mDrawerAdapter.addItem(R.drawable.ic_drawer_home_grey, getString(R.string.drawer_item_home));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_explore_grey, getString(R.string.drawer_item_explore));
         mDrawerAdapter.addItem(R.drawable.ic_drawer_topic_grey, getString(R.string.drawer_item_topic));
+        mDrawerAdapter.addItem(R.drawable.ic_drawer_draft_grey, getString(R.string.drawer_item_draft));
 //        mDrawerAdapter.addItem(R.drawable.ic_drawer_notification_grey,getString(R.string.drawer_item_notification));
 //        mDrawerAdapter.addItem(R.drawable.ic_drawer_user_grey, getString(R.string.drawer_item_user));
         mDrawerAdapter.addDivider();
@@ -257,6 +256,5 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         startActivity(new Intent(getActivity(), LoginActivity.class));
         getActivity().finish();
     }
-
 
 }

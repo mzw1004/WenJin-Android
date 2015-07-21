@@ -74,7 +74,7 @@ public class PublishActivity extends BaseActivity implements PublishView {
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new PublishModule(this));
     }
 
@@ -90,7 +90,8 @@ public class PublishActivity extends BaseActivity implements PublishView {
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
+//                this.finish();
+                finishActivity();
                 break;
             case R.id.action_publish:
                 item.setEnabled(false);
@@ -145,7 +146,46 @@ public class PublishActivity extends BaseActivity implements PublishView {
 
     @Override
     public void finishActivity() {
-        this.finish();
+//        final String title = etTitle.getText().toString();
+//        String topics = "";
+//        if (tagGroup.getTags().length > 0) {
+//            topics = tagGroup.getTags()[0];
+//            for (int i = 1; i < tagGroup.getTags().length; i++) {
+//                topics += ",";
+//                topics += tagGroup.getTags()[i];
+//            }
+//        }
+//        final String content = etContent.getText().toString();
+//        final boolean anonymous = cbAnonymous.isChecked();
+//
+//        if (!TextUtils.isEmpty(title) || !TextUtils.isEmpty(topics) || !TextUtils.isEmpty(content) || anonymous) {
+//            PromptDialogFragment dialogFragment = PromptDialogFragment.newInstance("Are you sure?");
+//            final String finalTopics = topics;
+//            dialogFragment.setCallback(new MaterialDialog.ButtonCallback() {
+//                @Override
+//                public void onPositive(MaterialDialog dialog) {
+//                    super.onPositive(dialog);
+//                    QuestionDraft draft = new QuestionDraft();
+//                    draft.title = title;
+//                    draft.topics = finalTopics;
+//                    draft.content = content;
+//                    draft.anonymous = anonymous;
+//                    draft.save();
+//                    toastMessage("save successfully");
+//                    finish();
+//                }
+//
+//                @Override
+//                public void onNegative(MaterialDialog dialog) {
+//                    super.onNegative(dialog);
+//                    finish();
+//                }
+//            });
+//            dialogFragment.show(this);
+//        } else {
+//        this.finish();
+//        }
+        finish();
     }
 
 }

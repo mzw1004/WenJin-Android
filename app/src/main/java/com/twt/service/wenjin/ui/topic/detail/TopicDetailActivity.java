@@ -79,13 +79,10 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new TopicDetailAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
-
-        tvDescription.setOnClickListener(this);
-        btFocus.setOnClickListener(this);
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new TopicDetailModule(this));
     }
 
@@ -118,6 +115,9 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
             removeFocus();
         }
         btFocus.setVisibility(View.VISIBLE);
+
+        tvDescription.setOnClickListener(this);
+        btFocus.setOnClickListener(this);
     }
 
     @Override

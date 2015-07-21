@@ -56,7 +56,7 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         View rootView;
 
-            public ItemHolder(View itemView) {
+        public ItemHolder(View itemView) {
                 super(itemView);
                 ButterKnife.inject(this,itemView);
                 rootView = itemView;
@@ -109,18 +109,17 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     _onItemClickListener.onItemClicked(v,position);
                 }
             });
-
             Follows follow = _DataSet.get(position);
             itemHolder._tvName.setText(follow.nick_name);
-
+            itemHolder._tvSignatrue.setText(follow.signature);
             if(!TextUtils.isEmpty(follow.signature)){
                 itemHolder._tvSignatrue.setText(follow.signature);
             }else{
                 itemHolder._tvSignatrue.setText("");
             }
-            if(!TextUtils.isEmpty(follow.avatar_file) ){
+            if(!TextUtils.isEmpty(follow.avatar_file)){
                 Picasso.with(_context).load(ApiClient.getAvatarUrl(follow.avatar_file)).into(itemHolder._ivAvatar);
-            }else{
+            } else {
                 itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
             }
         }

@@ -101,7 +101,7 @@ public class CommentActivity extends BaseActivity implements CommentView, OnItem
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new CommentModule(this));
     }
 

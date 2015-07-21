@@ -6,6 +6,8 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:paddingBottom="16dp"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
     tools:context="com.twt.service.wenjin.ui.about.AboutActivity">
 
     <include

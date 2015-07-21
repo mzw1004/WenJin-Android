@@ -1,14 +1,14 @@
 package com.twt.service.wenjin.api;
 
 import android.net.Uri;
+import android.text.TextUtils;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
-import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.support.DeviceUtils;
-import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 
 import java.io.File;
@@ -33,6 +33,7 @@ public class ApiClient {
     public static final int ERROR_CODE = -1;
 
     private static final AsyncHttpClient sClient = new AsyncHttpClient();
+    private static final PersistentCookieStore sCookieStore = new PersistentCookieStore(WenJinApp.getContext());
     private static final int DEFAULT_TIMEOUT = 20000;
 
     private static final String BASE_URL = "http://wj.oursays.com/";
@@ -61,6 +62,7 @@ public class ApiClient {
     private static final String CHECK_UPDATE_URL = "?/api/update/check/";
     private static final String MY_FOCUS_USER = "api/my_focus_user.php";
     private static final String MY_FANS_USER = "api/my_fans_user.php";
+    private static final String PROFILE_EDIT_URL = "api/profile_setting.php";
 
     private static final String NOTIFICATIONS_URL = "?/api/notification/notifications/";
     private static final String NOTIFICATIONS_LIST_URL = "?/api/notification/list/";
@@ -68,10 +70,26 @@ public class ApiClient {
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
+        sClient.setCookieStore(sCookieStore);
+        sClient.addHeader("User-Agent", getUserAgent());
     }
 
     public static AsyncHttpClient getInstance() {
         return sClient;
+    }
+
+    public static String getUserAgent() {
+        // User-Agent Wenjin/1.0.2 (Adnroid; 4.4.4; ...)
+        String isRooted = DeviceUtils.isRooted() ? "rooted" : "unrooted";
+        String userAgent = "Wenjin/" + DeviceUtils.getVersionName() + " (" +
+                "Android; " +
+                DeviceUtils.getSystemVersion() + "; " +
+                DeviceUtils.getBrand() + "; " +
+                DeviceUtils.getModel() + "; " +
+                DeviceUtils.getNetworkType() + "; " +
+                isRooted +
+                ")";
+        return userAgent;
     }
 
     public static void userLogin(String username, String password, JsonHttpResponseHandler handler) {
@@ -83,7 +101,7 @@ public class ApiClient {
     }
 
     public static void userLogout() {
-        WenJinApp.getCookieStore().clear();
+        sCookieStore.clear();
         PrefUtils.setLogin(false);
     }
 
@@ -272,8 +290,8 @@ public class ApiClient {
         RequestParams params = new RequestParams();
         params.put("title", title);
         params.put("message", message);
-        params.put("version", BuildConfig.VERSION_NAME);
-        params.put("system", DeviceUtils.getVersionName());
+        params.put("version", DeviceUtils.getVersionName());
+        params.put("system", DeviceUtils.getSystemVersion());
         params.put("source", DeviceUtils.getSource());
 
         sClient.post(BASE_URL + FEEDBACK_URL, params, handler);
@@ -300,6 +318,17 @@ public class ApiClient {
         params.put("page",page);
         params.put("per_page",perPage);
         sClient.get(BASE_URL + MY_FANS_USER, params, handler);
+    }
+
+    public static void editProfile(int uid, String username, String signature, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("uid", uid);
+        params.put("nick_name", username);
+        if (!TextUtils.isEmpty(signature)) {
+            params.put("signature", signature);
+        }
+
+        sClient.post(BASE_URL + PROFILE_EDIT_URL, params, handler);
     }
 
     public static void getNotificationsNumberInfo(long argTimestampNow, JsonHttpResponseHandler handler){

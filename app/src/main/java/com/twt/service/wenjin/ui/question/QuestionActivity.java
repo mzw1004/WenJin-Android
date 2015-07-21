@@ -16,7 +16,9 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.bean.QuestionInfo;
 import com.twt.service.wenjin.bean.QuestionResponse;
+import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.UmengShareHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
@@ -54,6 +56,8 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     private LinearLayoutManager mLinearLayoutManager;
     private int questionId;
     private int mIntentFlag;
+
+//    private UMSocialService umSocialService = UMServiceFactory.getUMSocialService("com.umeng.share");
 
     public static void actionStart(Context context, int questionId) {
         Intent intent = new Intent(context, QuestionActivity.class);
@@ -94,12 +98,20 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
             case R.id.action_answer:
                 this.startAnswerActivity();
                 break;
+            case R.id.action_share:
+                UmengShareHelper.init(this);
+                UmengShareHelper.setContent(
+                        this,
+                        mQuestionAdapter.getQuestionInfo().question_content,
+                        FormatHelper.formatQuestionLink(mQuestionAdapter.getQuestionInfo().question_id)
+                );
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new QuestionModule(this));
     }
 
@@ -159,7 +171,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
 
     @Override
     public void startAnswerActivity() {
-        AnswerActivity.actionStart(this, questionId);
+        AnswerActivity.actionStart(this, questionId, mQuestionAdapter.getQuestionInfo().question_content);
     }
 
     @Override
