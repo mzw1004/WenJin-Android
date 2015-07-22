@@ -111,6 +111,12 @@
     <!-- Answer detail activity strings -->
     <string name="title_activity_answer_detail">回答详情</string>
     <string name="action_comment">添加评论</string>
+    <string name="action_upvote_msg">赞同</string>
+    <string name="action_downvote_msg">反对</string>
+    <string name="action_cancel_upvote_msg">撤销赞同</string>
+    <string name="action_cancel_downvote_msg">撤销反对</string>
+    <string name="action_thank_msg">感谢</string>
+    <string name="action_thanked_msg">已经感谢</string>
 
     <!-- Answer activity strings -->
     <string name="title_activity_answer">回答</string>

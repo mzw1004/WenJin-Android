@@ -112,6 +112,12 @@
     <!-- Answer detail activity strings -->
     <string name="title_activity_answer_detail">Answer detail</string>
     <string name="action_comment">Add Comment</string>
+    <string name="action_upvote_msg">Upvote</string>
+    <string name="action_downvote_msg">Downvote</string>
+    <string name="action_cancel_upvote_msg">Cancel Upvote</string>
+    <string name="action_cancel_downvote_msg">Cancel Downvote</string>
+    <string name="action_thank_msg">Thanks</string>
+    <string name="action_thanked_msg">Already Thanked</string>
 
     <!-- Answer activity strings -->
     <string name="title_activity_answer">Answer</string>

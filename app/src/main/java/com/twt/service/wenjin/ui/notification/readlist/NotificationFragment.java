@@ -191,6 +191,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
     @Override
     public void deleteItem(int argPosition) {
+        if(type == 1 ){return;}
         NotificationItem item = mAdapter.getItems(argPosition);
         mPresenter.markNotificationAsRead(item.notification_id);
         mAdapter.deleteItem(argPosition);

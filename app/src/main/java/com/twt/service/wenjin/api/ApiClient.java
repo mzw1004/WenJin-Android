@@ -49,6 +49,8 @@ public class ApiClient {
     private static final String FOCUS_QUESTION_URL = "?/question/ajax/focus/";
     private static final String ANSWER_DETAIL_URL = "?/api/question/answer_detail/";
     private static final String ANSWER_VOTE_URL = "?/question/ajax/answer_vote/";
+    private static final String ANSWER_THANK_URL = "?/api/question/answer_vote/";
+
     private static final String UPLOAD_FILE_URL = "?/api/publish/attach_upload/";
     private static final String PUBLISH_QUESTION_URL = "?/api/publish/publish_question/";
     private static final String ANSWER_URL = "?/api/publish/save_answer/";
@@ -216,6 +218,14 @@ public class ApiClient {
         params.put("value", value);
 
         sClient.post(BASE_URL + ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
+    }
+
+    public static void thankAnswer(int answerId, String type, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("answer_id", answerId);
+        params.put("type", "thanks");
+
+        sClient.post(BASE_URL + ANSWER_THANK_URL, params, new JsonHttpResponseHandler());
     }
 
     public static void answer(int questionId, String content, String attachKey, boolean isAnonymous, JsonHttpResponseHandler handler) {

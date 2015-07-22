@@ -291,11 +291,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     public void onClick(View v) {
         if(v.getId() == R.id.action_notification){
             FragmentManager fragmentManager = getSupportFragmentManager();
-
-            if(mNotificationMainFragment == null){
-                mNotificationMainFragment = new NotificationMainFragment();
-            }
-
+            mNotificationMainFragment = new NotificationMainFragment();
             fragmentManager.beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
                     .replace(R.id.main_container, mNotificationMainFragment, ResourceHelper.getString(R.string.action_notification))

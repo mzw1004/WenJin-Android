@@ -36,6 +36,8 @@ public class NotificationMainFragment extends Fragment {
 
     private FragmentPagerAdapter mFragmentPagerAdapter;
 
+    private boolean isFirstLoad = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_notification_main, container, false);
@@ -74,8 +76,13 @@ public class NotificationMainFragment extends Fragment {
     @Override
     public void onStart() {
         super.onResume();
-        if(mViewPager != null) {
-            mViewPager.setCurrentItem(0);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mViewPager.getCurrentItem() != 0){
+            ((NotificationFragment) mFragmentPagerAdapter.getItem(1)).hideMarkAllView();
         }
     }
 

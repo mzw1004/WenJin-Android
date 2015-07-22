@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.welcome;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Handler;
@@ -20,7 +21,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import cn.jpush.android.api.JPushInterface;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
