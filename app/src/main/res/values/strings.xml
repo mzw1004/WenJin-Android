@@ -29,7 +29,7 @@
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
     <string name="drawer_item_logout">Logout</string>
     <string name="drawer_item_login">Login</string>
-    
+
     <!-- Home strings -->
     <string name="post_question">post this question</string>
     <string name="concern_question">concern this question</string>
@@ -143,5 +143,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!--Article activity-->
+    <string name="title_activity_article">Article</string>
+    <!-- Green Channel activity-->
+    <string name="title_activity_green_channel">Green Channel</string>
 
 </resources>

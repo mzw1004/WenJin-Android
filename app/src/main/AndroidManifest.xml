@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.twt.service.wenjin" >
+    package="com.twt.service.wenjin">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="BUG_HD_SDK_GENERAL_KEY"
             android:value="0d377ef5e746db9ac47196038ad6a0c7" />
@@ -35,7 +35,7 @@
             android:name="AA_MODELS"
             android:value=".bean.CrashInfo, .bean.QuestionDraft" />
 
-        <activity android:name=".ui.welcome.WelcomeActivity" >
+        <activity android:name=".ui.welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,55 +44,44 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".ui.question.QuestionActivity"
-            android:label="@string/title_activity_question" >
-        </activity>
+            android:label="@string/title_activity_question"></activity>
         <activity
             android:name=".ui.answer.detail.AnswerDetailActivity"
-            android:label="@string/title_activity_answer_detail" >
-        </activity>
+            android:label="@string/title_activity_answer_detail"></activity>
         <activity
             android:name=".ui.publish.PublishActivity"
             android:label="@string/title_activity_publish"
-            android:windowSoftInputMode="adjustResize" >
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.answer.AnswerActivity"
             android:label="@string/title_activity_answer"
-            android:windowSoftInputMode="adjustResize" >
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.profile.ProfileActivity"
-            android:label="@string/title_activity_profile" >
-        </activity>
+            android:label="@string/title_activity_profile"></activity>
         <activity
             android:name=".ui.answer.comment.CommentActivity"
             android:label="@string/title_activity_comment"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".ui.topic.detail.TopicDetailActivity"
-            android:label="@string/title_activity_topic_detail" >
-        </activity>
+            android:label="@string/title_activity_topic_detail"></activity>
         <activity
             android:name=".ui.profile.askanswer.ProfileAskanswerActivity"
-            android:label="@string/title_activity_profile_askanswer" >
-        </activity>
+            android:label="@string/title_activity_profile_askanswer"></activity>
         <activity
             android:name=".ui.setting.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+            android:label="@string/title_activity_settings"></activity>
         <activity
             android:name=".ui.about.AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName=".ui.setting.SettingsActivity" >
+            android:parentActivityName=".ui.setting.SettingsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.twt.service.wenjin.ui.setting.SettingsActivity" />
@@ -100,20 +89,17 @@
         <activity
             android:name=".ui.feedback.FeedbackActivity"
             android:label="@string/title_activity_feedback"
-            android:windowSoftInputMode="adjustResize" >
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.profile.follows.FollowsActivity"
-            android:label="@string/title_activity_follows" >
-        </activity>
+            android:label="@string/title_activity_follows"></activity>
         <activity
             android:name="com.umeng.socialize.view.ShareActivity"
             android:configChanges="orientation|keyboard"
             android:launchMode="singleTask"
             android:noHistory="true"
             android:theme="@style/Theme.UMDialog"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -122,8 +108,16 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ui.profile.edit.ProfileEditActivity"
-            android:label="@string/title_activity_profile_edit" >
-        </activity>
+            android:label="@string/title_activity_profile_edit"></activity>
+        <activity
+            android:name=".ui.article.ArticleActivity"
+            android:label="@string/title_activity_article" />
+        <activity
+            android:name=".ui.login.green_channel.GreenChannelActivity"
+            android:label="@string/title_activity_green_channel" />
+        <activity
+            android:name=".ui.article.comment.CommentActivlty"
+            android:label="@string/title_activity_comment" />
     </application>
 
 </manifest>
