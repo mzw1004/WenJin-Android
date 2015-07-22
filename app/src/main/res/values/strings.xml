@@ -16,6 +16,7 @@
     <string name="add_in">add in</string>
     <string name="reply">Reply</string>
     <string name="quit">Press again to quit</string>
+    <string name="not_exist">该用户不存在</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">Open drawer navigation</string>

@@ -148,10 +148,18 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
                 mPresenter.actionVote(answerId, 1);
                 break;
             case R.id.iv_answer_avatar:
-                startProfileActivity();
+                if (this.answer.uid == -1){
+                    Toast.makeText(this, getResources().getString(R.string.not_exist),Toast.LENGTH_SHORT).show();
+                }else {
+                    startProfileActivity();
+                }
                 break;
             case R.id.tv_answer_username:
-                startProfileActivity();
+                if (this.answer.uid == -1){
+                    Toast.makeText(this, getResources().getString(R.string.not_exist),Toast.LENGTH_SHORT).show();
+                }else {
+                    startProfileActivity();
+                }
                 break;
             case R.id.action_comment:
                 if (!tvCommentCount.getText().toString().equals("…")) {
