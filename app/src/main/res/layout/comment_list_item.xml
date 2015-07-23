@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/tv_comment_item_username"
         android:textSize="16sp"
-        android:textColor="@color/color_text_primary"
+        android:textColor="@color/color_text_secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -22,34 +22,36 @@
         android:layout_marginRight="16dp" />
 
     <TextView
-        android:id="@+id/tv_comment_item_content"
-        android:textSize="16sp"
-        android:textColor="@color/color_text_secondary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_comment_item_username"
-        android:layout_alignStart="@+id/tv_comment_item_username"
-        android:layout_alignRight="@+id/tv_comment_item_username"
-        android:layout_alignEnd="@+id/tv_comment_item_username"
-        android:layout_below="@+id/tv_comment_item_username" />
-
-    <TextView
         android:id="@+id/tv_comment_item_add_time"
         android:textSize="14sp"
         android:textColor="@color/color_text_secondary"
-        android:gravity="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_comment_item_username"
         android:layout_alignStart="@+id/tv_comment_item_username"
+        android:layout_below="@+id/tv_comment_item_username" />
+
+    <TextView
+        android:id="@+id/tv_comment_item_content"
+        android:textSize="16sp"
+        android:textColor="@color/color_text_primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_alignLeft="@+id/tv_comment_item_username"
+        android:layout_alignStart="@+id/tv_comment_item_username"
         android:layout_alignRight="@+id/tv_comment_item_username"
         android:layout_alignEnd="@+id/tv_comment_item_username"
-        android:layout_below="@+id/tv_comment_item_content" />
+        android:layout_below="@+id/tv_comment_item_add_time" />
+z
 
     <View
         android:background="@color/color_divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tv_comment_item_add_time"/>
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_height="1px"
+        android:layout_below="@+id/tv_comment_item_content"/>
 
 </RelativeLayout>

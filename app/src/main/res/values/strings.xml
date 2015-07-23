@@ -151,6 +151,7 @@
     <string name="pref_check_version_key" translatable="false">check</string>
     <string name="pref_check_version_title">Check new version</string>
     <string name="pref_launch_notification_key" translatable="false">Launch Notification</string>
+    <string name="pref_notification_title">Launch notification</string>
     <string name="pref_launch_notification_title">Launch notification</string>
 
     <!-- NotificationSetting activity -->

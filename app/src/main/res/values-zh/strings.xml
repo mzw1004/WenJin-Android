@@ -148,7 +148,7 @@
     <string name="pref_about_title">关于</string>
     <string name="pref_check_version_title">检查新版本</string>
     <string name="pref_notification_title">启用通知</string>
-
+    <string name="pref_launch_notification_title">启用通知</string>
 
     <!-- NotificationSetting activity -->
     <string name="title_activity_notificationsetting">推送</string>

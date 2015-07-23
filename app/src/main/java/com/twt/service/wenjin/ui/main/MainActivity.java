@@ -238,7 +238,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
                 break;
         }
         fragmentManager.beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.main_container, fragment)
                 .commit();
     }
@@ -293,7 +293,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             FragmentManager fragmentManager = getSupportFragmentManager();
             mNotificationMainFragment = new NotificationMainFragment();
             fragmentManager.beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .replace(R.id.main_container, mNotificationMainFragment, ResourceHelper.getString(R.string.action_notification))
                     .commit();
 
