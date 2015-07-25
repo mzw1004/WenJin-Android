@@ -143,6 +143,10 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.iv_profile_edit_avatar:
+                new SelectPhotoDialogFragment().show(this);
+                break;
+        }
     }
 }

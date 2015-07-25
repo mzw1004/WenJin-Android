@@ -35,8 +35,12 @@ public class ProfileEditPresenterImpl implements ProfileEditPresenter, OnGetUser
     public void postUserInfo(int uid, String nickname, String signature) {
         view.showProgressBar();
         interactor.OnPostUserInfo(uid, nickname, signature,this);
-
         view.hideProgressBar();
+    }
+
+    @Override
+    public void updateAvatar(int uid, String user_avatar) {
+
     }
 
     @Override
