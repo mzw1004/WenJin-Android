@@ -69,6 +69,7 @@ public class ApiClient {
     private static final String ARTICLE_COMMENT_URL = "?/api/article/comment/";
     private static final String PUBLISH_ARTICLE_COMMENT_URL = "?/api/publish/save_comment/";
     private static final String ARTICLE_VOTE_URL = "?/article/ajax/article_vote/";
+    private static final String AVATAR_UPLOAD_URL = "?/api/account/avatar_upload/";
 
     static {
         sClient.setTimeout(DEFAULT_TIMEOUT);
@@ -363,5 +364,16 @@ public class ApiClient {
         }
         sClient.post(BASE_URL + PROFILE_EDIT_URL, params, handler);
     }
+
+    public static void avatarUpload(int uid,  String user_avatar, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+            params.put("user_avatar", user_avatar);
+        sClient.post(BASE_URL + AVATAR_UPLOAD_URL, params, handler);
+    }
+
+
+
+
+
 
 }

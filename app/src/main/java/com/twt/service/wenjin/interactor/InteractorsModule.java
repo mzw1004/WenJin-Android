@@ -110,4 +110,10 @@ public class InteractorsModule {
     public ArticleCommentInteractor provideArticleCommentInteractor() {
         return new ArticleCommentInteractorImpl();
     }
+
+    @Provides
+    @Singleton
+    public ProfileEditInteractor provideProfileEditInteractor(){
+        return new ProfileEditInteractorImpl();
+    }
 }
