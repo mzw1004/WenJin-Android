@@ -119,4 +119,10 @@ public class GreenChannelActivity extends AppCompatActivity implements GreenChan
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+        StatusBarHelper.setStatusBar(this);
+    }
 }
