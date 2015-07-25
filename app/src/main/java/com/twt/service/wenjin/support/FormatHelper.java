@@ -53,6 +53,11 @@ public class FormatHelper {
         return ResourceHelper.getString(R.string.add_in) + " " + new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
     }
 
+    public static String formatAddDateWithoutAddinString(long addtime){
+        Date date = new Date(addtime * 1000);
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
+    }
+
     public static String formatCommentReply(String username, String content) {
         return ResourceHelper.getString(R.string.reply) + " " + username + ": " + content;
     }
@@ -64,4 +69,9 @@ public class FormatHelper {
     public static String formatHomeHtmlStr(String html) {
         return html.replaceAll("<img src=.*?>", ResourceHelper.getString(R.string.pic));
     }
+
+    public static String formatQuestionLink(int questionId) {
+        return "http://wenjin.twtstudio.com/?/question/" + questionId;
+    }
+
 }

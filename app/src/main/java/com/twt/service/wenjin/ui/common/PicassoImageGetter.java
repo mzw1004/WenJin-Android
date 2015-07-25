@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.common;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -48,7 +49,7 @@ public class PicassoImageGetter implements Html.ImageGetter {
                 try {
                     int width = bitmap.getWidth();
                     int height = bitmap.getHeight();
-                    Bitmap b = bitmap.createScaledBitmap(bitmap, textView.getWidth(), textView.getWidth() * height / width, true);
+                    Bitmap b = Bitmap.createScaledBitmap(bitmap, textView.getWidth(), textView.getWidth() * height / width, true);
                     final BitmapDrawable drawable = new BitmapDrawable(resources, b);
 
                     drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());

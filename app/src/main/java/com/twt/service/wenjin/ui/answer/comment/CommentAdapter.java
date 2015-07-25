@@ -73,7 +73,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else {
             itemHolder.tvContent.setText(item.content);
         }
-        itemHolder.tvAddTime.setText(FormatHelper.formatAddDate(item.add_time));
+        itemHolder.tvAddTime.setText(FormatHelper.formatAddDateWithoutAddinString(item.add_time));
     }
 
     @Override

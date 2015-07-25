@@ -9,6 +9,10 @@ public interface AnswerDetailPresenter {
 
     void actionVote(int answerId, int value);
 
+    void actionDownVote(int answerId, int value);
+
+    void actionThank(int answerId);
+
     void loadTitle(int argQuestionId);
 
     void markNoticeAsRead(int argNoticeId);

@@ -8,7 +8,9 @@ import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.ImageSpan;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -16,13 +18,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.otto.Subscribe;
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.bean.AnswerDraft;
 import com.twt.service.wenjin.event.SelectPhotoResultEvent;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.common.PromptDialogFragment;
 import com.twt.service.wenjin.ui.common.SelectPhotoDialogFragment;
 
 import java.util.Arrays;
@@ -37,7 +42,9 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
 
     private static final String LOG_TAG = AnswerActivity.class.getSimpleName();
 
-    private static final String PARM_QUESTION_ID = "question_id";
+    private static final String PARAM_QUESTION_ID = "question_id";
+    private static final String PARAM_QUESTION_TITLE = "question_title";
+    private static final String PARAM_ANSWER_DRAFT = "answer_draft";
 
     @Inject
     AnswerPresenter mPresenter;
@@ -50,10 +57,18 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     CheckBox cbAnonymous;
 
     private int questionId;
+    private String questionTitle;
 
-    public static void actionStart(Context context, int questionId) {
+    public static void actionStart(Context context, int questionId, String questionTitle) {
         Intent intent = new Intent(context, AnswerActivity.class);
-        intent.putExtra(PARM_QUESTION_ID, questionId);
+        intent.putExtra(PARAM_QUESTION_ID, questionId);
+        intent.putExtra(PARAM_QUESTION_TITLE, questionTitle);
+        context.startActivity(intent);
+    }
+
+    public static void actionStart(Context context, AnswerDraft draft) {
+        Intent intent = new Intent(context, AnswerActivity.class);
+        intent.putExtra(PARAM_ANSWER_DRAFT, draft);
         context.startActivity(intent);
     }
 
@@ -67,7 +82,15 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        questionId = getIntent().getIntExtra(PARM_QUESTION_ID, 0);
+        AnswerDraft draft = getIntent().getParcelableExtra(PARAM_ANSWER_DRAFT);
+        if (draft != null) {
+            questionId = draft.question_id;
+            questionTitle = draft.question_title;
+            etContent.setText(draft.content);
+        } else {
+            questionId = getIntent().getIntExtra(PARAM_QUESTION_ID, 0);
+            questionTitle = getIntent().getStringExtra(PARAM_QUESTION_TITLE);
+        }
         LogHelper.i(LOG_TAG, "question id: " + questionId);
     }
 
@@ -84,7 +107,7 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new AnswerModule(this));
     }
 
@@ -122,6 +145,14 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            finishActivity();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Subscribe
     public void onSelectPhotoResult(SelectPhotoResultEvent event) {
         if (event.getPhotoFilePath() != null) {
@@ -151,6 +182,42 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
 
     @Override
     public void finishActivity() {
-        this.finish();
+
+        final String content = etContent.getText().toString();
+        final boolean anonymous = cbAnonymous.isChecked();
+
+        if (!TextUtils.isEmpty(content) || anonymous) {
+            PromptDialogFragment dialogFragment = PromptDialogFragment.newInstance(getString(R.string.save_as_draft));
+            dialogFragment.setCallback(new MaterialDialog.ButtonCallback() {
+                @Override
+                public void onPositive(MaterialDialog dialog) {
+                    super.onPositive(dialog);
+                    AnswerDraft draft = new AnswerDraft();
+                    draft.question_id = questionId;
+                    draft.question_title = questionTitle;
+                    draft.content = content;
+                    draft.anonymous = anonymous;
+                    draft.save();
+                    toastMessage(getString(R.string.save_successfully));
+                    finish();
+                }
+
+                @Override
+                public void onNegative(MaterialDialog dialog) {
+                    super.onNegative(dialog);
+                    finish();
+                }
+            });
+            dialogFragment.show(this);
+        } else {
+            this.finish();
+        }
+//        this.finish();
     }
+
+    @Override
+    public void finishWithoutHint() {
+        finish();
+    }
+
 }

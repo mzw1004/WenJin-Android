@@ -48,7 +48,7 @@ public class LoginInteractorImpl implements LoginInteractor {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                LogHelper.v(LOG_TAG, errorResponse.toString());
+//                LogHelper.v(LOG_TAG, errorResponse.toString());
             }
         });
     }

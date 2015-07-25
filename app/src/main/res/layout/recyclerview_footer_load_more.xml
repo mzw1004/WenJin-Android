@@ -17,6 +17,7 @@
         android:id="@+id/tv_footer_load_more"
         android:text="@string/load_more"
         android:textSize="16sp"
+        android:textColor="@color/color_text_secondary"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />

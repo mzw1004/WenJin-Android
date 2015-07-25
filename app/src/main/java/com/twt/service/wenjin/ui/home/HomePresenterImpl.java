@@ -41,7 +41,6 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
         mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
     }
 
-    @Override
     public void firstTimeRefreshHomeItems() {
         mPage = 0;
         isRefreshing = true;
@@ -51,7 +50,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
 
     @Override
     public void loadMoreHomeItems() {
-        if(isLoadingMore){return;}  //load more action only allowed existed one
+        if(isLoadingMore){ return; }  //load more action only allowed existed one
 
         mPage += 1;
         isLoadingMore = true;

@@ -10,7 +10,8 @@
         android:layout_height="@dimen/navigation_drawer_header_height"
         android:background="@color/color_primary" />
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/user_profile_image"
         android:layout_width="@dimen/navigation_drawer_user_profile_size"
         android:layout_height="@dimen/navigation_drawer_user_profile_size"
@@ -22,14 +23,13 @@
 
     <TextView
         android:id="@+id/tv_user_profile_name"
-        android:text="username"
-        android:textSize="@dimen/navigation_drawer_text_size"
+        android:textSize="16sp"
         android:textColor="@android:color/white"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/navigation_drawer_user_name_height"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/user_profile_image"
-        android:layout_marginTop="@dimen/navigation_drawer_user_signatrue_margin_top"
+        android:layout_above="@+id/tv_user_profile_signature"
         android:layout_marginLeft="@dimen/navigation_drawer_user_signatrue_margin_left"
         />
 
@@ -42,10 +42,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/user_profile_image"
-        android:layout_below="@+id/tv_user_profile_name"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="@dimen/navigation_drawer_user_signatrue_margin_left"
         android:layout_marginRight="@dimen/navigation_drawer_user_signatrue_margin_right"
+        android:layout_alignBottom="@+id/user_profile_image"
         />
 
     <TextView

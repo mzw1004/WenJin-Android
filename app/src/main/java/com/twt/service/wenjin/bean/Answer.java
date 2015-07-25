@@ -29,4 +29,8 @@ public class Answer {
 
     public int vote_value;
 
+    public int thank_value;
+
+
+
 }

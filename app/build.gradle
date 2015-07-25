@@ -8,8 +8,8 @@ android {
         applicationId "com.twt.service.wenjin"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 5
+        versionName "1.0.4"
     }
     buildTypes {
         release {
@@ -38,10 +38,12 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.6'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'im.fir:sdk:1.2.0+'
     compile 'de.hdodenhof:circleimageview:1.2.2'
     compile 'com.getbase:floatingactionbutton:1.9.0'
     compile 'com.jpardogo.materialtabstrip:library:1.0.9'
-    compile 'com.afollestad:material-dialogs:0.7.3.3'
+    compile 'com.afollestad:material-dialogs:0.7.6.0'
     compile 'me.gujun.android.taggroup:library:1.1@aar'
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.2'
     compile 'com.nineoldandroids:library:2.4.0'

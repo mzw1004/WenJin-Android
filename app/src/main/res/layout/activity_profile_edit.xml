@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
+    tools:context="com.twt.service.wenjin.ui.profile.edit.ProfileEditActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_toolbar" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile_edit_avatar"
+        android:src="@drawable/ic_user_avatar"
+        android:layout_height="96dp"
+        android:layout_width="96dp"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/edt_profile_edit_username"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_background"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/edt_profile_edit_description"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_background"
+        android:gravity="center" />
+
+    <ProgressBar
+        android:layout_marginTop="15dp"
+        android:id="@+id/pb_profile_edit"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

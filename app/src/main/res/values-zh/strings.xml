@@ -26,6 +26,7 @@
     <string name="drawer_item_home">首页</string>
     <string name="drawer_item_explore">发现</string>
     <string name="drawer_item_topic">话题</string>
+    <string name="drawer_item_draft">草稿</string>
     <string name="drawer_item_notification">通知</string>
     <string name="drawer_item_user">用户</string>
     <string name="drawer_item_setting">设置</string>
@@ -99,16 +100,24 @@
     <string name="login_password_hint">密码</string>
     <string name="login_btn_text">登录</string>
     <string name="login_error_empty">不能为空</string>
+    <string name="login_signin">快速注册</string>
 
     <!-- Question activity strings -->
     <string name="title_activity_question">问题</string>
     <string name="action_focus">关注</string>
     <string name="action_not_focus">不再关注</string>
     <string name="action_answer">添加回答</string>
+    <string name="action_share">分享到</string>
 
     <!-- Answer detail activity strings -->
     <string name="title_activity_answer_detail">回答详情</string>
     <string name="action_comment">添加评论</string>
+    <string name="action_upvote_msg">赞同</string>
+    <string name="action_downvote_msg">反对</string>
+    <string name="action_cancel_upvote_msg">撤销赞同</string>
+    <string name="action_cancel_downvote_msg">撤销反对</string>
+    <string name="action_thank_msg">感谢</string>
+    <string name="action_thanked_msg">已经感谢</string>
 
     <!-- Answer activity strings -->
     <string name="title_activity_answer">回答</string>
@@ -122,6 +131,7 @@
     <string name="profile_question">问过</string>
     <string name="profile_answer">答过</string>
     <string name="profile_detail">详细信息</string>
+    <string name="action_edit">编辑</string>
 
     <!-- Comment activity -->
     <string name="title_activity_comment">评论</string>
@@ -135,12 +145,11 @@
     <!-- Settings activity -->
     <string name="pref_category_notification">通知</string>
     <string name="pref_category_others">其他</string>
-
     <string name="title_activity_settings">设置</string>
     <string name="pref_about_title">关于</string>
     <string name="pref_check_version_title">检查新版本</string>
     <string name="pref_notification_title">启用通知</string>
-
+    <string name="pref_launch_notification_title">启用通知</string>
 
     <!-- NotificationSetting activity -->
     <string name="title_activity_notificationsetting">推送</string>
@@ -167,5 +176,17 @@
     <string name="action_type_following">关注</string>
     <string name="action_type_followers">被关注</string>
     <string name="default_signature_profile_follows">主人,我也想要一个签名...</string>
+
+    <!-- Profile Edit activity -->
+    <string name="title_activity_profile_edit">主页修改</string>
+
+    <!-- Prompt Dialog strings -->
+    <string name="save_as_draft">是否保存为草稿？</string>
+    <string name="save_successfully">保存成功</string>
+
+    <!-- Draft fragment strings -->
+    <string name="no_any_drafts">不存在任何草稿。</string>
+    <string name="action_delete">删除</string>
+
 
 </resources>

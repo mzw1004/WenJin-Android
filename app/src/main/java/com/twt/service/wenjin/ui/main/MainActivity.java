@@ -32,6 +32,8 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
+import com.twt.service.wenjin.ui.draft.DraftFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.home.HomeFragment;
@@ -70,6 +72,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     private ExploreFragment mExploreFragment;
     private TopicFragment mTopicFragment;
     private NotificationMainFragment mNotificationMainFragment;
+    private DraftFragment mDraftFragment;
 //    private UserFragment mUserFragment;
 
     private JPushNotifiInMainReceiver mReceiver;
@@ -111,8 +114,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             this.startActivity(intent);
             NotificationBuffer.setsIntent(null);
         }
-
-
+        
         /*
         ApiClient.checkNewVersion(BuildConfig.VERSION_CODE + "", new JsonHttpResponseHandler() {
             @Override
@@ -200,7 +202,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     }
 
     @Override
-    protected List<Object> getModlues() {
+    protected List<Object> getModules() {
         return Arrays.<Object>asList(new MainModule(this));
     }
 
@@ -228,16 +230,15 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
                 }
                 fragment = mTopicFragment;
                 break;
-
-//            case 3:
-//                if (mUserFragment == null) {
-//                    mUserFragment = new UserFragment();
-//                }
-//                fragment = mUserFragment;
-//                break;
+            case 3:
+                if (mDraftFragment == null) {
+                    mDraftFragment = new DraftFragment();
+                }
+                fragment = mDraftFragment;
+                break;
         }
         fragmentManager.beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.main_container, fragment)
                 .commit();
     }
@@ -290,13 +291,9 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     public void onClick(View v) {
         if(v.getId() == R.id.action_notification){
             FragmentManager fragmentManager = getSupportFragmentManager();
-
-            if(mNotificationMainFragment == null){
-                mNotificationMainFragment = new NotificationMainFragment();
-            }
-
+            mNotificationMainFragment = new NotificationMainFragment();
             fragmentManager.beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .replace(R.id.main_container, mNotificationMainFragment, ResourceHelper.getString(R.string.action_notification))
                     .commit();
 
