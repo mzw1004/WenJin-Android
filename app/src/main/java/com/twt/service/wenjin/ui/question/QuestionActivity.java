@@ -59,6 +59,8 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
 
 //    private UMSocialService umSocialService = UMServiceFactory.getUMSocialService("com.umeng.share");
 
+//    private UMSocialService umSocialService = UMServiceFactory.getUMSocialService("com.umeng.share");
+
     public static void actionStart(Context context, int questionId) {
         Intent intent = new Intent(context, QuestionActivity.class);
         intent.putExtra(PARAM_QUESTION_ID, questionId);
