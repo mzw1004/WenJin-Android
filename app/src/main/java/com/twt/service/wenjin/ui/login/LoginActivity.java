@@ -17,6 +17,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.JPushHelper;
 import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
+import com.twt.service.wenjin.support.StatusBarHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.login.green_channel.GreenChannelActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
@@ -121,5 +122,11 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        StatusBarHelper.setStatusBar(this);
     }
 }
