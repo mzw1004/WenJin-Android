@@ -16,6 +16,7 @@
     <string name="add_in">添加于</string>
     <string name="reply">回复</string>
     <string name="quit">再按一次退出程序</string>
+    <string name="not_exist">该用户不存在</string>
 
     <!-- Main Activity -->
     <string name="action_notification">通知</string>
@@ -188,5 +189,9 @@
     <string name="no_any_drafts">不存在任何草稿。</string>
     <string name="action_delete">删除</string>
 
+    <!--Article activity-->
+    <string name="title_activity_article">文章</string>
+    <!-- Green Channel activity-->
+    <string name="title_activity_green_channel">绿色通道</string>
 
 </resources>
