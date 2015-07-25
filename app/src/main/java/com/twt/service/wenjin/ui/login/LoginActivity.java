@@ -3,20 +3,18 @@ package com.twt.service.wenjin.ui.login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.JPushHelper;
-import com.twt.service.wenjin.support.NetworkHelper;
-import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.support.StatusBarHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.login.green_channel.GreenChannelActivity;
@@ -48,7 +46,8 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @InjectView(R.id.iv_login_logo)
     ImageView ivLoginLogo;
     @InjectView(R.id.bt_green_channel)
-    Button btGreenChannel;
+    TextView btGreenChannel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

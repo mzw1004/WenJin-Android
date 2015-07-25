@@ -100,6 +100,7 @@
     <string name="login_password_hint">密码</string>
     <string name="login_btn_text">登录</string>
     <string name="login_error_empty">不能为空</string>
+    <string name="login_signin">快速注册</string>
 
     <!-- Question activity strings -->
     <string name="title_activity_question">问题</string>

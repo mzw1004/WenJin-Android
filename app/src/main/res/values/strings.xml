@@ -102,6 +102,7 @@
     <string name="login_password_hint">Password</string>
     <string name="login_btn_text">Login</string>
     <string name="login_error_empty">Can Not Be Empty</string>
+    <string name="login_signin">Sign In</string>
 
     <!-- Question activity strings -->
     <string name="title_activity_question">Question</string>
