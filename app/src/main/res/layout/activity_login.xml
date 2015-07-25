@@ -2,66 +2,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
     android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.twt.service.wenjin.ui.login.LoginActivity">
 
     <ImageView
         android:id="@+id/iv_login_logo"
-        android:contentDescription="@string/title_activity_login"
-        android:src="@drawable/ic_login_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_padding_top"
         android:layout_marginLeft="@dimen/login_padding_left_right"
-        android:layout_marginRight="@dimen/login_padding_left_right" />
+        android:layout_marginRight="@dimen/login_padding_left_right"
+        android:layout_marginTop="@dimen/login_padding_top"
+        android:contentDescription="@string/title_activity_login"
+        android:src="@drawable/ic_login_logo" />
 
     <EditText
         android:id="@+id/tv_login_username"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_edit_text_height"
-        android:layout_marginTop="@dimen/login_magin_control"
-        android:paddingLeft="@dimen/login_padding_control"
-        android:paddingRight="@dimen/login_padding_control"
         android:layout_marginLeft="@dimen/login_padding_left_right"
         android:layout_marginRight="@dimen/login_padding_left_right"
-        android:hint="@string/login_username_hint"
+        android:layout_marginTop="@dimen/login_magin_control"
+        android:background="@drawable/edit_text_background"
         android:drawableLeft="@drawable/ic_login_account"
+        android:hint="@string/login_username_hint"
         android:maxLines="1"
-        android:singleLine="true"
-        android:background="@drawable/edit_text_background" />
+        android:paddingLeft="@dimen/login_padding_control"
+        android:paddingRight="@dimen/login_padding_control"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/tv_login_password"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_edit_text_height"
-        android:layout_marginTop="@dimen/login_magin_control"
-        android:paddingLeft="@dimen/login_padding_control"
-        android:paddingRight="@dimen/login_padding_control"
         android:layout_marginLeft="@dimen/login_padding_left_right"
         android:layout_marginRight="@dimen/login_padding_left_right"
+        android:layout_marginTop="@dimen/login_magin_control"
+        android:background="@drawable/edit_text_background"
+        android:drawableLeft="@drawable/ic_login_password"
         android:hint="@string/login_password_hint"
         android:inputType="textPassword"
-        android:drawableLeft="@drawable/ic_login_password"
-        android:background="@drawable/edit_text_background" />
+        android:paddingLeft="@dimen/login_padding_control"
+        android:paddingRight="@dimen/login_padding_control" />
 
     <Button
         android:id="@+id/bt_login"
-        android:text="@string/login_btn_text"
-        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_padding_left_right"
+        android:layout_marginRight="@dimen/login_padding_left_right"
+        android:layout_marginTop="@dimen/login_magin_control"
         android:background="@drawable/button_focus"
+        android:text="@string/login_btn_text"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/bt_green_channel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_padding_left_right"
+        android:layout_marginRight="@dimen/login_padding_left_right"
+        android:layout_marginTop="@dimen/login_magin_control"
+        android:background="@drawable/button_focus"
+        android:text="我是新生"
+        android:textColor="@android:color/white"/>
+
+    <ProgressBar
+        android:id="@+id/pb_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/login_magin_control"
-        android:layout_marginLeft="@dimen/login_padding_left_right"
-        android:layout_marginRight="@dimen/login_padding_left_right" />
-
-    <ProgressBar
-        android:visibility="gone"
-        android:id="@+id/pb_login"
-        android:layout_marginTop="@dimen/login_magin_control"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -39,6 +39,7 @@ public class ApiClient {
     private static final String BASE_URL = "http://wj.oursays.com/";
 //    private static final String BASE_URL = "http://wenjin.test.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
+    public static final String GREEN_CHANNEL_URL = "http://wenjin.in/account/green/";
     private static final String HOME_URL = "?/api/home/";
     private static final String EXPLORE_URL = "?/api/explore/";
     private static final String TOPIC_URL = "?/api/topic/square/";
@@ -50,7 +51,6 @@ public class ApiClient {
     private static final String ANSWER_DETAIL_URL = "?/api/question/answer_detail/";
     private static final String ANSWER_VOTE_URL = "?/question/ajax/answer_vote/";
     private static final String ANSWER_THANK_URL = "?/api/question/answer_vote/";
-
     private static final String UPLOAD_FILE_URL = "?/api/publish/attach_upload/";
     private static final String PUBLISH_QUESTION_URL = "?/api/publish/publish_question/";
     private static final String ANSWER_URL = "?/api/publish/save_answer/";
@@ -65,6 +65,11 @@ public class ApiClient {
     private static final String MY_FOCUS_USER = "api/my_focus_user.php";
     private static final String MY_FANS_USER = "api/my_fans_user.php";
     private static final String PROFILE_EDIT_URL = "api/profile_setting.php";
+    private static final String ARTICLE_ARTICLE_URL = "?/api/article/article/";
+    private static final String ARTICLE_COMMENT_URL = "?/api/article/comment/";
+    private static final String PUBLISH_ARTICLE_COMMENT_URL = "?/api/publish/save_comment/";
+    private static final String ARTICLE_VOTE_URL = "?/article/ajax/article_vote/";
+    private static final String AVATAR_UPLOAD_URL = "?/api/account/avatar_upload/";
 
     private static final String NOTIFICATIONS_URL = "?/api/notification/notifications/";
     private static final String NOTIFICATIONS_LIST_URL = "?/api/notification/list/";
@@ -205,6 +210,28 @@ public class ApiClient {
         sClient.get(BASE_URL + FOCUS_QUESTION_URL, params, handler);
     }
 
+    public static void getArticle(int articleId, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("id", articleId);
+        sClient.get(BASE_URL + ARTICLE_ARTICLE_URL, params, handler);
+    }
+
+    public static void getArticleComment(int articleId, JsonHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("id", articleId);
+        params.put("page", 0);
+        sClient.get(BASE_URL + ARTICLE_COMMENT_URL, params, handler);
+    }
+
+    public static void publishArticleComment(int articleId, String message, JsonHttpResponseHandler handler) {
+        Uri url = Uri.parse(BASE_URL + PUBLISH_ARTICLE_COMMENT_URL).buildUpon().appendQueryParameter("articleId", String.valueOf(articleId)).build();
+        RequestParams params = new RequestParams();
+        params.put("article_id", articleId);
+        params.put("message", message);
+        sClient.post(url.toString(), params, handler);
+
+    }
+
     public static void getAnswer(int answerId, JsonHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("id", answerId);
@@ -226,6 +253,16 @@ public class ApiClient {
         params.put("type", "thanks");
 
         sClient.post(BASE_URL + ANSWER_THANK_URL, params, new JsonHttpResponseHandler());
+    }
+
+    public static void voteArticle(int articleId, int value) {
+        RequestParams params = new RequestParams();
+        params.put("type", "article");
+        params.put("item_id", articleId);
+        params.put("rating", value);
+
+        sClient.post(BASE_URL + ARTICLE_VOTE_URL, params, new JsonHttpResponseHandler());
+
     }
 
     public static void answer(int questionId, String content, String attachKey, boolean isAnonymous, JsonHttpResponseHandler handler) {
@@ -339,6 +376,12 @@ public class ApiClient {
         }
 
         sClient.post(BASE_URL + PROFILE_EDIT_URL, params, handler);
+    }
+
+    public static void avatarUpload(int uid,  String user_avatar, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+            params.put("user_avatar", user_avatar);
+        sClient.post(BASE_URL + AVATAR_UPLOAD_URL, params, handler);
     }
 
     public static void getNotificationsNumberInfo(long argTimestampNow, JsonHttpResponseHandler handler){

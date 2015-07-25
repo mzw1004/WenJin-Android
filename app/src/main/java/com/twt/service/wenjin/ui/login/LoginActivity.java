@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.twt.service.wenjin.support.JPushHelper;
 import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.support.PrefUtils;
 import com.twt.service.wenjin.ui.BaseActivity;
+import com.twt.service.wenjin.ui.login.green_channel.GreenChannelActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 
 import java.util.Arrays;
@@ -42,6 +44,10 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     Button mBtLogin;
     @InjectView(R.id.pb_login)
     ProgressBar mPbLogin;
+    @InjectView(R.id.iv_login_logo)
+    ImageView ivLoginLogo;
+    @InjectView(R.id.bt_green_channel)
+    Button btGreenChannel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
 
 
         mBtLogin.setOnClickListener(this);
+        btGreenChannel.setOnClickListener(this);
     }
 
     @Override
@@ -67,7 +74,14 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
 
     @Override
     public void onClick(View v) {
-        mLoginPresenter.validateLogin(mEtUsername.getText().toString(), mEtPassword.getText().toString());
+        switch (v.getId()) {
+            case R.id.bt_login:
+                mLoginPresenter.validateLogin(mEtUsername.getText().toString(), mEtPassword.getText().toString());
+                break;
+            case R.id.bt_green_channel:
+                GreenChannelActivity.actionStart(this);
+        }
+
     }
 
     @Override
@@ -94,7 +108,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     public void hideKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) getApplicationContext().
                 getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(mEtPassword.getWindowToken(),0);
+        inputMethodManager.hideSoftInputFromWindow(mEtPassword.getWindowToken(), 0);
     }
 
     @Override

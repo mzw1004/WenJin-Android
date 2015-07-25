@@ -43,5 +43,6 @@
     <!--<color name="activity_background">#F5F5F5</color>-->
     <color name="color_drawer_item_selected_background">#e8e8e8</color>
     <color name="black_semi_transparent">#B2000000</color>
+    <color name="color_did">#e05a3c</color>
 
 </resources>

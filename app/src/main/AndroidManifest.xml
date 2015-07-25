@@ -175,6 +175,16 @@
             android:name=".ui.profile.edit.ProfileEditActivity"
             android:label="@string/title_activity_profile_edit" >
         </activity>
+
+        <activity
+            android:name=".ui.article.ArticleActivity"
+            android:label="@string/title_activity_article" />
+        <activity
+            android:name=".ui.login.green_channel.GreenChannelActivity"
+            android:label="@string/title_activity_green_channel" />
+        <activity
+            android:name=".ui.article.comment.CommentActivlty"
+            android:label="@string/title_activity_comment" />
         
         <!-- JPush Required SDK核心功能-->
         <activity

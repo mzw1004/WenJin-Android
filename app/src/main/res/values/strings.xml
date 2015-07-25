@@ -16,6 +16,7 @@
     <string name="add_in">add in</string>
     <string name="reply">Reply</string>
     <string name="quit">Press again to quit</string>
+    <string name="not_exist">该用户不存在</string>
 
     <!-- Main Activity -->
     <string name="action_notification">Notification</string>
@@ -33,7 +34,7 @@
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
     <string name="drawer_item_logout">Logout</string>
     <string name="drawer_item_login">Login</string>
-    
+
     <!-- Home strings -->
     <string name="post_question">Question asked</string>
     <string name="concern_question">Question followed</string>
@@ -190,5 +191,10 @@
     <!-- Draft fragment strings -->
     <string name="no_any_drafts">There are not any drafts.</string>
     <string name="action_delete">Delete</string>
+
+    <!--Article activity-->
+    <string name="title_activity_article">Article</string>
+    <!-- Green Channel activity-->
+    <string name="title_activity_green_channel">Green Channel</string>
 
 </resources>

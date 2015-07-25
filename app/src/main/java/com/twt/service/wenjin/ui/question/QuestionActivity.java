@@ -59,6 +59,8 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
 
 //    private UMSocialService umSocialService = UMServiceFactory.getUMSocialService("com.umeng.share");
 
+//    private UMSocialService umSocialService = UMServiceFactory.getUMSocialService("com.umeng.share");
+
     public static void actionStart(Context context, int questionId) {
         Intent intent = new Intent(context, QuestionActivity.class);
         intent.putExtra(PARAM_QUESTION_ID, questionId);
@@ -125,10 +127,18 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
                 mPresenter.actionFocus(mQuestionAdapter.getQuestionInfo().question_id);
                 break;
             case R.id.iv_question_answer_avatar:
-                startProfileActivity(position);
+                if (mQuestionAdapter.getAnswer(position).uid == -1){
+                    Toast.makeText(this, "该用户不存在", Toast.LENGTH_SHORT).show();
+                }else {
+                    startProfileActivity(position);
+                }
                 break;
             case R.id.tv_question_answer_username:
-                startProfileActivity(position);
+                if(mQuestionAdapter.getAnswer(position).uid == -1){
+                    Toast.makeText(this, "该用户不存在", Toast.LENGTH_SHORT).show();
+                }else {
+                    startProfileActivity(position);
+                }
                 break;
             case R.id.tv_question_answer_content:
                 startAnswerDetailActivty(position);
