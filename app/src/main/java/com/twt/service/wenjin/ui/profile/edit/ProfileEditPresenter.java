@@ -6,4 +6,5 @@ package com.twt.service.wenjin.ui.profile.edit;
 public interface ProfileEditPresenter {
     void getUserInfo(int uid);
     void postUserInfo(int uid,String nickname, String signature);
+    void updateAvatar(int uid, String user_avatar);
 }
