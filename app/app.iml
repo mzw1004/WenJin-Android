@@ -114,8 +114,8 @@
     <orderEntry type="library" exported="" name="javawriter-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.6" level="project" />
     <orderEntry type="library" exported="" name="material-dialogs-0.7.6.0" level="project" />
-    <orderEntry type="library" exported="" name="dagger-compiler-1.2.2" level="project" />
     <orderEntry type="library" exported="" name="analytics-5.5.3" level="project" />
+    <orderEntry type="library" exported="" name="dagger-compiler-1.2.2" level="project" />
   </component>
 </module>
 
