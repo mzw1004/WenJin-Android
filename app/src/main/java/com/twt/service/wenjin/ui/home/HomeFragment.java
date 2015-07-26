@@ -21,6 +21,7 @@ import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
+import com.twt.service.wenjin.ui.article.ArticleActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.publish.PublishActivity;
@@ -148,6 +149,8 @@ public class HomeFragment extends BaseFragment implements
         if (item.question_info != null) {
             LogHelper.v(LOG_TAG, "start question activity");
             QuestionActivity.actionStart(getActivity(), item.question_info.question_id);
+        }else if (item.article_info!=null){
+            ArticleActivity.actionStart(getActivity(), item.article_info.id);
         }
     }
 

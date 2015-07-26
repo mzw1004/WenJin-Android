@@ -10,4 +10,5 @@ import com.twt.service.wenjin.ui.profile.edit.OnPostUserInfoCallBack;
 public interface ProfileEditInteractor {
     void OnGetUserInfo(int uid, OnGetUserInfoCallback callback);
     void OnPostUserInfo(int uid, String nick_name, String signature, OnPostUserInfoCallBack callBack);
+    void UploadAvatar(int uid, String path, OnPostUserInfoCallBack callBack);
 }

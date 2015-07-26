@@ -39,7 +39,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileEditActivity extends BaseActivity implements ProfileEditView, View.OnClickListener {
+public class ProfileEditActivity extends BaseActivity implements ProfileEditView {
 
     private static final String PARAM_UID = "uid";
 
@@ -79,6 +79,12 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
         if (profileEditPresenter == null) {
             Log.e("null", "null");
         }
+        ivProfileEditAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SelectPhotoDialogFragment().show(ProfileEditActivity.this);
+            }
+        });
         profileEditPresenter.getUserInfo(uid);
     }
 
@@ -141,12 +147,12 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
         finish();
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.iv_profile_edit_avatar:
-                new SelectPhotoDialogFragment().show(this);
-                break;
+
+    @Subscribe
+    public void onSelectPhotoResult(SelectPhotoResultEvent event){
+        if (event.getPhotoFilePath() != null){
+            String path = event.getPhotoFilePath();
+            profileEditPresenter.updateAvatar(uid, path);
         }
     }
 }

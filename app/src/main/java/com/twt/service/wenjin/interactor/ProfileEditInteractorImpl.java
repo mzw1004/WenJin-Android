@@ -67,4 +67,28 @@ public class ProfileEditInteractorImpl implements ProfileEditInteractor{
         });
 
     }
+
+    @Override
+    public void UploadAvatar(int uid, String path, final OnPostUserInfoCallBack callBack) {
+        if (!path.equals("")&& path!=null){
+            ApiClient.avatarUpload(uid, path, new JsonHttpResponseHandler(){
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    super.onSuccess(statusCode, headers, response);
+                    try {
+                        switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)){
+                            case ApiClient.SUCCESS_CODE:
+                                callBack.onPostSuccess();
+                                break;
+                            case ApiClient.ERROR_CODE:
+                                callBack.onPostFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
+                                break;
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
 }
