@@ -2,6 +2,7 @@ package com.twt.service.wenjin.api;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -243,7 +244,6 @@ public class ApiClient {
         RequestParams params = new RequestParams();
         params.put("answer_id", answerId);
         params.put("value", value);
-
         sClient.post(BASE_URL + ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
     }
 
@@ -260,7 +260,6 @@ public class ApiClient {
         params.put("type", "article");
         params.put("item_id", articleId);
         params.put("rating", value);
-
         sClient.post(BASE_URL + ARTICLE_VOTE_URL, params, new JsonHttpResponseHandler());
 
     }

@@ -61,7 +61,6 @@ public class AnswerDetailPresenterImpl implements AnswerDetailPresenter, OnGetAn
         }
         ApiClient.voteAnswer(answerId, value);
         mAnswerDetailView.setAgree(voteState, agreeCount);
-
     }
 
     @Override

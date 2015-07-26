@@ -1,8 +1,10 @@
 package com.twt.service.wenjin.ui.article;
 
+import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.Article;
 import com.twt.service.wenjin.interactor.ArticleInteractor;
+import com.twt.service.wenjin.support.ResourceHelper;
 
 /**
  * Created by RexSun on 15/7/16.
@@ -13,10 +15,12 @@ public class ArticlePresenterImpl implements ArticlePresenter, OnGetArticleCallb
 
     private ArticleView articleView;
     private ArticleInteractor articleInteractor;
-
-    private boolean isAgree;
+    private static final int VOTE_STATE_UPVOTE = 1;
+    private static final int VOTE_STATE_DOWNVOTE = -1;
+    private static final int VOTE_STATE_NONE = 0;
     private int agreeCount;
-    private boolean isDisagree;
+
+    private int voteState;
 
     public ArticlePresenterImpl(ArticleView articleView, ArticleInteractor articleInteractor) {
         this.articleView = articleView;
@@ -34,35 +38,41 @@ public class ArticlePresenterImpl implements ArticlePresenter, OnGetArticleCallb
 
     @Override
     public void actionVote(int articleId, int value) {
-        isAgree = !isAgree;
-        if (value == 1) {
-            if (isAgree) {
-                agreeCount++;
-            } else {
-                agreeCount--;
-            }
-            articleView.setAgree(isAgree, agreeCount);
-        } else if (value == -1) {
-            articleView.setDisagree(isDisagree);
+        if (voteState == VOTE_STATE_NONE || voteState == VOTE_STATE_DOWNVOTE){
+            voteState = VOTE_STATE_UPVOTE;
+            agreeCount++;
+            articleView.toastMessage(ResourceHelper.getString(R.string.action_upvote_msg));
+        }else {
+            voteState = VOTE_STATE_NONE;
+            agreeCount--;
+            articleView.toastMessage(ResourceHelper.getString(R.string.action_cancel_upvote_msg));
         }
-
         ApiClient.voteArticle(articleId, value);
-
+        articleView.setAgree(voteState, agreeCount);
 
     }
 
     @Override
+    public void actionDownVote(int articleID, int value) {
+        if(voteState == VOTE_STATE_UPVOTE){
+            agreeCount--;
+            articleView.setAgreeCount(agreeCount);
+            voteState = VOTE_STATE_DOWNVOTE;
+            articleView.toastMessage(ResourceHelper.getString(R.string.action_downvote_msg));
+        }else if(voteState == VOTE_STATE_NONE){
+            voteState = VOTE_STATE_DOWNVOTE;
+            articleView.toastMessage(ResourceHelper.getString(R.string.action_downvote_msg));
+        }else {
+            voteState = VOTE_STATE_NONE;
+            articleView.toastMessage(ResourceHelper.getString(R.string.action_cancel_downvote_msg));
+        }
+        ApiClient.voteArticle(articleID, value);
+        articleView.setDisagree(voteState);
+    }
+
+    @Override
     public void onSuccess(Article article) {
-        if (article.article_info.vote_value == 1) {
-            isAgree = true;
-        } else {
-            isAgree = false;
-        }
-        if (article.article_info.vote_value == -1) {
-            isDisagree = true;
-        } else {
-            isDisagree = false;
-        }
+        voteState = article.article_info.vote_value;
         agreeCount = article.article_info.votes;
         articleView.bindArticleData(article);
 
