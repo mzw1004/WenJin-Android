@@ -143,7 +143,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     headerHolder.mTvUserSignature.setText(mSignature);
                 }
                 if (!TextUtils.isEmpty(mAvatarFile)) {
-                    Picasso.with(mContext).load(ApiClient.getAvatarUrl(mAvatarFile)).into(headerHolder.mIvProfile);
+                    Picasso.with(mContext).load(ApiClient.getAvatarUrl(mAvatarFile)).skipMemoryCache().into(headerHolder.mIvProfile);
                 }
                 headerHolder.mIvProfile.setOnClickListener(new View.OnClickListener() {
                     @Override

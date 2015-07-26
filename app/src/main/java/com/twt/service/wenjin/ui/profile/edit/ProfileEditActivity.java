@@ -127,7 +127,7 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
     public void bindUserInfo(UserInfo userInfo) {
         _userInfo = userInfo;
         if (!TextUtils.isEmpty(userInfo.avatar_file)) {
-            Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(ivProfileEditAvatar);
+            Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).skipMemoryCache().into(ivProfileEditAvatar);
         }
         edtProfileEditUsername.setText(userInfo.nick_name);
         edtProfileEditDescription.setText(userInfo.signature);
