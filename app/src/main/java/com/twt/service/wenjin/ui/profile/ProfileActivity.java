@@ -33,6 +33,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.view.View.OnClickListener;
 
@@ -52,12 +53,10 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.iv_profile_avatar)
-    ImageView ivAvatar;
-    @InjectView(R.id.tv_profile_username)
-    TextView tvUsername;
-    @InjectView(R.id.tv_profile_signature)
-    TextView tvSignature;
+
+    public static ImageView ivAvatar;
+    public static TextView tvUsername;
+    public static TextView tvSignature;
     @InjectView(R.id.tv_profile_agree_number)
     TextView tvAgreeNumber;
     @InjectView(R.id.tv_profile_favorite_number)
@@ -110,6 +109,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         setContentView(R.layout.activity_profile);
         ButterKnife.inject(this);
 
+        tvUsername = (TextView)findViewById(R.id.tv_profile_username);
+        tvSignature = (TextView)findViewById(R.id.tv_profile_signature);
+        ivAvatar = (CircleImageView)findViewById(R.id.iv_profile_avatar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
