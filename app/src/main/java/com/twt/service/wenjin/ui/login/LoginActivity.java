@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
@@ -48,7 +49,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @InjectView(R.id.iv_login_logo)
     ImageView ivLoginLogo;
     @InjectView(R.id.bt_green_channel)
-    Button btGreenChannel;
+    TextView btGreenChannel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

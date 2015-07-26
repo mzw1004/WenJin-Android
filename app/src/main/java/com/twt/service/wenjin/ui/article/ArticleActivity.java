@@ -93,6 +93,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("文章");
         articleId = getIntent().getIntExtra(PARAM_ARTICLE_ID, 0);
         LogHelper.i(LOG_TAG, "article id: " + articleId);
         mPresenter.loadArticle(articleId);

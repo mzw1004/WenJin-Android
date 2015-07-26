@@ -47,6 +47,7 @@ public class GreenChannelActivity extends AppCompatActivity implements GreenChan
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("快速注册");
         greenChannelPresenter = new GreenChannelPresenter(this);
         greenChannelPresenter.loadGreenChannel();
     }
