@@ -5,6 +5,9 @@ package com.twt.service.wenjin.bean;
  */
 public class ExploreItem {
 
+    /*当类型为article时,id为文章id*/
+    public int id;
+
     /*提问者信息*/
     public UserInfo user_info;
 

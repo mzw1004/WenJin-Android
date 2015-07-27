@@ -92,10 +92,10 @@ public class ExploreListPresenterImpl implements ExploreListPresenter, OnGetExpl
                 _exploreListView.startProfileActivity(position);
                 break;
             case R.id.tv_home_item_title:
-                _exploreListView.startQuestionActivity(position);
+                _exploreListView.startQuestionArticlActivity(position);
                 break;
             case R.id.tv_home_item_content:
-                _exploreListView.startQuestionActivity(position);
+                _exploreListView.startQuestionArticlActivity(position);
                 break;
         }
     }
