@@ -45,7 +45,6 @@ public class CommentPresenterImpl implements CommentPresenter, OnPublishCommentC
 
     @Override
     public void onPublishFailure(String errorMsg) {
-
         commentView.toastMessage(errorMsg);
     }
 

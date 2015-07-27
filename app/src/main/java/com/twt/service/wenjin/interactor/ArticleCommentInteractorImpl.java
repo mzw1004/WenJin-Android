@@ -57,14 +57,27 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
                             onPublishCommentCallback.onPublishSuccess();
                             break;
                         case ApiClient.ERROR_CODE:
-                            onPublishCommentCallback.onPublishFailure(ApiClient.RESP_ERROR_CODE_KEY);
+                            onPublishCommentCallback.onPublishFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
                             break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                onPublishCommentCallback.onPublishFailure(responseString);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                onPublishCommentCallback.onPublishFailure(throwable.toString());
+            }
         });
+
 
 
 

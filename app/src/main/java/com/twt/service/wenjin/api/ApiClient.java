@@ -40,7 +40,7 @@ public class ApiClient {
     private static final String BASE_URL = "http://wenjin.in/";
 //    private static final String BASE_URL = "http://wenjin.test.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
-    public static final String GREEN_CHANNEL_URL = "http://wenjin.in/account/green/";
+    public static final  String GREEN_CHANNEL_URL = "http://wenjin.in/account/green/";
     private static final String HOME_URL = "?/api/home/";
     private static final String EXPLORE_URL = "?/api/explore/";
     private static final String TOPIC_URL = "?/api/topic/square/";
@@ -225,11 +225,11 @@ public class ApiClient {
     }
 
     public static void publishArticleComment(int articleId, String message, JsonHttpResponseHandler handler) {
-        Uri url = Uri.parse(BASE_URL + PUBLISH_ARTICLE_COMMENT_URL).buildUpon().appendQueryParameter("articleId", String.valueOf(articleId)).build();
+        //Uri url = Uri.parse(BASE_URL + PUBLISH_ARTICLE_COMMENT_URL).buildUpon().appendQueryParameter("articleId", String.valueOf(articleId)).build();
         RequestParams params = new RequestParams();
         params.put("article_id", articleId);
         params.put("message", message);
-        sClient.post(url.toString(), params, handler);
+        sClient.post(BASE_URL + PUBLISH_ARTICLE_COMMENT_URL, params, handler);
 
     }
 
