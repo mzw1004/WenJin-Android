@@ -68,7 +68,7 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
                 mHomeView.startProfileActivity(position);
                 break;
             case R.id.tv_home_item_title:
-                mHomeView.startQuestionActivity(position);
+                mHomeView.startQuestionArticlActivity(position);
                 break;
             case R.id.tv_home_item_content:
                 mHomeView.startAnswerActivity(position);

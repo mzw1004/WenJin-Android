@@ -16,6 +16,7 @@ import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
+import com.twt.service.wenjin.ui.article.ArticleActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
@@ -142,8 +143,8 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     @Override
     public void startQuestionActivity(int position) {
         ExploreItem item = _exploreListAdapter.getItem(position);
-        if (0 == item.post_type.compareTo("article")) {
-
+        if (item.post_type.endsWith("article")) {
+            ArticleActivity.actionStart(getActivity(), item.question_id);
         }else{
             QuestionActivity.actionStart(getActivity(), item.question_id);
         }
