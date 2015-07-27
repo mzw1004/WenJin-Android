@@ -6,5 +6,6 @@ package com.twt.service.wenjin.ui.article;
 public interface ArticlePresenter {
     void loadArticle(int articleId);
 
+    void actionDownVote(int articleId, int value);
     void actionVote(int articleId, int value);
 }

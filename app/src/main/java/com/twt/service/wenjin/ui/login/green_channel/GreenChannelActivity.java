@@ -47,6 +47,7 @@ public class GreenChannelActivity extends AppCompatActivity implements GreenChan
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("快速注册");
         greenChannelPresenter = new GreenChannelPresenter(this);
         greenChannelPresenter.loadGreenChannel();
     }
@@ -118,5 +119,11 @@ public class GreenChannelActivity extends AppCompatActivity implements GreenChan
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+        StatusBarHelper.setStatusBar(this);
     }
 }

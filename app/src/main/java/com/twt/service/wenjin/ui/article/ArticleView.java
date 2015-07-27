@@ -15,12 +15,14 @@ public interface ArticleView {
 
     void toastMessage(String msg);
 
-    void setAgree(boolean isAgree, int agreeCount);
+    void setAgree(int voteState, int agreeCount);
 
-    void setDisagree(boolean isDisagree);
+    void setDisagree(int voteState);
 
     void startProfileActivity();
 
     void startCommentActivity();
+
+    void setAgreeCount(int agreeCount);
 
 }

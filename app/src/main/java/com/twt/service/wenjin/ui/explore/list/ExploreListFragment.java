@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.AnswerInfo;
+import com.twt.service.wenjin.bean.Article;
 import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
@@ -166,6 +167,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
             AnswerDetailActivity.actionStart(getActivity(), answerInfo.answer_id, answerInfo.answer_content);
         }
     }
+
 
     @Override
     public void showFooter() {

@@ -2,6 +2,7 @@ package com.twt.service.wenjin.api;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -36,7 +37,7 @@ public class ApiClient {
     private static final PersistentCookieStore sCookieStore = new PersistentCookieStore(WenJinApp.getContext());
     private static final int DEFAULT_TIMEOUT = 20000;
 
-    private static final String BASE_URL = "http://wj.oursays.com/";
+    private static final String BASE_URL = "http://wenjin.in/";
 //    private static final String BASE_URL = "http://wenjin.test.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
     public static final String GREEN_CHANNEL_URL = "http://wenjin.in/account/green/";
@@ -243,7 +244,6 @@ public class ApiClient {
         RequestParams params = new RequestParams();
         params.put("answer_id", answerId);
         params.put("value", value);
-
         sClient.post(BASE_URL + ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
     }
 
@@ -260,7 +260,6 @@ public class ApiClient {
         params.put("type", "article");
         params.put("item_id", articleId);
         params.put("rating", value);
-
         sClient.post(BASE_URL + ARTICLE_VOTE_URL, params, new JsonHttpResponseHandler());
 
     }
@@ -378,9 +377,9 @@ public class ApiClient {
         sClient.post(BASE_URL + PROFILE_EDIT_URL, params, handler);
     }
 
-    public static void avatarUpload(int uid,  String user_avatar, JsonHttpResponseHandler handler){
+    public static void avatarUpload(int uid,  String user_avatar, JsonHttpResponseHandler handler) throws FileNotFoundException {
         RequestParams params = new RequestParams();
-            params.put("user_avatar", user_avatar);
+            params.put("user_avatar", new File(user_avatar));
         sClient.post(BASE_URL + AVATAR_UPLOAD_URL, params, handler);
     }
 

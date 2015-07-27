@@ -1,6 +1,9 @@
 package com.twt.service.wenjin.ui.profile.edit;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -25,11 +28,13 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.event.SelectPhotoResultEvent;
+import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.SelectPhotoDialogFragment;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,7 +44,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileEditActivity extends BaseActivity implements ProfileEditView, View.OnClickListener {
+public class ProfileEditActivity extends BaseActivity implements ProfileEditView {
 
     private static final String PARAM_UID = "uid";
 
@@ -57,8 +62,11 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
     @Inject
     ProfileEditPresenter profileEditPresenter;
 
+    private ProgressDialog progressDialog;
+
     private int uid;
     private UserInfo _userInfo;
+    private static String user_avatar;
 
 
     public static void actionStart(Context context, int uid) {
@@ -79,6 +87,12 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
         if (profileEditPresenter == null) {
             Log.e("null", "null");
         }
+        ivProfileEditAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SelectPhotoDialogFragment().show(ProfileEditActivity.this);
+            }
+        });
         profileEditPresenter.getUserInfo(uid);
     }
 
@@ -113,10 +127,22 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
     public void bindUserInfo(UserInfo userInfo) {
         _userInfo = userInfo;
         if (!TextUtils.isEmpty(userInfo.avatar_file)) {
-            Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(ivProfileEditAvatar);
+            Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).skipMemoryCache().into(ivProfileEditAvatar);
         }
         edtProfileEditUsername.setText(userInfo.nick_name);
         edtProfileEditDescription.setText(userInfo.signature);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        BusProvider.getBusInstance().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        BusProvider.getBusInstance().unregister(this);
     }
 
     @Override
@@ -142,11 +168,45 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.iv_profile_edit_avatar:
-                new SelectPhotoDialogFragment().show(this);
-                break;
+    public void showProgressDialog() {
+        progressDialog = ProgressDialog.show(this, null, null);
+        progressDialog.setCanceledOnTouchOutside(true);
+    }
+
+    @Override
+    public void hideProgressDialog() {
+        progressDialog.dismiss();
+    }
+
+    @Override
+    public void showFailureDialog(String errorMsg) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("提示");
+        builder.setMessage(errorMsg);
+        builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+
+    }
+
+
+    @Subscribe
+    public void onSelectPhotoResult(SelectPhotoResultEvent event) {
+        if (event.getPhotoFilePath() != null) {
+            String path = event.getPhotoFilePath();
+            user_avatar = path;
+            Bitmap bitmap = ResourceHelper.readBitmapAutoSize(user_avatar, ivProfileEditAvatar.getWidth(), ivProfileEditAvatar.getHeight());
+            ivProfileEditAvatar.setImageBitmap(bitmap);
+            try {
+                profileEditPresenter.uploadAvatar(uid, user_avatar);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

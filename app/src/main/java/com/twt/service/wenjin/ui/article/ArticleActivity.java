@@ -46,6 +46,10 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
 
     private static final String PARAM_ARTICLE_ID = "article_id";
     private static final String PARAM_ARTICLE = "article";
+
+    private static final int VOTE_STATE_UPVOTE = 1;
+    private static final int VOTE_STATE_DOWNVOTE = -1;
+    private static final int VOTE_STATE_NONE = 0;
     @Inject
     ArticlePresenter mPresenter;
     @InjectView(R.id.tv_article_title)
@@ -93,6 +97,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("文章");
         articleId = getIntent().getIntExtra(PARAM_ARTICLE_ID, 0);
         LogHelper.i(LOG_TAG, "article id: " + articleId);
         mPresenter.loadArticle(articleId);
@@ -150,7 +155,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
                 mPresenter.actionVote(articleId, 1);
                 break;
             case R.id.iv_article_disagree:
-                mPresenter.actionVote(articleId, -1);
+                mPresenter.actionDownVote(articleId, -1);
                 break;
             case R.id.ll_article_comment:
                 startCommentActivity();
@@ -204,12 +209,13 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
     }
 
     @Override
-    public void setAgree(boolean isAgree, int agreeCount) {
+    public void setAgree(int voteState, int agreeCount) {
 
-        if (isAgree) {
+        if (voteState == VOTE_STATE_UPVOTE) {
             ivArticleAgree.setImageResource(R.drawable.ic_action_agreed);
             tvArticleAgreeCount.setTextColor(getResources().getColor(R.color.color_did));
             tvArticleAgree.setTextColor(getResources().getColor(R.color.color_did));
+            ivArticleDisagree.setImageResource(R.drawable.ic_action_disagree);
         } else {
             ivArticleAgree.setImageResource(R.drawable.ic_action_agree);
             tvArticleAgreeCount.setTextColor(getResources().getColor(R.color.color_text_secondary));
@@ -219,9 +225,12 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
     }
 
     @Override
-    public void setDisagree(boolean isDisagree) {
-        if (isDisagree) {
+    public void setDisagree(int voteState) {
+        if (voteState == VOTE_STATE_DOWNVOTE) {
             ivArticleDisagree.setImageResource(R.drawable.ic_action_disagreed);
+            tvArticleAgreeCount.setTextColor(getResources().getColor(R.color.color_text_secondary));
+            tvArticleAgree.setTextColor(getResources().getColor(R.color.color_text_secondary));
+            ivArticleAgree.setImageResource(R.drawable.ic_action_agree);
         } else {
             ivArticleDisagree.setImageResource(R.drawable.ic_action_disagree);
         }
@@ -236,6 +245,11 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
     @Override
     public void startCommentActivity() {
         CommentActivlty.actionStart(this, articleId);
+    }
+
+    @Override
+    public void setAgreeCount(int agreeCount) {
+        tvArticleAgreeCount.setText(String.valueOf(agreeCount));
     }
 
 
