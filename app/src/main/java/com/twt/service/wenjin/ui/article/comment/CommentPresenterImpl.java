@@ -36,17 +36,19 @@ public class CommentPresenterImpl implements CommentPresenter, OnPublishCommentC
     }
 
     @Override
-    public void onPublishSuccess() {
+    public void onPublishSuccess(View view) {
         this.loadComment(articleId);
         commentView.clearTextContent();
         commentView.toastMessage(ResourceHelper.getString(R.string.comment_success));
+        view.setClickable(true);
 
     }
 
     @Override
-    public void onPublishFailure(String errorMsg) {
+    public void onPublishFailure(String errorMsg, View view) {
 
         commentView.toastMessage(errorMsg);
+        view.setClickable(true);
     }
 
     @Override
@@ -56,9 +58,9 @@ public class CommentPresenterImpl implements CommentPresenter, OnPublishCommentC
     }
 
     @Override
-    public void publishComment(int articleId, String message) {
+    public void publishComment(int articleId, String message, View view) {
         this.articleId = articleId;
-        interactor.publishComment(articleId, message, this);
+        interactor.publishComment(articleId, message,view, this);
     }
 
     @Override
