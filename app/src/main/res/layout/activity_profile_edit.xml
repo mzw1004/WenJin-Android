@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/edit_text_background"
+        android:hint="昵称"
         android:gravity="center" />
 
     <EditText
@@ -32,6 +33,7 @@
         android:layout_width="192dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:hint="简介"
         android:background="@drawable/edit_text_background"
         android:gravity="center" />
 

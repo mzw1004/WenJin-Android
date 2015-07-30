@@ -192,7 +192,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     protected void onPause() {
         super.onPause();
-        JPushInterface.onPause(this);
+        //JPushInterface.onPause(this);
     }
 
     @Subscribe

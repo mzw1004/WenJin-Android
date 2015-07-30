@@ -126,7 +126,6 @@ public class PublishActivity extends BaseActivity implements PublishView {
 //            Bitmap bitmap = BitmapFactory.decodeFile(path);
             Bitmap bitmap = ResourceHelper.readBitmapAutoSize(path, etContent.getWidth(), etContent.getWidth());
             ImageSpan span = new ImageSpan(bitmap, ImageSpan.ALIGN_BASELINE);
-
             int start = etContent.getSelectionStart();
             int end = start + path.length();
             etContent.getText().insert(start, path);

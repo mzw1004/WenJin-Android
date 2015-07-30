@@ -2,6 +2,7 @@ package com.twt.service.wenjin.api;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -32,14 +33,14 @@ public class ApiClient {
     public static final int SUCCESS_CODE = 1;
     public static final int ERROR_CODE = -1;
 
-    private static final AsyncHttpClient sClient = new AsyncHttpClient();
+    private static AsyncHttpClient sClient = new AsyncHttpClient();
     private static final PersistentCookieStore sCookieStore = new PersistentCookieStore(WenJinApp.getContext());
-    private static final int DEFAULT_TIMEOUT = 20000;
+    public static final int DEFAULT_TIMEOUT = 20000;
 
-    private static final String BASE_URL = "http://wj.oursays.com/";
+    private static final String BASE_URL = "http://wenjin.in/";
 //    private static final String BASE_URL = "http://wenjin.test.twtstudio.com/";
     private static final String LOGIN_URL = "?/api/account/login_process/";
-    public static final String GREEN_CHANNEL_URL = "http://wenjin.in/account/green/";
+    public static final  String GREEN_CHANNEL_URL = "http://wenjin.in/account/green/";
     private static final String HOME_URL = "?/api/home/";
     private static final String EXPLORE_URL = "?/api/explore/";
     private static final String TOPIC_URL = "?/api/topic/square/";
@@ -224,11 +225,11 @@ public class ApiClient {
     }
 
     public static void publishArticleComment(int articleId, String message, JsonHttpResponseHandler handler) {
-        Uri url = Uri.parse(BASE_URL + PUBLISH_ARTICLE_COMMENT_URL).buildUpon().appendQueryParameter("articleId", String.valueOf(articleId)).build();
+        //Uri url = Uri.parse(BASE_URL + PUBLISH_ARTICLE_COMMENT_URL).buildUpon().appendQueryParameter("articleId", String.valueOf(articleId)).build();
         RequestParams params = new RequestParams();
         params.put("article_id", articleId);
         params.put("message", message);
-        sClient.post(url.toString(), params, handler);
+        sClient.post(BASE_URL + PUBLISH_ARTICLE_COMMENT_URL, params, handler);
 
     }
 
@@ -243,7 +244,6 @@ public class ApiClient {
         RequestParams params = new RequestParams();
         params.put("answer_id", answerId);
         params.put("value", value);
-
         sClient.post(BASE_URL + ANSWER_VOTE_URL, params, new JsonHttpResponseHandler());
     }
 
@@ -260,7 +260,6 @@ public class ApiClient {
         params.put("type", "article");
         params.put("item_id", articleId);
         params.put("rating", value);
-
         sClient.post(BASE_URL + ARTICLE_VOTE_URL, params, new JsonHttpResponseHandler());
 
     }
@@ -378,9 +377,9 @@ public class ApiClient {
         sClient.post(BASE_URL + PROFILE_EDIT_URL, params, handler);
     }
 
-    public static void avatarUpload(int uid,  String user_avatar, JsonHttpResponseHandler handler){
+    public static void avatarUpload(int uid,  String user_avatar, JsonHttpResponseHandler handler) throws FileNotFoundException {
         RequestParams params = new RequestParams();
-            params.put("user_avatar", user_avatar);
+            params.put("user_avatar", new File(user_avatar));
         sClient.post(BASE_URL + AVATAR_UPLOAD_URL, params, handler);
     }
 
