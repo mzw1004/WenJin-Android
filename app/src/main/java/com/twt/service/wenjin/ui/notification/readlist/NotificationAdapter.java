@@ -184,16 +184,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case "116":
                     itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.answer_comment_atted_you));
                     break;
+                case "117":
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.comment_your_article));
+                    break;
+                case "118":
+                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.article_comment_mentioned_you));
+                    break;
             }
 
-            if(notificationItem.title == null || notificationItem.related == null){
+            if(notificationItem.title == null){
                 //itemHolder.tvContent.setVisibility(View.GONE);
                 itemHolder.tvTitle.setVisibility(View.GONE);
             }else {
                 itemHolder.tvTitle.setVisibility(View.VISIBLE);
                 //itemHolder.tvContent.setVisibility(View.VISIBLE);
                 itemHolder.tvTitle.setText(notificationItem.title);
-
             }
 
 

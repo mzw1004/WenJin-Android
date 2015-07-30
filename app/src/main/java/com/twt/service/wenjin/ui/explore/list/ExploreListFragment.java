@@ -143,7 +143,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     @Override
     public void startQuestionArticlActivity(int position) {
         ExploreItem item = _exploreListAdapter.getItem(position);
-        if (item.post_type.endsWith("article")) {
+        if (0 == item.post_type.compareTo("article")) {
             ArticleActivity.actionStart(getActivity(), item.id);
         }else{
             QuestionActivity.actionStart(getActivity(), item.question_id);

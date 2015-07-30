@@ -33,9 +33,9 @@ public class ApiClient {
     public static final int SUCCESS_CODE = 1;
     public static final int ERROR_CODE = -1;
 
-    private static final AsyncHttpClient sClient = new AsyncHttpClient();
+    private static AsyncHttpClient sClient = new AsyncHttpClient();
     private static final PersistentCookieStore sCookieStore = new PersistentCookieStore(WenJinApp.getContext());
-    private static final int DEFAULT_TIMEOUT = 20000;
+    public static final int DEFAULT_TIMEOUT = 20000;
 
     private static final String BASE_URL = "http://wenjin.in/";
 //    private static final String BASE_URL = "http://wenjin.test.twtstudio.com/";

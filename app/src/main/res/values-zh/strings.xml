@@ -61,7 +61,9 @@
     <string name="deleted_your_question">删除了你的问题</string>
     <string name="thanked_your_question">感谢了你的问题</string>
     <string name="answer_ated_you">在回答中提到你</string>
-    <string name="answer_comment_atted_you">在答案评论中提到你</string>
+    <string name="answer_comment_atted_you">在回答评论中提到你</string>
+    <string name="comment_your_article">评论了你的文章</string>
+    <string name="article_comment_mentioned_you">在文章评论中提到你</string>
 
     <string name="anonymous">匿名用户</string>
     <string name="markasread">标记为已读</string>

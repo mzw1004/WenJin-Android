@@ -11,7 +11,12 @@ public class NotificationMsg {
     public int type;
 
     /*
-      通知ID
+      通知关联ID
      */
     public int id;
+
+    /*
+    通知ID
+   */
+    public int nid;
 }

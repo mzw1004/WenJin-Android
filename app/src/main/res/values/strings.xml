@@ -64,6 +64,8 @@
     <string name="thanked_your_question">Thanked your question</string>
     <string name="answer_ated_you">Answer mentioned you</string>
     <string name="answer_comment_atted_you">Answer comment mentioned you</string>
+    <string name="comment_your_article">Replied your article</string>
+    <string name="article_comment_mentioned_you">Article comment mentioned you</string>
     
     <string name="anonymous">Anonymous</string>
     <string name="markasread">Mark as read</string>

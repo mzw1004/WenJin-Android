@@ -9,10 +9,12 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.twt.service.wenjin.WenJinApp;
+import com.twt.service.wenjin.bean.Article;
 import com.twt.service.wenjin.bean.NotificationItem;
 import com.twt.service.wenjin.bean.NotificationMsg;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
+import com.twt.service.wenjin.ui.article.ArticleActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 import com.twt.service.wenjin.ui.notification.NotificationType;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
@@ -91,6 +93,7 @@ public class JPushNotiReceiver extends BroadcastReceiver {
     }
 
     private static final String PARAM_QUESTION_ID = "question_id";
+    private static final String PARAM_ATRICLE_ID = "article_id";
 
     private static final String PARAM_ANSWER_ID = "answer_id";
     private static final String PARAM_QUESTION = "question";
@@ -159,6 +162,23 @@ public class JPushNotiReceiver extends BroadcastReceiver {
                     context.startActivity(intentMain);
                 } else {
                     intent.setClass(context, ProfileActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }else if(notificationMsg.type == NotificationType.TYPE_ARTICLE_NEW_COMMENT
+                    ||notificationMsg.type == NotificationType.TYPE_ARTICLE_COMMENT_AT_ME){
+                Intent intent = new Intent(context, ArticleActivity.class);
+                intent.putExtra(PARAM_ATRICLE_ID, notificationMsg.id);
+                intent.putExtra(INTENT_FLAG_NOTIFICATION, INTENT_FLAG_NOTIFICATION_VALUE);
+                if (!WenJinApp.isAppLunched()) {
+                    NotificationBuffer.setsIntent(intent);
+                    NotificationBuffer.setObjClass(ArticleActivity.class);
+                    Intent intentMain = new Intent(context, WelcomeActivity.class);
+                    intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    context.startActivity(intentMain);
+
+                } else {
+                    intent.setClass(context, ArticleActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }

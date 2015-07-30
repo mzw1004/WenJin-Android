@@ -29,7 +29,7 @@ public interface NotificationView {
 
     void deleteItem(int argPosition);
 
-    void startQuestionActivity(int position);
+    void startQuestionArticleActivity(int position);
 
     void startAnswerActivity(int position);
 

@@ -75,6 +75,13 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 onPublishCommentCallback.onPublishFailure(throwable.toString());
+
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+
             }
         });
 
