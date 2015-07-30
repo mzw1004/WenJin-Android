@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -81,13 +82,10 @@ public class CommentActivity extends BaseActivity implements CommentView, OnItem
             @Override
             public void onClick(final View v) {
                 v.setClickable(false);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        v.setClickable(true);
-                    }
-                }, 2000);
-                mPresenter.publishComment(answerId, etContent.getText().toString());
+                mPresenter.publishComment(answerId, etContent.getText().toString(), v);
+                etContent.setText("");
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
     }

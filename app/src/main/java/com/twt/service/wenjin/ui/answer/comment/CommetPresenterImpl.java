@@ -32,9 +32,9 @@ public class CommetPresenterImpl implements
     }
 
     @Override
-    public void publishComment(int answerId, String content) {
+    public void publishComment(int answerId, String content, View view) {
         this.answerId = answerId;
-        mInteractor.publishComment(answerId, content, this);
+        mInteractor.publishComment(answerId, content,view, this);
     }
 
     @Override
@@ -54,14 +54,16 @@ public class CommetPresenterImpl implements
     }
 
     @Override
-    public void onPublishSuccess() {
+    public void onPublishSuccess(View view) {
         this.loadComments(answerId);
         mView.clearTextContent();
         mView.toastMessage(ResourceHelper.getString(R.string.comment_success));
+        view.setClickable(true);
     }
 
     @Override
-    public void onPublishFailure(String errorMsg) {
+    public void onPublishFailure(String errorMsg, View view) {
         mView.toastMessage(errorMsg);
+        view.setClickable(true);
     }
 }

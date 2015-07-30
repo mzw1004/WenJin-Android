@@ -104,6 +104,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
         ivArticleAgree.setOnClickListener(this);
         ivArticleDisagree.setOnClickListener(this);
         llArticleComment.setOnClickListener(this);
+        ivArticleAvatar.setOnClickListener(this);
     }
 
     @Override
@@ -160,7 +161,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
             case R.id.ll_article_comment:
                 startCommentActivity();
                 break;
-            case R.id.iv_answer_avatar:
+            case R.id.iv_article_avatar:
                 startProfileActivity();
         }
     }

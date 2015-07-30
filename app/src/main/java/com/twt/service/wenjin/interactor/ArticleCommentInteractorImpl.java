@@ -45,7 +45,7 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
     }
 
     @Override
-    public void publishComment(int articleId, String content, final OnPublishCommentCallback onPublishCommentCallback) {
+    public void publishComment(int articleId, String content, final View view, final OnPublishCommentCallback onPublishCommentCallback) {
         ApiClient.publishArticleComment(articleId, content, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -54,10 +54,10 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
                 try {
                     switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
                         case ApiClient.SUCCESS_CODE:
-                            onPublishCommentCallback.onPublishSuccess();
+                            onPublishCommentCallback.onPublishSuccess(view);
                             break;
                         case ApiClient.ERROR_CODE:
-                            onPublishCommentCallback.onPublishFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
+                            onPublishCommentCallback.onPublishFailure(ApiClient.RESP_ERROR_CODE_KEY, view);
                             break;
                     }
                 } catch (JSONException e) {
@@ -84,7 +84,6 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
 
             }
         });
-
 
 
 
