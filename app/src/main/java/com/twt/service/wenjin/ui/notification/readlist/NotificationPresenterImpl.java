@@ -124,6 +124,7 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
 
     @Override
     public void onMarkAllNotificationSuccess() {
+
         mView.hideViewMarkAll();
     }
 

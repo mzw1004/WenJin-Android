@@ -113,8 +113,8 @@ public class HomeFragment extends BaseFragment implements
             }
         });
 
-        mPresenter.refreshHomeItems();
-
+        //mPresenter.refreshHomeItems();
+        mPresenter.firstTimeRefreshHomeItems();
         return rootView;
     }
 
