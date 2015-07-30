@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.interactor;
 
+import android.view.View;
+
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
@@ -46,7 +48,7 @@ public class CommentInteractorImpl implements CommentInteractor {
     }
 
     @Override
-    public void publishComment(int answerId, String content, final OnPublishCommentCallback callback) {
+    public void publishComment(int answerId, String content, final View view, final OnPublishCommentCallback callback) {
         ApiClient.publishComment(answerId, content, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -55,10 +57,10 @@ public class CommentInteractorImpl implements CommentInteractor {
                 try {
                     switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
                         case ApiClient.SUCCESS_CODE:
-                            callback.onPublishSuccess();
+                            callback.onPublishSuccess(view);
                             break;
                         case ApiClient.ERROR_CODE:
-                            callback.onPublishFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
+                            callback.onPublishFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY), view);
                             break;
                     }
                 } catch (JSONException e) {

@@ -126,7 +126,7 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             if( 0 == exploreItem.post_type.compareTo("article")){
                 itemHolder._tvTitle.setText(exploreItem.title);
                 itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.add_time));
-
+                itemHolder._tvContent.setVisibility(View.GONE);
                 if(exploreItem.user_info != null) {
                     itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
                     if(!TextUtils.isEmpty(exploreItem.user_info.avatar_file)){
@@ -141,6 +141,7 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             itemHolder._tvTitle.setText(exploreItem.question_content);
             itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
+            itemHolder._tvContent.setVisibility(View.VISIBLE);
             if(0 == exploreItem.answer_count){
                 if(exploreItem.user_info != null) {
                     itemHolder._tvUser.setText(exploreItem.user_info.nick_name);

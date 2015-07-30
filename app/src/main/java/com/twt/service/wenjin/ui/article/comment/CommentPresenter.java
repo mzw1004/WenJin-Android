@@ -9,7 +9,7 @@ public interface CommentPresenter {
 
     void loadComment(int articleId);
 
-    void publishComment(int articleId, String message);
+    void publishComment(int articleId, String message, View view);
 
     void onItemClicked(View view, int position);
 }

@@ -124,6 +124,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
 
             itemHolder.tvUsername.setText(homeItem.user_info.nick_name);
+
             itemHolder.tvTime.setText(FormatHelper.getTimeFromNow(homeItem.add_time));
             switch (homeItem.associate_action) {
                 case 101:

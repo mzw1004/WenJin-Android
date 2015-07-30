@@ -16,11 +16,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.bean.Article;
 import com.twt.service.wenjin.bean.NotificationItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
+import com.twt.service.wenjin.ui.article.ArticleActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
@@ -207,10 +209,12 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     }
 
     @Override
-    public void startQuestionActivity(int position) {
+    public void startQuestionArticleActivity(int position) {
         NotificationItem notificationItem = mAdapter.getItems(position);
         if(notificationItem.related != null){
             QuestionActivity.actionStart(getActivity(), Integer.valueOf(notificationItem.related.question_id));
+        }else {
+            ArticleActivity.actionStart(getActivity(), Integer.valueOf(notificationItem.key_url));
         }
     }
 
