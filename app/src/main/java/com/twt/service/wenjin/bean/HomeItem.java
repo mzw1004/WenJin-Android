@@ -23,5 +23,5 @@ public class HomeItem {
 
     public ArticleInfo article_info;
 
-    //public TopicInfo topic_info;
+    public TopicInfo topic_info;
 }

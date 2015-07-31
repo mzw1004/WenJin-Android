@@ -42,6 +42,13 @@
     <string name="agree_answer">赞同了该回答</string>
     <string name="post_article">发布了文章</string>
     <string name="agree_article">赞同了该文章</string>
+
+    <string name="post_question_topic">话题 新增了一个问题</string>
+    <string name="reply_question_topic">话题 新增了一个回答</string>
+    <string name="agree_answer_topic">话题 新增了一个回答赞同</string>
+    <string name="post_article_topic">话题 新增了一篇文章</string>
+    <string name="agree_article_topic">话题 新增了一个文章赞同</string>
+
     <string name="fab_label_question">问题</string>
     <string name="fab_label_article">文章</string>
 
@@ -191,5 +198,9 @@
     <string name="no_any_drafts">不存在任何草稿。</string>
     <string name="action_delete">删除</string>
 
+    <!--Article activity-->
+    <string name="title_activity_article">文章</string>
+    <!-- Green Channel activity-->
+    <string name="title_activity_green_channel">快速注册</string>
 
 </resources>
