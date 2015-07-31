@@ -83,6 +83,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     private UserInfo _userInfo;
 
     public static void actionStart(Context context, int uid) {
+        if(uid == -1){
+            return;
+        }
         Intent intent = new Intent(context, ProfileActivity.class);
         intent.putExtra(PARM_USER_ID, uid);
         context.startActivity(intent);
