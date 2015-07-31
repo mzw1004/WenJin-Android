@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
+import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.support.StatusBarHelper;
 
 import butterknife.ButterKnife;
@@ -47,7 +48,7 @@ public class GreenChannelActivity extends AppCompatActivity implements GreenChan
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("快速注册");
+        getSupportActionBar().setTitle(ResourceHelper.getString(R.string.login_signin));
         greenChannelPresenter = new GreenChannelPresenter(this);
         greenChannelPresenter.loadGreenChannel();
     }

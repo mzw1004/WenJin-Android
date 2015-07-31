@@ -26,6 +26,7 @@ import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.publish.PublishActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
+import com.twt.service.wenjin.ui.topic.detail.TopicDetailActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -113,8 +114,8 @@ public class HomeFragment extends BaseFragment implements
             }
         });
 
-        mPresenter.refreshHomeItems();
-
+        //mPresenter.refreshHomeItems();
+        mPresenter.firstTimeRefreshHomeItems();
         return rootView;
     }
 
@@ -170,6 +171,10 @@ public class HomeFragment extends BaseFragment implements
     @Override
     public void startProfileActivity(int position) {
         HomeItem item = mHomeAdapter.getItem(position);
+        if(item.topic_info != null){
+            TopicDetailActivity.actionStart(getActivity(),item.topic_info.topic_id ,item.topic_info.topic_title);
+            return;
+        }
         if (item.user_info != null) {
             ProfileActivity.actionStart(getActivity(), item.user_info.uid);
         }

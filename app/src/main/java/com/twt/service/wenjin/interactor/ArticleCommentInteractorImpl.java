@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.interactor;
 
+import android.view.View;
+
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
@@ -68,13 +70,13 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                onPublishCommentCallback.onPublishFailure(responseString);
+                LogHelper.v(LOG_TAG, "publish comment failed: " + responseString);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                onPublishCommentCallback.onPublishFailure(throwable.toString());
+                LogHelper.v(LOG_TAG, "publish comment failed: " + throwable.toString());
 
             }
 

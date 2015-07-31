@@ -22,4 +22,6 @@ public class HomeItem {
     public AnswerInfo answer_info;
 
     public ArticleInfo article_info;
+
+    public TopicInfo topic_info;
 }
