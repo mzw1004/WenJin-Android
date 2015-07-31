@@ -15,4 +15,7 @@ public interface ProfileView {
 
     void removeFocus();
 
+    void showProgressBar();
+
+    void hideProgressBar();
 }

@@ -18,6 +18,7 @@ import com.twt.service.wenjin.bean.QuestionInfo;
 import com.twt.service.wenjin.bean.QuestionResponse;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.support.UmengShareHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.AnswerActivity;
@@ -128,14 +129,14 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
                 break;
             case R.id.iv_question_answer_avatar:
                 if (mQuestionAdapter.getAnswer(position).uid == -1){
-                    Toast.makeText(this, "该用户不存在", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, ResourceHelper.getString(R.string.not_exist), Toast.LENGTH_SHORT).show();
                 }else {
                     startProfileActivity(position);
                 }
                 break;
             case R.id.tv_question_answer_username:
                 if(mQuestionAdapter.getAnswer(position).uid == -1){
-                    Toast.makeText(this, "该用户不存在", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, ResourceHelper.getString(R.string.not_exist), Toast.LENGTH_SHORT).show();
                 }else {
                     startProfileActivity(position);
                 }

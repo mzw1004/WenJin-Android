@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,9 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.view.View.GONE;
 import static android.view.View.OnClickListener;
+import static android.view.View.VISIBLE;
 
 public class ProfileActivity extends BaseActivity implements ProfileView, OnClickListener {
 
@@ -73,6 +76,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     TextView tvAsk;
     @InjectView(R.id.tv_profile_answer)
     TextView tvAnswer;
+    @InjectView(R.id.profile_follow_loading)
+    ProgressBar pbProfileFollowLoading;
 
     private int uid;
     private UserInfo _userInfo;
@@ -205,9 +210,22 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     }
 
     @Override
+    public void showProgressBar() {
+        if(pbProfileFollowLoading == null || pbProfileFollowLoading.getVisibility() == VISIBLE) return;
+        pbProfileFollowLoading.setVisibility(VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        if(pbProfileFollowLoading == null || pbProfileFollowLoading.getVisibility() == View.GONE) return;
+        pbProfileFollowLoading.setVisibility(GONE);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_profile_focus:
+
                 mPresenter.actionFocus(uid);
                 break;
             case R.id.tv_profile_ask:

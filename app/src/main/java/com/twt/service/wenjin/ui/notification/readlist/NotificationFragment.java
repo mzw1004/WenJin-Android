@@ -98,6 +98,9 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
             mTvMarkall.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(mUpdateNotifiIconListener != null){
+                        mUpdateNotifiIconListener.updateNotificationIcon();
+                    }
                     mPresenter.markAllNotificationAsRead();
                     hideMarkAllView();
                 }
