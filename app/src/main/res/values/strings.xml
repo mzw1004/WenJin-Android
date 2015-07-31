@@ -42,6 +42,13 @@
     <string name="agree_answer">Upvote this answer</string>
     <string name="post_article">Article post written</string>
     <string name="agree_article">Upvote this article</string>
+
+    <string name="post_question_topic">Topic Add a question</string>
+    <string name="reply_question_topic">Topic Add an answer</string>
+    <string name="agree_answer_topic">Topic Add an answer upvote</string>
+    <string name="post_article_topic">Topic Add an article</string>
+    <string name="agree_article_topic">Topic Add an article upvote</string>
+
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
