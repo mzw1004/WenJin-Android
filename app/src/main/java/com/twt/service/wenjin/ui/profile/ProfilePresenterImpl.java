@@ -26,6 +26,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCall
 
     @Override
     public void actionFocus(int uid) {
+        mView.showProgressBar();
         mInteractor.actionFocus(uid, this);
     }
 
@@ -42,6 +43,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCall
 
     @Override
     public void onFocusSuccess(boolean isfocused) {
+        mView.hideProgressBar();
         if (isfocused) {
             mView.addFocus();
         } else {
@@ -51,6 +53,7 @@ public class ProfilePresenterImpl implements ProfilePresenter, OnGetUserInfoCall
 
     @Override
     public void onFocusFailure(String errorMsg) {
+        mView.hideProgressBar();
         mView.toastMessage(errorMsg);
     }
 

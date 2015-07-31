@@ -117,14 +117,22 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.tvContent.setOnClickListener(clickListener);
 
             HomeItem homeItem = mDataset.get(position);
-            if (!TextUtils.isEmpty(homeItem.user_info.avatar_file)) {
-                Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
-            } else {
-                itemHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
-            }
-
-            itemHolder.tvUsername.setText(homeItem.user_info.nick_name);
-
+            /*
+            if(homeItem.topic_info != null){
+                itemHolder.tvUsername.setText(homeItem.topic_info.topic_title);
+                if (!TextUtils.isEmpty(homeItem.topic_info.topic_pic)) {
+                    Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.topic_info.topic_pic)).into(itemHolder.ivAvatar);
+                } else {
+                    itemHolder.ivAvatar.setImageResource(R.drawable.ic_topic_pic);
+                }
+            }else { */
+                if (!TextUtils.isEmpty(homeItem.user_info.avatar_file)) {
+                    Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
+                } else {
+                    itemHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
+                }
+                itemHolder.tvUsername.setText(homeItem.user_info.nick_name);
+            //}
             itemHolder.tvTime.setText(FormatHelper.getTimeFromNow(homeItem.add_time));
             switch (homeItem.associate_action) {
                 case 101:
