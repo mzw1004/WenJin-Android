@@ -198,7 +198,6 @@
     <string name="no_any_drafts">不存在任何草稿。</string>
     <string name="action_delete">删除</string>
 
-    <!--Article activity-->
     <string name="title_activity_article">文章</string>
     <!-- Green Channel activity-->
     <string name="title_activity_green_channel">快速注册</string>
