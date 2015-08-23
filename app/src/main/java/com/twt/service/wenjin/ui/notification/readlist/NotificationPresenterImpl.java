@@ -78,7 +78,7 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
                 mView.startProfileActivity(argPosition);
                 break;
             case R.id.tv_notifi_item_title:
-                mView.startQuestionActivity(argPosition);
+                mView.startQuestionArticleActivity(argPosition);
                 mView.deleteItem(argPosition);
                 break;
             case R.id.tv_notifi_item_content:
@@ -124,6 +124,7 @@ public class NotificationPresenterImpl implements NotificationPresenter , OnGetN
 
     @Override
     public void onMarkAllNotificationSuccess() {
+
         mView.hideViewMarkAll();
     }
 

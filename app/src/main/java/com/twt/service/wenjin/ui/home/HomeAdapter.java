@@ -117,33 +117,63 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.tvContent.setOnClickListener(clickListener);
 
             HomeItem homeItem = mDataset.get(position);
-            if (!TextUtils.isEmpty(homeItem.user_info.avatar_file)) {
-                Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
-            } else {
-                itemHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
-            }
 
-            itemHolder.tvUsername.setText(homeItem.user_info.nick_name);
             itemHolder.tvTime.setText(FormatHelper.getTimeFromNow(homeItem.add_time));
             switch (homeItem.associate_action) {
                 case 101:
-                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question));
+                    if(homeItem.topic_info != null) {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question_topic));
+                    }
+                    else {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_question));
+                    }
                     break;
                 case 105:
                     itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.concern_question));
                     break;
                 case 201:
-                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.reply_question));
+                    if(homeItem.topic_info != null) {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.reply_question_topic));
+                    }else {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.reply_question));
+                    }
                     break;
                 case 204:
-                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_answer));
+                    if(homeItem.topic_info != null) {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_answer_topic));
+                    }else {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_answer));
+                    }
                     break;
                 case 501:
-                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_article));
+                    if(homeItem.topic_info != null) {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_article_topic));
+                    }else {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.post_article));
+                    }
                     break;
                 case 502:
-                    itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_article));
+                    if(homeItem.topic_info != null) {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_article_topic));
+                    }else {
+                        itemHolder.tvStatus.setText(ResourceHelper.getString(R.string.agree_article));
+                    }
                     break;
+            }
+            if(homeItem.topic_info != null){
+                itemHolder.tvUsername.setText(homeItem.topic_info.topic_title);
+                if (!TextUtils.isEmpty(homeItem.topic_info.topic_pic)) {
+                    Picasso.with(mContext).load(ApiClient.getTopicPicUrl(homeItem.topic_info.topic_pic)).into(itemHolder.ivAvatar);
+                } else {
+                    itemHolder.ivAvatar.setImageResource(R.drawable.ic_topic_pic);
+                }
+            }else {
+                if (!TextUtils.isEmpty(homeItem.user_info.avatar_file)) {
+                    Picasso.with(mContext).load(ApiClient.getAvatarUrl(homeItem.user_info.avatar_file)).into(itemHolder.ivAvatar);
+                } else {
+                    itemHolder.ivAvatar.setImageResource(R.drawable.ic_user_avatar);
+                }
+                itemHolder.tvUsername.setText(homeItem.user_info.nick_name);
             }
             if (homeItem.question_info != null) {
                 itemHolder.tvTitle.setText(homeItem.question_info.question_content);

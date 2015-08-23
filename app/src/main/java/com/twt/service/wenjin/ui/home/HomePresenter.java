@@ -7,6 +7,8 @@ import android.view.View;
  */
 public interface HomePresenter {
 
+    void firstTimeRefreshHomeItems();
+
     void refreshHomeItems();
 
     void loadMoreHomeItems();

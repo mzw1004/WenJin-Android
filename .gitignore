@@ -30,3 +30,5 @@ proguard/
 
 # Mac cache files
 .DS_Store
+app/app.iml
+WenJin-Android.iml

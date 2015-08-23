@@ -16,6 +16,7 @@
     <string name="add_in">添加于</string>
     <string name="reply">回复</string>
     <string name="quit">再按一次退出程序</string>
+    <string name="not_exist">该用户不存在</string>
 
     <!-- Main Activity -->
     <string name="action_notification">通知</string>
@@ -41,6 +42,13 @@
     <string name="agree_answer">赞同了该回答</string>
     <string name="post_article">发布了文章</string>
     <string name="agree_article">赞同了该文章</string>
+
+    <string name="post_question_topic">话题 新增了一个问题</string>
+    <string name="reply_question_topic">话题 新增了一个回答</string>
+    <string name="agree_answer_topic">话题 新增了一个回答赞同</string>
+    <string name="post_article_topic">话题 新增了一篇文章</string>
+    <string name="agree_article_topic">话题 新增了一个文章赞同</string>
+
     <string name="fab_label_question">问题</string>
     <string name="fab_label_article">文章</string>
 
@@ -61,7 +69,9 @@
     <string name="deleted_your_question">删除了你的问题</string>
     <string name="thanked_your_question">感谢了你的问题</string>
     <string name="answer_ated_you">在回答中提到你</string>
-    <string name="answer_comment_atted_you">在答案评论中提到你</string>
+    <string name="answer_comment_atted_you">在回答评论中提到你</string>
+    <string name="comment_your_article">评论了你的文章</string>
+    <string name="article_comment_mentioned_you">在文章评论中提到你</string>
 
     <string name="anonymous">匿名用户</string>
     <string name="markasread">标记为已读</string>
@@ -100,6 +110,7 @@
     <string name="login_password_hint">密码</string>
     <string name="login_btn_text">登录</string>
     <string name="login_error_empty">不能为空</string>
+    <string name="login_signin">快速注册</string>
 
     <!-- Question activity strings -->
     <string name="title_activity_question">问题</string>
@@ -187,5 +198,8 @@
     <string name="no_any_drafts">不存在任何草稿。</string>
     <string name="action_delete">删除</string>
 
+    <string name="title_activity_article">文章</string>
+    <!-- Green Channel activity-->
+    <string name="title_activity_green_channel">快速注册</string>
 
 </resources>

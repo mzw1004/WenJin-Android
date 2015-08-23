@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.interactor;
 
+import android.view.View;
+
 import com.twt.service.wenjin.ui.answer.comment.OnGetCommentCallback;
 import com.twt.service.wenjin.ui.answer.comment.OnPublishCommentCallback;
 
@@ -10,6 +12,6 @@ public interface CommentInteractor {
 
     void loadComments(int answerId, OnGetCommentCallback callback);
 
-    void publishComment(int answerId, String content, OnPublishCommentCallback callback);
+    void publishComment(int answerId, String content,View view, OnPublishCommentCallback callback);
 
 }

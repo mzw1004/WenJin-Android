@@ -1,5 +1,7 @@
 package com.twt.service.wenjin.interactor;
 
+import android.view.View;
+
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
@@ -45,7 +47,7 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
     }
 
     @Override
-    public void publishComment(int articleId, String content, final OnPublishCommentCallback onPublishCommentCallback) {
+    public void publishComment(int articleId, String content, final View view, final OnPublishCommentCallback onPublishCommentCallback) {
         ApiClient.publishArticleComment(articleId, content, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -54,15 +56,34 @@ public class ArticleCommentInteractorImpl implements ArticleCommentInteractor {
                 try {
                     switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
                         case ApiClient.SUCCESS_CODE:
-                            onPublishCommentCallback.onPublishSuccess();
+                            onPublishCommentCallback.onPublishSuccess(view);
                             break;
                         case ApiClient.ERROR_CODE:
-                            onPublishCommentCallback.onPublishFailure(ApiClient.RESP_ERROR_CODE_KEY);
+                            onPublishCommentCallback.onPublishFailure(ApiClient.RESP_ERROR_CODE_KEY, view);
                             break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                LogHelper.v(LOG_TAG, "publish comment failed: " + responseString);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                LogHelper.v(LOG_TAG, "publish comment failed: " + throwable.toString());
+
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+
             }
         });
 

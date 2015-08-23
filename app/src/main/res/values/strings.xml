@@ -16,7 +16,7 @@
     <string name="add_in">add in</string>
     <string name="reply">Reply</string>
     <string name="quit">Press again to quit</string>
-    <string name="not_exist">该用户不存在</string>
+    <string name="not_exist">User does not exist</string>
 
     <!-- Main Activity -->
     <string name="action_notification">Notification</string>
@@ -42,6 +42,13 @@
     <string name="agree_answer">Upvote this answer</string>
     <string name="post_article">Article post written</string>
     <string name="agree_article">Upvote this article</string>
+
+    <string name="post_question_topic">Topic Add a question</string>
+    <string name="reply_question_topic">Topic Add an answer</string>
+    <string name="agree_answer_topic">Topic Add an answer upvote</string>
+    <string name="post_article_topic">Topic Add an article</string>
+    <string name="agree_article_topic">Topic Add an article upvote</string>
+
     <string name="fab_label_question">Question</string>
     <string name="fab_label_article">Article</string>
 
@@ -64,6 +71,8 @@
     <string name="thanked_your_question">Thanked your question</string>
     <string name="answer_ated_you">Answer mentioned you</string>
     <string name="answer_comment_atted_you">Answer comment mentioned you</string>
+    <string name="comment_your_article">Replied your article</string>
+    <string name="article_comment_mentioned_you">Article comment mentioned you</string>
     
     <string name="anonymous">Anonymous</string>
     <string name="markasread">Mark as read</string>
@@ -102,6 +111,7 @@
     <string name="login_password_hint">Password</string>
     <string name="login_btn_text">Login</string>
     <string name="login_error_empty">Can Not Be Empty</string>
+    <string name="login_signin">Sign In</string>
 
     <!-- Question activity strings -->
     <string name="title_activity_question">Question</string>

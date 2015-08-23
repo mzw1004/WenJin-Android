@@ -16,7 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.otto.Subscribe;
+import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.WenJinApp;
 import com.twt.service.wenjin.api.ApiClient;
@@ -40,6 +42,10 @@ import com.twt.service.wenjin.ui.home.HomeFragment;
 import com.twt.service.wenjin.ui.notification.NotificationMainFragment;
 import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -114,8 +120,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             this.startActivity(intent);
             NotificationBuffer.setsIntent(null);
         }
-        
-        /*
+
         ApiClient.checkNewVersion(BuildConfig.VERSION_CODE + "", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -132,7 +137,6 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
                 }
             }
         });
-        */
     }
 
     @Override
@@ -192,7 +196,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     protected void onPause() {
         super.onPause();
-        JPushInterface.onPause(this);
+        //JPushInterface.onPause(this);
     }
 
     @Subscribe

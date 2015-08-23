@@ -126,10 +126,10 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             if( 0 == exploreItem.post_type.compareTo("article")){
                 itemHolder._tvTitle.setText(exploreItem.title);
                 itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.add_time));
-
+                itemHolder._tvContent.setVisibility(View.GONE);
                 if(exploreItem.user_info != null) {
                     itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
-                    if(!TextUtils.isEmpty(exploreItem.user_info.avatar_file)){
+                    if((!TextUtils.isEmpty(exploreItem.user_info.avatar_file)) ){
                         Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
                     } else {
                         itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
@@ -141,10 +141,11 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             itemHolder._tvTitle.setText(exploreItem.question_content);
             itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
+            itemHolder._tvContent.setVisibility(View.VISIBLE);
             if(0 == exploreItem.answer_count){
                 if(exploreItem.user_info != null) {
                     itemHolder._tvUser.setText(exploreItem.user_info.nick_name);
-                    if(!TextUtils.isEmpty(exploreItem.user_info.avatar_file) && 0 == exploreItem.anonymous){
+                    if((!TextUtils.isEmpty(exploreItem.user_info.avatar_file)) ){
                         Picasso.with(_context).load(ApiClient.getAvatarUrl(exploreItem.user_info.avatar_file)).into(itemHolder._ivAvatar);
                     } else {
                         itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
@@ -156,7 +157,7 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 if(exploreItem.answer_users.length > 0){
                     AnswerInfo userInfo = exploreItem.answer_users[0];
                     itemHolder._tvUser.setText(userInfo.nick_name);
-                    if (!TextUtils.isEmpty(exploreItem.user_info.avatar_file) && 0 == exploreItem.anonymous) {
+                    if ((!TextUtils.isEmpty(userInfo.avatar_file)) ) {
                         Picasso.with(_context).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(itemHolder._ivAvatar);
                     } else {
                         itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);

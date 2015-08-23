@@ -27,7 +27,7 @@ public interface HomeView {
 
     void loadMoreItems(ArrayList<HomeItem> items);
 
-    void startQuestionActivity(int position);
+    void startQuestionArticlActivity(int position);
 
     void startAnswerActivity(int position);
 

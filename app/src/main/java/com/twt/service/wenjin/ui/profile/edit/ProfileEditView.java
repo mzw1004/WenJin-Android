@@ -11,4 +11,7 @@ public interface ProfileEditView {
     void hideProgressBar();
     void toastMessage(String msg);
     void finishActivity();
+    void showProgressDialog();
+    void hideProgressDialog();
+    void showFailureDialog(String errorMsg);
 }

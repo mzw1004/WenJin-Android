@@ -11,10 +11,12 @@ import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.AnswerInfo;
+import com.twt.service.wenjin.bean.Article;
 import com.twt.service.wenjin.bean.ExploreItem;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseFragment;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
+import com.twt.service.wenjin.ui.article.ArticleActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
@@ -139,10 +141,10 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     }
 
     @Override
-    public void startQuestionActivity(int position) {
+    public void startQuestionArticlActivity(int position) {
         ExploreItem item = _exploreListAdapter.getItem(position);
         if (0 == item.post_type.compareTo("article")) {
-
+            ArticleActivity.actionStart(getActivity(), item.id);
         }else{
             QuestionActivity.actionStart(getActivity(), item.question_id);
         }
@@ -166,6 +168,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
             AnswerDetailActivity.actionStart(getActivity(), answerInfo.answer_id, answerInfo.answer_content);
         }
     }
+
 
     @Override
     public void showFooter() {

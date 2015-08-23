@@ -129,6 +129,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     tagStrings.add(topic.topic_title);
                 }
                 question.tagGroup.setTags(tagStrings);
+
 //                question.tagGroup.setOnClickListener(onClickListener);
 
                 // focus and comment number

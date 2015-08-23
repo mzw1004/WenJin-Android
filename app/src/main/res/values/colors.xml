@@ -7,10 +7,14 @@
     <!--
     <color name="color_primary2">#39CCE6</color>
     <color name="color_primary_dark2">#1AB5D1</color>
-    -->
+
 
     <color name="color_primary">#1BA1E2</color>
     <color name="color_primary_dark">#1990CC</color>
+        -->
+
+    <color name="color_primary">#ff1abc9c</color>
+    <color name="color_primary_dark">#12836D</color>
 
     <color name="color_text_primary_b">#212121</color>
 
@@ -26,23 +30,16 @@
     <color name="color_button3">#66CCCC</color>
     <color name="color_button4">#99CC33</color>
 
-    <color name="color_accent">#1BA1E2</color>  <!--66CC99 -->
-    <color name="color_accent_dark">#1990CC</color> <!--33CC99 -->
+    <color name="color_accent">#ff1abc9c</color>  <!--66CC99 -->
+    <color name="color_accent_dark">#12836D</color> <!--33CC99 -->
 
     <color name="color_low_gray">#D8D8D8</color>
-
-
-
-
-
-
-
 
 
 
     <!--<color name="activity_background">#F5F5F5</color>-->
     <color name="color_drawer_item_selected_background">#e8e8e8</color>
     <color name="black_semi_transparent">#B2000000</color>
-    <color name="color_did">#e05a3c</color>
+    <color name="color_did">#1ba1e2</color>
 
 </resources>

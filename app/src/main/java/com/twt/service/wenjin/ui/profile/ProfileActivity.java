@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +34,11 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.view.View.GONE;
 import static android.view.View.OnClickListener;
+import static android.view.View.VISIBLE;
 
 public class ProfileActivity extends BaseActivity implements ProfileView, OnClickListener {
 
@@ -52,12 +56,10 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.iv_profile_avatar)
-    ImageView ivAvatar;
-    @InjectView(R.id.tv_profile_username)
-    TextView tvUsername;
-    @InjectView(R.id.tv_profile_signature)
-    TextView tvSignature;
+
+    public static ImageView ivAvatar;
+    public static TextView tvUsername;
+    public static TextView tvSignature;
     @InjectView(R.id.tv_profile_agree_number)
     TextView tvAgreeNumber;
     @InjectView(R.id.tv_profile_favorite_number)
@@ -74,11 +76,16 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     TextView tvAsk;
     @InjectView(R.id.tv_profile_answer)
     TextView tvAnswer;
+    @InjectView(R.id.profile_follow_loading)
+    ProgressBar pbProfileFollowLoading;
 
     private int uid;
     private UserInfo _userInfo;
 
     public static void actionStart(Context context, int uid) {
+        if(uid == -1){
+            return;
+        }
         Intent intent = new Intent(context, ProfileActivity.class);
         intent.putExtra(PARM_USER_ID, uid);
         context.startActivity(intent);
@@ -110,6 +117,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
         setContentView(R.layout.activity_profile);
         ButterKnife.inject(this);
 
+        tvUsername = (TextView)findViewById(R.id.tv_profile_username);
+        tvSignature = (TextView)findViewById(R.id.tv_profile_signature);
+        ivAvatar = (CircleImageView)findViewById(R.id.iv_profile_avatar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -153,7 +163,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     public void bindUserInfo(UserInfo userInfo) {
         _userInfo = userInfo;
         if (!TextUtils.isEmpty(userInfo.avatar_file)) {
-            Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).into(ivAvatar);
+            Picasso.with(this).load(ApiClient.getAvatarUrl(userInfo.avatar_file)).skipMemoryCache().into(ivAvatar);
         }
         tvUsername.setText(userInfo.nick_name);
         tvSignature.setText(userInfo.signature);
@@ -203,9 +213,22 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     }
 
     @Override
+    public void showProgressBar() {
+        if(pbProfileFollowLoading == null || pbProfileFollowLoading.getVisibility() == VISIBLE) return;
+        pbProfileFollowLoading.setVisibility(VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        if(pbProfileFollowLoading == null || pbProfileFollowLoading.getVisibility() == View.GONE) return;
+        pbProfileFollowLoading.setVisibility(GONE);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_profile_focus:
+
                 mPresenter.actionFocus(uid);
                 break;
             case R.id.tv_profile_ask:
