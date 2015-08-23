@@ -180,7 +180,7 @@
             android:name=".ui.article.ArticleActivity"
             android:label="@string/title_activity_article" />
         <activity
-            android:name=".ui.login.green_channel.GreenChannelActivity"
+            android:name=".ui.login.greenchannel.GreenChannelActivity"
             android:label="@string/title_activity_green_channel" />
         <activity
             android:name=".ui.article.comment.CommentActivlty"

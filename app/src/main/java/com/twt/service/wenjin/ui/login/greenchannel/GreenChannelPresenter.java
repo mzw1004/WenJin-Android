@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.login.green_channel;
+package com.twt.service.wenjin.ui.login.greenchannel;
 
 import com.twt.service.wenjin.api.ApiClient;
 

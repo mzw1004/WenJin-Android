@@ -135,7 +135,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
                 UmengShareHelper.setContent(
                         this,
                         getIntent().getStringExtra(PARAM_ARTICLE),
-                        FormatHelper.formatQuestionLink(article.article_info.id)
+                        FormatHelper.formatArticleLink(article.article_info.id)
                 );
 
                 break;
