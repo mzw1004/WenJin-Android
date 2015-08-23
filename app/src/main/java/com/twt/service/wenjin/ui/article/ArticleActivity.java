@@ -84,7 +84,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
     private int articleId;
     private Article article;
 
-    public static void actionStart(Context context, int articleId) {
+    public static void actionStart(Context context, int articleId, String article) {
         Intent intent = new Intent(context, ArticleActivity.class);
         intent.putExtra(PARAM_ARTICLE_ID, articleId);
         context.startActivity(intent);
@@ -140,7 +140,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
                 UmengShareHelper.init(this);
                 UmengShareHelper.setContent(
                         this,
-                        getIntent().getStringExtra(PARAM_ARTICLE),
+                        article.article_info.title,
                         FormatHelper.formatArticleLink(article.article_info.id)
                 );
 

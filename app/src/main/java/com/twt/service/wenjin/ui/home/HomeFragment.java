@@ -149,7 +149,7 @@ public class HomeFragment extends BaseFragment implements
             LogHelper.v(LOG_TAG, "start question activity");
             QuestionActivity.actionStart(getActivity(), item.question_info.question_id);
         }else if (item.article_info !=null){
-            ArticleActivity.actionStart(getActivity(), item.article_info.id);
+            ArticleActivity.actionStart(getActivity(), item.article_info.id, item.article_info.title);
         }
     }
 

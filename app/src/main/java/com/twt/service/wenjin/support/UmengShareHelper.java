@@ -6,9 +6,7 @@ import android.content.Context;
 import com.twt.service.wenjin.R;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.media.SinaShareContent;
 import com.umeng.socialize.media.UMImage;
-import com.umeng.socialize.sso.SinaSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.socialize.weixin.media.CircleShareContent;
 import com.umeng.socialize.weixin.media.WeiXinShareContent;
@@ -55,7 +53,6 @@ public class UmengShareHelper {
         weixinContent.setShareImage(new UMImage(context, R.drawable.ic_share_logo));
         weixinContent.setTargetUrl(url);
         sUmSocialService.setShareMedia(weixinContent);
-
         CircleShareContent circleMedia = new CircleShareContent();
         circleMedia.setShareContent(content);
         circleMedia.setTitle(content);
