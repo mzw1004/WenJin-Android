@@ -15,6 +15,8 @@ public class JavascriptInterface {
         this.context = context;
     }
 
+
+    @android.webkit.JavascriptInterface
     public void openImage(String img) {
         Intent intent = new Intent();
         intent.putExtra("image", img);

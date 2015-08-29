@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:background="@android:color/white"
     tools:context="com.twt.service.wenjin.ui.article.ArticleActivity">
 
     <include
@@ -23,6 +24,8 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
                     android:id="@+id/tv_article_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,6 +43,7 @@
                         android:id="@+id/iv_article_avatar"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:layout_marginLeft="8dp"
                         android:src="@drawable/ic_user_avatar" />
 
                     <TextView
@@ -54,10 +58,12 @@
                 </LinearLayout>
 
                 <ScrollView
+                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="48dp">
                     <WebView
+
                         android:id="@+id/wv_article_content"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

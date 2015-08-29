@@ -207,7 +207,7 @@
     <!-- Green Channel activity-->
     <string name="title_activity_green_channel">Green Channel</string>
     <!--Show Web Image Activity-->
-    <string name="title_activity_show_web_image">ShowWebImageActivity</string>
+    <string name="title_activity_show_web_image">图片查看</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
