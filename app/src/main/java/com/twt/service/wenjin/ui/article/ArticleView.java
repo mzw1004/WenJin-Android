@@ -25,4 +25,5 @@ public interface ArticleView {
 
     void setAgreeCount(int agreeCount);
 
+
 }
