@@ -73,7 +73,7 @@
     <string name="answer_comment_atted_you">Answer comment mentioned you</string>
     <string name="comment_your_article">Replied your article</string>
     <string name="article_comment_mentioned_you">Article comment mentioned you</string>
-    
+
     <string name="anonymous">Anonymous</string>
     <string name="markasread">Mark as read</string>
 
@@ -206,5 +206,10 @@
     <string name="title_activity_article">Article</string>
     <!-- Green Channel activity-->
     <string name="title_activity_green_channel">Green Channel</string>
+    <!--Show Web Image Activity-->
+    <string name="title_activity_show_web_image">图片查看</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

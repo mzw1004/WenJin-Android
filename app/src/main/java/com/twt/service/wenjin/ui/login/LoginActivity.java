@@ -17,7 +17,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.support.JPushHelper;
 import com.twt.service.wenjin.support.StatusBarHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
-import com.twt.service.wenjin.ui.login.green_channel.GreenChannelActivity;
+import com.twt.service.wenjin.ui.login.greenchannel.GreenChannelActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 
 import java.util.Arrays;

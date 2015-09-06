@@ -4,10 +4,8 @@ package com.twt.service.wenjin.ui.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,7 +149,7 @@ public class HomeFragment extends BaseFragment implements
             LogHelper.v(LOG_TAG, "start question activity");
             QuestionActivity.actionStart(getActivity(), item.question_info.question_id);
         }else if (item.article_info !=null){
-            ArticleActivity.actionStart(getActivity(), item.article_info.id);
+            ArticleActivity.actionStart(getActivity(), item.article_info.id, item.article_info.title);
         }
     }
 
