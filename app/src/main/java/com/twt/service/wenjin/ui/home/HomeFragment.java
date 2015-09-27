@@ -42,6 +42,8 @@ public class HomeFragment extends BaseFragment implements
 
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
 
+    private boolean isFabFastTotopVisible = false;
+
     @Inject
     HomePresenter mPresenter;
 
@@ -53,6 +55,8 @@ public class HomeFragment extends BaseFragment implements
     FloatingActionsMenu mFabMenu;
     @InjectView(R.id.fab_post_question)
     FloatingActionButton mFabQuestion;
+    @InjectView(R.id.fab_fastbacktotop)
+    FloatingActionButton mFabFastTotop;
 //    @InjectView(R.id.fab_post_article)
 //    FloatingActionButton mFabArticle;
 
@@ -98,9 +102,11 @@ public class HomeFragment extends BaseFragment implements
                 if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
 //                    LogHelper.v(LOG_TAG, "scroll down");
                     hideFabMenu();
+                    showFastTotopFab();
                 } else if (firstVisibleItemPosition < mPrevFirstVisiblePosition) {
 //                    LogHelper.v(LOG_TAG, "scroll up");
                     showFabMenu();
+                    hideFastTotopFab();
                 }
                 mPrevFirstVisiblePosition = firstVisibleItemPosition;
             }
@@ -113,7 +119,12 @@ public class HomeFragment extends BaseFragment implements
                 startActivity(new Intent(getActivity(), PublishActivity.class));
             }
         });
-
+        mFabFastTotop.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mRecyclerView.scrollToPosition(0);
+            }
+        });
         //mPresenter.refreshHomeItems();
         mPresenter.firstTimeRefreshHomeItems();
         return rootView;
@@ -219,6 +230,26 @@ public class HomeFragment extends BaseFragment implements
         mFabMenu.collapse();
         mFabMenu.animate()
                 .translationY(mFabMenu.getTop())
+                .setInterpolator(new AccelerateInterpolator())
+                .start();
+    }
+
+    @Override
+    public void showFastTotopFab() {
+        if(!isFabFastTotopVisible) {
+            isFabFastTotopVisible = true;
+            mFabFastTotop.setVisibility(View.VISIBLE);
+        }
+        mFabFastTotop.animate()
+                .translationY(0)
+                .setInterpolator(new AccelerateInterpolator())
+                .start();
+    }
+
+    @Override
+    public void hideFastTotopFab() {
+        mFabFastTotop.animate()
+                .translationY(mFabFastTotop.getTop())
                 .setInterpolator(new AccelerateInterpolator())
                 .start();
     }

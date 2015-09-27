@@ -21,6 +21,10 @@ public interface HomeView {
 
     void hideFabMenu();
 
+    void showFastTotopFab();
+
+    void hideFastTotopFab();
+
     void toastMessage(String message);
 
     void refreshItems(ArrayList<HomeItem> items);

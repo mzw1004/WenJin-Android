@@ -57,5 +57,22 @@
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_fastbacktotop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        fab:fab_icon="@drawable/ic_action_fast_totop"
+        fab:fab_colorPressed="@color/color_drawer_item_selected_background"
+        fab:fab_stroke_visible="false"
+        fab:fab_size="mini"
+        />
+
 </RelativeLayout>
 
