@@ -10,7 +10,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.article.comment.OnGetCommentCallback;
 import com.twt.service.wenjin.ui.article.comment.OnPublishCommentCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

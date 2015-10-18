@@ -7,7 +7,7 @@ import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.ui.profile.OnGetUserInfoCallback;
 import com.twt.service.wenjin.ui.profile.OnUserFocusCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

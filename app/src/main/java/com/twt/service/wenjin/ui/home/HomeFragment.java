@@ -42,7 +42,6 @@ public class HomeFragment extends BaseFragment implements
 
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
 
-    private boolean isFabFastTotopVisible = false;
 
     @Inject
     HomePresenter mPresenter;
@@ -236,8 +235,7 @@ public class HomeFragment extends BaseFragment implements
 
     @Override
     public void showFastTotopFab() {
-        if(!isFabFastTotopVisible) {
-            isFabFastTotopVisible = true;
+        if(mFabFastTotop.getVisibility() == View.GONE) {
             mFabFastTotop.setVisibility(View.VISIBLE);
         }
         mFabFastTotop.animate()
