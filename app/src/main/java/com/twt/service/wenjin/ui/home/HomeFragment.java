@@ -1,6 +1,8 @@
 package com.twt.service.wenjin.ui.home;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -235,21 +237,32 @@ public class HomeFragment extends BaseFragment implements
 
     @Override
     public void showFastTotopFab() {
-        if(mFabFastTotop.getVisibility() == View.GONE) {
-            mFabFastTotop.setVisibility(View.VISIBLE);
-        }
+//        if(mFabFastTotop.getVisibility() == View.GONE) {
+//            mFabFastTotop.setVisibility(View.VISIBLE);
+//        }
         mFabFastTotop.animate()
-                .translationY(0)
-                .setInterpolator(new AccelerateInterpolator())
+                .alpha(1.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        mFabFastTotop.setVisibility(View.VISIBLE);
+                    }
+                })
                 .start();
     }
 
     @Override
     public void hideFastTotopFab() {
         mFabFastTotop.animate()
-                .translationY(mFabFastTotop.getTop())
-                .setInterpolator(new AccelerateInterpolator())
-                .start();
+                .alpha(0.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        mFabFastTotop.setVisibility(View.GONE);
+                    }
+                }).start();
     }
 
     @Override
