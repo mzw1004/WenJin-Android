@@ -49,8 +49,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView, View.OnClickListener,ObservableScrollViewCallbacks {
@@ -69,46 +69,46 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     @Inject
     AnswerDetailPresenter mPresenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.tv_answer_title)
+    @Bind(R.id.tv_answer_title)
     TextView tvAnswerTitle;
-    @InjectView(R.id.pb_answer_loading)
+    @Bind(R.id.pb_answer_loading)
     ProgressBar mPbLoading;
-    @InjectView(R.id.iv_answer_avatar)
+    @Bind(R.id.iv_answer_avatar)
     ImageView ivAvatar;
-    @InjectView(R.id.iv_answer_agree)
+    @Bind(R.id.iv_answer_agree)
     ImageView ivAgree;
-    @InjectView(R.id.tv_answer_agree_number)
+    @Bind(R.id.tv_answer_agree_number)
     TextView tvAgreeNumber;
-    @InjectView(R.id.tv_answer_username)
+    @Bind(R.id.tv_answer_username)
     TextView tvUsername;
-    @InjectView(R.id.tv_answer_signature)
+    @Bind(R.id.tv_answer_signature)
     TextView tvSignature;
-    @InjectView(R.id.tv_answer_content)
+    @Bind(R.id.tv_answer_content)
     TextView tvContent;
-    @InjectView(R.id.tv_answer_add_time)
+    @Bind(R.id.tv_answer_add_time)
     TextView tvAddTime;
-    @InjectView(R.id.obscroll)
+    @Bind(R.id.obscroll)
     ObservableScrollView scrollView;
-    @InjectView(R.id.answer_detail_head)
+    @Bind(R.id.answer_detail_head)
     View answer_detail_head;
-    @InjectView(R.id.fl_bottom_actions)
+    @Bind(R.id.fl_bottom_actions)
     View fy_bottom_actions;
-    @InjectView(R.id.v_container_answer_agree)
+    @Bind(R.id.v_container_answer_agree)
     View vContainerAnswerAgree;
 
-    @InjectView(R.id.iv_bottom_action_thank)
+    @Bind(R.id.iv_bottom_action_thank)
     ImageView ivBottomActionThank;
-    @InjectView(R.id.iv_bottom_action_upvote)
+    @Bind(R.id.iv_bottom_action_upvote)
     ImageView ivBottomActionUpvote;
-    @InjectView(R.id.iv_bottom_action_downvote)
+    @Bind(R.id.iv_bottom_action_downvote)
     ImageView ivBottomActionDownvote;
-    @InjectView(R.id.rl_container_bottom_action_comment)
+    @Bind(R.id.rl_container_bottom_action_comment)
     View rlContainerBottomActionComment;
-    @InjectView(R.id.iv_bottom_action_comment)
+    @Bind(R.id.iv_bottom_action_comment)
     ImageView ivBottomActionComment;
-    @InjectView(R.id.tv_bottom_action_comment_count)
+    @Bind(R.id.tv_bottom_action_comment_count)
     TextView tvBottomActionCommentCount;
 
 
@@ -132,7 +132,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_detail);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         scrollView.setScrollViewCallbacks(this);
 
         if (savedInstanceState != null) {

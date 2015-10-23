@@ -33,8 +33,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 
 public class DrawerFragment extends BaseFragment implements DrawerView,
@@ -49,7 +49,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     @Inject
     DrawerPresenter mPresenter;
 
-    @InjectView(R.id.drawer_recycler_view)
+    @Bind(R.id.drawer_recycler_view)
     RecyclerView mDrawerRecyclerView;
 
     private DrawerLayout mDrawerLayout;
@@ -92,7 +92,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_drawer, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         mDrawerAdapter = new DrawerAdapter(getActivity(), this, this);
         addDrawerItems();
@@ -145,7 +145,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
 
         //mDrawerToggle
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-            mDrawerLayout.openDrawer(Gravity.START);
+            mDrawerLayout.openDrawer(Gravity.LEFT);
         }
 
         mDrawerLayout.post(new Runnable() {
@@ -198,6 +198,12 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     public void onPause() {
         super.onPause();
         BusProvider.getBusInstance().unregister(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Override

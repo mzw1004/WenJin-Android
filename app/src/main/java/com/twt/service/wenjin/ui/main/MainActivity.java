@@ -1,12 +1,10 @@
 package com.twt.service.wenjin.ui.main;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -43,6 +41,7 @@ import com.twt.service.wenjin.ui.notification.NotificationMainFragment;
 import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
 
+import butterknife.Bind;
 import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +53,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import cn.jpush.android.api.JPushInterface;
 
 
@@ -68,9 +66,9 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Inject
     MainPresenter mMainPresenter;
 
-    @InjectView(R.id.navigation_drawer_layout)
+    @Bind(R.id.navigation_drawer_layout)
     DrawerLayout mDrawerLayout;
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
     private DrawerFragment mDrawerFragment;
@@ -92,14 +90,16 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         WenJinApp.setAppLunchState(true);
 
         notificationInteractor = new NotificationInteractorImpl();
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.ic_action_agreed);
+        ab.setDisplayHomeAsUpEnabled(true);
 
         mDrawerFragment = (DrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);

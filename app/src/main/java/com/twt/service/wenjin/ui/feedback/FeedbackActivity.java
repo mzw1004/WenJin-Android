@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.twt.service.wenjin.R;
-import com.twt.service.wenjin.support.DeviceUtils;
 import com.twt.service.wenjin.ui.BaseActivity;
 
 import java.util.Arrays;
@@ -17,16 +16,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.et_feedback_content)
+    @Bind(R.id.et_feedback_content)
     EditText etContent;
-    @InjectView(R.id.et_feedback_detail)
+    @Bind(R.id.et_feedback_detail)
     EditText etDetail;
 
     @Inject
@@ -36,7 +35,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

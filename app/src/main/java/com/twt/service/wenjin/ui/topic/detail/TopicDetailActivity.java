@@ -31,8 +31,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class TopicDetailActivity extends BaseActivity implements TopicDetailView, View.OnClickListener, OnItemClickListener {
 
@@ -42,17 +42,17 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     @Inject
     TopicDetailPresenter mPresenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.topic_detail_recycler_view)
+    @Bind(R.id.topic_detail_recycler_view)
     RecyclerView mRecyclerView;
-    @InjectView(R.id.iv_topic_detail_pic)
+    @Bind(R.id.iv_topic_detail_pic)
     ImageView ivTopicPic;
-    @InjectView(R.id.tv_topic_detail_title)
+    @Bind(R.id.tv_topic_detail_title)
     TextView tvTitle;
-    @InjectView(R.id.tv_topic_detail_description)
+    @Bind(R.id.tv_topic_detail_description)
     TextView tvDescription;
-    @InjectView(R.id.bt_topic_detail_focus)
+    @Bind(R.id.bt_topic_detail_focus)
     Button btFocus;
 
     private TopicDetailAdapter mAdapter;
@@ -69,7 +69,7 @@ public class TopicDetailActivity extends BaseActivity implements TopicDetailView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_detail);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         topicId = getIntent().getIntExtra(PARAM_TOPIC_ID, 0);
         toolbar.setTitle(getIntent().getStringExtra(PARAM_TOPIC_TITLE));

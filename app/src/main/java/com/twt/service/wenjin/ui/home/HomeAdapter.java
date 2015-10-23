@@ -18,12 +18,11 @@ import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
-import com.twt.service.wenjin.ui.common.PicassoImageGetter;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/3/24.
@@ -47,39 +46,39 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.iv_home_item_avatar)
+        @Bind(R.id.iv_home_item_avatar)
         ImageView ivAvatar;
-        @InjectView(R.id.iv_home_item_agree)
+        @Bind(R.id.iv_home_item_agree)
         ImageView ivAgree;
-        @InjectView(R.id.tv_home_item_username)
+        @Bind(R.id.tv_home_item_username)
         TextView tvUsername;
-        @InjectView(R.id.tv_home_item_status)
+        @Bind(R.id.tv_home_item_status)
         TextView tvStatus;
-        @InjectView(R.id.tv_home_item_title)
+        @Bind(R.id.tv_home_item_title)
         TextView tvTitle;
-        @InjectView(R.id.tv_home_item_content)
+        @Bind(R.id.tv_home_item_content)
         TextView tvContent;
-        @InjectView(R.id.tv_home_item_time)
+        @Bind(R.id.tv_home_item_time)
         TextView tvTime;
-        @InjectView(R.id.tv_home_item_agree_number)
+        @Bind(R.id.tv_home_item_agree_number)
         TextView tvAgreeNo;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     public static class FooterHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.tv_footer_load_more)
+        @Bind(R.id.tv_footer_load_more)
         TextView tvLoadMore;
-        @InjectView(R.id.pb_footer_load_more)
+        @Bind(R.id.pb_footer_load_more)
         ProgressBar pbLoadMore;
 
         public FooterHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

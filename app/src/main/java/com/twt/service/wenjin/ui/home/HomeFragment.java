@@ -36,8 +36,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class HomeFragment extends BaseFragment implements
         HomeView, SwipeRefreshLayout.OnRefreshListener, OnItemClickListener {
@@ -48,15 +48,15 @@ public class HomeFragment extends BaseFragment implements
     @Inject
     HomePresenter mPresenter;
 
-    @InjectView(R.id.home_swipe_refresh_layout)
+    @Bind(R.id.home_swipe_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
-    @InjectView(R.id.home_recycler_view)
+    @Bind(R.id.home_recycler_view)
     RecyclerView mRecyclerView;
-    @InjectView(R.id.fab_menu_add)
+    @Bind(R.id.fab_menu_add)
     FloatingActionsMenu mFabMenu;
-    @InjectView(R.id.fab_post_question)
+    @Bind(R.id.fab_post_question)
     FloatingActionButton mFabQuestion;
-    @InjectView(R.id.fab_fastbacktotop)
+    @Bind(R.id.fab_fastbacktotop)
     FloatingActionButton mFabFastTotop;
 //    @InjectView(R.id.fab_post_article)
 //    FloatingActionButton mFabArticle;
@@ -80,7 +80,7 @@ public class HomeFragment extends BaseFragment implements
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
@@ -129,6 +129,12 @@ public class HomeFragment extends BaseFragment implements
         //mPresenter.refreshHomeItems();
         mPresenter.firstTimeRefreshHomeItems();
         return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Override

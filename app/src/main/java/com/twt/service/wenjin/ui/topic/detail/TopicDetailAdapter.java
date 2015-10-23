@@ -19,8 +19,8 @@ import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/4/15.
@@ -39,18 +39,18 @@ public class TopicDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.tv_explore_item_title)
+        @Bind(R.id.tv_explore_item_title)
         TextView tvTitle;
-        @InjectView(R.id.tv_explore_item_user)
+        @Bind(R.id.tv_explore_item_user)
         TextView tvUsername;
-        @InjectView(R.id.tv_explore_item_time)
+        @Bind(R.id.tv_explore_item_time)
         TextView tvAddTime;
-        @InjectView(R.id.iv_explore_item_avatar)
+        @Bind(R.id.iv_explore_item_avatar)
         ImageView ivAvatar;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

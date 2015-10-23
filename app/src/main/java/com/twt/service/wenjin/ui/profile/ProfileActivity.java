@@ -31,9 +31,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.view.View.GONE;
@@ -54,29 +53,29 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     @Inject
     ProfilePresenter mPresenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
     public static ImageView ivAvatar;
     public static TextView tvUsername;
     public static TextView tvSignature;
-    @InjectView(R.id.tv_profile_agree_number)
+    @Bind(R.id.tv_profile_agree_number)
     TextView tvAgreeNumber;
-    @InjectView(R.id.tv_profile_favorite_number)
+    @Bind(R.id.tv_profile_favorite_number)
     TextView tvFavoriteNumber;
-    @InjectView(R.id.ntv_profile_focus_number)
+    @Bind(R.id.ntv_profile_focus_number)
     NumberTextView ntvFocus;
-    @InjectView(R.id.ntv_profile_friends_number)
+    @Bind(R.id.ntv_profile_friends_number)
     NumberTextView ntvFriends;
-    @InjectView(R.id.ntv_profile_fans_number)
+    @Bind(R.id.ntv_profile_fans_number)
     NumberTextView ntvFans;
-    @InjectView(R.id.bt_profile_focus)
+    @Bind(R.id.bt_profile_focus)
     Button btFocus;
-    @InjectView(R.id.tv_profile_ask)
+    @Bind(R.id.tv_profile_ask)
     TextView tvAsk;
-    @InjectView(R.id.tv_profile_answer)
+    @Bind(R.id.tv_profile_answer)
     TextView tvAnswer;
-    @InjectView(R.id.profile_follow_loading)
+    @Bind(R.id.profile_follow_loading)
     ProgressBar pbProfileFollowLoading;
 
     private int uid;
@@ -115,7 +114,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView, OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         tvUsername = (TextView)findViewById(R.id.tv_profile_username);
         tvSignature = (TextView)findViewById(R.id.tv_profile_signature);

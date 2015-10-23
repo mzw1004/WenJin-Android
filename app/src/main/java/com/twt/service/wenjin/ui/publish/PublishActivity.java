@@ -28,8 +28,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.gujun.android.taggroup.TagGroup;
 
 public class PublishActivity extends BaseActivity implements PublishView {
@@ -39,22 +39,22 @@ public class PublishActivity extends BaseActivity implements PublishView {
     @Inject
     PublishPresenter mPresenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.et_publish_title)
+    @Bind(R.id.et_publish_title)
     EditText etTitle;
-    @InjectView(R.id.et_publish_content)
+    @Bind(R.id.et_publish_content)
     EditText etContent;
-    @InjectView(R.id.tag_group_publish)
+    @Bind(R.id.tag_group_publish)
     TagGroup tagGroup;
-    @InjectView(R.id.cb_publish_anonymous)
+    @Bind(R.id.cb_publish_anonymous)
     CheckBox cbAnonymous;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publish);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

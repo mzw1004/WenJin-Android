@@ -33,8 +33,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class QuestionActivity extends BaseActivity implements QuestionView, OnItemClickListener {
 
@@ -46,11 +46,11 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     @Inject
     QuestionPresenter mPresenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.question_recycler_view)
+    @Bind(R.id.question_recycler_view)
     RecyclerView mRecyclerView;
-    @InjectView(R.id.pb_question_loading)
+    @Bind(R.id.pb_question_loading)
     ProgressBar mPbLoading;
 
     private QuestionAdapter mQuestionAdapter;
@@ -72,7 +72,7 @@ public class QuestionActivity extends BaseActivity implements QuestionView, OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
