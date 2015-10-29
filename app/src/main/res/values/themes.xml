@@ -9,10 +9,8 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorAccent">@color/color_primary</item>
         <item name="android:windowBackground">@android:color/white</item>
-        <!--back button style-->
-        <!--
+
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
-        -->
         <!--<item name="android:windowBackground">@color/activity_background</item>-->
     </style>
 
@@ -20,9 +18,8 @@
 
         <!-- 將 spinBars 屬性設定為 false -->
         <item name="spinBars">false</item>
-        <item name="android:homeAsUpIndicator">@drawable/ic_drawer_explore_grey</item>
         <!-- 設定 drawer arrow 的顏色 -->
-        <item name="color">@android:color/holo_red_dark</item>
+        <item name="color">@android:color/white</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base">

@@ -11,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +83,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
     public void onStart() {
         super.onStart();
 
-        updateUserInfo();
+//        updateUserInfo();
     }
 
     @Override
@@ -116,12 +115,13 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         mDrawerToggle = new ActionBarDrawerToggle(
                 getActivity(),
                 mDrawerLayout,
-                toolbar,
+                mToolbar,
                 R.string.drawer_open,
                 R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                super.onDrawerSlide(drawerView, 0);
                 if (!isAdded()) {
                     return;
                 }
@@ -131,6 +131,7 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
                     sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
                 getActivity().invalidateOptionsMenu();
+                syncState();
             }
 
             @Override
@@ -140,12 +141,19 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
                     return;
                 }
                 getActivity().invalidateOptionsMenu();
+                syncState();
+            }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, 0);
             }
         };
 
+        mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_topic_pic);
         //mDrawerToggle
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-            mDrawerLayout.openDrawer(Gravity.LEFT);
+            mDrawerLayout.openDrawer(GravityCompat.START);
         }
 
         mDrawerLayout.post(new Runnable() {
@@ -230,9 +238,14 @@ public class DrawerFragment extends BaseFragment implements DrawerView,
         }
     }
 
+//    @Override
+//    public void updateUserInfo() {
+////        mDrawerAdapter.updateUserInfo();
+//    }
+
     @Override
-    public void updateUserInfo() {
-        mDrawerAdapter.updateUserInfo();
+    public void syncState() {
+        mDrawerToggle.syncState();
     }
 
     @Override

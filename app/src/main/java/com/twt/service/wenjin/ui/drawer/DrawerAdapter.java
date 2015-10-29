@@ -235,11 +235,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         notifyDataSetChanged();
     }
 
+    /*
     public void updateUserInfo() {
         mUsername = PrefUtils.getPrefUsername();
         mAvatarFile = PrefUtils.getPrefAvatarFile();
         mSignature = PrefUtils.getPrefSignature();
         notifyDataSetChanged();
     }
+    */
 
 }

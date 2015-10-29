@@ -1,21 +1,30 @@
 package com.twt.service.wenjin.ui.main;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.otto.Subscribe;
+import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.WenJinApp;
@@ -36,9 +45,12 @@ import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 import com.twt.service.wenjin.ui.draft.DraftFragment;
 import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
+import com.twt.service.wenjin.ui.feedback.FeedbackActivity;
 import com.twt.service.wenjin.ui.home.HomeFragment;
+import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.notification.NotificationMainFragment;
 import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
+import com.twt.service.wenjin.ui.setting.SettingsActivity;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
 
 import butterknife.Bind;
@@ -68,8 +80,15 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
     @Bind(R.id.navigation_drawer_layout)
     DrawerLayout mDrawerLayout;
+    @Bind(R.id.nv_main_navigation)
+    NavigationView mNavigationView;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
+    ImageView mIvProfile;
+    ImageView mIvBackground;
+    TextView mTvUsername;
+    TextView mTvUserSignature;
 
     private DrawerFragment mDrawerFragment;
     private HomeFragment mHomeFragment;
@@ -91,19 +110,27 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         WenJinApp.setAppLunchState(true);
-
-        notificationInteractor = new NotificationInteractorImpl();
 
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_action_agreed);
+        ab.setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
         ab.setDisplayHomeAsUpEnabled(true);
 
+        /*
         mDrawerFragment = (DrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mDrawerFragment.setUp(R.id.main_container, mDrawerLayout, toolbar);
+        */
+        View headerView = initialDrawerHeader();
+        if(mNavigationView != null){
+            mNavigationView.addHeaderView(headerView);
+            setupDrawerContent(mNavigationView);
+
+        }
+
+
+
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_container, new HomeFragment())
@@ -121,6 +148,9 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             NotificationBuffer.setsIntent(null);
         }
 
+
+        notificationInteractor = new NotificationInteractorImpl();
+
         ApiClient.checkNewVersion(BuildConfig.VERSION_CODE + "", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -137,6 +167,42 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
                 }
             }
         });
+    }
+
+    private void setupDrawerContent(NavigationView navigationView){
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem item) {
+                        item.setChecked(true);
+                        replaceFragment(item.getItemId());
+                        mDrawerLayout.closeDrawers();
+                        return false;
+                    }
+                }
+        );
+        updateUserInfo();
+    }
+
+    private View initialDrawerHeader(){
+        View headerRootview = LayoutInflater.from(this).inflate(R.layout.drawer_list_header,null);
+        mIvProfile = (ImageView) headerRootview.findViewById(R.id.user_profile_image);
+        mIvBackground = (ImageView) headerRootview.findViewById(R.id.user_profile_background);
+        mTvUsername = (TextView) headerRootview.findViewById(R.id.tv_user_profile_name);
+        mTvUserSignature = (TextView) headerRootview.findViewById(R.id.tv_user_profile_signature);
+        return headerRootview;
+    }
+
+    private void updateUserInfo(){
+        if(!TextUtils.isEmpty(PrefUtils.getPrefUsername())) {
+            mTvUsername.setText(PrefUtils.getPrefUsername());
+        }
+        if(!TextUtils.isEmpty(PrefUtils.getPrefAvatarFile())) {
+            Picasso.with(this).load(ApiClient.getAvatarUrl(PrefUtils.getPrefAvatarFile())).skipMemoryCache().into(mIvProfile);
+        }
+        if(!TextUtils.isEmpty(PrefUtils.getPrefSignature())) {
+            mTvUserSignature.setText(PrefUtils.getPrefSignature());
+        }
     }
 
     @Override
@@ -168,6 +234,11 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()){
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -304,6 +375,27 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             getSupportActionBar().setTitle(R.string.action_notification);
 
         }
+    }
+
+    @Override
+    public void startSettingsActivity() {
+        startActivity(new Intent(this, SettingsActivity.class));
+    }
+
+    @Override
+    public void startFeedbackActivity() {
+        startActivity(new Intent(this, FeedbackActivity.class));
+    }
+
+    @Override
+    public void startLoginActivity() {
+        startActivity(new Intent(this, LoginActivity.class));
+        this.finish();
+    }
+
+    @Override
+    public void sendDrawerItemClickedEvent(int position) {
+        BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
     }
 
     //    @Override

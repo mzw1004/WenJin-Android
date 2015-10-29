@@ -20,6 +20,7 @@
 
     <!-- Main Activity -->
     <string name="action_notification">通知</string>
+    <string name="action_search">搜索</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>
