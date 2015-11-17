@@ -50,6 +50,7 @@ import com.twt.service.wenjin.ui.home.HomeFragment;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.notification.NotificationMainFragment;
 import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
+import com.twt.service.wenjin.ui.search.SearchActivity;
 import com.twt.service.wenjin.ui.setting.SettingsActivity;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
 
@@ -128,8 +129,6 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             setupDrawerContent(mNavigationView);
 
         }
-
-
 
 
         getSupportFragmentManager().beginTransaction()
@@ -237,6 +236,9 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         switch (item.getItemId()){
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            case R.id.action_search:
+                SearchActivity.actionStart(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -364,15 +366,17 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.action_notification){
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            mNotificationMainFragment = new NotificationMainFragment();
-            fragmentManager.beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.main_container, mNotificationMainFragment, ResourceHelper.getString(R.string.action_notification))
-                    .commit();
+        switch (v.getId()){
+            case R.id.action_notification:
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                mNotificationMainFragment = new NotificationMainFragment();
+                fragmentManager.beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .replace(R.id.main_container, mNotificationMainFragment, ResourceHelper.getString(R.string.action_notification))
+                        .commit();
 
-            getSupportActionBar().setTitle(R.string.action_notification);
+                getSupportActionBar().setTitle(R.string.action_notification);
+                break;
 
         }
     }

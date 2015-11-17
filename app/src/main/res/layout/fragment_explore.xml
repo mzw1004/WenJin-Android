@@ -15,7 +15,7 @@
         android:background="?attr/colorPrimary"
         android:textColor="@color/color_low_gray"
         app:pstsTextColorSelected="@android:color/white"
-        app:pstsIndicatorColor="@android:color/white"
+        app:pstsIndicatorColor="@color/color_primary"
         app:pstsShouldExpand="true"
         app:tabGravity="fill"
         />

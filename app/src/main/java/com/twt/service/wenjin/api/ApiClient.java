@@ -71,6 +71,7 @@ public class ApiClient {
     private static final String PUBLISH_ARTICLE_COMMENT_URL = "?/api/publish/save_comment/";
     private static final String ARTICLE_VOTE_URL = "?/article/ajax/article_vote/";
     private static final String AVATAR_UPLOAD_URL = "?/api/account/avatar_upload/";
+    private static final String SEARCH_URL = "?/api/search/";
 
     private static final String NOTIFICATIONS_URL = "?/api/notification/notifications/";
     private static final String NOTIFICATIONS_LIST_URL = "?/api/notification/list/";
@@ -149,6 +150,15 @@ public class ApiClient {
         params.put("page", page);
 
         sClient.get(BASE_URL + HOME_URL, params, handler);
+    }
+
+    public static void searchContent(String content, int page, int limit, JsonHttpResponseHandler handler){
+        RequestParams params = new RequestParams();
+        params.put("p",content);
+        params.put("page",page);
+        params.put("limit",limit);
+
+        sClient.get(BASE_URL + SEARCH_URL, params, handler);
     }
 
     public static void getExplore(int perPage, int page, int day, int isRecommend, String sortType, JsonHttpResponseHandler handler) {

@@ -22,6 +22,15 @@
     <string name="action_notification">通知</string>
     <string name="action_search">搜索</string>
 
+
+    <!-- Search Activity-->
+    <string name="title_activity_search">搜索</string>
+    <string name="hint_action_search">请输入关键字</string>
+    <string name="search_question">问题</string>
+    <string name="search_article">文章</string>
+    <string name="search_topic">话题</string>
+    <string name="search_user">用户</string>
+
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>
     <string name="drawer_close">关闭侧边栏</string>

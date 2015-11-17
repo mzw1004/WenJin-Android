@@ -20,6 +20,7 @@ import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,7 +34,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int ITEM_VIEW_TYPE_FOOTER = 1;
 
     private Context mContext;
-    private ArrayList<HomeItem> mDataset = new ArrayList<>();
+    private List<HomeItem> mDataset = new ArrayList<>();
 
     private boolean useFooter = false;
 

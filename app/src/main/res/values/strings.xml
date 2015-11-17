@@ -26,6 +26,15 @@
     <string name="action_notification">Notification</string>
     <string name="action_search">Search</string>
 
+
+    <!-- Search Activity-->
+    <string name="title_activity_search">Search</string>
+    <string name="hint_action_search">Please input keywords</string>
+    <string name="search_question">Question</string>
+    <string name="search_article">Article</string>
+    <string name="search_topic">Topic</string>
+    <string name="search_user">User</string>
+
     <!-- Drawer strings -->
     <string name="drawer_open">Open drawer navigation</string>
     <string name="drawer_close">close drawer navigation</string>

@@ -15,7 +15,6 @@
         android:icon="@drawable/ic_action_notifications"
         android:title="@string/action_notification"
         app:actionLayout="@layout/action_bar_main"
-
         app:showAsAction="always" />
 
 

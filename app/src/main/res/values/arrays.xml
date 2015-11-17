@@ -21,6 +21,15 @@
         <item>@string/explore_hot</item>
         <item>@string/explore_recommend</item>
         <item>@string/explore_unresponsive</item>
+
+    </string-array>
+
+    <string-array name="search_tab_titles">
+        <item>@string/search_question</item>
+        <item>@string/search_article</item>
+        <item>@string/search_topic</item>
+        <item>@string/search_user</item>
+
     </string-array>
 
     <string-array name="notification_tab_titles">

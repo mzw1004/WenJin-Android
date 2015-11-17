@@ -185,6 +185,8 @@
         <activity
             android:name=".ui.article.comment.CommentActivlty"
             android:label="@string/title_activity_comment" />
+        <activity android:name=".ui.search.SearchActivity"
+            android:label="@string/title_activity_search"/>
         
         <!-- JPush Required SDK核心功能-->
         <activity
