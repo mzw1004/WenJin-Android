@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.SearchDetailQuestion;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ import butterknife.ButterKnife;
  * Created by Green on 15/11/17.
  */
 public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private static final String LOG_TAG = SearchQuestionFragment.class.getSimpleName();
 
     private static final int ITEM_VIEW_TYPE_ITEM = 0;
     private static final int ITEM_VIEW_TYPE_FOOTER = 1;
@@ -81,7 +84,7 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             View view = inflater.inflate(R.layout.recyclerview_footer_load_more,viewGroup,false);
             viewHolder = new FooterHolder(view);
         }
-
+        LogHelper.v(LOG_TAG, "onCreateViewHolder");
         return viewHolder;
     }
 
@@ -105,6 +108,9 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             itemHolder.mTvTile.setText(questionItem.header.name);
             itemHolder.mTvAnswercount.setText(questionItem.answer_count);
             itemHolder.mTvFollowcount.setText(questionItem.focus_count);
+
+            LogHelper.v(LOG_TAG, "onBindViewHolder");
+
         }
     }
 
@@ -116,6 +122,7 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemViewType(int position) {
+        LogHelper.v(LOG_TAG, "getItemViewType");
         return position < _DataSet.size() ? ITEM_VIEW_TYPE_ITEM:ITEM_VIEW_TYPE_FOOTER;
     }
 

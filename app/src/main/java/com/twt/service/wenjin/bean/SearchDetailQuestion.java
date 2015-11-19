@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public class SearchDetailQuestion implements Serializable {
 
-    public SearchItem header;
+    public SearchItem header = new SearchItem();
 
     public String best_answer;
 

@@ -1,5 +1,6 @@
 package com.twt.service.wenjin.ui.search;
 
+import com.twt.service.wenjin.bean.SearchResponse;
 import com.twt.service.wenjin.interactor.SearchInteractor;
 
 /**
@@ -10,20 +11,22 @@ public class SearchPresenterImpl implements SearchPresenter, OnGetSearchCallback
     private SearchView mSearchView;
     private SearchInteractor mSearchInteractor;
 
-    private int mPage =0;
+    int mPage =1;
 
-    public SearchPresenterImpl(SearchView searchView){
+    public SearchPresenterImpl(SearchView searchView, SearchInteractor interactor){
         this.mSearchView = searchView;
+        this.mSearchInteractor = interactor;
     }
 
     @Override
-    public void OnGetSearchSuccess() {
+    public void OnGetSearchSuccess(SearchResponse response) {
 
+        mSearchView.bindSearchResultsToView(response);
     }
 
     @Override
     public void OnGetSearchFailure(String errorString) {
-
+        mSearchView.toastMessage(errorString);
     }
 
     @Override

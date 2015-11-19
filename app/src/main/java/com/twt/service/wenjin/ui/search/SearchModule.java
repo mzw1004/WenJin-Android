@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.search;
 
 import com.twt.service.wenjin.AppModule;
+import com.twt.service.wenjin.interactor.SearchInteractor;
 
 import javax.inject.Singleton;
 
@@ -30,8 +31,8 @@ public class SearchModule {
 
     @Provides
     @Singleton
-    public SearchPresenter provideSearchPresenter(SearchView searchView){
-        return new SearchPresenterImpl(searchView);
+    public SearchPresenter provideSearchPresenter(SearchView searchView, SearchInteractor interactor){
+        return new SearchPresenterImpl(searchView, interactor);
     }
 
 

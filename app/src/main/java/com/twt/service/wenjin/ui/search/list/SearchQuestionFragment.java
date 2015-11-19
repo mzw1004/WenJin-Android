@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.SearchDetailQuestion;
+import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,8 @@ import butterknife.ButterKnife;
  */
 public class SearchQuestionFragment extends Fragment implements OnItemClickListener {
 
+    private static final String LOG_TAG = SearchQuestionFragment.class.getSimpleName();
+
     @Bind(R.id.search_recycler_view)
     RecyclerView mRecyclerView;
     @Bind(R.id.search_swipe_refresh_layout)
@@ -32,15 +36,44 @@ public class SearchQuestionFragment extends Fragment implements OnItemClickListe
     private SearchQuestionAdapter mSearchQuestionAdapter;
     private LinearLayoutManager mLinearLayoutManager;
 
+    ArrayList<SearchDetailQuestion> mQuestions = null;
+
+    String keyword;
+
     public SearchQuestionFragment(){
 
     }
 
-    public static SearchQuestionFragment getInstance(){
+    public static SearchQuestionFragment getInstance(ArrayList<SearchDetailQuestion> questions){
         SearchQuestionFragment searchQuestionFragment = new SearchQuestionFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("questions",questions);
+        Bundle bundle = new Bundle();
+        LogHelper.v(LOG_TAG,"mquestions new instance");
+        if(questions != null) {
+            bundle.putSerializable("questions", questions);
+            LogHelper.v(LOG_TAG, "mquestions has bundle");
+        }
+        searchQuestionFragment.setArguments(bundle);
         return searchQuestionFragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(!getArguments().isEmpty() && mQuestions == null){
+            mQuestions = (ArrayList<SearchDetailQuestion>) getArguments().getSerializable("questions");
+            LogHelper.v(LOG_TAG,"has args");
+        }{
+            LogHelper.v(LOG_TAG,"empty args");
+            mQuestions = new ArrayList<>();
+            SearchDetailQuestion question = new SearchDetailQuestion();
+            question.header.name = "测试";
+            question.answer_count = "10";
+            question.focus_count = "12";
+            mQuestions.add(question);
+            mQuestions.add(question);
+            mQuestions.add(question);
+            mQuestions.add(question);
+        }
     }
 
     @Override
@@ -49,12 +82,11 @@ public class SearchQuestionFragment extends Fragment implements OnItemClickListe
         ButterKnife.bind(this,rootView);
 
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
-
         mSearchQuestionAdapter = new SearchQuestionAdapter(getActivity(),this);
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mSearchQuestionAdapter);
-
+        LogHelper.v(LOG_TAG, "onCreateView return rootview");
         return rootView;
     }
 
@@ -67,6 +99,14 @@ public class SearchQuestionFragment extends Fragment implements OnItemClickListe
     @Override
     public void onItemClicked(View view, int position) {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mQuestions != null){
+            updateListData(mQuestions);
+        }
     }
 
     public void showFooter() {
@@ -83,6 +123,14 @@ public class SearchQuestionFragment extends Fragment implements OnItemClickListe
 
     public void updateListData(List<SearchDetailQuestion> items){
         mSearchQuestionAdapter.updateData(items);
+    }
+
+    public void updateData(ArrayList<SearchDetailQuestion> items){
+        mQuestions = items;
+    }
+
+    public void setKeyword(String keyword){
+        this.keyword = keyword;
     }
 
 

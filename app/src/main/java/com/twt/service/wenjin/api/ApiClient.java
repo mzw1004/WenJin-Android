@@ -154,7 +154,7 @@ public class ApiClient {
 
     public static void searchContent(String content, int page, int limit, JsonHttpResponseHandler handler){
         RequestParams params = new RequestParams();
-        params.put("p",content);
+        params.put("q",content);
         params.put("page",page);
         params.put("limit",limit);
 
