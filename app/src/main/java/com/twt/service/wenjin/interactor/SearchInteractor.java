@@ -7,5 +7,5 @@ import com.twt.service.wenjin.ui.search.OnGetSearchCallback;
  */
 public interface SearchInteractor {
 
-    void searchContent(String searchinfo, int page, OnGetSearchCallback callback);
+    void searchContent(String searchinfo,String type, int page,OnGetSearchCallback callback);
 }

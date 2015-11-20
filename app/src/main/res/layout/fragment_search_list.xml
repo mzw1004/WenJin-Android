@@ -21,6 +21,14 @@
             android:divider="@null" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
-
+    <TextView
+        android:id="@+id/tv_search_noinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/color_text_secondary"
+        android:text="没有内容可显示T T"
+        />
 
 </FrameLayout>

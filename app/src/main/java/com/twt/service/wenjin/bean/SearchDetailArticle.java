@@ -7,9 +7,9 @@ import java.io.Serializable;
  */
 public class SearchDetailArticle implements Serializable {
 
-    public SearchItem header;
-
     public String comments;
 
     public String views;
+
 }
+

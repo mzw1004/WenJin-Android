@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.SearchDetailQuestion;
+import com.twt.service.wenjin.bean.SearchQuestion;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
@@ -33,7 +34,7 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private Context _context;
     private OnItemClickListener _onItemClicked;
 
-    private List<SearchDetailQuestion> _DataSet = new ArrayList<>();
+    private List<SearchQuestion> _DataSet = new ArrayList<>();
 
     private boolean _useFooter;
 
@@ -53,8 +54,10 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @Bind(R.id.tv_search_question_item_followcount)
         TextView mTvFollowcount;
 
+        View rootView;
         public ItemHolder(View itemView) {
             super(itemView);
+            rootView = itemView;
             ButterKnife.bind(this, itemView);
         }
     }
@@ -84,7 +87,6 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             View view = inflater.inflate(R.layout.recyclerview_footer_load_more,viewGroup,false);
             viewHolder = new FooterHolder(view);
         }
-        LogHelper.v(LOG_TAG, "onCreateViewHolder");
         return viewHolder;
     }
 
@@ -92,7 +94,7 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         if(getItemViewType(position) == ITEM_VIEW_TYPE_ITEM){
-            SearchDetailQuestion questionItem = _DataSet.get(position);
+            SearchQuestion questionItem = _DataSet.get(position);
             ItemHolder itemHolder = (ItemHolder) holder;
 
             View.OnClickListener onClickListener = new View.OnClickListener(){
@@ -103,13 +105,12 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 }
             };
 
-            itemHolder.mTvTile.setOnClickListener(onClickListener);
+            itemHolder.rootView.setOnClickListener(onClickListener);
 
-            itemHolder.mTvTile.setText(questionItem.header.name);
-            itemHolder.mTvAnswercount.setText(questionItem.answer_count);
-            itemHolder.mTvFollowcount.setText(questionItem.focus_count);
+            itemHolder.mTvTile.setText(questionItem.name);
+            itemHolder.mTvAnswercount.setText(questionItem.detail.answer_count);
+            itemHolder.mTvFollowcount.setText(questionItem.detail.focus_count);
 
-            LogHelper.v(LOG_TAG, "onBindViewHolder");
 
         }
     }
@@ -122,22 +123,27 @@ public class SearchQuestionAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemViewType(int position) {
-        LogHelper.v(LOG_TAG, "getItemViewType");
-        return position < _DataSet.size() ? ITEM_VIEW_TYPE_ITEM:ITEM_VIEW_TYPE_FOOTER;
+        if (!_useFooter) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else if (position < getItemCount() - 1) {
+            return ITEM_VIEW_TYPE_ITEM;
+        } else {
+            return ITEM_VIEW_TYPE_FOOTER;
+        }
     }
 
-    public SearchDetailQuestion getItem(int position){
+    public SearchQuestion getItem(int position){
         return _DataSet.get(position);
     }
 
-    public void updateData(List<SearchDetailQuestion> items){
+    public void updateData(List<SearchQuestion> items){
         _DataSet.clear();
         _DataSet.addAll(items);
         notifyDataSetChanged();
 
     }
 
-    public void addData(List<SearchDetailQuestion> items){
+    public void addData(List<SearchQuestion> items){
         _DataSet.addAll(items);
         notifyDataSetChanged();
     }

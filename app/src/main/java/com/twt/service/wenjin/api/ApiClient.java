@@ -152,11 +152,12 @@ public class ApiClient {
         sClient.get(BASE_URL + HOME_URL, params, handler);
     }
 
-    public static void searchContent(String content, int page, int limit, JsonHttpResponseHandler handler){
+    public static void searchContent(String content,String type, int page, int limit, JsonHttpResponseHandler handler){
         RequestParams params = new RequestParams();
         params.put("q",content);
         params.put("page",page);
         params.put("limit",limit);
+        params.put("type",type);
 
         sClient.get(BASE_URL + SEARCH_URL, params, handler);
     }
@@ -205,6 +206,10 @@ public class ApiClient {
 
     public static String getTopicPicUrl(String url) {
         return BASE_URL + "uploads/topic/" + url;
+    }
+
+    public static String getPicUrl(String url){
+        return url;
     }
 
     public static void getQuestion(int questionId, JsonHttpResponseHandler handler) {

@@ -1,14 +1,9 @@
 package com.twt.service.wenjin.bean;
 
-import java.io.Serializable;
-
 /**
  * Created by Green on 15/11/12.
  */
-public class SearchDetailTopic implements Serializable {
-
-    public SearchItem header;
-
+public class SearchDetailTopic {
     public String topic_pic;
 
     public String topic_id;
