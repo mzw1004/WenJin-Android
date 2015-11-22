@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.twt.service.wenjin"
@@ -37,7 +37,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.loopj.android:android-async-http:1.4.9'
-    compile 'com.google.code.gson:gson:2.3'
+    compile 'com.google.code.gson:gson:2.4'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'im.fir:sdk:latest.integration@aar'
