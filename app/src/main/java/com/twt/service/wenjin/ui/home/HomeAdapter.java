@@ -65,6 +65,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tvAgreeNo;
         @Bind(R.id.groupview_agree_label)
         View vGroupAgreeLabel;
+        @Bind(R.id.tv_home_item_article_label)
+        TextView tvArticleLabel;
 
         public ItemHolder(View itemView) {
             super(itemView);
@@ -182,6 +184,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             if (homeItem.article_info != null) {
                 itemHolder.tvTitle.setText(homeItem.article_info.title);
+                itemHolder.tvArticleLabel.setVisibility(View.VISIBLE);
+            }else {
+                itemHolder.tvArticleLabel.setVisibility(View.GONE);
             }
             if (homeItem.answer_info != null) {
                 itemHolder.tvContent.setVisibility(View.VISIBLE);

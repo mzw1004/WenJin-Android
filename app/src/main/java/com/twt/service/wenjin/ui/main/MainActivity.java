@@ -378,7 +378,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             mResult.updateBadge(5, new StringHolder(mBadgeCount + ""));
             mResult.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_notifications);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
         }else {
             mResult.updateBadge(5,null);
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
