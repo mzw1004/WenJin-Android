@@ -22,6 +22,7 @@
     <string name="quit">Press again to quit</string>
     <string name="not_exist">User does not exist</string>
 
+
     <!-- Main Activity -->
     <string name="action_notification">Notification</string>
     <string name="action_search">Search</string>
@@ -34,6 +35,7 @@
     <string name="search_article">Article</string>
     <string name="search_topic">Topic</string>
     <string name="search_user">User</string>
+    <string name="search_nothing">Theres nothing</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">Open drawer navigation</string>
@@ -48,6 +50,7 @@
     <string name="drawer_item_helper_and_feedback">Help &amp; feedback</string>
     <string name="drawer_item_logout">Logout</string>
     <string name="drawer_item_login">Login</string>
+    <string name="drawer_divider_system">System</string>
 
     <!-- Home strings -->
     <string name="post_question">Question asked</string>

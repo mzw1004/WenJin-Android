@@ -128,6 +128,9 @@ public class SearchQuestionFragment extends Fragment implements OnItemClickListe
         if(TextUtils.isEmpty(mKeyword)){return;}
         if(!mSwipeRefreshLayout.isRefreshing()) {
             showFooter();
+            if(tvNoinfo.getVisibility() == View.VISIBLE) {
+                tvNoinfo.setVisibility(View.GONE);
+            }
         }
         mPage = page + 1;
         mSearchInteractor.searchContent(mKeyword,mQueryType,mPage,this);

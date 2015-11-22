@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_grey_300"
     tools:context="com.twt.service.wenjin.ui.search.list.SearchQuestionFragment"
     >
 
@@ -28,7 +29,7 @@
         android:layout_gravity="center"
         android:textSize="18sp"
         android:textColor="@color/color_text_secondary"
-        android:text="没有内容可显示T T"
+        android:text="@string/search_nothing"
         />
 
 </FrameLayout>

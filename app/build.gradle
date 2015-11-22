@@ -40,7 +40,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'im.fir:sdk:1.2.0+'
     compile 'de.hdodenhof:circleimageview:1.2.2'
     compile 'com.getbase:floatingactionbutton:1.9.0'
     compile 'com.jpardogo.materialtabstrip:library:1.0.9'
@@ -48,6 +47,10 @@ dependencies {
     compile 'me.gujun.android.taggroup:library:1.1@aar'
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.2'
     compile 'com.nineoldandroids:library:2.4.0'
+
+    compile('com.mikepenz:materialdrawer:4.4.9@aar') {
+        transitive = true
+    }
 
     compile files('libs/jpush-sdk-release1.7.4.jar')
 

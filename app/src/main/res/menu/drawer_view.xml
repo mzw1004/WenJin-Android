@@ -6,7 +6,8 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_drawer_home_grey"
-            android:title="@string/drawer_item_home"/>
+            android:title="@string/drawer_item_home"
+            />
         <item
             android:id="@+id/nav_messages"
             android:icon="@drawable/ic_drawer_explore_grey"
@@ -24,21 +25,22 @@
             android:icon="@drawable/ic_drawer_notifications"
             android:title="@string/drawer_item_notification"
             />
+        <item
+            android:icon="@drawable/ic_drawer_settings_grey"
+            android:title="@string/drawer_item_setting"/>
+        <item
+            android:icon="@drawable/ic_drawer_help_grey"
+            android:title="@string/drawer_item_helper_and_feedback"/>
+        <item
+            android:icon="@drawable/ic_drawer_logout_grey"
+            android:title="@string/drawer_item_logout"
+            />
     </group>
-
+    <!--
     <item android:title="System">
         <menu>
-            <item
-                android:icon="@drawable/ic_drawer_settings_grey"
-                android:title="@string/drawer_item_setting"/>
-            <item
-                android:icon="@drawable/ic_drawer_help_grey"
-                android:title="@string/drawer_item_helper_and_feedback"/>
-            <item
-                android:icon="@drawable/ic_drawer_logout_grey"
-                android:title="@string/drawer_item_logout"
-                />
+
         </menu>
     </item>
-
+    -->
 </menu>

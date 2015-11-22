@@ -1,30 +1,35 @@
 package com.twt.service.wenjin.ui.main;
 
+import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.holder.BadgeStyle;
+import com.mikepenz.materialdrawer.holder.StringHolder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.squareup.otto.Subscribe;
-import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.BuildConfig;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.WenJinApp;
@@ -35,7 +40,6 @@ import com.twt.service.wenjin.interactor.NotificationInteractor;
 import com.twt.service.wenjin.interactor.NotificationInteractorImpl;
 import com.twt.service.wenjin.receiver.JPushNotifiInMainReceiver;
 import com.twt.service.wenjin.receiver.NotificationBuffer;
-import com.twt.service.wenjin.support.BadgeView;
 import com.twt.service.wenjin.support.BusProvider;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.PrefUtils;
@@ -43,13 +47,14 @@ import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 import com.twt.service.wenjin.ui.draft.DraftFragment;
-import com.twt.service.wenjin.ui.drawer.DrawerFragment;
 import com.twt.service.wenjin.ui.explore.ExploreFragment;
 import com.twt.service.wenjin.ui.feedback.FeedbackActivity;
 import com.twt.service.wenjin.ui.home.HomeFragment;
 import com.twt.service.wenjin.ui.login.LoginActivity;
 import com.twt.service.wenjin.ui.notification.NotificationMainFragment;
 import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
+import com.twt.service.wenjin.ui.profile.ProfileActivity;
+import com.twt.service.wenjin.ui.publish.PublishActivity;
 import com.twt.service.wenjin.ui.search.SearchActivity;
 import com.twt.service.wenjin.ui.setting.SettingsActivity;
 import com.twt.service.wenjin.ui.topic.TopicFragment;
@@ -70,7 +75,7 @@ import cn.jpush.android.api.JPushInterface;
 
 
 public class MainActivity extends BaseActivity implements MainView,OnGetNotificationNumberInfoCallback,
-        NotificationFragment.IUpdateNotificationIcon,View.OnClickListener {
+        NotificationFragment.IUpdateNotificationIcon {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -79,25 +84,24 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Inject
     MainPresenter mMainPresenter;
 
-    @Bind(R.id.navigation_drawer_layout)
-    DrawerLayout mDrawerLayout;
-    @Bind(R.id.nv_main_navigation)
-    NavigationView mNavigationView;
+//    @Bind(R.id.navigation_drawer_layout)
+//    DrawerLayout mDrawerLayout;
+//    @Bind(R.id.nv_main_navigation)
+//    NavigationView mNavigationView;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    ImageView mIvProfile;
-    ImageView mIvBackground;
-    TextView mTvUsername;
-    TextView mTvUserSignature;
+    private AccountHeader mHeaderResult = null;
+    private Drawer mResult = null;
 
-    private DrawerFragment mDrawerFragment;
+
     private HomeFragment mHomeFragment;
     private ExploreFragment mExploreFragment;
     private TopicFragment mTopicFragment;
     private NotificationMainFragment mNotificationMainFragment;
     private DraftFragment mDraftFragment;
 //    private UserFragment mUserFragment;
+    private Context mContext;
 
     private JPushNotifiInMainReceiver mReceiver;
 
@@ -114,22 +118,11 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         WenJinApp.setAppLunchState(true);
 
         setSupportActionBar(toolbar);
-        final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
-        ab.setDisplayHomeAsUpEnabled(true);
+//        final ActionBar ab = getSupportActionBar();
+//        ab.setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
+//        ab.setDisplayHomeAsUpEnabled(true);
 
-        /*
-        mDrawerFragment = (DrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mDrawerFragment.setUp(R.id.main_container, mDrawerLayout, toolbar);
-        */
-        View headerView = initialDrawerHeader();
-        if(mNavigationView != null){
-            mNavigationView.addHeaderView(headerView);
-            setupDrawerContent(mNavigationView);
-
-        }
-
+        initialDrawer(savedInstanceState);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_container, new HomeFragment())
@@ -148,6 +141,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         }
 
 
+        mContext = this;
         notificationInteractor = new NotificationInteractorImpl();
 
         ApiClient.checkNewVersion(BuildConfig.VERSION_CODE + "", new JsonHttpResponseHandler() {
@@ -168,64 +162,81 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         });
     }
 
-    private void setupDrawerContent(NavigationView navigationView){
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
+    private void initialDrawer(Bundle savedInstanceState){
+        final IProfile profile = new ProfileDrawerItem().withName(PrefUtils.getPrefUsername()).withEmail(PrefUtils.getPrefSignature()).withIcon(Uri.parse(ApiClient.getAvatarUrl(PrefUtils.getPrefAvatarFile()))).withIdentifier(100);
+        mHeaderResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.guide_background)
+                .withSelectionListEnabled(false)
+                .addProfiles(profile)
+                .withOnlyMainProfileImageVisible(true)
+                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
-                    public boolean onNavigationItemSelected(MenuItem item) {
-                        item.setChecked(true);
-                        replaceFragment(item.getItemId());
-                        mDrawerLayout.closeDrawers();
+                    public boolean onProfileChanged(View view, IProfile profile, boolean current) {
+                        ProfileActivity.actionStart(mContext, PrefUtils.getPrefUid());
                         return false;
                     }
-                }
-        );
-        updateUserInfo();
+                })
+                .withOnAccountHeaderSelectionViewClickListener(new AccountHeader.OnAccountHeaderSelectionViewClickListener() {
+                    @Override
+                    public boolean onClick(View view, IProfile profile) {
+                        mResult.closeDrawer();
+                        ProfileActivity.actionStart(mContext, PrefUtils.getPrefUid());
+                        return false;
+                    }
+                })
+                .withSavedInstance(savedInstanceState)
+                .build();
+        mResult = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withHasStableIds(true)
+                .withAccountHeader(mHeaderResult)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(R.drawable.ic_drawer_home_grey).withIdentifier(1).withSelectable(true).withSelectedTextColor(ResourceHelper.getColor(R.color.color_primary))
+                        , new PrimaryDrawerItem().withName(R.string.drawer_item_explore).withIcon(R.drawable.ic_drawer_explore_grey).withIdentifier(2).withSelectable(true).withSelectedTextColor(ResourceHelper.getColor(R.color.color_primary))
+                        , new PrimaryDrawerItem().withName(R.string.drawer_item_topic).withIcon(R.drawable.ic_drawer_topic_grey).withIdentifier(3).withSelectable(true).withSelectedTextColor(ResourceHelper.getColor(R.color.color_primary))
+                        , new PrimaryDrawerItem().withName(R.string.drawer_item_draft).withIcon(R.drawable.ic_drawer_draft_grey).withIdentifier(4).withSelectable(true).withSelectedTextColor(ResourceHelper.getColor(R.color.color_primary))
+                        , new PrimaryDrawerItem().withName(R.string.drawer_item_notification).withIcon(R.drawable.ic_drawer_notifications).withIdentifier(5).withSelectable(true).withSelectedTextColor(ResourceHelper.getColor(R.color.color_primary)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700))
+                        , new SectionDrawerItem().withName(R.string.drawer_divider_system)
+                        , new SecondaryDrawerItem().withName(R.string.drawer_item_setting).withIcon(R.drawable.ic_drawer_settings_grey).withIdentifier(21).withSelectable(false)
+                        , new SecondaryDrawerItem().withName(R.string.drawer_item_helper_and_feedback).withIcon(R.drawable.ic_drawer_help_grey).withIdentifier(22).withSelectable(false)
+                        , new SecondaryDrawerItem().withName(R.string.drawer_item_logout).withIcon(R.drawable.ic_drawer_logout_grey).withIdentifier(23).withSelectable(false)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                                                   @Override
+                                                   public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                                                       if (drawerItem != null) {
+                                                           if (drawerItem.getIdentifier() < 20) {
+                                                               replaceFragment(drawerItem.getIdentifier());
+                                                               setMainTitle(drawerItem.getIdentifier() - 1);
+                                                           }else{
+                                                               mMainPresenter.selectItem(drawerItem.getIdentifier());
+                                                           }
+                                                       }
+                                                       return false;
+                                                   }
+                                               }
+
+                )
+                            .withSavedInstance(savedInstanceState)
+
+                    .withShowDrawerOnFirstLaunch(true)
+                .build();
+        if(savedInstanceState == null){
+            mResult.setSelection(1,false);
+            mHeaderResult.setActiveProfile(profile);
+        }
+
+
     }
 
-    private View initialDrawerHeader(){
-        View headerRootview = LayoutInflater.from(this).inflate(R.layout.drawer_list_header,null);
-        mIvProfile = (ImageView) headerRootview.findViewById(R.id.user_profile_image);
-        mIvBackground = (ImageView) headerRootview.findViewById(R.id.user_profile_background);
-        mTvUsername = (TextView) headerRootview.findViewById(R.id.tv_user_profile_name);
-        mTvUserSignature = (TextView) headerRootview.findViewById(R.id.tv_user_profile_signature);
-        return headerRootview;
-    }
 
-    private void updateUserInfo(){
-        if(!TextUtils.isEmpty(PrefUtils.getPrefUsername())) {
-            mTvUsername.setText(PrefUtils.getPrefUsername());
-        }
-        if(!TextUtils.isEmpty(PrefUtils.getPrefAvatarFile())) {
-            Picasso.with(this).load(ApiClient.getAvatarUrl(PrefUtils.getPrefAvatarFile())).skipMemoryCache().into(mIvProfile);
-        }
-        if(!TextUtils.isEmpty(PrefUtils.getPrefSignature())) {
-            mTvUserSignature.setText(PrefUtils.getPrefSignature());
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        View menuNotification = menu.findItem(R.id.action_notification).getActionView();
-        menuNotification.setOnClickListener(this);
-
-        View notificationIcon = menuNotification.findViewById(R.id.iv_action_notification);
-        if(mBadgeCount > 0){
-            BadgeView badgeView = new BadgeView(this, notificationIcon);
-            badgeView.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
-            badgeView.setBadgeBackgroundColor(ResourceHelper.getColor(R.color.color_button));
-            badgeView.setTextSize(8);
-            if(mBadgeCount > 99){
-                badgeView.setText("99+");
-            }else {
-                badgeView.setText(String.valueOf(mBadgeCount));
-            }
-            badgeView.show();
-        }
-
 
         return true;
     }
@@ -235,11 +246,14 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
         switch (item.getItemId()){
             case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
+//                mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.action_search:
                 SearchActivity.actionStart(this);
                 return true;
+            case R.id.action_create_question:
+                startActivity(new Intent(this, PublishActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -289,29 +303,35 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = null;
         switch (position) {
-            case 0:
+            case 1:
                 if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
                 }
                 fragment = mHomeFragment;
                 break;
-            case 1:
+            case 2:
                 if (mExploreFragment == null) {
                     mExploreFragment = new ExploreFragment();
                 }
                 fragment = mExploreFragment;
                 break;
-            case 2:
+            case 3:
                 if (mTopicFragment == null) {
                     mTopicFragment = new TopicFragment();
                 }
                 fragment = mTopicFragment;
                 break;
-            case 3:
+            case 4:
                 if (mDraftFragment == null) {
                     mDraftFragment = new DraftFragment();
                 }
                 fragment = mDraftFragment;
+                break;
+            case 5:
+                if (mNotificationMainFragment == null) {
+                    mNotificationMainFragment = new NotificationMainFragment();
+                }
+                fragment = mNotificationMainFragment;
                 break;
         }
         fragmentManager.beginTransaction()
@@ -327,6 +347,10 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(mResult.isDrawerOpen()){
+            mResult.closeDrawer();
+            return true;
+        }
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if (System.currentTimeMillis() - exitTime > 2000) {
                 Toast.makeText(this, getString(R.string.quit), Toast.LENGTH_SHORT).show();
@@ -350,8 +374,16 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     public void onGetNotificationNumberInfoSuccess(NotificationNumInfo notificationNumInfo) {
         mBadgeCount = notificationNumInfo.notifications_num;
-        invalidateOptionsMenu();
-
+        if(mBadgeCount > 0){
+            mResult.updateBadge(5, new StringHolder(mBadgeCount + ""));
+            mResult.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_notifications);
+        }else {
+            mResult.updateBadge(5,null);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            mResult.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+        }
     }
 
     @Override
@@ -362,23 +394,6 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
     @Override
     public void updateNotificationIcon() {
         notificationInteractor.getNotificationNumberInfo(Calendar.getInstance().getTimeInMillis(), this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.action_notification:
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                mNotificationMainFragment = new NotificationMainFragment();
-                fragmentManager.beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .replace(R.id.main_container, mNotificationMainFragment, ResourceHelper.getString(R.string.action_notification))
-                        .commit();
-
-                getSupportActionBar().setTitle(R.string.action_notification);
-                break;
-
-        }
     }
 
     @Override
@@ -402,20 +417,4 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
         BusProvider.getBusInstance().post(new DrawerItemClickedEvent(position));
     }
 
-    //    @Override
-//    public void startNewActivity(int position) {
-//        LogHelper.v(LOG_TAG, "start new activity: " + position);
-//        switch (position) {
-//            case 4:
-//                LogHelper.v(LOG_TAG, "start setting activity");
-//                break;
-//            case 5:
-//                LogHelper.v(LOG_TAG, "start help activity");
-//                break;
-//            case 6:
-//                LogHelper.v(LOG_TAG, "user logout");
-//                startActivity(new Intent(this, LoginActivity.class));
-//                break;
-//        }
-//    }
 }

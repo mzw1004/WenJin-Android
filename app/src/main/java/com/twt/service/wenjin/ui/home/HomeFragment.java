@@ -52,10 +52,6 @@ public class HomeFragment extends BaseFragment implements
     SwipeRefreshLayout mRefreshLayout;
     @Bind(R.id.home_recycler_view)
     RecyclerView mRecyclerView;
-    @Bind(R.id.fab_menu_add)
-    FloatingActionsMenu mFabMenu;
-    @Bind(R.id.fab_post_question)
-    FloatingActionButton mFabQuestion;
     @Bind(R.id.fab_fastbacktotop)
     FloatingActionButton mFabFastTotop;
 //    @InjectView(R.id.fab_post_article)
@@ -102,30 +98,22 @@ public class HomeFragment extends BaseFragment implements
                 }
                 if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
 //                    LogHelper.v(LOG_TAG, "scroll down");
-                    hideFabMenu();
                     showFastTotopFab();
                 } else if (firstVisibleItemPosition < mPrevFirstVisiblePosition) {
 //                    LogHelper.v(LOG_TAG, "scroll up");
-                    showFabMenu();
                     hideFastTotopFab();
                 }
                 mPrevFirstVisiblePosition = firstVisibleItemPosition;
             }
         });
 
-        mFabQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFabMenu.collapse();
-                startActivity(new Intent(getActivity(), PublishActivity.class));
-            }
-        });
-        mFabFastTotop.setOnClickListener(new View.OnClickListener(){
+        mFabFastTotop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mRecyclerView.scrollToPosition(0);
             }
         });
+
         //mPresenter.refreshHomeItems();
         mPresenter.firstTimeRefreshHomeItems();
         return rootView;
@@ -224,22 +212,6 @@ public class HomeFragment extends BaseFragment implements
         }
     }
 
-    @Override
-    public void showFabMenu() {
-        mFabMenu.animate()
-                .translationY(0)
-                .setInterpolator(new AccelerateInterpolator())
-                .start();
-    }
-
-    @Override
-    public void hideFabMenu() {
-        mFabMenu.collapse();
-        mFabMenu.animate()
-                .translationY(mFabMenu.getTop())
-                .setInterpolator(new AccelerateInterpolator())
-                .start();
-    }
 
     @Override
     public void showFastTotopFab() {

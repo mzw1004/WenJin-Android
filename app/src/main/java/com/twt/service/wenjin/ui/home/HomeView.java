@@ -17,10 +17,6 @@ public interface HomeView {
 
     void useLoadMoreFooter();
 
-    void showFabMenu();
-
-    void hideFabMenu();
-
     void showFastTotopFab();
 
     void hideFastTotopFab();

@@ -21,15 +21,15 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void selectItem(int position) {
-        if (position < 4) {
-            mMainView.sendDrawerItemClickedEvent(position);
-        } else if (position == 4) {
+        if (position < 20) {
+//            mMainView.sendDrawerItemClickedEvent(position);
+        } else if (position == 21) {
             // start SettingsActivity
             mMainView.startSettingsActivity();
-        } else if (position == 5) {
+        } else if (position == 22) {
             // start FeedbackActivity
             mMainView.startFeedbackActivity();
-        } else if (position == 6) {
+        } else if (position == 23) {
             mMainView.startLoginActivity();
         }
     }

@@ -6,8 +6,8 @@
     android:id="@+id/navigation_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
     tools:context=".SearchActivity"
+    android:clipToPadding="false"
     >
 
     <android.support.design.widget.AppBarLayout
@@ -35,10 +35,10 @@
             android:id="@+id/tabs_search"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/color_primary"
             android:textColor="@color/color_low_gray"
             app:pstsTextColorSelected="@android:color/white"
-            app:pstsIndicatorColor="@color/color_primary"
+            app:pstsIndicatorColor="@android:color/white"
             app:pstsShouldExpand="true"
             app:tabGravity="fill"
             />

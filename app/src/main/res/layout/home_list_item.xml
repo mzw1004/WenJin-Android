@@ -31,7 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/iv_home_item_avatar" />
+            android:layout_marginStart="4dp"
+            android:layout_toRightOf="@+id/iv_home_item_avatar"
+            android:layout_toEndOf="@+id/iv_home_item_avatar"
+            />
 
         <TextView
             android:id="@+id/tv_home_item_status"
@@ -42,7 +45,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/tv_home_item_username" />
+            android:layout_marginStart="4dp"
+            android:layout_toRightOf="@+id/tv_home_item_username"
+            android:layout_toEndOf="@+id/tv_home_item_username"
+            />
 
         <TextView
             android:id="@+id/tv_home_item_title"
@@ -80,18 +86,6 @@
             android:layout_height="1px"
             android:layout_below="@+id/tv_home_item_content" />
 
-        <TextView
-            android:id="@+id/tv_home_item_time"
-            android:textSize="14sp"
-            android:textColor="@color/color_text_secondary"
-            android:typeface="sans"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_below="@+id/v_home_divider"/>
-
         <ImageView
             android:id="@+id/iv_home_item_agree"
             android:visibility="gone"
@@ -101,7 +95,9 @@
             android:layout_height="24dp"
             android:padding="2dp"
             android:layout_below="@+id/v_home_divider"
-            android:layout_toLeftOf="@+id/tv_home_item_agree_number"/>
+            android:layout_alignLeft="@+id/tv_home_item_title"
+            android:layout_alignStart="@+id/tv_home_item_title"
+            />
 
         <TextView
             android:id="@+id/tv_home_item_agree_number"
@@ -111,8 +107,24 @@
             android:gravity="center"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_toRightOf="@+id/iv_home_item_agree"
+            android:layout_toEndOf="@+id/iv_home_item_agree"
             android:layout_below="@+id/v_home_divider"
-            android:layout_alignRight="@+id/tv_home_item_title"/>
+            />
+
+        <TextView
+            android:id="@+id/tv_home_item_time"
+            android:textSize="14sp"
+            android:textColor="@color/color_text_secondary"
+            android:typeface="sans"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_alignRight="@+id/tv_home_item_title"
+            android:layout_alignEnd="@+id/tv_home_item_title"
+            android:layout_height="24dp"
+            android:layout_below="@+id/v_home_divider"/>
 
     </RelativeLayout>
 

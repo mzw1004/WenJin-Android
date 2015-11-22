@@ -183,12 +183,14 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             if (homeItem.answer_info != null) {
                 itemHolder.tvContent.setVisibility(View.VISIBLE);
+                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
+                itemHolder.ivAgree.setVisibility(View.VISIBLE);
 //                itemHolder.ivAgree.setVisibility(View.VISIBLE);
 //                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
 
                 String content = homeItem.answer_info.answer_content;
                 itemHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(content)));
-
+                itemHolder.tvAgreeNo.setText(homeItem.answer_info.agree_count);
 //                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
             } else {
                 itemHolder.tvContent.setVisibility(View.GONE);

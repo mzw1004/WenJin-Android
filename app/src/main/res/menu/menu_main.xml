@@ -11,10 +11,9 @@
         />
 
     <item
-        android:id="@+id/action_notification"
-        android:icon="@drawable/ic_action_notifications"
-        android:title="@string/action_notification"
-        app:actionLayout="@layout/action_bar_main"
+        android:id="@+id/action_create_question"
+        android:icon="@drawable/ic_create_question"
+        android:title="@string/fab_label_question"
         app:showAsAction="always" />
 
 

@@ -5,17 +5,19 @@
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
+    android:background="@color/material_grey_100"
     tools:context="com.twt.service.wenjin.ui.login.LoginActivity">
 
     <ImageView
         android:id="@+id/iv_login_logo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="143dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="@dimen/login_padding_left_right"
         android:layout_marginRight="@dimen/login_padding_left_right"
         android:layout_marginTop="@dimen/login_padding_top"
         android:contentDescription="@string/title_activity_login"
-        android:src="@drawable/ic_login_logo" />
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/login_logo" />
 
     <EditText
         android:id="@+id/tv_login_username"
@@ -23,7 +25,7 @@
         android:layout_height="@dimen/login_edit_text_height"
         android:layout_marginLeft="@dimen/login_padding_left_right"
         android:layout_marginRight="@dimen/login_padding_left_right"
-        android:layout_marginTop="@dimen/login_magin_control"
+        android:layout_marginTop="18dp"
         android:background="@drawable/edit_text_background"
         android:drawableLeft="@drawable/ic_login_account"
         android:hint="@string/login_username_hint"
