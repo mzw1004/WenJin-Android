@@ -191,6 +191,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withHasStableIds(true)
+                .withStatusBarColor(ResourceHelper.getColor(R.color.color_accent_dark))
                 .withAccountHeader(mHeaderResult)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(R.drawable.ic_drawer_home_grey).withIdentifier(1).withSelectable(true).withSelectedTextColor(ResourceHelper.getColor(R.color.color_primary))
