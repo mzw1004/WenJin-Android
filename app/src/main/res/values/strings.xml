@@ -2,14 +2,14 @@
 
     <string name="app_name">WenJin</string>
 
-    <string name="JPUSH_APPKEY">5fb608f1d509c30234c4bbaa</string>
-    <string name="UMENG_APPKEY">553cc331e0f55aca9d0059bf</string>
-    <string name="BUG_HD_SDK_GENERAL_KEY">0d377ef5e746db9ac47196038ad6a0c7</string>
+    <string name="JPUSH_APPKEY" translatable="false">5fb608f1d509c30234c4bbaa</string>
+    <string name="UMENG_APPKEY" translatable="false">553cc331e0f55aca9d0059bf</string>
+    <string name="BUG_HD_SDK_GENERAL_KEY" translatable="false">0d377ef5e746db9ac47196038ad6a0c7</string>
 
     <string name="network_not_connected">Network is not connected</string>
     <string name="no_more_information">Sorry, no more information</string>
     <string name="pic">[picture]</string>
-    <string name="load_more">Loading...</string>
+    <string name="load_more">Loading…</string>
     <string name="years_ago">years ago</string>
     <string name="months_ago">months ago</string>
     <string name="days_ago">days ago</string>
@@ -206,7 +206,7 @@
     <string name="title_activity_follows">Follows</string>
     <string name="action_type_following">Following</string>
     <string name="action_type_followers">Followers</string>
-    <string name="default_signature_profile_follows">There is nothing...</string>
+    <string name="default_signature_profile_follows">There is nothing…</string>
 
     <!-- Profile Edit activity -->
     <string name="title_activity_profile_edit">Profile Edit</string>
