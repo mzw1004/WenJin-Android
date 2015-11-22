@@ -4,14 +4,16 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="bottom"
     tools:context="com.twt.service.wenjin.ui.welcome.WelcomeActivity">
 
     <ImageView
         android:id="@+id/iv_splash_logo"
-        android:src="@drawable/ic_login_logo"
+        android:background="@drawable/login_logo"
         android:scaleType="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_marginBottom="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="143dp"
+        android:layout_height="50dp" />
 
 </LinearLayout>

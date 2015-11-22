@@ -4,7 +4,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.ui.feedback.OnPublishFeedbackCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

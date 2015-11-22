@@ -7,7 +7,7 @@ import com.twt.service.wenjin.bean.ExploreResponse;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.explore.list.OnGetExploreItemsCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

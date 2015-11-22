@@ -15,18 +15,15 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.AnswerInfo;
 import com.twt.service.wenjin.bean.ExploreItem;
-import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 
 /**
  * Created by WGL on 2015/3/28.
@@ -45,27 +42,27 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public static class ItemHolder extends RecyclerView.ViewHolder{
 
-        @InjectView(R.id.tv_home_item_title)
+        @Bind(R.id.tv_home_item_title)
         TextView _tvTitle;
 
-        @InjectView(R.id.iv_home_item_avatar)
+        @Bind(R.id.iv_home_item_avatar)
         ImageView _ivAvatar;
 
-        @InjectView(R.id.tv_home_item_username)
+        @Bind(R.id.tv_home_item_username)
         TextView _tvUser;
 
-        @InjectView(R.id.tv_home_item_status)
+        @Bind(R.id.tv_home_item_status)
         TextView _tvState;
 
-        @InjectView(R.id.tv_home_item_time)
+        @Bind(R.id.tv_home_item_time)
         TextView _tvTime;
 
-        @InjectView(R.id.tv_home_item_content)
+        @Bind(R.id.tv_home_item_content)
         TextView _tvContent;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
@@ -76,14 +73,14 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public static class FooterHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.tv_footer_load_more)
+        @Bind(R.id.tv_footer_load_more)
         TextView tvLoadMore;
-        @InjectView(R.id.pb_footer_load_more)
+        @Bind(R.id.pb_footer_load_more)
         ProgressBar pbLoadMore;
 
         public FooterHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

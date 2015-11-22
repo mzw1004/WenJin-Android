@@ -8,7 +8,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.question.OnFocusedCallback;
 import com.twt.service.wenjin.ui.question.OnGetQuestionCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

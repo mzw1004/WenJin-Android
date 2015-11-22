@@ -27,8 +27,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class CommentActivity extends BaseActivity implements CommentView, OnItemClickListener {
 
@@ -38,15 +38,15 @@ public class CommentActivity extends BaseActivity implements CommentView, OnItem
     @Inject
     CommentPresenter mPresenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.comment_recycler_view)
+    @Bind(R.id.comment_recycler_view)
     RecyclerView mRecyclerView;
-    @InjectView(R.id.et_comment_content)
+    @Bind(R.id.et_comment_content)
     EditText etContent;
-    @InjectView(R.id.iv_comment_publish)
+    @Bind(R.id.iv_comment_publish)
     ImageView ivPublish;
-    @InjectView(R.id.pb_comment_loading)
+    @Bind(R.id.pb_comment_loading)
     ProgressBar pbLoading;
 
     private int answerId;
@@ -65,7 +65,7 @@ public class CommentActivity extends BaseActivity implements CommentView, OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         answerId = getIntent().getIntExtra(PARAM_ANSWER_ID, 0);
         commentCount = getIntent().getIntExtra(PARAM_COMMENT_COUNT, 0);

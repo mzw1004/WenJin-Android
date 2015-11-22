@@ -9,7 +9,7 @@ import com.twt.service.wenjin.ui.topic.detail.OnFocusCallback;
 import com.twt.service.wenjin.ui.topic.detail.OnGetBestAnswerCallback;
 import com.twt.service.wenjin.ui.topic.detail.OnGetDetailCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

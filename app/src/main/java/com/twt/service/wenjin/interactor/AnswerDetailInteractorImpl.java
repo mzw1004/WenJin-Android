@@ -9,7 +9,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.answer.detail.OnGetAnswerCallback;
 import com.twt.service.wenjin.ui.question.OnGetQuestionCallback;
 
-import org.apache.http.entity.mime.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

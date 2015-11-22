@@ -16,21 +16,21 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by Green on 15-6-27.
  */
 public class NotificationMainFragment extends Fragment {
 
-    @InjectView(R.id.tabs_notification_main)
+    @Bind(R.id.tabs_notification_main)
     PagerSlidingTabStrip mPagerSlidingTabStrip;
 
-    @InjectView(R.id.viewpager_notification_main)
+    @Bind(R.id.viewpager_notification_main)
     ViewPager mViewPager;
 
-    @InjectView(R.id.tv_mark_all)
+    @Bind(R.id.tv_mark_all)
     TextView mTvMarkall;
 
 
@@ -41,7 +41,7 @@ public class NotificationMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_notification_main, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         mFragmentPagerAdapter = new NotificationMainAdapter(getChildFragmentManager());
         mViewPager.setAdapter(mFragmentPagerAdapter);
@@ -89,7 +89,7 @@ public class NotificationMainFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        ButterKnife.reset(this);
+        ButterKnife.unbind(this);
     }
 
 }

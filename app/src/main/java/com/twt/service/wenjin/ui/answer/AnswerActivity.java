@@ -35,8 +35,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class AnswerActivity extends BaseActivity implements AnswerView {
 
@@ -49,11 +49,11 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     @Inject
     AnswerPresenter mPresenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.et_answer_content)
+    @Bind(R.id.et_answer_content)
     EditText etContent;
-    @InjectView(R.id.cb_answer_anonymous)
+    @Bind(R.id.cb_answer_anonymous)
     CheckBox cbAnonymous;
 
     private int questionId;
@@ -76,7 +76,7 @@ public class AnswerActivity extends BaseActivity implements AnswerView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

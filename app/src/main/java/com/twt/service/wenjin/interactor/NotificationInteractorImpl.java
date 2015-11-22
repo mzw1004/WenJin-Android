@@ -10,7 +10,7 @@ import com.twt.service.wenjin.ui.main.OnGetNotificationNumberInfoCallback;
 import com.twt.service.wenjin.ui.notification.readlist.OnGetNotificationListCallback;
 import com.twt.service.wenjin.ui.notification.readlist.OnMarkallCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
