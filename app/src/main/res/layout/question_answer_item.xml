@@ -22,7 +22,58 @@
             android:layout_height="32dp"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp" />
+        <LinearLayout
+            android:id="@+id/groupview_agree_label"
+            android:visibility="visible"
+            android:layout_width="36dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="4dp"
+            android:layout_below="@+id/iv_question_answer_avatar"
+            android:layout_alignBaseline="@+id/iv_question_answer_avatar"
+            android:background="@drawable/image_number_background"
+            >
+            <ImageView
+                android:id="@+id/iv_item_agree"
+                android:visibility="visible"
+                android:src="@drawable/ic_action_agree_white"
+                android:scaleType="centerCrop"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
+                android:layout_gravity="center"
+                android:padding="2dp"
 
+                />
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
+                android:background="@color/md_white_1000"
+                />
+
+            <TextView
+                android:id="@+id/tv_item_agree_number"
+                android:visibility="visible"
+                android:typeface="sans"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
+                android:textSize="10sp"
+                android:text="17"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
         <TextView
             android:id="@+id/tv_question_answer_username"
             android:textSize="14sp"

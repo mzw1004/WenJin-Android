@@ -63,6 +63,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         @Bind(R.id.bt_question_focus)
         Button btFocus;
 
+
         public QuestionHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -77,6 +78,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView tvUsername;
         @Bind(R.id.tv_question_answer_content)
         TextView tvContent;
+        @Bind(R.id.tv_item_agree_number)
+        TextView tvAgreeNumber;
 
         public AnswerHolder(View itemView) {
             super(itemView);
@@ -158,6 +161,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
                 answerHolder.tvUsername.setText(answer.nick_name);
                 answerHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(answer.answer_content)));
+                answerHolder.tvAgreeNumber.setText(String.valueOf(answer.agree_count));
 
                 answerHolder.ivAvatar.setOnClickListener(onClickListener);
                 answerHolder.tvUsername.setOnClickListener(onClickListener);
