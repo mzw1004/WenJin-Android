@@ -18,8 +18,8 @@ import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/3/20.
@@ -59,13 +59,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public static class HeaderHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.user_profile_image)
+        @Bind(R.id.user_profile_image)
         ImageView mIvProfile;
-        @InjectView(R.id.user_profile_background)
+        @Bind(R.id.user_profile_background)
         ImageView mIvBackground;
-        @InjectView(R.id.tv_user_profile_name)
+        @Bind(R.id.tv_user_profile_name)
         TextView mTvUsername;
-        @InjectView(R.id.tv_user_profile_signature)
+        @Bind(R.id.tv_user_profile_signature)
         TextView mTvUserSignature;
 //        @InjectView(R.id.tv_user_profile_email)
 //        TextView mTvEmail;
@@ -75,22 +75,22 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public HeaderHolder(View itemView) {
             super(itemView);
             mRootView = itemView;
-            ButterKnife.inject(this, mRootView);
+            ButterKnife.bind(this, mRootView);
         }
     }
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.drawer_list_item_name)
+        @Bind(R.id.drawer_list_item_name)
         TextView mTextView;
-        @InjectView(R.id.drawer_lsit_item_icon)
+        @Bind(R.id.drawer_lsit_item_icon)
         ImageView mImageView;
 
         View mRootView;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
             mRootView = itemView;
         }
     }
@@ -235,11 +235,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         notifyDataSetChanged();
     }
 
+    /*
     public void updateUserInfo() {
         mUsername = PrefUtils.getPrefUsername();
         mAvatarFile = PrefUtils.getPrefAvatarFile();
         mSignature = PrefUtils.getPrefSignature();
         notifyDataSetChanged();
     }
+    */
 
 }

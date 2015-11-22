@@ -6,7 +6,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.FollowsResponse;
 import com.twt.service.wenjin.ui.profile.follows.OnGetFollowCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

@@ -25,8 +25,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class ProfileAskanswerActivity extends BaseActivity implements ProfileAskanswerView,OnItemClickListener {
 
@@ -35,9 +35,9 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
     @Inject
     ProfileAskanswerPresenter _presenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar _toolbar;
-    @InjectView(R.id.profile_askanswer_recycler_view)
+    @Bind(R.id.profile_askanswer_recycler_view)
     RecyclerView _recyclerView;
 
     private final static String ACTION_TYPE = "type";
@@ -70,7 +70,7 @@ public class ProfileAskanswerActivity extends BaseActivity implements ProfileAsk
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_askanswer);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         _type = getIntent().getStringExtra(ACTION_TYPE);
         _uid = getIntent().getIntExtra(USER_ID,0);

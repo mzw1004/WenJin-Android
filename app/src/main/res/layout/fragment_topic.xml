@@ -10,7 +10,7 @@
         android:id="@+id/tabs_topic"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/color_primary"
         android:textColor="@color/color_low_gray"
         app:pstsTextColorSelected="@android:color/white"
         app:pstsIndicatorColor="@android:color/white"

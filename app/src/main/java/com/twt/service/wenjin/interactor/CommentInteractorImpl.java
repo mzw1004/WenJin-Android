@@ -11,7 +11,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.answer.comment.OnGetCommentCallback;
 import com.twt.service.wenjin.ui.answer.comment.OnPublishCommentCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

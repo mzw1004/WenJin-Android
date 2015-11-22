@@ -7,7 +7,9 @@ public interface DrawerView {
 
     void closeDrawer();
 
-    void updateUserInfo();
+//    void updateUserInfo();
+
+    void syncState();
 
     void setSelectedItemColor(int position);
 

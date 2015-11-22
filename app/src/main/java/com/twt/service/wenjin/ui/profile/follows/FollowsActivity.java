@@ -26,10 +26,8 @@ import java.util.Objects;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-
-import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 /**
  * Created by Administrator on 2015/4/25.
@@ -42,10 +40,10 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
     @Inject
     FollowsPresenter _presenter;
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar _toolbar;
 
-    @InjectView(R.id.profile_follows_recycler_view)
+    @Bind(R.id.profile_follows_recycler_view)
     RecyclerView _recyclerView;
 
     private FollowsAdapter _followsAdapter;
@@ -65,7 +63,7 @@ public class FollowsActivity extends BaseActivity implements FollowsView,OnItemC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follows);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         _type = getIntent().getStringExtra("ACTION_TYPE");
         _uid = getIntent().getIntExtra("USER_ID",0);
 

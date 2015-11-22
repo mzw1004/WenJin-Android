@@ -14,8 +14,8 @@ import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/4/6.
@@ -35,18 +35,18 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 //        @InjectView(R.id.iv_comment_item_avatar)
 //        ImageView ivAvatar;
-        @InjectView(R.id.tv_comment_item_username)
+        @Bind(R.id.tv_comment_item_username)
         TextView tvUsername;
-        @InjectView(R.id.tv_comment_item_content)
+        @Bind(R.id.tv_comment_item_content)
         TextView tvContent;
-        @InjectView(R.id.tv_comment_item_add_time)
+        @Bind(R.id.tv_comment_item_add_time)
         TextView tvAddTime;
 
         View rootView;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
             rootView = itemView;
         }
     }

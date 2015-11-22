@@ -102,5 +102,12 @@ public class InteractorsModule {
     }
 
     @Provides @Singleton
-    public NotificationInteractor provideNotificationInteractor(){return new NotificationInteractorImpl();}
+    public NotificationInteractor provideNotificationInteractor(){
+        return new NotificationInteractorImpl();
+    }
+
+    @Provides @Singleton
+    public SearchInteractor provideSearchInteractor(){
+        return new SearchInteractorImpl();
+    }
 }

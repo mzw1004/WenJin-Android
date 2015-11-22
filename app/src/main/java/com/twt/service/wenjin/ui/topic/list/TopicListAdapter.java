@@ -19,8 +19,8 @@ import com.twt.service.wenjin.ui.home.HomeAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/4/8.
@@ -43,18 +43,18 @@ public class TopicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.iv_topic_item_pic)
+        @Bind(R.id.iv_topic_item_pic)
         ImageView imageView;
-        @InjectView(R.id.tv_topic_item_title)
+        @Bind(R.id.tv_topic_item_title)
         TextView tvTitle;
-        @InjectView(R.id.tv_topic_item_description)
+        @Bind(R.id.tv_topic_item_description)
         TextView tvDescription;
 
         View rootview;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
             rootview = itemView;
         }
     }

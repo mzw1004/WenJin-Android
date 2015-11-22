@@ -20,6 +20,17 @@
 
     <!-- Main Activity -->
     <string name="action_notification">通知</string>
+    <string name="action_search">搜索</string>
+
+
+    <!-- Search Activity-->
+    <string name="title_activity_search">搜索</string>
+    <string name="hint_action_search">请输入关键字</string>
+    <string name="search_question">问题</string>
+    <string name="search_article">文章</string>
+    <string name="search_topic">话题</string>
+    <string name="search_user">用户</string>
+    <string name="search_nothing">没有信息可显示T T</string>
 
     <!-- Drawer strings -->
     <string name="drawer_open">打开侧边栏</string>
@@ -34,6 +45,7 @@
     <string name="drawer_item_helper_and_feedback">帮助 &amp; 反馈</string>
     <string name="drawer_item_logout">登出</string>
     <string name="drawer_item_login">登入</string>
+    <string name="drawer_divider_system">系统</string>
 
     <!-- Home strings -->
     <string name="post_question">发起了问题</string>
@@ -198,7 +210,6 @@
     <string name="no_any_drafts">不存在任何草稿。</string>
     <string name="action_delete">删除</string>
 
-    <!--Article activity-->
     <string name="title_activity_article">文章</string>
     <!-- Green Channel activity-->
     <string name="title_activity_green_channel">快速注册</string>

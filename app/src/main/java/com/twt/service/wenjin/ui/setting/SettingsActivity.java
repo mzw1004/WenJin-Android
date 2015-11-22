@@ -8,19 +8,19 @@ import android.view.MenuItem;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.support.StatusBarHelper;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class SettingsActivity extends ActionBarActivity {
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         StatusBarHelper.setStatusBar(this);
 

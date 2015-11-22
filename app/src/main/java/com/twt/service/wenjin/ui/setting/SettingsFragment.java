@@ -21,7 +21,7 @@ import com.twt.service.wenjin.ui.about.AboutActivity;
 import com.twt.service.wenjin.ui.common.TextDialogFragment;
 import com.twt.service.wenjin.ui.common.UpdateDialogFragment;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
