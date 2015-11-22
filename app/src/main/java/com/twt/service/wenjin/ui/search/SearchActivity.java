@@ -3,6 +3,7 @@ package com.twt.service.wenjin.ui.search;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
@@ -33,7 +33,7 @@ public class SearchActivity extends BaseActivity implements SearchView, android.
     private static final String LOG_TAG = SearchActivity.class.getSimpleName();
 
     @Bind(R.id.tabs_search)
-    PagerSlidingTabStrip mPagerSlidingTabStrip;
+    TabLayout mTabLayout;
 
     @Bind(R.id.viewpager_search)
     ViewPager mViewPager;
@@ -63,7 +63,7 @@ public class SearchActivity extends BaseActivity implements SearchView, android.
 
         fragmentPagerAdapter = new SearchFragmentAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(fragmentPagerAdapter);
-        mPagerSlidingTabStrip.setViewPager(mViewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override

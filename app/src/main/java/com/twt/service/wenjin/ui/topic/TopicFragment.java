@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.topic;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -8,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.support.LogHelper;
 
@@ -20,7 +20,7 @@ public class TopicFragment extends Fragment {
     private static final String LOG_TAG = TopicFragment.class.getSimpleName();
 
     @Bind(R.id.tabs_topic)
-    PagerSlidingTabStrip mTabs;
+    TabLayout mTabLayout;
     @Bind(R.id.viewpager_topic)
     ViewPager mViewPager;
 
@@ -36,7 +36,7 @@ public class TopicFragment extends Fragment {
         LogHelper.d(LOG_TAG, "onCreateView");
         FragmentPagerAdapter adapter = new TopicAdapter(getChildFragmentManager());
         mViewPager.setAdapter(adapter);
-        mTabs.setViewPager(mViewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
 
         return rootView;
     }

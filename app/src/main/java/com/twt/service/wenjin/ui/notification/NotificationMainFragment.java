@@ -1,9 +1,7 @@
 package com.twt.service.wenjin.ui.notification;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.ui.notification.readlist.NotificationFragment;
 
@@ -25,7 +22,7 @@ import butterknife.ButterKnife;
 public class NotificationMainFragment extends Fragment {
 
     @Bind(R.id.tabs_notification_main)
-    PagerSlidingTabStrip mPagerSlidingTabStrip;
+    TabLayout mTabLayout;
 
     @Bind(R.id.viewpager_notification_main)
     ViewPager mViewPager;
@@ -46,15 +43,11 @@ public class NotificationMainFragment extends Fragment {
         mFragmentPagerAdapter = new NotificationMainAdapter(getChildFragmentManager());
         mViewPager.setAdapter(mFragmentPagerAdapter);
 
-        mPagerSlidingTabStrip.setViewPager(mViewPager);
-        mPagerSlidingTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mTabLayout.setupWithViewPager(mViewPager);
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
                 if (position != 0) {
                     ((NotificationFragment) mFragmentPagerAdapter.getItem(position)).hideMarkAllView();
 
@@ -64,8 +57,11 @@ public class NotificationMainFragment extends Fragment {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
 
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
             }
         });
 

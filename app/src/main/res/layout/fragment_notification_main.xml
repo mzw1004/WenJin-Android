@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.twt.service.wenjin.ui.notification.NotificationMainFragment"
-    >
+    tools:context="com.twt.service.wenjin.ui.notification.NotificationMainFragment">
 
-    <com.astuetz.PagerSlidingTabStrip
+    <android.support.design.widget.TabLayout
         android:id="@+id/tabs_notification_main"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@color/color_primary"
-        android:textColor="@color/color_low_gray"
-        app:pstsTextColorSelected="@android:color/white"
-        app:pstsIndicatorColor="@android:color/white"
-        app:pstsShouldExpand="true" />
+        app:tabMode="fixed"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabTextColor="@color/color_low_gray"
+        app:tabSelectedTextColor="@android:color/white" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_notification_main"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabs_notification_main" />
+
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,24 +29,23 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        >
+        android:layout_marginStart="16dp">
+
         <TextView
             android:id="@+id/tv_mark_all"
-            android:text="@string/notification_markall"
-            android:visibility="gone"
-            android:textSize="12sp"
-            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/button_background"
+            android:clickable="true"
+            android:paddingBottom="8dp"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            />
+            android:text="@string/notification_markall"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="gone" />
 
     </FrameLayout>
 
