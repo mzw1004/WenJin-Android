@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:clipToPadding="false"
-    tools:context="com.twt.service.wenjin.ui.profile.ProfileActivity">
+    tools:context="com.twt.service.wenjin.ui.profile.ProfileActivity"
+    android:background="@color/material_grey_300"
+    >
 
     <include
         android:id="@+id/toolbar"

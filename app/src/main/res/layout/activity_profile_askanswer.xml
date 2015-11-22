@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     android:clipToPadding="false"
+    android:background="@color/material_grey_300"
     tools:context="com.twt.service.wenjin.ui.profile.askanswer.ProfileAskanswerActivity">
     <include
         android:id="@+id/toolbar"

@@ -23,11 +23,18 @@ public class ExploreItem {
     /*the title of article if post type is article*/
     public String title;
 
-    /*浏览次数*/
+    /*问题浏览次数*/
     public int view_count;
 
     /*关注人数*/
     public int focus_count;
+
+    /*文章浏览次数*/
+    public int views;
+
+    /*文章评论数*/
+    public int comments;
+
 
     /*回复人数*/
     public int answer_count;

@@ -60,6 +60,18 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         @Bind(R.id.tv_home_item_content)
         TextView _tvContent;
 
+        @Bind(R.id.tv_home_item_article_label)
+        TextView tvArticleLabel;
+
+        @Bind(R.id.groupview_comment_label)
+        View vGroupComment;
+        @Bind(R.id.groupview_view_label)
+        View vGroupView;
+        @Bind(R.id.tv_home_item_comment_number)
+        TextView tvCommentNum;
+        @Bind(R.id.tv_home_item_view_number)
+        TextView tvViewNum;
+
         public ItemHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -120,7 +132,12 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             itemHolder._tvTitle.setOnClickListener(onClickListener);
             itemHolder._tvContent.setOnClickListener(onClickListener);
 
+            itemHolder.vGroupComment.setVisibility(View.VISIBLE);
+            itemHolder.vGroupView.setVisibility(View.VISIBLE);
+
             if( 0 == exploreItem.post_type.compareTo("article")){
+                itemHolder.tvCommentNum.setText(String.valueOf(exploreItem.comments));
+                itemHolder.tvViewNum.setText(String.valueOf(exploreItem.views));
                 itemHolder._tvTitle.setText(exploreItem.title);
                 itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.add_time));
                 itemHolder._tvContent.setVisibility(View.GONE);
@@ -132,10 +149,13 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
                     }
                 }
+                itemHolder.tvArticleLabel.setVisibility(View.VISIBLE);
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_article));
                 return;
             }
-
+            itemHolder.tvCommentNum.setText(String.valueOf(exploreItem.answer_count));
+            itemHolder.tvViewNum.setText(String.valueOf(exploreItem.view_count));
+            itemHolder.tvArticleLabel.setVisibility(View.GONE);
             itemHolder._tvTitle.setText(exploreItem.question_content);
             itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
             itemHolder._tvContent.setVisibility(View.VISIBLE);
@@ -149,7 +169,7 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     }
                 }
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_question));
-                itemHolder._tvContent.setVisibility(View.GONE);
+
             }else{
                 if(exploreItem.answer_users.length > 0){
                     AnswerInfo userInfo = exploreItem.answer_users[0];
