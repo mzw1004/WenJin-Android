@@ -27,6 +27,8 @@
     <string name="action_notification">Notification</string>
     <string name="action_search">Search</string>
 
+    <!-- Innerweb Activity-->
+    <string name="title_activity_website">Website</string>
 
     <!-- Search Activity-->
     <string name="title_activity_search">Search</string>

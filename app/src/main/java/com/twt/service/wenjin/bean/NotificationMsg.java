@@ -19,4 +19,10 @@ public class NotificationMsg {
     通知ID
    */
     public int nid;
+
+    /*
+    * 网页推送
+    * */
+    public String url;
+
 }
