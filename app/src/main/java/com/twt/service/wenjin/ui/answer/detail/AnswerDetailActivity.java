@@ -9,8 +9,13 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Menu;
@@ -36,10 +41,13 @@ import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.receiver.JPushNotiReceiver;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.TextviewUrlClickableBuilder;
+import com.twt.service.wenjin.support.TextviewUrlClickableBuilder.IClickUrlLink;
 import com.twt.service.wenjin.support.UmengShareHelper;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
+import com.twt.service.wenjin.ui.innerweb.InnerWebActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
@@ -53,7 +61,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView, View.OnClickListener,ObservableScrollViewCallbacks {
+public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView,
+        View.OnClickListener,ObservableScrollViewCallbacks,IClickUrlLink {
 
     private static final String LOG_TAG = AnswerDetailActivity.class.getSimpleName();
 
@@ -295,10 +304,13 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         tvAgreeNumber.setText("" + answer.agree_count);
         tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
         tvContent.setMovementMethod(LinkMovementMethod.getInstance());
+        TextviewUrlClickableBuilder.BuildTextviewUrlClickable(this,tvContent);
+
         tvAddTime.setText(FormatHelper.formatAddDate(answer.add_time));
         tvBottomActionCommentCount.setText("" + answer.comment_count);
         fy_bottom_actions.setVisibility(View.VISIBLE);
     }
+
 
     @Override
     public void bindTitle(String title) {
@@ -457,6 +469,8 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     }
 
 
-
-
+    @Override
+    public void onClickUrlLink(String url) {
+        InnerWebActivity.actionStart(this, url);
+    }
 }
