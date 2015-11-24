@@ -1,56 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity"
     android:clipToPadding="false"
-    >
+    tools:context=".SearchActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <include
             android:id="@+id/toolbar"
             layout="@layout/app_toolbar" />
 
-    </android.support.design.widget.AppBarLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-
-
-        <com.astuetz.PagerSlidingTabStrip
+        <android.support.design.widget.TabLayout
             android:id="@+id/tabs_search"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/color_primary"
-            android:textColor="@color/color_low_gray"
-            app:pstsTextColorSelected="@android:color/white"
-            app:pstsIndicatorColor="@android:color/white"
-            app:pstsShouldExpand="true"
-            app:tabGravity="fill"
-            />
+            app:tabIndicatorColor="@android:color/white"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextColor="@color/color_low_gray" />
 
+    </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager_search"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            />
-
-    </LinearLayout>
-
-
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </android.support.design.widget.CoordinatorLayout>

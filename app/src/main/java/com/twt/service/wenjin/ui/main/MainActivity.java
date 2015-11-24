@@ -191,6 +191,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withHasStableIds(true)
+                .withStatusBarColor(ResourceHelper.getColor(R.color.color_accent_dark))
                 .withAccountHeader(mHeaderResult)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(R.drawable.ic_drawer_home_grey).withIdentifier(1).withSelectable(true).withSelectedTextColor(ResourceHelper.getColor(R.color.color_primary))
@@ -378,7 +379,7 @@ public class MainActivity extends BaseActivity implements MainView,OnGetNotifica
             mResult.updateBadge(5, new StringHolder(mBadgeCount + ""));
             mResult.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_notifications);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
         }else {
             mResult.updateBadge(5,null);
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);

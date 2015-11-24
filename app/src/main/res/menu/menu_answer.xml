@@ -5,13 +5,13 @@
 
     <item
         android:id="@+id/action_insert_photo"
-        android:icon="@drawable/ic_action_insert_photo"
+        android:icon="@drawable/ic_action_insert_photo_white"
         android:title="@string/action_insert_photo"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_publish"
-        android:icon="@drawable/ic_action_publish"
+        android:icon="@drawable/ic_action_publish_white"
         android:orderInCategory="100"
         android:title="@string/action_publish"
         app:showAsAction="always" />

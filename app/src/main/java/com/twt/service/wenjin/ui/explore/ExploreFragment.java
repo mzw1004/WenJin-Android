@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.explore;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.twt.service.wenjin.R;
 
 import butterknife.Bind;
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 public class ExploreFragment extends Fragment {
 
     @Bind(R.id.tabs_explore)
-    PagerSlidingTabStrip _pagerSlidingTabStrip;
+    TabLayout mTabLayout;
 
     @Bind(R.id.viewpager_explore)
     ViewPager _viewPager;
@@ -36,7 +36,7 @@ public class ExploreFragment extends Fragment {
 
         FragmentPagerAdapter fragmentPagerAdapter = new ExploreAdapter(getChildFragmentManager());
         _viewPager.setAdapter(fragmentPagerAdapter);
-        _pagerSlidingTabStrip.setViewPager(_viewPager);
+        mTabLayout.setupWithViewPager(_viewPager);
 
         return rootView;
     }

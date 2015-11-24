@@ -7,12 +7,9 @@
     android:clipToPadding="false"
     tools:context="com.twt.service.wenjin.ui.answer.AnswerActivity">
 
-    <android.support.v7.widget.Toolbar
+    <include
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@android:color/transparent" />
+        layout="@layout/app_toolbar" />
 
     <EditText
         android:id="@+id/et_answer_content"

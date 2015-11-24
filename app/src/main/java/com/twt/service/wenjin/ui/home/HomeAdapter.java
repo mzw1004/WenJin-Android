@@ -63,6 +63,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tvTime;
         @Bind(R.id.tv_home_item_agree_number)
         TextView tvAgreeNo;
+        @Bind(R.id.groupview_agree_label)
+        View vGroupAgreeLabel;
+        @Bind(R.id.tv_home_item_article_label)
+        TextView tvArticleLabel;
 
         public ItemHolder(View itemView) {
             super(itemView);
@@ -180,13 +184,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             if (homeItem.article_info != null) {
                 itemHolder.tvTitle.setText(homeItem.article_info.title);
+                itemHolder.tvArticleLabel.setVisibility(View.VISIBLE);
+            }else {
+                itemHolder.tvArticleLabel.setVisibility(View.GONE);
             }
             if (homeItem.answer_info != null) {
                 itemHolder.tvContent.setVisibility(View.VISIBLE);
-                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
-                itemHolder.ivAgree.setVisibility(View.VISIBLE);
-//                itemHolder.ivAgree.setVisibility(View.VISIBLE);
-//                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
+                itemHolder.vGroupAgreeLabel.setVisibility(View.VISIBLE);
 
                 String content = homeItem.answer_info.answer_content;
                 itemHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(content)));
@@ -194,8 +198,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
             } else {
                 itemHolder.tvContent.setVisibility(View.GONE);
-//                itemHolder.ivAgree.setVisibility(View.GONE);
-//                itemHolder.tvAgreeNo.setVisibility(View.GONE);
+                itemHolder.vGroupAgreeLabel.setVisibility(View.GONE);
+
             }
         } else if (type == ITEM_VIEW_TYPE_FOOTER) {
         }

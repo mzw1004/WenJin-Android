@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.twt.service.wenjin.ui.topic.TopicFragment">
 
-    <com.astuetz.PagerSlidingTabStrip
+    <android.support.design.widget.TabLayout
         android:id="@+id/tabs_topic"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@color/color_primary"
-        android:textColor="@color/color_low_gray"
-        app:pstsTextColorSelected="@android:color/white"
-        app:pstsIndicatorColor="@android:color/white"
-        app:pstsShouldExpand="true" />
+        app:tabMode="fixed"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabTextColor="@color/color_low_gray"
+        app:tabSelectedTextColor="@android:color/white"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_topic"

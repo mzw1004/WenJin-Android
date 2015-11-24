@@ -1,15 +1,13 @@
 package com.twt.service.wenjin.interactor;
 
 import com.google.gson.Gson;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.api.ApiClient;
+import com.twt.service.wenjin.api.ResponseHandler;
 import com.twt.service.wenjin.bean.HomeResponse;
-import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.CacheHelper;
+import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.ui.home.OnGetItemsCallback;
-import com.twt.service.wenjin.ui.publish.OnPublishCallback;
 
-import cz.msebera.android.httpclient.Header;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -20,34 +18,26 @@ public class HomeInteractorImpl implements HomeInteractor {
     private static final String LOG_TAG = HomeInteractorImpl.class.getSimpleName();
 
     @Override
-    public void getHomeItems(int perPgae, int page, final OnGetItemsCallback onGetItemsCallback) {
-        ApiClient.getHome(perPgae, page, new JsonHttpResponseHandler() {
-
+    public void getHomeItems(int perPgae, final int page, final OnGetItemsCallback onGetItemsCallback) {
+        if (!NetworkHelper.isOnline()) {
+            onGetItemsCallback.onFailure("请检查网络连接状态");
+            return;
+        }
+        ApiClient.getHome(perPgae, page, new ResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                LogHelper.v(LOG_TAG, response.toString());
-                try {
-                    switch (response.getInt(ApiClient.RESP_ERROR_CODE_KEY)) {
-                        case ApiClient.SUCCESS_CODE:
-                            Gson gson = new Gson();
-                            HomeResponse hr =
-                                    gson.fromJson(response.getJSONObject(ApiClient.RESP_MSG_KEY).toString(), HomeResponse.class);
-                            onGetItemsCallback.onSuccess(hr);
-                            break;
-                        case ApiClient.ERROR_CODE:
-                            onGetItemsCallback.onFailure(response.getString(ApiClient.RESP_ERROR_MSG_KEY));
-                            break;
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void success(JSONObject response) {
+                if (page == 0) {
+                    // TODO: 2015/11/23 cache response
+                    CacheHelper.getInstance().cacheJSONObject("http://test", response);
                 }
+                HomeResponse homeResponse = new Gson()
+                        .fromJson(response.toString(), HomeResponse.class);
+                onGetItemsCallback.onSuccess(homeResponse);
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                onGetItemsCallback.onFailure(responseString);
+            public void failure(String error) {
+                onGetItemsCallback.onFailure(error);
             }
         });
     }

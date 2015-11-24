@@ -14,29 +14,41 @@ import java.util.Locale;
 public class MD5Utils {
 
     public static String createAttachKey() {
+        String attachKey;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        String date = dateFormat.format(Calendar.getInstance().getTime());
+        String s = date + " " + PrefUtils.getPrefUid();
         try {
             MessageDigest mdInst = MessageDigest.getInstance("MD5");
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-            String date = dateFormat.format(Calendar.getInstance().getTime());
-            String s = date + " " + PrefUtils.getPrefUid();
-
             mdInst.update(s.getBytes());
-            byte bs[] = mdInst.digest();
-            int i;
-            StringBuilder buf = new StringBuilder("");
-            for (byte b : bs) {
-                i = b;
-                if (i < 0)
-                    i += 256;
-                if (i < 16)
-                    buf.append("0");
-                buf.append(Integer.toHexString(i));
-            }
-            return buf.toString();
+            attachKey = bytesToHexString(mdInst.digest());
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
+            attachKey = String.valueOf(s.hashCode());
         }
+        return attachKey;
     }
 
+    public static String hashKeyFromUrl(String url) {
+        String cacheKey;
+        try {
+            final MessageDigest mDigest = MessageDigest.getInstance("MD5");
+            mDigest.update(url.getBytes());
+            cacheKey = bytesToHexString(mDigest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            cacheKey = String.valueOf(url.hashCode());
+        }
+        return cacheKey;
+    }
+
+    public static String bytesToHexString(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte aByte : bytes) {
+            String hex = Integer.toHexString(0xFF & aByte);
+            if (hex.length() == 1) {
+                sb.append('0');
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
+    }
 }

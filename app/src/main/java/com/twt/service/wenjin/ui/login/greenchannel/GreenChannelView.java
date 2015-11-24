@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.ui.login.green_channel;
+package com.twt.service.wenjin.ui.login.greenchannel;
 
 /**
  * Created by RexSun on 15/7/18.

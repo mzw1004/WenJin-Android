@@ -1,23 +1,17 @@
 package com.twt.service.wenjin.ui.home;
 
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
@@ -26,7 +20,6 @@ import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.article.ArticleActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
-import com.twt.service.wenjin.ui.publish.PublishActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 import com.twt.service.wenjin.ui.topic.detail.TopicDetailActivity;
 
@@ -157,7 +150,7 @@ public class HomeFragment extends BaseFragment implements
             LogHelper.v(LOG_TAG, "start question activity");
             QuestionActivity.actionStart(getActivity(), item.question_info.question_id);
         }else if (item.article_info !=null){
-            ArticleActivity.actionStart(getActivity(), item.article_info.id);
+            ArticleActivity.actionStart(getActivity(), item.article_info.id, item.article_info.title);
         }
     }
 

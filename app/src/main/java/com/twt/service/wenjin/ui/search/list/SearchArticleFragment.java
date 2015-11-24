@@ -97,7 +97,7 @@ public class SearchArticleFragment extends Fragment implements OnItemClickListen
     @Override
     public void onItemClicked(View view, int position) {
         SearchArticle article = mSearchArticleAdapter.getItem(position);
-        ArticleActivity.actionStart(getActivity(), article.search_id);
+        ArticleActivity.actionStart(getActivity(), article.search_id, article.name);
     }
 
     @Override

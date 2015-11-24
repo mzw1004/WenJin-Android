@@ -41,7 +41,7 @@ public class FormatHelper {
             return hours + " " + ResourceHelper.getString(R.string.hours_ago);
         } else if (minutes > 0) {
             return minutes + " " + ResourceHelper.getString(R.string.minutes_ago);
-        } else if (seconds > 0){
+        } else if (seconds > 0) {
             return seconds + " " + ResourceHelper.getString(R.string.seconds_ago);
         } else {
             return ResourceHelper.getString(R.string.just_now);
@@ -53,7 +53,7 @@ public class FormatHelper {
         return ResourceHelper.getString(R.string.add_in) + " " + new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
     }
 
-    public static String formatAddDateWithoutAddinString(long addtime){
+    public static String formatAddDateWithoutAddinString(long addtime) {
         Date date = new Date(addtime * 1000);
         return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
     }
@@ -72,6 +72,10 @@ public class FormatHelper {
 
     public static String formatQuestionLink(int questionId) {
         return "http://wenjin.twtstudio.com/?/question/" + questionId;
+    }
+
+    public static String formatArticleLink(int articleId) {
+        return "http://wenjin.twtstudio.com/?/api/article/article/&id=" + articleId;
     }
 
 }

@@ -2,12 +2,16 @@ package com.twt.service.wenjin.ui.home;
 
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.interactor.HomeInteractor;
 import com.twt.service.wenjin.interactor.HomeInteractorImpl;
+import com.twt.service.wenjin.support.CacheHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -43,10 +47,17 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
 
     @Override
     public void firstTimeRefreshHomeItems() {
+        // 第一次并不进行加载，只是加载缓存
         mPage = 0;
-        isRefreshing = true;
+        JSONObject jsonObject = CacheHelper.getInstance().loadJSONObjectFromDiskCache("http://test");
+        if (jsonObject != null) {
+            HomeResponse homeResponse = new Gson()
+                    .fromJson(jsonObject.toString(), HomeResponse.class);
+            onSuccess(homeResponse);
+        }
+//        isRefreshing = true;
         mHomeView.useLoadMoreFooter();
-        mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
+//        mHomeInteractor.getHomeItems(mItemsPerPage, mPage, this);
     }
 
     @Override
