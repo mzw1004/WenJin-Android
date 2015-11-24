@@ -1,6 +1,5 @@
 package com.twt.service.wenjin.api;
 
-import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twt.service.wenjin.support.JSONHelper;
 import com.twt.service.wenjin.support.LogHelper;
@@ -13,6 +12,7 @@ import cz.msebera.android.httpclient.Header;
  * Created by M on 2015/11/23.
  */
 public abstract class ResponseHandler extends JsonHttpResponseHandler {
+    private static final String LOG_TAG = ResponseHandler.class.getSimpleName();
     /*
     接口总是会返回一个json，包含三个字段
     rsm：成功时包含返回的数据，失败时此字段为null

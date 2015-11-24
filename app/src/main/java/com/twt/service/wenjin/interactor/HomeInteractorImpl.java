@@ -5,6 +5,7 @@ import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.api.ResponseHandler;
 import com.twt.service.wenjin.bean.HomeResponse;
 import com.twt.service.wenjin.support.CacheHelper;
+import com.twt.service.wenjin.support.NetworkHelper;
 import com.twt.service.wenjin.ui.home.OnGetItemsCallback;
 
 import org.json.JSONObject;
@@ -18,6 +19,10 @@ public class HomeInteractorImpl implements HomeInteractor {
 
     @Override
     public void getHomeItems(int perPgae, final int page, final OnGetItemsCallback onGetItemsCallback) {
+        if (!NetworkHelper.isOnline()) {
+            onGetItemsCallback.onFailure("请检查网络连接状态");
+            return;
+        }
         ApiClient.getHome(perPgae, page, new ResponseHandler() {
             @Override
             public void success(JSONObject response) {
