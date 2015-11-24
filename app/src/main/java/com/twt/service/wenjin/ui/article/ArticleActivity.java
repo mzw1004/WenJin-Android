@@ -39,9 +39,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import de.hdodenhof.circleimageview.CircleImageView;
+import butterknife.ButterKnife;import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by RexSun on 15/7/16.
@@ -58,33 +58,33 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
     private static final int VOTE_STATE_NONE = 0;
     @Inject
     ArticlePresenter mPresenter;
-    @InjectView(R.id.tv_article_title)
+    @Bind(R.id.tv_article_title)
     TextView tvArticleTitle;
-    @InjectView(R.id.iv_article_avatar)
+    @Bind(R.id.iv_article_avatar)
     CircleImageView ivArticleAvatar;
-    @InjectView(R.id.tv_article_username)
+    @Bind(R.id.tv_article_username)
     TextView tvArticleUsername;
-    @InjectView(R.id.wv_article_content)
+    @Bind(R.id.wv_article_content)
     WebView wvArticleContent;
-    @InjectView(R.id.iv_article_agree)
+    @Bind(R.id.iv_article_agree)
     ImageView ivArticleAgree;
-    @InjectView(R.id.tv_article_agree)
+    @Bind(R.id.tv_article_agree)
     TextView tvArticleAgree;
-    @InjectView(R.id.iv_article_disagree)
+    @Bind(R.id.iv_article_disagree)
     ImageView ivArticleDisagree;
-    @InjectView(R.id.divider)
+    @Bind(R.id.divider)
     View divider;
-    @InjectView(R.id.iv_article_comment)
+    @Bind(R.id.iv_article_comment)
     ImageView ivArticleComment;
-    @InjectView(R.id.tv_article_comment)
+    @Bind(R.id.tv_article_comment)
     TextView tvArticleComment;
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.tv_article_agree_count)
+    @Bind(R.id.tv_article_agree_count)
     TextView tvArticleAgreeCount;
-    @InjectView(R.id.pb_article_loading)
+    @Bind(R.id.pb_article_loading)
     ProgressBar pbArticleLoading;
-    @InjectView(R.id.ll_article_comment)
+    @Bind(R.id.ll_article_comment)
     LinearLayout llArticleComment;
 
     private int articleId;
@@ -100,7 +100,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView, View.O
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("文章");

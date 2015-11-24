@@ -26,8 +26,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/4/5.
@@ -39,9 +39,9 @@ public class SelectPhotoDialogFragment extends DialogFragment implements View.On
     public static final int PICK_IMAGE_REQUEST_CODE = 1;
     public static final int CAPTURE_IMAGE_REQUEST_CODE = 2;
 
-    @InjectView(R.id.bt_dialog_take_photo)
+    @Bind(R.id.bt_dialog_take_photo)
     Button btTakePhoto;
-    @InjectView(R.id.bt_dialog_local_photo)
+    @Bind(R.id.bt_dialog_local_photo)
     Button btLocalPhoto;
 
     private String photoFileName;
@@ -61,12 +61,18 @@ public class SelectPhotoDialogFragment extends DialogFragment implements View.On
                 })
                 .build();
 
-        ButterKnife.inject(this, dialog.getCustomView());
+        ButterKnife.bind(this, dialog.getCustomView());
 
         btTakePhoto.setOnClickListener(this);
         btLocalPhoto.setOnClickListener(this);
 
         return dialog;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     public void show(AppCompatActivity context) {

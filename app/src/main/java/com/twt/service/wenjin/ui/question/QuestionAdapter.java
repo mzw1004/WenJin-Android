@@ -25,8 +25,8 @@ import com.twt.service.wenjin.ui.common.PicassoImageGetter;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.gujun.android.taggroup.TagGroup;
 
 /**
@@ -50,37 +50,40 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public static class QuestionHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.tag_group_question)
+        @Bind(R.id.tag_group_question)
         TagGroup tagGroup;
-        @InjectView(R.id.tv_question_title)
+        @Bind(R.id.tv_question_title)
         TextView tvTitle;
-        @InjectView(R.id.tv_question_content)
+        @Bind(R.id.tv_question_content)
         TextView tvContent;
-        @InjectView(R.id.tv_question_has_focus)
+        @Bind(R.id.tv_question_has_focus)
         TextView tvFocus;
-        @InjectView(R.id.tv_question_has_comment)
+        @Bind(R.id.tv_question_has_comment)
         TextView tvComment;
-        @InjectView(R.id.bt_question_focus)
+        @Bind(R.id.bt_question_focus)
         Button btFocus;
+
 
         public QuestionHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     public static class AnswerHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.iv_question_answer_avatar)
+        @Bind(R.id.iv_question_answer_avatar)
         ImageView ivAvatar;
-        @InjectView(R.id.tv_question_answer_username)
+        @Bind(R.id.tv_question_answer_username)
         TextView tvUsername;
-        @InjectView(R.id.tv_question_answer_content)
+        @Bind(R.id.tv_question_answer_content)
         TextView tvContent;
+        @Bind(R.id.tv_item_agree_number)
+        TextView tvAgreeNumber;
 
         public AnswerHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
@@ -158,6 +161,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
                 answerHolder.tvUsername.setText(answer.nick_name);
                 answerHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(answer.answer_content)));
+                answerHolder.tvAgreeNumber.setText(String.valueOf(answer.agree_count));
 
                 answerHolder.ivAvatar.setOnClickListener(onClickListener);
                 answerHolder.tvUsername.setOnClickListener(onClickListener);

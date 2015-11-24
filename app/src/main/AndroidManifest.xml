@@ -25,8 +25,7 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <!--
-     JPush Optional for location
+    <!-- JPush Optional for location
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -42,10 +41,10 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="BUG_HD_SDK_GENERAL_KEY"
-            android:value="0d377ef5e746db9ac47196038ad6a0c7" />
+            android:value="@string/BUG_HD_SDK_GENERAL_KEY" />
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="553cc331e0f55aca9d0059bf" />
+            android:value="@string/UMENG_APPKEY" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="WenJin" />
@@ -169,8 +168,11 @@
         <activity
             android:name=".ui.article.comment.CommentActivlty"
             android:label="@string/title_activity_comment" />
-
-        <!-- JPush Required SDK核心功能 -->
+        
+        <activity android:name=".ui.search.SearchActivity"
+            android:label="@string/title_activity_search"/>
+        
+        <!-- JPush Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -241,12 +243,8 @@
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
 
         <!-- JPush Required  . Enable it you can get statistics data with channel -->
-        <meta-data
-            android:name="JPUSH_CHANNEL"
-            android:value="developer-default" />
-        <meta-data
-            android:name="JPUSH_APPKEY"
-            android:value="5fb608f1d509c30234c4bbaa" /> <!-- </>值来自开发者平台取得的AppKey -->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="@string/JPUSH_APPKEY" /> <!--  </>值来自开发者平台取得的AppKey-->
 
         <activity
             android:name=".ui.image.ShowWebImageActivity"

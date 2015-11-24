@@ -20,8 +20,8 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.support.StatusBarHelper;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by RexSun on 15/7/18.
@@ -29,11 +29,11 @@ import butterknife.InjectView;
 public class GreenChannelActivity extends AppCompatActivity implements GreenChannelView {
     private GreenChannelPresenter greenChannelPresenter;
 
-    @InjectView(R.id.pb_green_channel_loading)
+    @Bind(R.id.pb_green_channel_loading)
     ProgressBar pbGreenChannelLoading;
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.wv_green_channel)
+    @Bind(R.id.wv_green_channel)
     WebView wvGreenChannel;
 
     public static void actionStart(Context context) {
@@ -45,7 +45,7 @@ public class GreenChannelActivity extends AppCompatActivity implements GreenChan
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_green_channel);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(ResourceHelper.getString(R.string.login_signin));

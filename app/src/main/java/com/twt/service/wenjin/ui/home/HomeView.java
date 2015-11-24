@@ -17,9 +17,9 @@ public interface HomeView {
 
     void useLoadMoreFooter();
 
-    void showFabMenu();
+    void showFastTotopFab();
 
-    void hideFabMenu();
+    void hideFastTotopFab();
 
     void toastMessage(String message);
 

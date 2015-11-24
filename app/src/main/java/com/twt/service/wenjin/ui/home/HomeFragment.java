@@ -1,7 +1,7 @@
 package com.twt.service.wenjin.ui.home;
 
-
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,11 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.LogHelper;
@@ -22,7 +20,6 @@ import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.article.ArticleActivity;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
-import com.twt.service.wenjin.ui.publish.PublishActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
 import com.twt.service.wenjin.ui.topic.detail.TopicDetailActivity;
 
@@ -32,25 +29,24 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class HomeFragment extends BaseFragment implements
         HomeView, SwipeRefreshLayout.OnRefreshListener, OnItemClickListener {
 
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
 
+
     @Inject
     HomePresenter mPresenter;
 
-    @InjectView(R.id.home_swipe_refresh_layout)
+    @Bind(R.id.home_swipe_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
-    @InjectView(R.id.home_recycler_view)
+    @Bind(R.id.home_recycler_view)
     RecyclerView mRecyclerView;
-    @InjectView(R.id.fab_menu_add)
-    FloatingActionsMenu mFabMenu;
-    @InjectView(R.id.fab_post_question)
-    FloatingActionButton mFabQuestion;
+    @Bind(R.id.fab_fastbacktotop)
+    FloatingActionButton mFabFastTotop;
 //    @InjectView(R.id.fab_post_article)
 //    FloatingActionButton mFabArticle;
 
@@ -73,7 +69,7 @@ public class HomeFragment extends BaseFragment implements
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
@@ -95,26 +91,31 @@ public class HomeFragment extends BaseFragment implements
                 }
                 if (firstVisibleItemPosition > mPrevFirstVisiblePosition) {
 //                    LogHelper.v(LOG_TAG, "scroll down");
-                    hideFabMenu();
+                    showFastTotopFab();
                 } else if (firstVisibleItemPosition < mPrevFirstVisiblePosition) {
 //                    LogHelper.v(LOG_TAG, "scroll up");
-                    showFabMenu();
+                    hideFastTotopFab();
                 }
                 mPrevFirstVisiblePosition = firstVisibleItemPosition;
             }
         });
 
-        mFabQuestion.setOnClickListener(new View.OnClickListener() {
+        mFabFastTotop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFabMenu.collapse();
-                startActivity(new Intent(getActivity(), PublishActivity.class));
+                mRecyclerView.scrollToPosition(0);
             }
         });
 
         //mPresenter.refreshHomeItems();
         mPresenter.firstTimeRefreshHomeItems();
         return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Override
@@ -204,21 +205,35 @@ public class HomeFragment extends BaseFragment implements
         }
     }
 
+
     @Override
-    public void showFabMenu() {
-        mFabMenu.animate()
-                .translationY(0)
-                .setInterpolator(new AccelerateInterpolator())
+    public void showFastTotopFab() {
+//        if(mFabFastTotop.getVisibility() == View.GONE) {
+//            mFabFastTotop.setVisibility(View.VISIBLE);
+//        }
+        mFabFastTotop.animate()
+                .alpha(1.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        mFabFastTotop.setVisibility(View.VISIBLE);
+                    }
+                })
                 .start();
     }
 
     @Override
-    public void hideFabMenu() {
-        mFabMenu.collapse();
-        mFabMenu.animate()
-                .translationY(mFabMenu.getTop())
-                .setInterpolator(new AccelerateInterpolator())
-                .start();
+    public void hideFastTotopFab() {
+        mFabFastTotop.animate()
+                .alpha(0.0f)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        mFabFastTotop.setVisibility(View.GONE);
+                    }
+                }).start();
     }
 
     @Override

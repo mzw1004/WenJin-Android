@@ -9,7 +9,7 @@ public class AnswerInfo {
 
     public int question_id;
 
-    public int agree_count;
+    public String agree_count;
 
     public String answer_content;
 

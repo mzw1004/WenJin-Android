@@ -21,8 +21,8 @@ import com.twt.service.wenjin.ui.common.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by Green on 15-6-22.
@@ -45,37 +45,37 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public static class ItemHolder extends RecyclerView.ViewHolder{
 
-        @InjectView(R.id.iv_notifi_item_avatar)
+        @Bind(R.id.iv_notifi_item_avatar)
         ImageView ivAvatar;
-        @InjectView(R.id.tv_notifi_item_username)
+        @Bind(R.id.tv_notifi_item_username)
         TextView tvUsername;
-        @InjectView(R.id.tv_notifi_item_status)
+        @Bind(R.id.tv_notifi_item_status)
         TextView tvStatus;
-        @InjectView(R.id.tv_notifi_item_title)
+        @Bind(R.id.tv_notifi_item_title)
         TextView tvTitle;
-        @InjectView(R.id.tv_notifi_item_content)
+        @Bind(R.id.tv_notifi_item_content)
         TextView tvContent;
-        @InjectView(R.id.tv_notifi_item_time)
+        @Bind(R.id.tv_notifi_item_time)
         TextView tvTime;
-        @InjectView(R.id.tv_notifi_item_markasread)
+        @Bind(R.id.tv_notifi_item_markasread)
         TextView tvMarkasread;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     public static class FooterHoler extends RecyclerView.ViewHolder{
 
-        @InjectView(R.id.tv_footer_load_more)
+        @Bind(R.id.tv_footer_load_more)
         TextView tvLoadMore;
-        @InjectView(R.id.pb_footer_load_more)
+        @Bind(R.id.pb_footer_load_more)
         ProgressBar pbLoadMore;
 
         public FooterHoler(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

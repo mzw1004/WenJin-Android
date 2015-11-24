@@ -7,4 +7,5 @@ public interface MainPresenter {
 
     void onNavigationDrawerItemSelected(int position);
 
+    void selectItem(int position);
 }

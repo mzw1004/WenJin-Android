@@ -26,8 +26,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/5/17.
@@ -37,9 +37,9 @@ public class DraftFragment extends BaseFragment implements DraftView, OnItemClic
     @Inject
     DraftPresenter mPresenter;
 
-    @InjectView(R.id.recycler_view_draft)
+    @Bind(R.id.recycler_view_draft)
     RecyclerView mRecyclerView;
-    @InjectView(R.id.tv_draft_hint)
+    @Bind(R.id.tv_draft_hint)
     TextView tvHint;
 
     private DraftAdapter mAdapter;
@@ -49,7 +49,7 @@ public class DraftFragment extends BaseFragment implements DraftView, OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_draft, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         setHasOptionsMenu(true);
 
@@ -65,7 +65,7 @@ public class DraftFragment extends BaseFragment implements DraftView, OnItemClic
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.reset(this);
+        ButterKnife.unbind(this);
     }
 
     @Override

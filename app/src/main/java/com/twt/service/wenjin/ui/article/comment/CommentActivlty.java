@@ -27,8 +27,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by RexSun on 15/7/17.
@@ -39,17 +39,17 @@ public class CommentActivlty extends BaseActivity implements CommentView, OnItem
     private static final String PARAM_COMMENT_COUNT = "comment_count";
     @Inject
     CommentPresenter mPresenter;
-    @InjectView(R.id.comment_recycler_view)
+    @Bind(R.id.comment_recycler_view)
     RecyclerView commentRecyclerView;
-    @InjectView(R.id.pb_comment_loading)
+    @Bind(R.id.pb_comment_loading)
     ProgressBar pbCommentLoading;
-    @InjectView(R.id.et_comment_content)
+    @Bind(R.id.et_comment_content)
     EditText etCommentContent;
-    @InjectView(R.id.iv_comment_publish)
+    @Bind(R.id.iv_comment_publish)
     ImageView ivCommentPublish;
-    @InjectView(R.id.ll_comment)
+    @Bind(R.id.ll_comment)
     LinearLayout llComment;
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
     private int articleId;
@@ -68,7 +68,7 @@ public class CommentActivlty extends BaseActivity implements CommentView, OnItem
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         articleId = getIntent().getIntExtra(PARAM_ARTICLE_ID, 0);

@@ -24,8 +24,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class TopicListFragment extends BaseFragment implements
         TopicListView, SwipeRefreshLayout.OnRefreshListener, OnItemClickListener {
@@ -37,9 +37,9 @@ public class TopicListFragment extends BaseFragment implements
     @Inject
     TopicListPresenter mPresenter;
 
-    @InjectView(R.id.swipe_refresh_layout_topic)
+    @Bind(R.id.swipe_refresh_layout_topic)
     SwipeRefreshLayout mRefreshLayout;
-    @InjectView(R.id.recycler_view_topic)
+    @Bind(R.id.recycler_view_topic)
     RecyclerView mRecyclerView;
 
     private TopicListAdapter mAdapter;
@@ -67,7 +67,7 @@ public class TopicListFragment extends BaseFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_topic_list, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         mRefreshLayout.setColorSchemeColors(ResourceHelper.getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
@@ -95,6 +95,12 @@ public class TopicListFragment extends BaseFragment implements
     @Override
     protected List<Object> getModules() {
         return Arrays.<Object>asList(new TopicListModule(this));
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Override

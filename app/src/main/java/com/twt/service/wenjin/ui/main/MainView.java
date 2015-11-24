@@ -11,4 +11,12 @@ public interface MainView {
 
 //    void startNewActivity(int position);
 
+    void startSettingsActivity();
+
+    void startFeedbackActivity();
+
+    void startLoginActivity();
+
+    void sendDrawerItemClickedEvent(int position);
+
 }

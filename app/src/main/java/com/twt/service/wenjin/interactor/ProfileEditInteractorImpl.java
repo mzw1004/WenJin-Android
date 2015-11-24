@@ -11,7 +11,7 @@ import com.twt.service.wenjin.ui.profile.edit.OnGetUserInfoCallback;
 import com.twt.service.wenjin.ui.profile.edit.OnPostUserInfoCallBack;
 import com.twt.service.wenjin.ui.profile.edit.OnUploadAvatarCallback;
 
-import org.apache.http.Header;
+import cz.msebera.android.httpclient.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 

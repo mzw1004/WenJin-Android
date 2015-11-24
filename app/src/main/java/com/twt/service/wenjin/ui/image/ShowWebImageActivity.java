@@ -10,16 +10,16 @@ import android.view.MenuItem;
 import com.squareup.picasso.Picasso;
 import com.twt.service.wenjin.R;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import uk.co.senab.photoview.PhotoView;
 
 public class ShowWebImageActivity extends AppCompatActivity {
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    @InjectView(R.id.pv_image)
+    @Bind(R.id.pv_image)
     PhotoView pvImage;
 
     public static void startActivity(Context context, String image){
@@ -32,7 +32,7 @@ public class ShowWebImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_web_image);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Picasso.with(this).load(getIntent().getStringExtra("image")).into(pvImage);

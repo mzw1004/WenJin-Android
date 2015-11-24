@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by Administrator on 2015/4/25.
@@ -45,34 +45,34 @@ public class FollowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     static class ItemHolder extends RecyclerView.ViewHolder{
 
-        @InjectView(R.id.iv_follows_item_avatar)
+        @Bind(R.id.iv_follows_item_avatar)
         ImageView _ivAvatar;
 
-        @InjectView(R.id.tv_follows_item_name)
+        @Bind(R.id.tv_follows_item_name)
         TextView _tvName;
 
-        @InjectView(R.id.tv_follows_item_signature)
+        @Bind(R.id.tv_follows_item_signature)
         TextView _tvSignatrue;
 
         View rootView;
 
         public ItemHolder(View itemView) {
                 super(itemView);
-                ButterKnife.inject(this,itemView);
+                ButterKnife.bind(this, itemView);
                 rootView = itemView;
         }
     }
 
     public static class FooterHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.tv_footer_load_more)
+        @Bind(R.id.tv_footer_load_more)
         TextView tvLoadMore;
-        @InjectView(R.id.pb_footer_load_more)
+        @Bind(R.id.pb_footer_load_more)
         ProgressBar pbLoadMore;
 
         public FooterHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

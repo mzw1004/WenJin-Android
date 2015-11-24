@@ -1,6 +1,7 @@
 package com.twt.service.wenjin.ui.explore;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,21 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.twt.service.wenjin.R;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by Administrator on 2015/4/11.
  */
 public class ExploreFragment extends Fragment {
 
-    @InjectView(R.id.tabs_explore)
-    PagerSlidingTabStrip _pagerSlidingTabStrip;
+    @Bind(R.id.tabs_explore)
+    TabLayout mTabLayout;
 
-    @InjectView(R.id.viewpager_explore)
+    @Bind(R.id.viewpager_explore)
     ViewPager _viewPager;
 
     public ExploreFragment(){
@@ -32,11 +32,11 @@ public class ExploreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_explore,container,false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         FragmentPagerAdapter fragmentPagerAdapter = new ExploreAdapter(getChildFragmentManager());
         _viewPager.setAdapter(fragmentPagerAdapter);
-        _pagerSlidingTabStrip.setViewPager(_viewPager);
+        mTabLayout.setupWithViewPager(_viewPager);
 
         return rootView;
     }
@@ -44,6 +44,6 @@ public class ExploreFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.reset(this);
+        ButterKnife.unbind(this);
     }
 }

@@ -1,4 +1,4 @@
-package com.twt.service.wenjin.support;
+package com.twt.service.wenjin.widget;
 
 import android.content.Context;
 import android.content.res.Resources;

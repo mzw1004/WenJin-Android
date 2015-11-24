@@ -46,6 +46,112 @@
         android:layout_marginTop="4dp"
         android:background="@color/color_divider" />
 
+    <LinearLayout
+        android:id="@+id/groupview_comment_label"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="7dp"
+        android:layout_alignLeft="@+id/tv_question_title"
+        android:layout_alignStart="@+id/tv_question_title"
+        android:background="@drawable/image_number_background"
+        >
+        <ImageView
+            android:id="@+id/iv_home_item_comment"
+            android:visibility="visible"
+            android:src="@drawable/ic_label_comment"
+            android:scaleType="centerCrop"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_gravity="center_vertical"
+            android:padding="2dp"
+
+            />
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@color/md_white_1000"
+            />
+
+        <TextView
+            android:id="@+id/tv_question_has_comment"
+            android:visibility="visible"
+            android:typeface="sans"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:textSize="14sp"
+            android:text="  "
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/groupview_view_label"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_below="@+id/divider"
+        android:layout_toRightOf="@+id/groupview_comment_label"
+        android:layout_toEndOf="@+id/groupview_comment_label"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/image_number_background"
+        >
+        <ImageView
+            android:id="@+id/iv_home_item_view"
+            android:visibility="visible"
+            android:src="@drawable/ic_label_focus"
+            android:scaleType="centerCrop"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_gravity="center_vertical"
+            android:padding="2dp"
+
+            />
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@color/md_white_1000"
+            />
+
+        <TextView
+            android:id="@+id/tv_question_has_focus"
+            android:visibility="visible"
+            android:typeface="sans"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:textSize="14sp"
+            android:text="  "
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+
+    <!--
     <ImageView
         android:id="@+id/iv_question_focus"
         android:layout_width="36dp"
@@ -83,16 +189,22 @@
         android:gravity="center_vertical"
         android:textColor="@color/color_text_secondary"
         android:textSize="14sp" />
-
+    -->
     <Button
         android:id="@+id/bt_question_focus"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_alignRight="@+id/tv_question_title"
+        android:layout_alignEnd="@+id/tv_question_title"
         android:layout_below="@+id/divider"
         android:layout_marginTop="2dp"
+        android:layout_marginBottom="6dp"
         android:background="@drawable/button_focus"
         android:text="@string/action_focus"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/ic_label_focus"
+        android:drawableStart="@drawable/ic_label_focus"
+        android:drawablePadding="-6dp"
+        />
 
 </RelativeLayout>

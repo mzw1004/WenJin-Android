@@ -25,8 +25,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class ExploreListFragment extends BaseFragment implements ExploreListView,
         SwipeRefreshLayout.OnRefreshListener,OnItemClickListener{
@@ -39,10 +39,10 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
     @Inject
     ExploreListPresenter _exploreListPresenter;
 
-    @InjectView(R.id.explore_recycler_view)
+    @Bind(R.id.explore_recycler_view)
     RecyclerView _recyclerView;
 
-    @InjectView(R.id.explore_swipe_refresh_layout)
+    @Bind(R.id.explore_swipe_refresh_layout)
     SwipeRefreshLayout _swipeRefreshLayout;
 
     private ExploreListAdapter _exploreListAdapter;
@@ -77,7 +77,7 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_explore_list,container,false);
         LogHelper.v(LOG_TAG,"new ButterKnife injected");
-        ButterKnife.inject(this,rootView);
+        ButterKnife.bind(this, rootView);
 
         _swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         _swipeRefreshLayout.setOnRefreshListener(this);
@@ -101,6 +101,12 @@ public class ExploreListFragment extends BaseFragment implements ExploreListView
         _exploreListPresenter.firstTimeLoadExploreItems(type);
 
         return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Override

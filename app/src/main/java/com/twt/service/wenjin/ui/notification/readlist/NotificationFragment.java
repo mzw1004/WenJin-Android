@@ -28,8 +28,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by Green on 15-6-7.
@@ -48,9 +48,9 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     @Inject
     NotificationPresenter mPresenter;
 
-    @InjectView(R.id.notification_swipe_refresh_layout)
+    @Bind(R.id.notification_swipe_refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
-    @InjectView(R.id.notification_recycler_view)
+    @Bind(R.id.notification_recycler_view)
     RecyclerView mRecyclerView;
 
     private View mTvMarkall;
@@ -82,7 +82,7 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_notification, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_primary));
         mRefreshLayout.setOnRefreshListener(this);
@@ -121,6 +121,12 @@ public class NotificationFragment extends BaseFragment implements NotificationVi
 
         mPresenter.firstTimeLoadNotificationItems(type);
         return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Override

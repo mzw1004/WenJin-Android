@@ -8,13 +8,9 @@
         <!--toobar color -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorAccent">@color/color_primary</item>
-
-        <!--back button style-->
+        <item name="android:windowBackground">@android:color/white</item>
 
         <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
-
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="windowActionBarOverlay">true</item>
         <!--<item name="android:windowBackground">@color/activity_background</item>-->
     </style>
 
@@ -22,7 +18,6 @@
 
         <!-- 將 spinBars 屬性設定為 false -->
         <item name="spinBars">false</item>
-
         <!-- 設定 drawer arrow 的顏色 -->
         <item name="color">@android:color/white</item>
     </style>

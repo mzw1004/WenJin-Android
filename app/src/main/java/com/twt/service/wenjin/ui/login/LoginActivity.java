@@ -25,8 +25,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import cn.jpush.android.api.JPushInterface;
 
 public class LoginActivity extends BaseActivity implements LoginView, View.OnClickListener {
@@ -35,17 +35,17 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
 
     @Inject
     LoginPresenter mLoginPresenter;
-    @InjectView(R.id.tv_login_username)
+    @Bind(R.id.tv_login_username)
     EditText mEtUsername;
-    @InjectView(R.id.tv_login_password)
+    @Bind(R.id.tv_login_password)
     EditText mEtPassword;
-    @InjectView(R.id.bt_login)
+    @Bind(R.id.bt_login)
     Button mBtLogin;
-    @InjectView(R.id.pb_login)
+    @Bind(R.id.pb_login)
     ProgressBar mPbLogin;
-    @InjectView(R.id.iv_login_logo)
+    @Bind(R.id.iv_login_logo)
     ImageView ivLoginLogo;
-    @InjectView(R.id.bt_green_channel)
+    @Bind(R.id.bt_green_channel)
     TextView btGreenChannel;
 
 
@@ -53,7 +53,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
 
         JPushInterface.clearAllNotifications(getApplicationContext());

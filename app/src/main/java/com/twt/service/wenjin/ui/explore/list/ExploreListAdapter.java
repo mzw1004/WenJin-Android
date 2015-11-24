@@ -15,18 +15,15 @@ import com.twt.service.wenjin.R;
 import com.twt.service.wenjin.api.ApiClient;
 import com.twt.service.wenjin.bean.AnswerInfo;
 import com.twt.service.wenjin.bean.ExploreItem;
-import com.twt.service.wenjin.bean.UserInfo;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 
 /**
  * Created by WGL on 2015/3/28.
@@ -45,27 +42,39 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public static class ItemHolder extends RecyclerView.ViewHolder{
 
-        @InjectView(R.id.tv_home_item_title)
+        @Bind(R.id.tv_home_item_title)
         TextView _tvTitle;
 
-        @InjectView(R.id.iv_home_item_avatar)
+        @Bind(R.id.iv_home_item_avatar)
         ImageView _ivAvatar;
 
-        @InjectView(R.id.tv_home_item_username)
+        @Bind(R.id.tv_home_item_username)
         TextView _tvUser;
 
-        @InjectView(R.id.tv_home_item_status)
+        @Bind(R.id.tv_home_item_status)
         TextView _tvState;
 
-        @InjectView(R.id.tv_home_item_time)
+        @Bind(R.id.tv_home_item_time)
         TextView _tvTime;
 
-        @InjectView(R.id.tv_home_item_content)
+        @Bind(R.id.tv_home_item_content)
         TextView _tvContent;
+
+        @Bind(R.id.tv_home_item_article_label)
+        TextView tvArticleLabel;
+
+        @Bind(R.id.groupview_comment_label)
+        View vGroupComment;
+        @Bind(R.id.groupview_view_label)
+        View vGroupView;
+        @Bind(R.id.tv_home_item_comment_number)
+        TextView tvCommentNum;
+        @Bind(R.id.tv_home_item_view_number)
+        TextView tvViewNum;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
@@ -76,14 +85,14 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public static class FooterHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.tv_footer_load_more)
+        @Bind(R.id.tv_footer_load_more)
         TextView tvLoadMore;
-        @InjectView(R.id.pb_footer_load_more)
+        @Bind(R.id.pb_footer_load_more)
         ProgressBar pbLoadMore;
 
         public FooterHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
@@ -123,7 +132,12 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             itemHolder._tvTitle.setOnClickListener(onClickListener);
             itemHolder._tvContent.setOnClickListener(onClickListener);
 
+            itemHolder.vGroupComment.setVisibility(View.VISIBLE);
+            itemHolder.vGroupView.setVisibility(View.VISIBLE);
+
             if( 0 == exploreItem.post_type.compareTo("article")){
+                itemHolder.tvCommentNum.setText(String.valueOf(exploreItem.comments));
+                itemHolder.tvViewNum.setText(String.valueOf(exploreItem.views));
                 itemHolder._tvTitle.setText(exploreItem.title);
                 itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.add_time));
                 itemHolder._tvContent.setVisibility(View.GONE);
@@ -135,10 +149,13 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         itemHolder._ivAvatar.setImageResource(R.drawable.ic_user_avatar);
                     }
                 }
+                itemHolder.tvArticleLabel.setVisibility(View.VISIBLE);
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_article));
                 return;
             }
-
+            itemHolder.tvCommentNum.setText(String.valueOf(exploreItem.answer_count));
+            itemHolder.tvViewNum.setText(String.valueOf(exploreItem.view_count));
+            itemHolder.tvArticleLabel.setVisibility(View.GONE);
             itemHolder._tvTitle.setText(exploreItem.question_content);
             itemHolder._tvTime.setText(FormatHelper.getTimeFromNow(exploreItem.update_time));
             itemHolder._tvContent.setVisibility(View.VISIBLE);
@@ -152,7 +169,7 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     }
                 }
                 itemHolder._tvState.setText(ResourceHelper.getString(R.string.post_question));
-                itemHolder._tvContent.setVisibility(View.GONE);
+
             }else{
                 if(exploreItem.answer_users.length > 0){
                     AnswerInfo userInfo = exploreItem.answer_users[0];

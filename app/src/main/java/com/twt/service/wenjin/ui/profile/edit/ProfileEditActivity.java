@@ -40,23 +40,23 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileEditActivity extends BaseActivity implements ProfileEditView {
 
     private static final String PARAM_UID = "uid";
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.iv_profile_edit_avatar)
+    @Bind(R.id.iv_profile_edit_avatar)
     CircleImageView ivProfileEditAvatar;
-    @InjectView(R.id.edt_profile_edit_username)
+    @Bind(R.id.edt_profile_edit_username)
     EditText edtProfileEditUsername;
-    @InjectView(R.id.edt_profile_edit_description)
+    @Bind(R.id.edt_profile_edit_description)
     EditText edtProfileEditDescription;
-    @InjectView(R.id.pb_profile_edit)
+    @Bind(R.id.pb_profile_edit)
     ProgressBar pbProfileEdit;
 
     @Inject
@@ -79,7 +79,7 @@ public class ProfileEditActivity extends BaseActivity implements ProfileEditView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         uid = getIntent().getIntExtra(PARAM_UID, 0);

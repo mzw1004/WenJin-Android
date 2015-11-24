@@ -18,12 +18,12 @@ import com.twt.service.wenjin.bean.HomeItem;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.ResourceHelper;
 import com.twt.service.wenjin.ui.common.OnItemClickListener;
-import com.twt.service.wenjin.ui.common.PicassoImageGetter;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by M on 2015/3/24.
@@ -34,7 +34,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int ITEM_VIEW_TYPE_FOOTER = 1;
 
     private Context mContext;
-    private ArrayList<HomeItem> mDataset = new ArrayList<>();
+    private List<HomeItem> mDataset = new ArrayList<>();
 
     private boolean useFooter = false;
 
@@ -47,39 +47,43 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class ItemHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.iv_home_item_avatar)
+        @Bind(R.id.iv_home_item_avatar)
         ImageView ivAvatar;
-        @InjectView(R.id.iv_home_item_agree)
+        @Bind(R.id.iv_home_item_agree)
         ImageView ivAgree;
-        @InjectView(R.id.tv_home_item_username)
+        @Bind(R.id.tv_home_item_username)
         TextView tvUsername;
-        @InjectView(R.id.tv_home_item_status)
+        @Bind(R.id.tv_home_item_status)
         TextView tvStatus;
-        @InjectView(R.id.tv_home_item_title)
+        @Bind(R.id.tv_home_item_title)
         TextView tvTitle;
-        @InjectView(R.id.tv_home_item_content)
+        @Bind(R.id.tv_home_item_content)
         TextView tvContent;
-        @InjectView(R.id.tv_home_item_time)
+        @Bind(R.id.tv_home_item_time)
         TextView tvTime;
-        @InjectView(R.id.tv_home_item_agree_number)
+        @Bind(R.id.tv_home_item_agree_number)
         TextView tvAgreeNo;
+        @Bind(R.id.groupview_agree_label)
+        View vGroupAgreeLabel;
+        @Bind(R.id.tv_home_item_article_label)
+        TextView tvArticleLabel;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     public static class FooterHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.tv_footer_load_more)
+        @Bind(R.id.tv_footer_load_more)
         TextView tvLoadMore;
-        @InjectView(R.id.pb_footer_load_more)
+        @Bind(R.id.pb_footer_load_more)
         ProgressBar pbLoadMore;
 
         public FooterHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
@@ -180,20 +184,22 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             if (homeItem.article_info != null) {
                 itemHolder.tvTitle.setText(homeItem.article_info.title);
+                itemHolder.tvArticleLabel.setVisibility(View.VISIBLE);
+            }else {
+                itemHolder.tvArticleLabel.setVisibility(View.GONE);
             }
             if (homeItem.answer_info != null) {
                 itemHolder.tvContent.setVisibility(View.VISIBLE);
-//                itemHolder.ivAgree.setVisibility(View.VISIBLE);
-//                itemHolder.tvAgreeNo.setVisibility(View.VISIBLE);
+                itemHolder.vGroupAgreeLabel.setVisibility(View.VISIBLE);
 
                 String content = homeItem.answer_info.answer_content;
                 itemHolder.tvContent.setText(Html.fromHtml(FormatHelper.formatHomeHtmlStr(content)));
-
+                itemHolder.tvAgreeNo.setText(homeItem.answer_info.agree_count);
 //                itemHolder.tvAgreeNo.setText("" + homeItem.answer_info.agree_count);
             } else {
                 itemHolder.tvContent.setVisibility(View.GONE);
-//                itemHolder.ivAgree.setVisibility(View.GONE);
-//                itemHolder.tvAgreeNo.setVisibility(View.GONE);
+                itemHolder.vGroupAgreeLabel.setVisibility(View.GONE);
+
             }
         } else if (type == ITEM_VIEW_TYPE_FOOTER) {
         }
