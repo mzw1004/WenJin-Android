@@ -44,6 +44,7 @@ import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.support.TextviewUrlClickableBuilder;
 import com.twt.service.wenjin.support.TextviewUrlClickableBuilder.IClickUrlLink;
 import com.twt.service.wenjin.support.UmengShareHelper;
+import com.twt.service.wenjin.support.UrlHandleHeler;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
@@ -471,6 +472,6 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
 
     @Override
     public void onClickUrlLink(String url) {
-        InnerWebActivity.actionStart(this, url);
+        (new UrlHandleHeler(this, url)).hand();
     }
 }
