@@ -6,11 +6,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Menu;
@@ -21,6 +27,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +43,14 @@ import com.twt.service.wenjin.bean.Answer;
 import com.twt.service.wenjin.receiver.JPushNotiReceiver;
 import com.twt.service.wenjin.support.FormatHelper;
 import com.twt.service.wenjin.support.LogHelper;
+import com.twt.service.wenjin.support.TextviewUrlClickableBuilder;
+import com.twt.service.wenjin.support.TextviewUrlClickableBuilder.IClickUrlLink;
 import com.twt.service.wenjin.support.UmengShareHelper;
+import com.twt.service.wenjin.support.UrlHandleHeler;
 import com.twt.service.wenjin.ui.BaseActivity;
 import com.twt.service.wenjin.ui.answer.comment.CommentActivity;
 import com.twt.service.wenjin.ui.common.PicassoImageGetter;
+import com.twt.service.wenjin.ui.innerweb.InnerWebActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
 import com.twt.service.wenjin.ui.question.QuestionActivity;
@@ -53,7 +64,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView, View.OnClickListener,ObservableScrollViewCallbacks {
+public class AnswerDetailActivity extends BaseActivity implements AnswerDetailView,
+        View.OnClickListener,ObservableScrollViewCallbacks,NestedScrollView.OnScrollChangeListener,IClickUrlLink {
 
     private static final String LOG_TAG = AnswerDetailActivity.class.getSimpleName();
 
@@ -90,7 +102,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     @Bind(R.id.tv_answer_add_time)
     TextView tvAddTime;
     @Bind(R.id.obscroll)
-    ObservableScrollView scrollView;
+    NestedScrollView scrollView;
     @Bind(R.id.answer_detail_head)
     View answer_detail_head;
     @Bind(R.id.fl_bottom_actions)
@@ -133,7 +145,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_detail);
         ButterKnife.bind(this);
-        scrollView.setScrollViewCallbacks(this);
+        scrollView.setOnScrollChangeListener(this);
 
         if (savedInstanceState != null) {
             answerId = savedInstanceState.getInt(PARAM_ANSWER_ID);
@@ -295,10 +307,13 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         tvAgreeNumber.setText("" + answer.agree_count);
         tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
         tvContent.setMovementMethod(LinkMovementMethod.getInstance());
+        TextviewUrlClickableBuilder.BuildTextviewUrlClickable(this,tvContent);
+
         tvAddTime.setText(FormatHelper.formatAddDate(answer.add_time));
         tvBottomActionCommentCount.setText("" + answer.comment_count);
         fy_bottom_actions.setVisibility(View.VISIBLE);
     }
+
 
     @Override
     public void bindTitle(String title) {
@@ -397,6 +412,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     }
 
     private void showToolbar(){
+        if(fy_bottom_actions.getAlpha() != 0){ return;}
         fy_bottom_actions.setTranslationY(fy_bottom_actions.getHeight());
         fy_bottom_actions.setVisibility(View.VISIBLE);
         fy_bottom_actions.setAlpha(0.0f);
@@ -408,26 +424,24 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        fy_bottom_actions.setVisibility(View.VISIBLE);
                     }
                 });
     }
 
     private void hideToolbar(){
+        if(fy_bottom_actions.getAlpha() == 0){ return;}
+        fy_bottom_actions.setTranslationY(0);
         fy_bottom_actions.animate()
                 .translationY(fy_bottom_actions.getHeight())
                 .alpha(0.0f)
                 .setDuration(300)
                 .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        fy_bottom_actions.setVisibility(View.GONE);
-                    }
+
                 });
 
     }
 
+    /*
     private void moveToolbar(final float toTranslationY){
         if (ViewHelper.getTranslationY(toolbar) == toTranslationY) {
             return;
@@ -447,7 +461,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         });
         animator.start();
     }
-
+*/
     private int getScreenHight(){
         DisplayMetrics display = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(display);
@@ -457,6 +471,19 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
     }
 
 
+    @Override
+    public void onClickUrlLink(String url) {
+        (new UrlHandleHeler(this, url)).hand();
+    }
 
-
+    @Override
+    public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+        if(oldScrollY - scrollY > 10){
+            //move up
+            showToolbar();
+        }else if(scrollY - oldScrollY > 10){
+            //move down
+            hideToolbar();
+        }
+    }
 }

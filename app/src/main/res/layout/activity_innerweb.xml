@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
+    tools:context="com.twt.service.wenjin.ui.innerweb.InnerWebActivity"
+    >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_toolbar" />
+
+    <WebView
+        android:id="@+id/wb_innerweb"
+        android:visibility="gone"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+         />
+
+</RelativeLayout>
