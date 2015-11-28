@@ -54,6 +54,9 @@ public class HomePresenterImpl implements HomePresenter, OnGetItemsCallback {
             HomeResponse homeResponse = new Gson()
                     .fromJson(jsonObject.toString(), HomeResponse.class);
             onSuccess(homeResponse);
+        } else {
+            // 如果没有缓存，刷新 
+            refreshHomeItems();
         }
 //        isRefreshing = true;
         mHomeView.useLoadMoreFooter();

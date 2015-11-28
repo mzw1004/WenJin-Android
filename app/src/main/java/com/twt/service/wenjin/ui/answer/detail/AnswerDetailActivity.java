@@ -12,6 +12,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -293,6 +294,7 @@ public class AnswerDetailActivity extends BaseActivity implements AnswerDetailVi
         }
 
         tvAgreeNumber.setText("" + answer.agree_count);
+        LogHelper.d(LOG_TAG, "answer detail: " + answer.answer_content);
         tvContent.setText(Html.fromHtml(answer.answer_content, new PicassoImageGetter(this, tvContent), null));
         tvContent.setMovementMethod(LinkMovementMethod.getInstance());
         tvAddTime.setText(FormatHelper.formatAddDate(answer.add_time));
