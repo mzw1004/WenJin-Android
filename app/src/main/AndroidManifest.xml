@@ -171,7 +171,8 @@
         
         <activity android:name=".ui.search.SearchActivity"
             android:label="@string/title_activity_search"/>
-        
+        <activity android:name=".ui.innerweb.InnerWebActivity"
+            android:label="@string/title_activity_website"/>
         <!-- JPush Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"

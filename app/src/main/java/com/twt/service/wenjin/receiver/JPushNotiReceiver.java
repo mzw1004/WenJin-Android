@@ -15,6 +15,7 @@ import com.twt.service.wenjin.bean.NotificationMsg;
 import com.twt.service.wenjin.support.LogHelper;
 import com.twt.service.wenjin.ui.answer.detail.AnswerDetailActivity;
 import com.twt.service.wenjin.ui.article.ArticleActivity;
+import com.twt.service.wenjin.ui.innerweb.InnerWebActivity;
 import com.twt.service.wenjin.ui.main.MainActivity;
 import com.twt.service.wenjin.ui.notification.NotificationType;
 import com.twt.service.wenjin.ui.profile.ProfileActivity;
@@ -99,6 +100,8 @@ public class JPushNotiReceiver extends BroadcastReceiver {
     private static final String PARAM_QUESTION = "question";
     private static final String PARM_USER_ID = "user_id";
 
+    private static final String PARAM_WEB_URL = "web_url";
+
     public static final String INTENT_FLAG_NOTIFICATION = "intent_flag_notification";
     public static final int INTENT_FLAG_NOTIFICATION_VALUE = 8000; //表示通知方式打开
 
@@ -182,6 +185,23 @@ public class JPushNotiReceiver extends BroadcastReceiver {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
+            }else if(notificationMsg.type == NotificationType.TYPE_WEBSITE){
+                Intent intent = new Intent(context,InnerWebActivity.class);
+                intent.putExtra(PARAM_WEB_URL, notificationMsg.url);
+                intent.putExtra(INTENT_FLAG_NOTIFICATION, INTENT_FLAG_NOTIFICATION_VALUE);
+                if (!WenJinApp.isAppLunched()) {
+                    NotificationBuffer.setsIntent(intent);
+                    NotificationBuffer.setObjClass(InnerWebActivity.class);
+                    Intent intentMain = new Intent(context, WelcomeActivity.class);
+                    intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    context.startActivity(intentMain);
+                } else {
+                    intent.setClass(context, InnerWebActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+
+
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -16,7 +16,7 @@ public class NotificationType {
     public static int  TYPE_DEFAULT_VALUE = 800;  //推送tyep默认值
 
     public static int  TYPE_PRIVATE_MSG = 900;  //私信
-    public static int  TYPE_WEBSITE = 700;  //推送一个网址
+    public static int  TYPE_WEBSITE = 999;  //推送一个网址
 
     public static int  TYPE_PEOPLE_FOCUS = 101;  // 被人关注
     public static int  TYPE_NEW_ANSWER   = 102;  // 关注的问题增加了新回复 q

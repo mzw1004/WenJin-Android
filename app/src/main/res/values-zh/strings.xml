@@ -22,6 +22,8 @@
     <string name="action_notification">通知</string>
     <string name="action_search">搜索</string>
 
+    <!-- Innerweb Activity-->
+    <string name="title_activity_website">网页</string>
 
     <!-- Search Activity-->
     <string name="title_activity_search">搜索</string>
