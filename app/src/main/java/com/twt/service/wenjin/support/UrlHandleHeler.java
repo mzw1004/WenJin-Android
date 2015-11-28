@@ -80,7 +80,7 @@ public class UrlHandleHeler {
                     QuestionActivity.actionStart(mContext,mId);
                     break;
                 case TYPE_ARTICLE:
-                    ArticleActivity.actionStart(mContext,mId);
+                    ArticleActivity.actionStart(mContext,mId, "");
                     break;
 
             }
