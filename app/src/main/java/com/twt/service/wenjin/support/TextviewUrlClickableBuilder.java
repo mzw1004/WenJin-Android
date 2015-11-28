@@ -23,7 +23,7 @@ public class TextviewUrlClickableBuilder {
             Spannable sp = (Spannable) textView.getText();
             URLSpan[] urls = sp.getSpans(0, end, URLSpan.class);
             SpannableStringBuilder style = new SpannableStringBuilder(text);
-            style.clearSpans();
+//            style.clearSpans();
             for(URLSpan url:urls){
                 ClickableURLSpan urlSpan = new ClickableURLSpan(iClickUrlLink,url.getURL());
                 style.setSpan(urlSpan, sp.getSpanStart(url),sp.getSpanEnd(url), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
